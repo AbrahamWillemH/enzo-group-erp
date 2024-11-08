@@ -9,6 +9,10 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+// Register
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [UserController::class, 'register']);
+
 // Login and Logout
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
