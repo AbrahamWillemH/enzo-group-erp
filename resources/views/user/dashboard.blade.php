@@ -13,5 +13,6 @@
         @csrf
         <button type="submit">Logout</button>
     </form>
+    <h2></h2>
 </body>
 </html>
