@@ -11,19 +11,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders_final', function (Blueprint $table) {
+        Schema::create('orders_declined', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');
             $table->date('deadline_date');
-            $table->enum('progress', [
-                    'Pemesanan Bahan',
-                    'Proses Produksi',
-                    'Finishing',
-                    'Selesai'
-                ])->default('Pemesanan Bahan');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('orders_final');
+        Schema::dropIfExists('orders_declined');
     }
 };

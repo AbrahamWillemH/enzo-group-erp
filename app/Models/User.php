@@ -56,11 +56,4 @@ class User extends Authenticatable
     {
         return $this->role === 'user';
     }
-
-    // RELATION WITH ORDERS
-    public function orders_confirmation()
-    {
-        return $this->hasMany(OrderConfirmation::class);
-    }
-
 }

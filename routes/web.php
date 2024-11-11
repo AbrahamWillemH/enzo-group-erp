@@ -23,6 +23,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::post('/admin/orders/approve/{id}', [AdminController::class, 'approveOrder'])->name('orders.approve');
+    Route::post('/admin/orders/decline/{id}', [AdminController::class, 'declineOrder'])->name('orders.decline');
+    Route::post('/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
 });
 
 // User routes

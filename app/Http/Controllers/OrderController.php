@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderConfirmation;
+use App\Models\OrderFinal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,39 @@ class OrderController extends Controller
         $orders_confirmation->deadline_date = $request->input('deadline_date');
         $orders_confirmation->save();
 
-        return redirect()->route('user.orders.create')->with('success', 'Pesanan berhasil dibuat!');
+        return redirect()->route('user.dashboard')->with('success', 'Pesanan berhasil dibuat!');
+    }
+
+    public function updateProgress($id)
+    {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('home')->with('error', 'You do not have permission to update progress.');
+        }
+
+        $order = OrderFinal::find($id);
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found.');
+        }
+
+        // Enum status progress
+        $progressStages = [
+            'Pemesanan Bahan',
+            'Proses Produksi',
+            'Finishing',
+            'Selesai'
+        ];
+
+        // Dapatkan index progress saat ini
+        $currentProgressIndex = array_search($order->progress, $progressStages);
+
+        if ($currentProgressIndex === false || $currentProgressIndex == count($progressStages) - 1) {
+            return redirect()->back()->with('info', 'This order is already completed.');
+        }
+
+        $order->progress = $progressStages[$currentProgressIndex + 1];
+        $order->save();
+
+        return redirect()->back()->with('success', 'Order progress updated to ' . $order->progress);
     }
 }

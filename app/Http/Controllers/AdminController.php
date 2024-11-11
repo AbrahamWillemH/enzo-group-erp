@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderConfirmation;
+use App\Models\OrderDeclined;
 use App\Models\OrderFinal;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,10 @@ class AdminController extends Controller
     public function index()
     {
         // Mengambil semua data pesanan dari orders_confirmation
-        $orders = OrderConfirmation::all();
-        return view('admin.dashboard', compact('orders'));
+        $orders_confirmation = OrderConfirmation::all();
+        $orders_final = OrderFinal::all();
+        $orders_declined = OrderDeclined::all();
+        return view('admin.dashboard', compact('orders_confirmation', 'orders_declined', 'orders_final'));
     }
 
     public function approveOrder($id)
@@ -32,7 +35,27 @@ class AdminController extends Controller
         // Hapus pesanan yang telah disetujui dari orders_confirmation
         $order_confirmation->delete();
 
-        // Kembali ke dashboard admin dengan pesan sukses
         return redirect()->route('admin.dashboard')->with('success', 'Order has been approved and moved to final orders.');
     }
+
+    public function declineOrder($id)
+    {
+        // Ambil pesanan yang ingin ditolak dari orders_confirmation
+        $order_confirmation = OrderConfirmation::findOrFail($id);
+
+        // Pindahkan pesanan dari orders_confirmation ke orders_declined
+        $order_declined = new OrderDeclined();
+        $order_declined->user_id = $order_confirmation->user_id;
+        $order_declined->user_name = $order_confirmation->user_name;
+        $order_declined->product_name = $order_confirmation->product_name;
+        $order_declined->quantity = $order_confirmation->quantity;
+        $order_declined->deadline_date = $order_confirmation->deadline_date;
+        $order_declined->save();
+
+        // Hapus pesanan yang ditolak dari orders_confirmation
+        $order_confirmation->delete();
+
+        return redirect()->route('admin.dashboard');
+    }
+
 }

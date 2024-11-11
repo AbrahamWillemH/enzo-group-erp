@@ -6,7 +6,7 @@
     <title>Sign In | Enzo Group</title>
     @vite('resources/css/app.css')
   </head>
-  <body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-[#ac7b51]">
+  <body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-brown-light">
     <div class="container mx-auto flex justify-center items-center">
       <div class="flex flex-col items-center bg-white shadow-2xl py-4 px-4 sm:px-6 md:px-8 lg:px-12 sm:py-6 md:py-8 lg:py-12 min-w-md rounded-lg">
         <!-- Title with responsive font size -->
@@ -45,7 +45,7 @@
             </p>
           </div>
           <div class="text-center mt-5">
-            <button type="submit" class="bg-[#875C36] text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-[#875C36] border hover:border-[#875C36]">
+            <button type="submit" class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
               Register
             </button>
           </div>

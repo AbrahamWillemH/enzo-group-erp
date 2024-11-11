@@ -11,6 +11,11 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+                'brown-main' : '#875C36',
+                'brown-light': '#ac7b51',
+                'accept' : '#278d3d',
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 mont: ['Montserrat', 'sans-serif'],
