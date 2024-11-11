@@ -46,6 +46,7 @@ class User extends Authenticatable
         ];
     }
 
+    // CHECK ADMIN OR NOT
     public function isAdmin()
     {
         return $this->role === 'admin';
@@ -54,6 +55,12 @@ class User extends Authenticatable
     public function isUser()
     {
         return $this->role === 'user';
+    }
+
+    // RELATION WITH ORDERS
+    public function orders_confirmation()
+    {
+        return $this->hasMany(OrderConfirmation::class);
     }
 
 }
