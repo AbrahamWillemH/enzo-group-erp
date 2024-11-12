@@ -9,10 +9,8 @@
   <body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-brown-light">
     <div class="container mx-auto flex justify-center items-center">
       <div class="flex flex-col items-center bg-white shadow-2xl py-4 px-4 sm:px-6 md:px-8 lg:px-12 sm:py-6 md:py-8 lg:py-12 min-w-md rounded-lg">
-        <!-- Title with responsive font size -->
         <h1 class="font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Login</h1>
 
-        <!-- Display validation errors -->
         @if ($errors->any())
         <div class="alert alert-danger mt-5">
             <ul>

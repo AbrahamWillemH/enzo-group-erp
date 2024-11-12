@@ -83,7 +83,7 @@
         @endif
 
         <div class="flex flex-col items-center mt-20">
-            <a href="{{ route('user.orders.create') }}" class="bg-[#875C36] text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-[#875C36] border hover:border-[#875C36]">
+            <a href="{{ route('user.orders.create') }}" class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
                 <button type="submit">Order now</button>
             </a>
             <form method="POST" action="{{ route('logout') }}" class="mt-4 bg-[#606060] text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-[#606060] border hover:border-[#606060]">

@@ -15,6 +15,8 @@ export default {
                 'brown-main' : '#875C36',
                 'brown-light': '#ac7b51',
                 'accept' : '#278d3d',
+                'decline': '#c7313d',
+                'disabled': '#808080',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
