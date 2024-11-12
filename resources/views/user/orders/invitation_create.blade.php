@@ -88,7 +88,7 @@
 
       <!-- Akad & Reception Dates -->
       <div class="flex flex-col">
-        <label for="akad_pemberkatan_date">Tanggal Akad Pemberkatan</label>
+        <label for="akad_pemberkatan_date">Tanggal Akad / Pemberkatan</label>
         <input type="date" id="akad_pemberkatan_date" name="akad_pemberkatan_date" value="{{ old('akad_pemberkatan_date') }}"
           required class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
         @error('akad_pemberkatan_date')
@@ -97,7 +97,7 @@
       </div>
 
       <div class="flex flex-col">
-        <label for="akad_pemberkatan_time">Waktu Akad Pemberkatan</label>
+        <label for="akad_pemberkatan_time">Waktu Akad / Pemberkatan</label>
         <input type="time" id="akad_pemberkatan_time" name="akad_pemberkatan_time" value="{{ old('akad_pemberkatan_time') }}"
           required class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
         @error('akad_pemberkatan_time')
@@ -106,7 +106,7 @@
       </div>
 
       <div class="flex flex-col">
-        <label for="akad_pemberkatan_location">Lokasi Akad Pemberkatan</label>
+        <label for="akad_pemberkatan_location">Lokasi Akad / Pemberkatan</label>
         <input type="text" id="akad_pemberkatan_location" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}"
           required placeholder="Lokasi Akad Pemberkatan" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
         @error('akad_pemberkatan_location')
