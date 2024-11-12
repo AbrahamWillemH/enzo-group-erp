@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrderConfirmation;
-use App\Models\OrderDeclined;
-use App\Models\OrderFinal;
+use App\Models\Order;
 use App\Models\User;
 use Auth;
 use Hash;
@@ -36,10 +34,8 @@ class UserController extends Controller
     public function index()
     {
         // Mengambil semua pesanan yang terkait dengan user yang sedang login
-        $orders_confirmation = OrderConfirmation::where('user_id', auth()->user()->id)->get();
-        $orders_final = OrderFinal::where('user_id', auth()->user()->id)->get();
-        $orders_declined = OrderDeclined::where('user_id', auth()->user()->id)->get();
+        $orders = Order::where('user_id', auth()->user()->id)->get();
 
-        return view('user.dashboard', compact('orders_confirmation', 'orders_final', 'orders_declined'));
+        return view('user.dashboard', compact('orders'));
     }
 }

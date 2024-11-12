@@ -8,76 +8,47 @@
   @vite('resources/css/app.css')
 </head>
 
-<body>
+<body class="font-mont">
   <div class="container flex flex-col items-center min-h-screen justify-center">
     <h1>Hello, {{ auth()->user()->name }}</h1>
     <p>This is the user dashboard page, accessible to regular users.</p>
 
-    @if($orders_confirmation->isEmpty() && $orders_declined &&
-    $orders_final->isEmpty())
+    @if($orders->isEmpty())
     <p class="mt-5">You have not made any orders yet.</p>
-    @endif @if($orders_confirmation->isNotEmpty())
-    <h2 class="mt-10">Order menunggu konfirmasi admin:</h2>
-    <table class="mt-2">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Deadline Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($orders_confirmation as $order)
-        <tr>
-          <td>{{ $order->product_name }}</td>
-          <td>{{ $order->quantity }}</td>
-          <td>{{ $order->deadline_date }}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif @if($orders_final->isNotEmpty())
-    <h2 class="mt-10">Order sudah dikonfirmasi:</h2>
-    <table class="mt-2">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Deadline Date</th>
-          <th>Progress</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($orders_final as $order)
-        <tr>
-          <td>{{ $order->product_name }}</td>
-          <td>{{ $order->quantity }}</td>
-          <td>{{ $order->deadline_date }}</td>
-          <td>{{ $order->progress }}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    @endif @if ($orders_declined->isNotEmpty())
-    <h2 class="mt-10">Order ditolak:</h2>
-    <table class="mt-2">
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Deadline Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($orders_declined as $order)
-        <tr>
-          <td>{{ $order->product_name }}</td>
-          <td>{{ $order->quantity }}</td>
-          <td>{{ $order->deadline_date }}</td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+    @else
+      @foreach(['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'] as $status)
+        @php
+          $filteredOrders = $orders->where('status', $status);
+        @endphp
+
+        @if($filteredOrders->isNotEmpty())
+          <h2 class="mt-10">Order dengan status <span class="font-bold">{{ $status }}:</span></h2>
+          <table class="mt-2">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Deadline Date</th>
+                @if($status == 'Dikonfirmasi')
+                  <th>Progress</th>
+                @endif
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($filteredOrders as $order)
+                <tr>
+                  <td>{{ $order->product_name }}</td>
+                  <td>{{ $order->quantity }}</td>
+                  <td>{{ $order->deadline_date }}</td>
+                  @if($status == 'Dikonfirmasi')
+                    <td>{{ $order->progress }}</td>
+                  @endif
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
+        @endif
+      @endforeach
     @endif
 
     <div class="flex flex-col items-center mt-20">

@@ -9,10 +9,8 @@
 <body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-brown-light">
   <div class="container mx-auto flex justify-center items-center">
     <div class="flex flex-col items-center bg-white shadow-2xl py-4 px-4 sm:px-6 md:px-8 lg:px-12 sm:py-6 md:py-8 lg:py-12 min-w-md rounded-lg">
-      <!-- Title with responsive font size -->
       <h1 class="font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Register</h1>
 
-      <!-- Display validation errors -->
       @if ($errors->any())
       <div class="alert alert-danger mt-5">
           <ul>
@@ -27,7 +25,7 @@
       <form action="{{ route('register') }}" method="POST" class="flex-col text-left align-left justify-left">
         @csrf
         <div class="mt-14">
-          <input type="name" id="name" name="name" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Username"/>
+          <input type="name" id="name" name="name" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Nama Lengkap"/>
         </div>
         <div class="mt-6">
           <input type="password" id="password" name="password" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Password"/>
@@ -37,7 +35,7 @@
         </div>
         <div class="mt-14">
           <p class="text-center text-sm sm:text-base md:text-lg">
-            Already have an account?
+            Sudah memiliki akun?
             <a href="/login" class="text-blue-600 underline">Login</a>
           </p>
         </div>

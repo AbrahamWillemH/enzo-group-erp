@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\OrderConfirmation;
 use App\Models\OrderFinal;
 use Illuminate\Http\Request;
@@ -22,13 +23,14 @@ class OrderController extends Controller
             'deadline_date' => 'required|date',
         ]);
 
-        $orders_confirmation = new OrderConfirmation();
-        $orders_confirmation->user_id = Auth::id();
-        $orders_confirmation->user_name = Auth::user()->name;
-        $orders_confirmation->product_name = $request->input('product_name');
-        $orders_confirmation->quantity = $request->input('quantity');
-        $orders_confirmation->deadline_date = $request->input('deadline_date');
-        $orders_confirmation->save();
+        $orders = new Order();
+        $orders->user_id = Auth::id();
+        $orders->user_name = Auth::user()->name;
+        $orders->product_name = $request->input('product_name');
+        $orders->quantity = $request->input('quantity');
+        $orders->deadline_date = $request->input('deadline_date');
+        $orders->status = Order::STATUS_WAITING;
+        $orders->save();
 
         return redirect()->route('user.dashboard')->with('success', 'Pesanan berhasil dibuat!');
     }
@@ -39,7 +41,7 @@ class OrderController extends Controller
             return redirect()->route('home')->with('error', 'You do not have permission to update progress.');
         }
 
-        $order = OrderFinal::find($id);
+        $order = Order::find($id);
 
         if (!$order) {
             return redirect()->back()->with('error', 'Order not found.');
