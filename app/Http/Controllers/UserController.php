@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use App\Models\Order;
+use App\Models\Packaging;
+use App\Models\SeminarKit;
+use App\Models\Souvenir;
 use App\Models\User;
 use Auth;
 use Hash;
@@ -34,8 +38,11 @@ class UserController extends Controller
     public function index()
     {
         // Mengambil semua pesanan yang terkait dengan user yang sedang login
-        $orders = Order::where('user_id', auth()->user()->id)->get();
+        $invitations = Invitation::where('user_id', auth()->user()->id)->get();
+        $souvenirs = Souvenir::where('user_id', auth()->user()->id)->get();
+        $seminarkits = SeminarKit::where('user_id', auth()->user()->id)->get();
+        $packagings = Packaging::where('user_id', auth()->user()->id)->get();
 
-        return view('user.dashboard', compact('orders'));
+        return view('user.dashboard', compact('orders', 'souvenirs', 'seminarkits', 'packagings'));
     }
 }

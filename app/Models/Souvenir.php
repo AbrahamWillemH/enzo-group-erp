@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class Souvenir extends Model
 {
     use HasFactory;
 
-    protected $table = 'orders';
+    protected $table = 'souvenir';
 
     protected $fillable = [
         'user_id',
@@ -19,11 +19,6 @@ class Order extends Model
         'status',
         'progress',
     ];
-
-    // Daftar status pesanan yang valid
-    const STATUS_WAITING = 'Menunggu Konfirmasi';
-    const STATUS_CONFIRMED = 'Dikonfirmasi';
-    const STATUS_DECLINED = 'Ditolak';
 
     /**
      * Relasi ke pengguna yang melakukan pemesanan.
@@ -38,7 +33,7 @@ class Order extends Model
      */
     public function scopeWaitingConfirmation($query)
     {
-        return $query->where('status', self::STATUS_WAITING);
+        return $query->where('status', AllOrder::STATUS_WAITING);
     }
 
     /**
@@ -46,7 +41,7 @@ class Order extends Model
      */
     public function scopeConfirmed($query)
     {
-        return $query->where('status', self::STATUS_CONFIRMED);
+        return $query->where('status', AllOrder::STATUS_CONFIRMED);
     }
 
     /**
@@ -54,7 +49,7 @@ class Order extends Model
      */
     public function scopeDeclined($query)
     {
-        return $query->where('status', self::STATUS_DECLINED);
+        return $query->where('status', AllOrder::STATUS_DECLINED);
     }
 
     /**
@@ -63,6 +58,11 @@ class Order extends Model
     public function updateStatus($status)
     {
         $this->status = $status;
+        $this->save();
+    }
+    public function updateProgress($progress)
+    {
+        $this->progress = $progress;
         $this->save();
     }
 }
