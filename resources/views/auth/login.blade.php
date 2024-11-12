@@ -26,9 +26,9 @@
       <form action="{{ route('login') }}" method="POST" class="flex-col text-left align-left justify-left">
         @csrf
         <div class="mt-14">
-          <input type="email" id="email" name="email"
+          <input type="name" id="name" name="name"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1"
-            required placeholder="Email" />
+            required placeholder="Nama Lengkap" />
         </div>
         <div class="mt-6">
           <input type="password" id="password" name="password"
@@ -37,7 +37,7 @@
         </div>
         <div class="mt-14">
           <p class="text-center text-sm sm:text-base md:text-lg">
-            Don't have an account?
+            Belum memiliki akun?
             <a href="/register" class="text-blue-600 underline">Register</a>
           </p>
         </div>
