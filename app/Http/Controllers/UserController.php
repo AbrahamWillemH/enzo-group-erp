@@ -43,6 +43,6 @@ class UserController extends Controller
         $seminarkits = SeminarKit::where('user_id', auth()->user()->id)->get();
         $packagings = Packaging::where('user_id', auth()->user()->id)->get();
 
-        return view('user.dashboard', compact('orders', 'souvenirs', 'seminarkits', 'packagings'));
+        return view('user.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
     }
 }

@@ -13,12 +13,15 @@
     <h1>Hello, {{ auth()->user()->name }}</h1>
     <p>This is the user dashboard page, accessible to regular users.</p>
 
-    @if($orders->isEmpty())
+    @if($invitations->isEmpty() && $souvenirs->isEmpty() && $seminarkits->isEmpty() && $packagings->isEmpty())
     <p class="mt-5">You have not made any orders yet.</p>
     @else
       @foreach(['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'] as $status)
         @php
-          $filteredOrders = $orders->where('status', $status);
+          $filteredOrders = $invitations->where('status', $status)
+                          ->merge($souvenirs->where('status', $status))
+                          ->merge($seminarkits->where('status', $status))
+                          ->merge($packagings->where('status', $status));
         @endphp
 
         @if($filteredOrders->isNotEmpty())
@@ -52,9 +55,21 @@
     @endif
 
     <div class="flex flex-col items-center mt-20">
-      <a href="{{ route('user.orders.create') }}"
+      <a href="{{ route('user.orders.invitation.create') }}"
         class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-        <button type="submit">Order now</button>
+        <button type="submit">Order invitation</button>
+      </a>
+      <a href="{{ route('user.orders.souvenir.create') }}"
+        class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+        <button type="submit">Order souvenir</button>
+      </a>
+      <a href="{{ route('user.orders.seminarkit.create') }}"
+        class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+        <button type="submit">Order seminar kit</button>
+      </a>
+      <a href="{{ route('user.orders.packaging.create') }}"
+        class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+        <button type="submit">Order packaging</button>
       </a>
       <form method="POST" action="{{ route('logout') }}"
         class="mt-4 bg-[#606060] text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-[#606060] border hover:border-[#606060]">
