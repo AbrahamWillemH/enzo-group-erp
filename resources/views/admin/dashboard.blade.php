@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Dashboard</title>
+  <title>Admin Dashboard</title>
   @vite('resources/css/app.css')
 </head>
 
@@ -13,12 +13,12 @@
     <h1>Hello, {{ auth()->user()->name }}</h1>
     <p>This is the admin dashboard page.</p>
 
-    @if($orders->isEmpty())
+    @if($invitations->isEmpty())
     <p class="mt-5">There are no orders yet.</p>
     @else
       @foreach(['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'] as $status)
         @php
-          $filteredOrders = $orders->where('status', $status);
+          $filteredOrders = $invitations->where('status', $status);
         @endphp
 
         @if($filteredOrders->isNotEmpty())
@@ -38,28 +38,28 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($filteredOrders as $order)
+              @foreach($filteredOrders as $invitation)
                 <tr>
-                  <td>{{ $order->product_name }}</td>
-                  <td>{{ $order->quantity }}</td>
-                  <td>{{ $order->deadline_date }}</td>
+                  <td>{{ $invitation->product_name }}</td>
+                  <td>{{ $invitation->quantity }}</td>
+                  <td>{{ $invitation->deadline_date }}</td>
                   @if ($status == 'Menunggu Konfirmasi')
                   <td class="flex flex-row gap-2">
-                    <form action="{{ route('orders.approve', $order->id) }}" method="POST">
+                    <form action="{{ route('orders.approve', $invitation->id) }}" method="POST">
                       @csrf
                       <button type="submit" class="bg-accept text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-accept border hover:border-accept">Approve</button>
                     </form>
-                    <form action="{{ route('orders.decline', $order->id) }}" method="POST">
+                    <form action="{{ route('orders.decline', $invitation->id) }}" method="POST">
                       @csrf
                       <button type="submit" class="bg-decline text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-decline border hover:border-decline">Decline</button>
                     </form>
                   </td>
                   @elseif ($status == 'Dikonfirmasi')
-                  <td>{{ $order->progress }}</td>
+                  <td>{{ $invitation->progress }}</td>
                   <td>
-                    <form action="{{ route('orders.updateProgress', $order->id) }}" method="POST">
+                    <form action="{{ route('orders.updateProgress', $invitation->id) }}" method="POST">
                       @csrf
-                      @if ($order->progress != 'Selesai')
+                      @if ($invitation->progress != 'Selesai')
                       <button type="submit"
                         class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
                         Update Progress
