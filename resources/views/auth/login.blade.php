@@ -6,11 +6,11 @@
   <title>Sign In | Enzo Group</title>
   @vite('resources/css/app.css')
 </head>
-<body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-brown-light">
+<body id="register" class="font-mont flex items-center justify-center text-center min-h-screen bg-green-main">
   <div class="container mx-auto flex justify-center items-center">
     <div
-      class="flex flex-col items-center bg-white shadow-2xl py-4 px-4 sm:px-6 md:px-8 lg:px-12 sm:py-6 md:py-8 lg:py-12 min-w-md rounded-lg">
-      <h1 class="font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Login</h1>
+      class="flex flex-col items-center bg-green-light shadow-2xl py-4 px-4 sm:px-6 md:px-8 lg:px-12 sm:py-6 md:py-8 lg:py-12 min-w-md rounded-lg">
+      <h1 class="text-cream font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Login</h1>
 
       @if ($errors->any())
       <div class="alert alert-danger mt-5">
@@ -36,14 +36,14 @@
             required placeholder="Password" />
         </div>
         <div class="mt-14">
-          <p class="text-center text-sm sm:text-base md:text-lg">
+          <p class="text-center text-sm sm:text-base md:text-lg text-cream">
             Belum memiliki akun?
-            <a href="/register" class="text-blue-600 underline">Register</a>
+            <a href="/register" class="text-[#e0e0e0] underline">Register</a>
           </p>
         </div>
         <div class="text-center mt-5">
           <button type="submit"
-            class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+            class="bg-cream text-green-main px-5 py-1 rounded-lg hover:bg-green-main hover:text-cream border hover:border-cream">
             Login
           </button>
         </div>
