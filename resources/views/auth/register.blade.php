@@ -28,6 +28,9 @@
           <input type="name" id="name" name="name" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Nama Lengkap"/>
         </div>
         <div class="mt-6">
+          <input type="email" id="email" name="email" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Email"/>
+        </div>
+        <div class="mt-6">
           <input type="password" id="password" name="password" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-1" required placeholder="Password"/>
         </div>
         <div class="mt-6">
