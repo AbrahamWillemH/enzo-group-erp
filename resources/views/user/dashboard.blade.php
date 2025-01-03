@@ -87,33 +87,36 @@
     <div class="bg-green-main min-h-screen">
       <ul class="space-y-5 py-10">
         <li>
-          <div>
-            <span class="ms-3 text-2xl font-medium text-cream px-10">ADMIN</span>
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center ml-4">
+              <span class="text-green-main font-medium">A</span>
+            </div>
+            <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">ADMIN</span>
           </div>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
-            <span>Beranda</span>
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
+            <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Data Pesanan</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Inventory</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Reminder</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-            <span>Kalender</span>
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+            <span>Calendar</span>
           </a>
         </li>
       </ul>
@@ -178,16 +181,16 @@
         </div>
 
         <div class="grid grid-cols-4 bg-cream px-2 py-2 gap-3">
-          <div class="w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
             <h2>Order</h2>
           </div>
-          <div class="w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
             <h2>Proses</h2>
           </div>
-          <div class="w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
             <h2>Finishing</h2>
           </div>
-          <div class="w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
             <h2>Ready</h2>
           </div>
         </div>
@@ -197,12 +200,12 @@
     </div>
 
     <!-- deadline -->
-     <div class="container h-screen bg-slate-200 shadow-inner grid grid-rows-[15%_85%]">
-      <div class="bg-green-main flex items-center justify-center text-blue-50">
+     <div class="container h-screen bg-green-shadow shadow-inner grid grid-rows-[15%_85%]">
+      <div style="letter-spacing: 3px" class="font-sans bg-green-main flex items-center justify-center text-cream">
         <h1>DEADLINE</h1>
       </div>
       <div class="flex justify-start px-5 py-5 flex-col">
-        <ul class="space-y-5 underline">
+        <ul style="letter-spacing: 1px" class="text-cream font-sans space-y-5">
           <li>Yanto</li>
           <li>Yanto</li>
           <li>Bejo</li>
@@ -214,7 +217,8 @@
           <li>Andi</li>
           <li>John Doe</li>
         </ul>
-        <a href="" class="bg-green-main text-blue-50 rounded-lg px-3 py-2 flex justify-center mt-3">Lihat Semua</a>
+        <br>
+        <a href="" style="letter-spacing: 2px" class="font-sans bg-green-main text-cream rounded-lg px-3 py-2 flex justify-center mt-3  hover:bg-cream hover:text-green-main">Lihat Semua</a>
       </div>
      </div>
 
