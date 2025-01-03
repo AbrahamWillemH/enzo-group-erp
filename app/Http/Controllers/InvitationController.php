@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class InvitationController extends Controller
 {
+    public function index()
+    {
+        return view('admin.orders');
+    }
+
     public function create()
     {
         return view('user.orders.invitation_create');

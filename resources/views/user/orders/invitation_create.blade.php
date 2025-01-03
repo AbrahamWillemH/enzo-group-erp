@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buat Pesanan Baru</title>
+  <title>Make A New Order</title>
   @vite('resources/css/app.css')
 </head>
 
-<body class="font-mont">
-  <div class="container flex flex-col items-center min-h-screen justify-center py-10">
-    <h2>Buat Pesanan Baru</h2>
+<body class="bg-[#F7FCF5] font-mont">
+  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex flex-col items-center min-h-screen justify-center py-10">
+    <h2>FORM ORDER UNDANGAN</h2>
+    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -21,31 +23,99 @@
     <form action="{{ route('user.orders.invitation.store') }}" method="POST" class="flex flex-col gap-5 items-center">
       @csrf
 
-      <div class="">
-        <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
-          placeholder="Nama Produk"
-          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-        @error('product_name')
-        <small class="text-danger">{{ $message }}</small>
-        @enderror
-      </div>
+      <div class="grid grid-cols-[50%_50%] gap-40">
+        <div class="grid grid-rows-4 gap-8">
 
-      <div class="">
-        <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required placeholder="Jumlah"
-          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-        @error('quantity')
-        <small class="text-danger">{{ $message }}</small>
-        @enderror
-      </div>
+          <div class="flex flex-col">
+            <label class="ml-2" for="product_name">Nama Produk</label>
+            <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
+              placeholder="Nama Produk"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('product_name')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
 
-      <div class="flex flex-col">
-        <label for="deadline_date">Tanggal barang diinginkan</label>
-        <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-        @error('deadline_date')
-        <small class="text-danger">{{ $message }}</small>
-        @enderror
+          <div class="flex flex-col">
+            <label for="address">Alamat Lengkap</label>
+            <input type="text" id="address" name="address" value="{{ old('address') }}" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('address')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex flex-col">
+            <label for="phone">Nomor HP</label>
+            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
+              placeholder="Nomor HP"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('phone')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex flex-col">
+            <label for="instagram">Instagram</label>
+            <input type="text" id="instagram" name="instagram" value="{{ old('instagram') }}" required
+              placeholder="Akun Instagram"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('instagram')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+          
+        </div>
+
+        <div class="grid grid-rows-4 gap-8">
+
+          <div class="flex flex-col">
+            <label for="quantity">Jumlah</label>
+            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required placeholder="Jumlah"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('quantity')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex flex-col">
+            <label for="type">Tipe Produk</label>
+            <input type="text" id="type" name="type" value="{{ old('type') }}" required
+              placeholder="Tipe Produk"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('type')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex flex-col">
+            <label for="deadline_date">Deadline</label>
+            <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('deadline_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex flex-col">
+            <label for="finishing">Finishing</label>
+            <input type="text" id="finishing" name="finishing" value="{{ old('finishing') }}" required placeholder="Finishing"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('finishing')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+        </div>
       </div>
+      
+
+          
+
+      
+
+      
 
       <!-- Additional Fields -->
 
@@ -58,14 +128,7 @@
         @enderror
       </div>
 
-      <div class="flex flex-col">
-        <label for="finishing">Finishing</label>
-        <input type="text" id="finishing" name="finishing" value="{{ old('finishing') }}" required placeholder="Finishing"
-          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-        @error('finishing')
-        <small class="text-danger">{{ $message }}</small>
-        @enderror
-      </div>
+      
 
       <!-- Bride & Groom Info -->
       <div class="flex flex-col">
