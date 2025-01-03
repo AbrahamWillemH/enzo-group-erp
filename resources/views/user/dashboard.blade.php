@@ -84,7 +84,7 @@
   <!-- Main Container -->
   <div class="grid grid-cols-[20%_65%_15%]">
     <!-- sidebar -->
-    <div class="bg-green min-h-screen">
+    <div class="bg-green-main min-h-screen">
       <ul class="space-y-5 py-10">
         <li>
           <div>
@@ -92,27 +92,27 @@
           </div>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green">
+          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
             <span>Beranda</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green">
+          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Data Pesanan</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green">
+          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Inventory</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green">
+          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Reminder</span>
           </a>
         </li>
         <li>
-          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green">
+          <a href="" class="flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Kalender</span>
           </a>
         </li>
@@ -133,7 +133,7 @@
             <div class="grid grid-rows-2">
 
               <div class="bg-cream px-5 py-5">
-                <div class="bg-green w-50 h-full flex flex-col rounded-lg">
+                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                   <h2>Undangan</h2>
                   <a href="{{ route('user.orders.invitation.create') }}"
                     class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
@@ -143,7 +143,7 @@
               </div>
 
               <div class="bg-cream px-5 py-5">
-                <div class="bg-green w-50 h-full flex flex-col rounded-lg">
+                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                   <h2>Souvenir</h2>
                   <a href="{{ route('user.orders.souvenir.create') }}"
                     class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
@@ -158,7 +158,7 @@
             <div class="grid grid-rows-2">
 
               <div class="bg-cream px-5 py-5">
-                <div class="bg-green w-50 h-full flex flex-col rounded-lg">
+                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                   <h2>Seminar Kit</h2>
                   <a href="{{ route('user.orders.seminarkit.create') }}"
                     class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
@@ -168,7 +168,7 @@
               </div>
 
               <div class="bg-cream px-5 py-5">
-                <div class="bg-green w-50 h-full flex flex-col rounded-lg">
+                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                   <h2>Packaging</h2>
                   <a href="{{ route('user.orders.packaging.create') }}"
                     class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
@@ -205,7 +205,7 @@
 
     <!-- deadline -->
      <div class="container h-screen bg-slate-200 shadow-inner grid grid-rows-[15%_85%]">
-      <div class="bg-green flex items-center justify-center text-blue-50">
+      <div class="bg-green-main flex items-center justify-center text-blue-50">
         <h1>DEADLINE</h1>
       </div>
       <div class="flex justify-start px-5 py-5 flex-col">
@@ -221,7 +221,7 @@
           <li>Andi</li>
           <li>John Doe</li>
         </ul>
-        <a href="" class="bg-green text-blue-50 rounded-lg px-3 py-2 flex justify-center mt-3">Lihat Semua</a>
+        <a href="" class="bg-green-main text-blue-50 rounded-lg px-3 py-2 flex justify-center mt-3">Lihat Semua</a>
       </div>
      </div>
 
