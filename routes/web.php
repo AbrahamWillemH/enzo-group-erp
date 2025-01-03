@@ -28,8 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/orders', [InvitationController::class, 'index'])->name('orders.view');
-    Route::post('/admin/orders/approve/{id}', [AdminController::class, 'approveOrder'])->name('orders.approve');
-    Route::post('/admin/orders/decline/{id}', [AdminController::class, 'declineOrder'])->name('orders.decline');
+    Route::post('/admin/orders/approve/{id}', [InvitationController::class, 'approveOrder'])->name('orders.approve');
+    Route::post('/admin/orders/decline/{id}', [InvitationController::class, 'declineOrder'])->name('orders.decline');
     // update progress
     Route::post('/orders/invitation/{id}/update-progress', [InvitationController::class, 'updateProgress'])->name('orders.invitation.updateProgress');
     Route::post('/orders/souvenir/{id}/update-progress', [SouvenirController::class, 'updateProgress'])->name('orders.souvenir.updateProgress');
