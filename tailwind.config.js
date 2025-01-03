@@ -17,8 +17,10 @@ export default {
                 'accept' : '#278d3d',
                 'decline': '#c7313d',
                 'disabled': '#808080',
-                'green' : '#00441B',
-                'cream' : '#F0EBCE',
+                'green-main': '#00441B',
+                'green-light': '#28623F',
+                'cream': '#F0EBCE',
+
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
