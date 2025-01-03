@@ -27,7 +27,7 @@
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-4 gap-8">
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="order_name">Nama Pemesan</label>
             <input type="text" id="order_name" name="order_name" value="{{ old('order_name') }}" required
               placeholder="Nama Pemesan"
@@ -37,7 +37,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <input type="text" id="address" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
@@ -47,7 +47,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="Nomor HP"
@@ -57,7 +57,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="instagram">Instagram</label>
             <input type="text" id="instagram" name="instagram" value="{{ old('instagram') }}" required
               placeholder="Akun Instagram"
@@ -71,7 +71,7 @@
 
         <div class="grid grid-rows-4 gap-8">
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required placeholder="Jumlah"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -80,7 +80,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="type">Tipe Produk</label>
             <input type="text" id="type" name="type" value="{{ old('type') }}" required
               placeholder="Tipe Produk"
@@ -90,7 +90,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -99,7 +99,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
             <input type="text" id="finishing" name="finishing" value="{{ old('finishing') }}" required placeholder="Finishing"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -132,7 +132,7 @@
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-5 gap-8">
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="grooms_name">Nama Lengkap</label>
             <input type="text" id="grooms_name" name="grooms_name" value="{{ old('grooms_name') }}" required
               placeholder="Nama Lengkap"
@@ -142,7 +142,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="grooms_nickname">Nama Panggilan</label>
             <input type="text" id="grooms_nickname" name="grooms_nickname" value="{{ old('grooms_nickname') }}" required
               placeholder="Nama Panggilan"
@@ -152,7 +152,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="dad_grooms">Nama Ayah</label>
             <input type="text" id="dad_grooms" name="dad_grooms" value="{{ old('dad_grooms') }}" required
               placeholder="Nama Lengkap Ayah"
@@ -162,7 +162,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="mom_grooms">Nama Ibu</label>
             <input type="text" id="mom_grooms" name="mom_grooms" value="{{ old('mom_grooms') }}" required
               placeholder="Nama Lengkap Ibu"
@@ -172,7 +172,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="grooms_address">Alamat Orang Tua</label>
             <input type="text" id="grooms_address" name="grooms_address" value="{{ old('grooms_address') }}" required
               placeholder="Alamat Orang Tua"
@@ -186,7 +186,7 @@
 
         {{-- Brides Info --}}
         <div class="grid grid-rows-5 gap-8">
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="brides_name">Nama Lengkap</label>
             <input type="text" id="brides_name" name="brides_name" value="{{ old('brides_name') }}" required
               placeholder="Nama Lengkap"
@@ -196,7 +196,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="brides_nickname">Nama Panggilan</label>
             <input type="text" id="brides_nickname" name="brides_nickname" value="{{ old('brides_nickname') }}" required
               placeholder="Nama Panggilan"
@@ -206,7 +206,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="dad_brides">Nama Ayah</label>
             <input type="text" id="dad_brides" name="dad_brides" value="{{ old('dad_brides') }}" required
               placeholder="Nama Lengkap Ayah"
@@ -216,7 +216,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="mom_brides">Nama Ibu</label>
             <input type="text" id="mom_brides" name="mom_brides" value="{{ old('mom_brides') }}" required
               placeholder="Nama Lengkap Ibu"
@@ -226,7 +226,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="brides_address">Alamat Orang Tua</label>
             <input type="text" id="brides_address" name="brides_address" value="{{ old('brides_address') }}" required
               placeholder="Alamat Orang Tua"
@@ -244,7 +244,7 @@
           <div class="flex flex-col">
             <br>
             <h2>Data Akad / Pemberkatan</h2>
-            <hr class="border-b-2 border-brown-enzo w-1/1 mb-2">
+            <hr class=" items-center border-b-2 border-brown-enzo w-1/1 mb-2">
           </div>
         </div>
 
@@ -261,7 +261,7 @@
         <div class="grid grid-rows-3 gap-8">
           
           <!-- Akad & Pemberkatan -->
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="akad_date">Tanggal Acara</label>
             <input type="date" id="akad_date" name="akad_date" value="{{ old('akad_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -270,7 +270,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="akad_pemberkatan_time">Waktu Acara</label>
             <input type="time" id="akad_pemberkatan_time" name="akad_pemberkatan_time" value="{{ old('akad_pemberkatan_time') }}"
               required class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -279,7 +279,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="akad_pemberkatan_location">Lokasi Acara</label>
             <input type="text" id="akad_pemberkatan_location" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}"
               required placeholder="Lokasi Akad Pemberkatan" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -291,7 +291,7 @@
 
           <!-- Reception Date -->
         <div class="grid grid-rows-3 gap-8">
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="reception_date">Tanggal Acara</label>
             <input type="date" id="reception_date" name="reception_date" value="{{ old('reception_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -300,7 +300,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="reception_time">Waktu Acara</label>
             <input type="time" id="reception_time" name="reception_time" value="{{ old('reception_time') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -309,7 +309,7 @@
             @enderror
           </div>
 
-          <div class="flex flex-col">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="reception_location">Lokasi Acara</label>
             <input type="text" id="reception_location" name="reception_location" value="{{ old('reception_location') }}"
               required placeholder="Lokasi Resepsi" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
