@@ -110,11 +110,11 @@
 
         </div>
       </div>    
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
+      <div class="grid grid-cols-[50%_50%] gap-60 justify-center">
         <div class="grid gap-2">
           <div class="flex flex-col">
             <br>
-            <h2>Data Mempelai Pria</h2>
+            <h2 class="flex justify-center">Data Mempelai Pria</h2>
             <hr class="border-b-2 border-brown-enzo w-1/1 mb-2">
           </div>
         </div>
@@ -123,7 +123,7 @@
           <div class="flex flex-col">
             <br>
             <h2>Data Mempelai Wanita</h2>
-            <hr class="border-b-2 border-brown-enzo w-1/1 mb-2">
+            <hr class="border-b-2 border-brown-enzo w-4/5 mb-2">
           </div>
         </div>
       </div>
@@ -239,12 +239,12 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
+      <div class="grid grid-cols-[50%_50%] gap-60 justify-center">
         <div class="grid gap-2">
           <div class="flex flex-col">
             <br>
-            <h2>Data Akad / Pemberkatan</h2>
-            <hr class=" items-center border-b-2 border-brown-enzo w-1/1 mb-2">
+            <h2 class="flex justify-center">Data Akad / Pemberkatan</h2>
+            <hr class="border-b-2 border-brown-enzo w-1/1 mb-2">
           </div>
         </div>
 
@@ -252,7 +252,7 @@
           <div class="flex flex-col">
             <br>
             <h2>Data Resepsi</h2>
-            <hr class="border-b-2 border-brown-enzo w-1/1 mb-2">
+            <hr class="border-b-2 border-brown-enzo w-4/5 mb-2">
           </div>
         </div>
       </div>
