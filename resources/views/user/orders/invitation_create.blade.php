@@ -24,7 +24,7 @@
       @csrf
 
       <!-- Customer Info -->
-      <div class="grid grid-cols-[50%_50%] gap-40">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-4 gap-8">
 
           <div class="flex flex-col">
@@ -110,7 +110,7 @@
 
         </div>
       </div>    
-      <div class="grid grid-cols-[50%_50%] gap-40">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid gap-2">
           <div class="flex flex-col">
             <br>
@@ -129,7 +129,7 @@
       </div>
 
       {{-- Grooms Info --}}
-      <div class="grid grid-cols-[50%_50%] gap-40">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-5 gap-8">
 
           <div class="flex flex-col">
@@ -239,7 +239,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-[50%_50%] gap-40">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid gap-2">
           <div class="flex flex-col">
             <br>
@@ -257,7 +257,7 @@
         </div>
       </div>
       
-      <div class="grid grid-cols-[50%_50%] gap-40">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-3 gap-8">
           
           <!-- Akad & Pemberkatan -->
@@ -322,7 +322,7 @@
 
       <!-- Submit Button -->
       <button type="submit"
-        class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">Buat Pesanan</button>
+        class="bg-brown-main text-white px-5 py-1 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center">Buat Pesanan</button>
     </form>
   </div>
 </body>
