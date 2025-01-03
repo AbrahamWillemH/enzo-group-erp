@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buat Pesanan Baru</title>
+  <title>Make A New Order</title>
   @vite('resources/css/app.css')
 </head>
 
-<body class="font-mont">
-  <div class="container flex flex-col items-center min-h-screen justify-center py-10">
-    <h2>Form Order Undangan</h2>
+<body class="bg-[#F7FCF5] font-mont">
+  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex flex-col items-center min-h-screen justify-center py-10">
+    <h2>FORM ORDER UNDANGAN</h2>
+    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -25,7 +27,7 @@
         <div class="grid grid-rows-4 gap-8">
 
           <div class="flex flex-col">
-            <label for="product_name">Nama Produk</label>
+            <label class="ml-2" for="product_name">Nama Produk</label>
             <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
               placeholder="Nama Produk"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">

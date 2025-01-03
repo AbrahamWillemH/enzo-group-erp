@@ -14,11 +14,14 @@ export default {
             colors: {
                 'brown-main' : '#875C36',
                 'brown-light': '#ac7b51',
+                'brown-enzo' : '#C29C5B',
                 'accept' : '#278d3d',
                 'decline': '#c7313d',
                 'disabled': '#808080',
                 'green-main': '#00441B',
-                'green-light': '#28623F',
+                'green-shadow': '#28623F',
+                'green-light': '#F7FCF5',
+                'green-dark': '#8A9F92',
                 'cream': '#F0EBCE',
 
             },

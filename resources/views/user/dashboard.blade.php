@@ -207,7 +207,7 @@
     </div>
 
     <!-- deadline -->
-     <div class="container h-screen bg-green-light shadow-inner grid grid-rows-[15%_85%]">
+     <div class="container h-screen bg-green-shadow shadow-inner grid grid-rows-[15%_85%]">
       <div style="letter-spacing: 3px" class="font-sans bg-green-main flex items-center justify-center text-cream">
         <h1>DEADLINE</h1>
       </div>
