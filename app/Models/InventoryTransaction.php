@@ -11,15 +11,13 @@ class InventoryTransaction extends Model
 
     protected $fillable = [
         'inventory_id',
-        'tipe_transaksi',
-        'kode_bahan',
-        'jumlah_barang',
+        'jenis_barang',
         'tanggal_transaksi',
+        'kode_bahan',
+        'nama_bahan',
+        'tipe_transaksi', 
+        'jumlah_barang', 
         'keterangan',
     ];
-
-    public function inventory()
-    {
-        return $this->belongsTo(Inventory::class);
-    }
 }
+

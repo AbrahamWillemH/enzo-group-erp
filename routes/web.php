@@ -10,6 +10,7 @@ use App\Http\Controllers\SouvenirController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Models\AllOrder;
+use App\Http\Controllers\InventoryController;
 
 Route::get('/', function(){
     return view('welcome');
@@ -50,3 +51,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/packaging/create', [PackagingController::class, 'create'])->name('user.orders.packaging.create');
     Route::post('/orders/packaging', [PackagingController::class, 'store'])->name('user.orders.packaging.store');
 });
+
+Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
+Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
+Route::get('/inventory/{id}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
+Route::put('/inventory/{id}', [InventoryController::class, 'update'])->name('inventory.update');
+Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
