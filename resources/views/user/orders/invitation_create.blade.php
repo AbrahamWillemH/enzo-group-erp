@@ -13,6 +13,7 @@
     <h2 style="font-size: 22px">FORM ORDER UNDANGAN</h2>
     <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
     <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
+    <br>
 
     @if(session('success'))
     <div class="alert alert-success">
