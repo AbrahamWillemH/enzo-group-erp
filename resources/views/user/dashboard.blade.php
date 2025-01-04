@@ -133,54 +133,47 @@
           </div>
 
           <div class="grid grid-cols-2 bg-blue-200 ">
-            <div class="grid grid-rows-2">
 
-              <div class="bg-cream px-5 py-5">
-                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                  <h2>Undangan</h2>
-                  <a href="{{ route('user.orders.invitation.create') }}"
-                    class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                    Order invitation
-                  </a>
-                </div>
+            <div class="bg-cream px-5 py-5">
+              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
+                <h2>Undangan</h2>
+                <a href="{{ route('user.orders.invitation.create') }}"
+                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+                  Order invitation
+                </a>
               </div>
-
-              <div class="bg-cream px-5 py-5">
-                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                  <h2>Souvenir</h2>
-                  <a href="{{ route('user.orders.souvenir.create') }}"
-                    class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                    <button type="submit">Order souvenir</button>
-                  </a>
-                </div>
-                
-              </div>
-
             </div>
 
-            <div class="grid grid-rows-2">
-
-              <div class="bg-cream px-5 py-5">
-                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                  <h2>Seminar Kit</h2>
-                  <a href="{{ route('user.orders.seminarkit.create') }}"
-                    class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                    <button type="submit">Order seminar kit</button>
-                  </a>
-                </div>
+            <div class="bg-cream px-5 py-5">
+              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
+                <h2>Souvenir</h2>
+                <a href="{{ route('user.orders.souvenir.create') }}"
+                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+                  <button type="submit">Order souvenir</button>
+                </a>
               </div>
+              
+            </div>
 
-              <div class="bg-cream px-5 py-5">
-                <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                  <h2>Packaging</h2>
-                  <a href="{{ route('user.orders.packaging.create') }}"
-                    class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                    <button type="submit">Order packaging</button>
-                  </a>
-                </div>
-                
+            <div class="bg-cream px-5 py-5">
+              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
+                <h2>Seminar Kit</h2>
+                <a href="{{ route('user.orders.seminarkit.create') }}"
+                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+                  <button type="submit">Order seminar kit</button>
+                </a>
               </div>
+            </div>
 
+            <div class="bg-cream px-5 py-5">
+              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
+                <h2>Packaging</h2>
+                <a href="{{ route('user.orders.packaging.create') }}"
+                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
+                  <button type="submit">Order packaging</button>
+                </a>
+              </div>
+              
             </div>
 
           </div>
