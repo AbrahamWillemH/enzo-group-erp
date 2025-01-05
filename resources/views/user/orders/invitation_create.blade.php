@@ -16,13 +16,27 @@
     </div>
     <div class="grid grid-cols-3 gap-1 font-medium">
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
       </a>
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Form Order
+     
+      <!-- Dropdown Menu -->
+      <div class="flex flex-col justify-center items-center group relative">
+        <!-- Dropdown Button -->
+        <button class="text-brown-enzo flex flex-col justify-center items-center">Form Order
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-      </a>
+        </button>
+
+        <!-- Dropdown Content -->
+        <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 rounded-md z-10 top-full left-50 w-50">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Invitation</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Souvenir</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Seminar Kit</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Packaging</a>
+        </div>
+      </div>
+
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Admin
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
       </a>
     </div>
   </div>
@@ -112,7 +126,7 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('deadline_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -260,7 +274,7 @@
             <div class="flex flex-col items-center">
               <label class="ml-2" for="akad_pemberkatan_date">Tanggal Acara</label>
               <input type="date" id="akad_pemberkatan_date" name="akad_pemberkatan_date" value="{{ old('akad_pemberkatan_date') }}" required
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('akad_pemberkatan_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -296,7 +310,7 @@
             <div class="flex flex-col items-center">
               <label class="ml-2" for="reception_date">Tanggal Acara</label>
               <input type="date" id="reception_date" name="reception_date" value="{{ old('reception_date') }}" required
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('reception_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
