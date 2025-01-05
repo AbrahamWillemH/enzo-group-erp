@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InventoryCardController;
+use App\Http\Controllers\InventoryTransactionController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PackagingController;
@@ -36,6 +38,16 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/orders/souvenir/{id}/update-progress', [SouvenirController::class, 'updateProgress'])->name('orders.souvenir.updateProgress');
     Route::post('/orders/seminarkit/{id}/update-progress', [SeminarKitController::class, 'updateProgress'])->name('orders.seminarkit.updateProgress');
     Route::post('/orders/packaging/{id}/update-progress', [PackagingController::class, 'updateProgress'])->name('orders.packaging.updateProgress');
+    // inventory
+    Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
+    Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
+    Route::get('/inventory/{id}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
+    Route::put('/inventory/{id}', [InventoryController::class, 'update'])->name('inventory.update');
+    Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
+    Route::get('/inventory-transactions', [InventoryTransactionController::class, 'index'])->name('inventory.transactions.index');
+    Route::post('/inventory-transactions', [InventoryTransactionController::class, 'store'])->name('inventory.transactions.store');
+    Route::get('/inventory-card', [InventoryCardController::class, 'index'])->name('inventory.card.index');
+    Route::get('/inventory-card/{id}', [InventoryCardController::class, 'show'])->name('inventory.card.show');
 });
 
 // User routes
@@ -51,9 +63,3 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/packaging/create', [PackagingController::class, 'create'])->name('user.orders.packaging.create');
     Route::post('/orders/packaging', [PackagingController::class, 'store'])->name('user.orders.packaging.store');
 });
-
-Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory.index');
-Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
-Route::get('/inventory/{id}/edit', [InventoryController::class, 'edit'])->name('inventory.edit');
-Route::put('/inventory/{id}', [InventoryController::class, 'update'])->name('inventory.update');
-Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');

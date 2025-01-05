@@ -16,7 +16,7 @@ class InventoryController extends Controller
         $kode_bahan = $request->get('kode_bahan', '');
 
         // Filter data berdasarkan jenis_barang
-        $inventory = Inventory::where('jenis_barang', $jenis_barang)->get();
+        $inventory = Inventory::all();
         $transaksi = InventoryTransaction::where('jenis_barang', $jenis_barang)->get();
         $kartu_persediaan = InventoryCard::where('jenis_barang', $jenis_barang)->get();
 
@@ -28,7 +28,7 @@ class InventoryController extends Controller
                         ->first();
         }
 
-        return view('inventory.index', compact('inventory', 'transaksi', 'kartu_persediaan', 'jenis_barang', 'kode_bahan', 'stok_data'));
+        return view('admin.inventory.index', compact('inventory', 'transaksi', 'kartu_persediaan', 'jenis_barang', 'kode_bahan', 'stok_data'));
     }
 
     // Menambahkan data baru ke tabel inventory
@@ -49,7 +49,7 @@ class InventoryController extends Controller
     public function edit($id)
     {
         $inventory = Inventory::findOrFail($id);
-        return view('inventory.edit', compact('inventory'));
+        return view('admin.inventory.edit', compact('inventory'));
     }
 
     // Update data inventory
@@ -73,5 +73,9 @@ class InventoryController extends Controller
         $inventory = Inventory::findOrFail($id);
         $inventory->delete();
         return redirect()->route('inventory.index')->with('success', 'Data berhasil dihapus.');
+    }
+
+    public function filter(Request $request){
+        // ini nanti fungsi buat ngefilter tabel
     }
 }
