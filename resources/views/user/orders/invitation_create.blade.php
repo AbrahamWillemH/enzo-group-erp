@@ -10,33 +10,33 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <div class="z-10 fixed top-0 left-0 right-0 ht grid grid-cols-[56%_44%] px-4 py-5 bg-green-main">
+  <div class="z-10 fixed top-0 left-0 right-0 ht grid grid-cols-[70%_30%] px-4 py-5 bg-green-main">
     <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
       <h1>Enzo Group</h1>
     </div>
     <div class="grid grid-cols-3 gap-1 font-medium">
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
+          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
      
       <!-- Dropdown Menu -->
       <div class="flex flex-col justify-center items-center group relative">
         <!-- Dropdown Button -->
         <button class="text-brown-enzo flex flex-col justify-center items-center">Form Order
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
         </button>
 
         <!-- Dropdown Content -->
-        <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 rounded-md z-10 top-full left-50 w-50">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Invitation</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Souvenir</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Seminar Kit</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Packaging</a>
+        <div class="absolute hidden group-hover:block bg-green-light shadow-lg mt-2 rounded-md z-10 top-full left-50 w-50 duration-500 delay-1000">
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Invitation</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Souvenir</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Seminar Kit</a>
+          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
 
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Admin
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
     </div>
   </div>
