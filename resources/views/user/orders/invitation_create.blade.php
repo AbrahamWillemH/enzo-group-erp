@@ -27,7 +27,7 @@
         </button>
 
         <!-- Dropdown Content -->
-        <div class="absolute hidden group-hover:block bg-green-light shadow-lg mt-2 rounded-md z-10 top-full left-50 w-50 duration-500 delay-1000">
+        <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full left-5 w-50 transition-opacity duration-500 delay-25">
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Invitation</a>
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Souvenir</a>
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Seminar Kit</a>
