@@ -81,9 +81,7 @@
 </body> -->
 
 <body class="font-mont">
-  <!-- Main Container -->
-  <div class="grid grid-cols-[20%_65%_15%]">
-    <!-- sidebar -->
+  <aside class="z-40 w-1/5 fixed top-0 left-0">
     <div class="bg-green-main min-h-screen">
       <ul class="space-y-5 py-10">
         <li>
@@ -121,20 +119,22 @@
         </li>
       </ul>
     </div>
-
+  </aside>
+  <!-- Main Container -->
+  <div class="grid grid-cols-[80%_20%] ml-[20%] bg-green-light">
     <!-- main content -->
     <div class="container h-screen">
-      <div class="bg-cream h-screen grid grid-rows-[75%_25%]">
+      <div class="h-screen grid grid-rows-[75%_25%]">
         <div class="grid grid-rows-[20%_80%]">
 
-          <div class=" bg-slate-400 flex flex-col justify-center items-center">
+          <div class="flex flex-col justify-center items-center bg-green-main/10">
             <h1>Hello, {{ auth()->user()->name }}</h1>
             <p>This is the user dashboard page, accessible to regular users.</p>
           </div>
 
-          <div class="grid grid-cols-2 bg-blue-200 ">
+          <div class="grid grid-cols-2">
 
-            <div class="bg-cream px-5 py-5">
+            <div class="px-5 py-5">
               <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                 <h2>Undangan</h2>
                 <a href="{{ route('user.orders.invitation.create') }}"
@@ -144,7 +144,7 @@
               </div>
             </div>
 
-            <div class="bg-cream px-5 py-5">
+            <div class="px-5 py-5">
               <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                 <h2>Souvenir</h2>
                 <a href="{{ route('user.orders.souvenir.create') }}"
@@ -155,7 +155,7 @@
               
             </div>
 
-            <div class="bg-cream px-5 py-5">
+            <div class="px-5 py-5">
               <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                 <h2>Seminar Kit</h2>
                 <a href="{{ route('user.orders.seminarkit.create') }}"
@@ -165,7 +165,7 @@
               </div>
             </div>
 
-            <div class="bg-cream px-5 py-5">
+            <div class="px-5 py-5">
               <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
                 <h2>Packaging</h2>
                 <a href="{{ route('user.orders.packaging.create') }}"
@@ -173,25 +173,28 @@
                   <button type="submit">Order packaging</button>
                 </a>
               </div>
-              
             </div>
 
           </div>
           
         </div>
 
-        <div class="grid grid-cols-4 bg-cream px-2 py-2 gap-3">
-          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
-            <h2>Order</h2>
+        <div class="grid grid-cols-4 px-2 py-2 gap-3">
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-green-main/20 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
+            <div class="flex-none h-[30%] flex items-center justify-center">Order</div>
+            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">340</div>
           </div>
-          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
-            <h2>Proses</h2>
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-green-main/20 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
+            <div class="flex-none h-[30%] flex items-center justify-center">Proses</div>
+            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">40</div>
           </div>
-          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-200 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
-            <h2>Finishing</h2>
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-green-main/20 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
+            <div class="flex-none h-[30%] flex items-center justify-center">Finishing</div>
+            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">20</div>
           </div>
-          <div style="letter-spacing: 3px" class="font-sans w-100 bg-slate-600 flex justify-center rounded-xl shadow-md hover:-translate-y-5 transition transform duration-300 py-3">
-            <h2>Ready</h2>
+          <div style="letter-spacing: 3px" class="font-sans w-100 bg-green-main/20 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
+            <div class="flex-none h-[30%] flex items-center justify-center">Ready</div>
+            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">50</div>
           </div>
         </div>
         
@@ -206,19 +209,29 @@
       </div>
       <div class="flex justify-start px-5 py-5 flex-col">
         <ul style="letter-spacing: 1px" class="text-cream font-sans space-y-5">
-          <li>Yanto</li>
-          <li>Yanto</li>
-          <li>Bejo</li>
-          <li>Andi</li>
-          <li>John Doe</li>
-          <li>Yanto</li>
-          <li>Yanto</li>
-          <li>Bejo</li>
-          <li>Andi</li>
-          <li>John Doe</li>
+          <li>
+            <a href="" class="flex flex-col group">Yanto
+            <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+            </a>
+          </li>
+          <li>
+            <a href="" class="flex flex-col group">John Doe
+            <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+            </a>
+          </li>
+          <li>
+            <a href="" class="flex flex-col group">Bejo
+            <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+            </a>
+          </li>
+          <li>
+            <a href="" class="flex flex-col group">Andi
+            <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[50%] transition-all duration-500"></div>
+            </a>
+          </li>
         </ul>
         <br>
-        <a href="" style="letter-spacing: 2px" class="font-sans bg-green-main text-cream rounded-lg px-3 py-2 flex justify-center mt-3  hover:bg-cream hover:text-green-main">Lihat Semua</a>
+        <a href="" style="letter-spacing: 2px" class="font-sans bg-green-main text-cream rounded-lg px-3 py-2 flex justify-center mb-1  hover:bg-cream hover:text-green-main">Lihat Semua</a>
       </div>
      </div>
 
