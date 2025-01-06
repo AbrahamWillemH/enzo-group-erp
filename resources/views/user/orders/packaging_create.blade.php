@@ -57,14 +57,14 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-[50%_50%] gap-32 justify-center">
+      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-4 gap-5">
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="name">Nama Pemesan</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required
               placeholder="Nama Pemesan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -74,7 +74,7 @@
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="08XX-XXXX-XXXX"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('phone')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -83,7 +83,7 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('deadline_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -93,7 +93,7 @@
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
               placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('quantity')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -102,7 +102,7 @@
         <div class="grid grid-rows-4 gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
               <option value="Softbox">Softbox</option>
               <option value="Corrugatedbox">Corrugatedbox</option>
               <option value="Hardbox">Hardbox</option>
@@ -114,7 +114,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="type" name="type" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="type" name="type" required>
               <option value="SB Diecut">SB Diecut</option>
               <option value="CB Diecut">CB Diecut</option>
               <option value="HB Tutup Lepas">HB Tutup Lepas</option>
@@ -129,7 +129,7 @@
           
           <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
               <option value="Foil">Foil</option>
               <option value="Laminasi Doff">Laminasi Doff</option>
             </select>
@@ -142,7 +142,7 @@
             <label class="ml-2" for="size">Ukuran</label>
             <input type="text" id="size" name="size" value="{{ old('size') }}" required
               placeholder="Ukuran"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('size')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -150,12 +150,12 @@
         </div>
       </div>
       
-      <div class="grid grid-cols-2 gap-48 justify-center">
+      <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
           <label class="ml-2" for="address">Alamat Lengkap</label>
           <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required 
             placeholder="Alamat Lengkap"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('note')
           <small class="text-danger">{{ $message }}</small>
           @enderror
@@ -165,7 +165,7 @@
           <label class="ml-2" for="note">Note Desain</label>
           <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required 
             placeholder="Tuliskan note desain disini..."
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('note')
           <small class="text-danger">{{ $message }}</small>
           @enderror
