@@ -71,16 +71,6 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="address">Alamat Lengkap</label>
-            <input type="text" id="address" name="address" value="{{ old('address') }}" required
-              placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('address')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col">
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="08XX-XXXX-XXXX"
@@ -97,10 +87,30 @@
             @error('deadline_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
-          </div>          
-        </div>
+          </div>
 
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="quantity">Jumlah</label>
+            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
+              placeholder="Jumlah"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('quantity')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+        </div>
         <div class="grid grid-rows-4 gap-5">
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="model">Model</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
+              <option value="Softbox">Softbox</option>
+              <option value="Corrugatedbox">Corrugatedbox</option>
+              <option value="Hardbox">Hardbox</option>
+            </select>
+            @error('model')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="type">Tipe</label>
@@ -137,28 +147,16 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-          
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="quantity">Jumlah</label>
-            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
-              placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('quantity')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
         </div>
       </div>
       
       <div class="grid grid-cols-2 gap-48 justify-center">
         <div class="flex items-center flex-col">
-          <label class="ml-2" for="model">Model</label>
-          <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
-            <option value="Softbox">Softbox</option>
-            <option value="Corrugatedbox">Corrugatedbox</option>
-            <option value="Hardbox">Hardbox</option>
-          </select>
-          @error('model')
+          <label class="ml-2" for="address">Alamat Lengkap</label>
+          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required 
+            placeholder="Alamat Lengkap"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+          @error('note')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>

@@ -58,7 +58,8 @@
 
       <!-- Orders Info -->
       <div class="grid grid-cols-2 justify-center">
-          <div class="flex items-center flex-col mx-20 mb-10">
+        <div class="grid grid-rows-6 gap-5">
+          <div class="flex items-center flex-col mx-20 mb-3">
             <label class="ml-2" for="name">Nama Pemesan</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required
               placeholder="Nama Pemesan"
@@ -67,18 +68,8 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
-            <label class="ml-2" for="address">Alamat Lengkap</label>
-            <input type="text" id="address" name="address" value="{{ old('address') }}" required
-              placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('address')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
+            
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="08XX-XXXX-XXXX"
@@ -87,17 +78,8 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
-            <label class="ml-2" for="event_date">Tanggal Acara</label>
-            <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('event_date')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
+          
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="couples_name">Nama Mempelai</label>
             <input type="text" id="couples_name" name="couples_name" value="{{ old('couples_name') }}" required
               placeholder="Nama Mempelai"
@@ -107,17 +89,17 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mb-10">
-            <label class="ml-2" for="quantity">Jumlah</label>
-            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
-              placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('quantity')
+
+          <div class="flex items-center flex-col mx-20">
+            <label class="ml-2" for="event_date">Tanggal Acara</label>
+            <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('event_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mb-10">
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="type">Jenis Souvenir</label>
             <input type="text" id="type" name="type" value="{{ old('type') }}" required
               placeholder="Jenis Souvenir"
@@ -127,7 +109,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mb-10">
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="packaging">Kemas</label>
             <input type="text" id="packaging" name="packaging" value="{{ old('packaging') }}" required
               placeholder="Kemas"
@@ -136,46 +118,59 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+        </div>
 
-          <div class="flex items-center flex-col mx-20 mb-10">
+        <div class="grid grid-rows-6 gap-5">
+
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="emboss_desain">Desain Emboss / Label Nama / Sablon</label>
             <input type="file" id="emboss_desain" name="emboss_desain" value="{{ old('emboss_desain') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
+            class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
             @error('emboss_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
+          
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="thankscard_desain">Desain Thankscard</label>
             <input type="file" id="thankscard_desain" name="thankscard_desain" value="{{ old('thankscard_desain') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
+            class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
             @error('thankscard_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
+          
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="colors">Warna / Motif</label>
             <input type="text" id="colors" name="colors" value="{{ old('colors') }}" required
-              placeholder="Warna / Motif"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            placeholder="Warna / Motif"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('colors')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-
-          <div class="flex items-center flex-col mx-20 mb-10">
+          
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="patterns_backup">Motif Cadangan</label>
             <input type="text" id="patterns_backup" name="patterns_backup" value="{{ old('patterns_backup') }}" required
-              placeholder="Motif Cadangan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            placeholder="Motif Cadangan"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('patterns_backup')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+          
+          <div class="flex items-center flex-col mx-20">
+            <label class="ml-2" for="quantity">Jumlah</label>
+            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
+              placeholder="Jumlah"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('quantity')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
 
-          <div class="flex items-center flex-col mx-20 mb-10">
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
               class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -183,6 +178,17 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+        </div>
+        
+        <div class="flex items-center flex-col mx-20 mt-5">
+          <label class="ml-2" for="address">Alamat Lengkap</label>
+          <textarea id="address" rows="3" name="address" value="{{ old('address') }}" required
+            placeholder="Alamat Lengkap"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+          @error('address')
+          <small class="text-danger">{{ $message }}</small>
+          @enderror
+        </div>
       </div>    
 
       <!-- Submit Button -->
