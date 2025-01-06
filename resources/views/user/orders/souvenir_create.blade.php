@@ -62,7 +62,7 @@
             <label class="ml-2" for="name">Nama Pemesan</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required
               placeholder="Nama Pemesan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -72,7 +72,7 @@
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <input type="text" id="address" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('address')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -82,7 +82,7 @@
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="08XX-XXXX-XXXX"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('phone')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -91,7 +91,7 @@
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="event_date">Tanggal Acara</label>
             <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('event_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -101,7 +101,7 @@
             <label class="ml-2" for="couples_name">Nama Mempelai</label>
             <input type="text" id="couples_name" name="couples_name" value="{{ old('couples_name') }}" required
               placeholder="Nama Mempelai"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('couples_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -111,7 +111,7 @@
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
               placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('quantity')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -121,7 +121,7 @@
             <label class="ml-2" for="type">Jenis Souvenir</label>
             <input type="text" id="type" name="type" value="{{ old('type') }}" required
               placeholder="Jenis Souvenir"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('type')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -131,7 +131,7 @@
             <label class="ml-2" for="packaging">Kemas</label>
             <input type="text" id="packaging" name="packaging" value="{{ old('packaging') }}" required
               placeholder="Kemas"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('packaging')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -140,7 +140,7 @@
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="emboss_desain">Desain Emboss / Label Nama / Sablon</label>
             <input type="file" id="emboss_desain" name="emboss_desain" value="{{ old('emboss_desain') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.45">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
             @error('emboss_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -149,7 +149,7 @@
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="thankscard_desain">Desain Thankscard</label>
             <input type="file" id="thankscard_desain" name="thankscard_desain" value="{{ old('thankscard_desain') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.45">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45">
             @error('thankscard_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -159,7 +159,7 @@
             <label class="ml-2" for="colors">Warna / Motif</label>
             <input type="text" id="colors" name="colors" value="{{ old('colors') }}" required
               placeholder="Warna / Motif"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('colors')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -169,7 +169,7 @@
             <label class="ml-2" for="patterns_backup">Motif Cadangan</label>
             <input type="text" id="patterns_backup" name="patterns_backup" value="{{ old('patterns_backup') }}" required
               placeholder="Motif Cadangan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('patterns_backup')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -178,7 +178,7 @@
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('deadline_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -187,7 +187,7 @@
 
       <!-- Submit Button -->
       <button type="submit"
-        class="bg-brown-main text-white px-5 py-2 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center">Buat Pesanan</button>
+        class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center">Buat Pesanan</button>
     </form>
   </div>
 </body>

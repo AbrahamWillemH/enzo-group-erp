@@ -177,7 +177,7 @@
 
       <!-- Submit Button -->
       <button type="submit"
-        class="bg-brown-main text-white px-5 py-2 rounded-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center">Buat Pesanan</button>
+        class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center">Buat Pesanan</button>
     </form>
   </div>
 </body>
