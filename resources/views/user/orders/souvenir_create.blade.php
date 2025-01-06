@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Packaging Form</title>
+  <title>Souvenir Form</title>
   @vite('resources/css/app.css')
 </head>
 
@@ -42,7 +42,7 @@
   </div>
 
   <div style="letter-spacing: 3px" class="font-sans text-green-main container flex flex-col items-center min-h-screen justify-start py-24">
-    <h2 style="font-size: 22px">FORM ORDER PACKAGING</h2>
+    <h2 style="font-size: 22px">FORM ORDER SOUVENIR</h2>
     <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
     <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
     <br>
@@ -57,10 +57,8 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-[50%_50%] gap-32 justify-center">
-        <div class="grid grid-rows-4 gap-5">
-
-          <div class="flex items-center flex-col">
+      <div class="grid grid-cols-2 justify-center">
+          <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="name">Nama Pemesan</label>
             <input type="text" id="name" name="name" value="{{ old('name') }}" required
               placeholder="Nama Pemesan"
@@ -70,7 +68,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <input type="text" id="address" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
@@ -80,7 +78,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
               placeholder="08XX-XXXX-XXXX"
@@ -90,55 +88,26 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="deadline_date">Deadline</label>
-            <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="event_date">Tanggal Acara</label>
+            <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
               class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('deadline_date')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>          
-        </div>
-
-        <div class="grid grid-rows-4 gap-5">
-
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="type" name="type" required>
-              <option value="SB Diecut">SB Diecut</option>
-              <option value="CB Diecut">CB Diecut</option>
-              <option value="HB Tutup Lepas">HB Tutup Lepas</option>
-              <option value="HB Pita">HB Pita</option>
-              <option value="HB Magnet">HB Magnet</option>
-            </select>
-            @error('type')
+            @error('event_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
-          
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
-              <option value="Foil">Foil</option>
-              <option value="Laminasi Doff">Laminasi Doff</option>
-            </select>
-            @error('finishing')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-          
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="size">Ukuran</label>
-            <input type="text" id="size" name="size" value="{{ old('size') }}" required
-              placeholder="Ukuran"
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="couples_name">Nama Mempelai</label>
+            <input type="text" id="couples_name" name="couples_name" value="{{ old('couples_name') }}" required
+              placeholder="Nama Mempelai"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('size')
+            @error('couples_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-          
-          <div class="flex items-center flex-col">
+
+          <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
               placeholder="Jumlah"
@@ -147,33 +116,76 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-        </div>
-      </div>
-      
-      <div class="grid grid-cols-2 gap-48 justify-center">
-        <div class="flex items-center flex-col">
-          <label class="ml-2" for="model">Model</label>
-          <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
-            <option value="Softbox">Softbox</option>
-            <option value="Corrugatedbox">Corrugatedbox</option>
-            <option value="Hardbox">Hardbox</option>
-          </select>
-          @error('model')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
 
-        <div class="flex items-center flex-col">
-          <label class="ml-2" for="note">Note Desain</label>
-          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required 
-            placeholder="Tuliskan note desain disini..."
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('note')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-      </div>
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="type">Jenis Souvenir</label>
+            <input type="text" id="type" name="type" value="{{ old('type') }}" required
+              placeholder="Jenis Souvenir"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('type')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
 
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="packaging">Kemas</label>
+            <input type="text" id="packaging" name="packaging" value="{{ old('packaging') }}" required
+              placeholder="Kemas"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('packaging')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="emboss_desain">Desain Emboss / Label Nama / Sablon</label>
+            <input type="text" id="emboss_desain" name="emboss_desain" value="{{ old('emboss_desain') }}" required
+              placeholder="Desain Emboss"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('emboss_desain')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="thankscard_desain">Desain Thankscard</label>
+            <input type="text" id="thankscard_desain" name="thankscard_desain" value="{{ old('thankscard_desain') }}" required
+              placeholder="Desain Thankscard"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('thankscard_desain')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="colors">Warna / Motif</label>
+            <input type="text" id="colors" name="colors" value="{{ old('colors') }}" required
+              placeholder="Warna / Motif"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('colors')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="patterns_backup">Motif Cadangan</label>
+            <input type="text" id="patterns_backup" name="patterns_backup" value="{{ old('patterns_backup') }}" required
+              placeholder="Motif Cadangan"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('patterns_backup')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mb-10">
+            <label class="ml-2" for="deadline_date">Deadline</label>
+            <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('deadline_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+      </div>    
 
       <!-- Submit Button -->
       <button type="submit"

@@ -19,6 +19,10 @@ Route::get('/orders/packaging', function(){
     return view('user.orders.packaging_create');
 });
 
+Route::get('/orders/souvenir', function(){
+    return view('user.orders.souvenir_create');
+});
+
 Route::get('/orders/detail', function(){
     return view('admin.orders_detail');
 });

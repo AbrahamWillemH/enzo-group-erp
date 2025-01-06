@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Make A New Order</title>
+  <title>Invitation Form</title>
   @vite('resources/css/app.css')
 </head>
 
@@ -83,7 +83,7 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="phone">Nomor HP</label>
             <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
-              placeholder="Nomor HP"
+              placeholder="08XX-XXXX-XXXX"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('phone')
             <small class="text-danger">{{ $message }}</small>
