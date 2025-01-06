@@ -53,12 +53,12 @@
     </div>
     @endif
 
-    <form action="{{ route('user.orders.packaging.store') }}" method="POST" class="flex flex-col gap-5 items-center">
+    <form method="POST" class="flex flex-col gap-5 items-center">
       @csrf
 
       <!-- Orders Info -->
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
-        <div class="grid grid-rows-5 gap-8">
+        <div class="grid grid-rows-5 gap-5">
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="name">Nama Pemesan</label>
@@ -113,7 +113,7 @@
           
         </div>
 
-        <div class="grid grid-rows-5 gap-8">
+        <div class="grid grid-rows-5 gap-5">
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="type">Tipe</label>
@@ -163,9 +163,9 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="note">Note Desain</label>
-            <input type="text" id="note" name="note" value="{{ old('note') }}" required 
-              placeholder="Tuliskan Note Desain Disini"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <textarea id="note" rows="2" name="note" value="{{ old('note') }}" required 
+              placeholder="Tuliskan note desain disini..."
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('note')
             <small class="text-danger">{{ $message }}</small>
             @enderror

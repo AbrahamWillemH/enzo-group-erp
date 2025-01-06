@@ -15,6 +15,14 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+Route::get('/orders/packaging', function(){
+    return view('user.orders.packaging_create');
+});
+
+Route::get('/orders/detail', function(){
+    return view('admin.orders_detail');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);
