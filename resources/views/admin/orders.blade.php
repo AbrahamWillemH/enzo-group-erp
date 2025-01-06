@@ -48,15 +48,15 @@
             </ul>
         </div>
     </aside>
-    
+
     <!-- Main Container -->
     <div class="ml-[20%]">
-    
+
         <div class="bg-green-light h-full grid grid-rows-[12%_88%] relative">
             <div class="z-30 fixed top-0 left-[20%] right-0 ht grid grid-cols-[45%_55%] px-4 py-5 bg-green-shadow">
                 <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                     <h1>DATA PESANAN</h1>
-                </div> 
+                </div>
                 <div class="grid grid-cols-5 gap-1 font-medium">
                     <a href="#order" class="text-brown-enzo flex flex-col justify-center items-center group">Order
                         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
@@ -77,178 +77,220 @@
                 </div>
             </div>
 
-            <div class="grid-rows-4">
-                <section id="order" class="order grid grid-rows-[30px_1fr]">
-                    <div class="sticky top-[11%] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">ORDER</div>
-                    
-                    <div class="data mt-[11%] mb-5 px-3 grid gap-0 grid-rows-[10%_90%%]">
-                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
+            <div class="">
+                <section id="order" class="order mb-20">
+                    <div class="sticky top-24 bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">ORDER</div>
+                    <div class="data mt-[11%] mb-5 px-3 gap-0">
+                        <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
-                                    <th class="text-center" style="width: 20%;">Nama</th>
-                                    <th class="text-center" style="width: 18%;">Tipe Produk</th>
-                                    <th class="text-center" style="width: 15%;">Tanggal Pesan</th>
-                                    <th class="text-center" style="width: 15%;">Deadline</th>
-                                    <th class="text-center" style="width: 10%;">Detail</th>
-                                    <th class="text-center" style="width: 20%;">Progres</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                        </table>
-            
-                        <table class="table-auto w-full border rounded-b-lg overflow-hidden mb-5 capitalize shadow-inner">
                             <tbody class="bg-green-main/10">
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">John Doe</td>
-                                    <td class="px-3 py-3 text-center" style="width: 18%;">Produk A</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center" style="width: 10%;">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">
                                         <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
                                     </td>
                                 </tr>
-                                
-                                
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    
                 </section>
 
-                <section id="proses" class="proses grid grid-rows-[30px_1fr]">
-                    <div class="sticky top-[11%] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PROSES</div>
-                    
-                    <div class="data mt-[10%] mb-5 px-3 grid gap-0 grid-rows-[10%_90%%]">
-                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
+                <section id="proses" class="order mb-20">
+                    <div class="sticky top-24 bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PROSES</div>
+                    <div class="data mt-11 mb-5 px-3 gap-0">
+                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
-                                    <th class="text-center" style="width: 20%;">Nama</th>
-                                    <th class="text-center" style="width: 18%;">Tipe Produk</th>
-                                    <th class="text-center" style="width: 15%;">Tanggal Pesan</th>
-                                    <th class="text-center" style="width: 15%;">Deadline</th>
-                                    <th class="text-center" style="width: 10%;">Detail</th>
-                                    <th class="text-center col-span-2" style="width: 20%;">Progres</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                        </table>
-            
-                        <table class="table-auto w-full border rounded-b-lg overflow-hidden mb-5 capitalize shadow-inner">
                             <tbody class="bg-green-main/10">
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">John Doe</td>
-                                    <td class="px-3 py-3 text-center" style="width: 18%;">Produk A</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center" style="width: 9%;">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-center" style="width: 8%;">
                                         <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-center" style="width: 8%;">
-                                        <a href="#" class="bg-accept rounded-lg px-[0.5rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
                                     </td>
                                 </tr>
-                                
-                                
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                </section>
-
-                <section id="finishing" class="finishing grid grid-rows-[30px_1fr]">
-                    <div class="sticky top-[11%] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">FINISHING</div>
-                    
-                    <div class="data mt-[10%] mb-5 px-3 grid gap-0 grid-rows-[10%_90%%]">
-                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
-                            <thead class="bg-green-main/30 backdrop-blur-lg">
-                                <tr class="h-20">
-                                    <th class="text-center" style="width: 20%;">Nama</th>
-                                    <th class="text-center" style="width: 18%;">Tipe Produk</th>
-                                    <th class="text-center" style="width: 15%;">Tanggal Pesan</th>
-                                    <th class="text-center" style="width: 15%;">Deadline</th>
-                                    <th class="text-center" style="width: 10%;">Detail</th>
-                                    <th class="text-center col-span-2" style="width: 20%;">Progres</th>
-                                </tr>
-                            </thead>
-                        </table>
-            
-                        <table class="table-auto w-full border rounded-b-lg overflow-hidden mb-5 capitalize shadow-inner">
-                            <tbody class="bg-green-main/10">
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">John Doe</td>
-                                    <td class="px-3 py-3 text-center" style="width: 18%;">Produk A</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center" style="width: 9%;">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-center" style="width: 8%;">
                                         <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                    </td>
-                                    <td class="px-3 py-3 text-center" style="width: 8%;">
-                                        <a href="#" class="bg-accept rounded-lg px-[0.5rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
                                     </td>
                                 </tr>
-                                
-                                
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    
-                </section>
 
-                <section id="ready" class="ready grid grid-rows-[30px_1fr]">
-                    <div class="sticky top-[11%] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">READY</div>
-                    
-                    <div class="data mt-[11%] mb-5 px-3 grid gap-0 grid-rows-[10%_90%%]">
-                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
+                </section>
+                <section id="finishing" class="order mb-20">
+                    <div class="sticky top-24 bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">FINISHING</div>
+                    <div class="data mt-11 mb-5 px-3 gap-0">
+                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
-                                    <th class="text-center" style="width: 20%;">Nama</th>
-                                    <th class="text-center" style="width: 18%;">Tipe Produk</th>
-                                    <th class="text-center" style="width: 15%;">Tanggal Pesan</th>
-                                    <th class="text-center" style="width: 15%;">Deadline</th>
-                                    <th class="text-center" style="width: 10%;">Detail</th>
-                                    <th class="text-center" style="width: 20%;">Progres</th>
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
-                        </table>
-            
-                        <table class="table-auto w-full border rounded-b-lg overflow-hidden mb-5 capitalize shadow-inner">
                             <tbody class="bg-green-main/10">
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">John Doe</td>
-                                    <td class="px-3 py-3 text-center" style="width: 18%;">Produk A</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center" style="width: 15%;">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center" style="width: 10%;">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
                                     </td>
-                                    <td class="px-3 py-3 text-center" style="width: 20%;">
+                                </tr>
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </section>
+                <section id="ready" class="order mb-20">
+                    <div class="sticky top-24 bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">READY</div>
+                    <div class="data mt-11 mb-5 px-3 gap-0">
+                        <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
+                            <thead class="bg-green-main/30 backdrop-blur-lg">
+                                <tr class="h-20">
+                                    <th class="text-center">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
                                         <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
                                     </td>
                                 </tr>
-                                
-                                
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                    </td>
+                                </tr>
+                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center">John Doe</td>
+                                    <td class="px-3 py-3 text-center">Produk A</td>
+                                    <td class="px-3 py-3 text-center">2025-01-01</td>
+                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
-                    
                 </section>
-
             </div>
-
-            
-            
-            
         </div>
-
-        
-
     </div>
 </body>
 </html>
