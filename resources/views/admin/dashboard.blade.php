@@ -13,12 +13,12 @@
     <h1>Hello, {{ auth()->user()->name }}</h1>
     <p>This is the admin dashboard page.</p>
 
-    @if($orders->isEmpty())
+    @if($invitations->isEmpty())
     <p class="mt-5">There are no orders yet.</p>
     @else
       @foreach(['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'] as $status)
         @php
-          $filteredOrders = $orders->where('status', $status);
+          $filteredOrders = $invitations->where('status', $status);
         @endphp
 
         @if($filteredOrders->isNotEmpty())

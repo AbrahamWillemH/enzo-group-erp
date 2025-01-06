@@ -18,6 +18,6 @@ class AdminController extends Controller
         $seminarkits = SeminarKit::all();
         $packagings = Packaging::all();
 
-        return view('user.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
+        return view('admin.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
     }
 }
