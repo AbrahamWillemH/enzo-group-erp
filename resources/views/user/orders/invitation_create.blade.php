@@ -18,7 +18,7 @@
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
-     
+
       <!-- Dropdown Menu -->
       <div class="flex flex-col justify-center items-center group relative">
         <!-- Dropdown Button -->
@@ -54,28 +54,28 @@
     @endif
 
     <form action="{{ route('user.orders.invitation.store') }}" method="POST" class="flex flex-col gap-5 items-center">
-      @csrf
+    @csrf
 
       <!-- Customer Info -->
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <div class="grid grid-rows-3 gap-5">
 
           <div class="flex items-center flex-col">
-            <label for="order_name">Nama Pemesan</label>
-            <input type="text" id="order_name" name="order_name" value="{{ old('order_name') }}" required
+            <label for="user_name">Nama Pemesan</label>
+            <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
               placeholder="Nama Pemesan"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('order_name')
+            @error('user_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
           <div class="flex items-center flex-col">
-            <label for="phone">Nomor HP</label>
-            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
+            <label for="phone_number">Nomor HP</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required
               placeholder="08XX-XXXX-XXXX"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('phone')
+            @error('phone_number')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -121,15 +121,15 @@
             @enderror
           </div>
         </div>
-      </div>  
-      
+      </div>
+
       <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
           <label for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required 
+          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
             placeholder="Alamat Lengkap"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('note')
+          @error('address')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
@@ -153,47 +153,47 @@
           </div>
           <div class="grid grid-rows-4 gap-5">
             <div class="flex items-center flex-col">
-              <label for="grooms_name">Nama Lengkap</label>
-              <input type="text" id="grooms_name" name="grooms_name" value="{{ old('grooms_name') }}" required
+              <label for="groom_name">Nama Lengkap</label>
+              <input type="text" id="groom_name" name="groom_name" value="{{ old('groom_name') }}" required
                 placeholder="Nama Lengkap"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('grooms_name')
+              @error('groom_name')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="grooms_nickname">Nama Panggilan</label>
-              <input type="text" id="grooms_nickname" name="grooms_nickname" value="{{ old('grooms_nickname') }}" required
+              <label for="groom_nickname">Nama Panggilan</label>
+              <input type="text" id="groom_nickname" name="groom_nickname" value="{{ old('groom_nickname') }}" required
                 placeholder="Nama Panggilan"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('grooms_nickname')
+              @error('groom_nickname')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="grooms_dad">Nama Ayah</label>
-              <input type="text" id="grooms_dad" name="grooms_dad" value="{{ old('grooms_dad') }}" required
+              <label for="groom_father">Nama Ayah</label>
+              <input type="text" id="groom_father" name="groom_father" value="{{ old('groom_father') }}" required
                 placeholder="Nama Lengkap Ayah"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('grooms_dad')
+              @error('groom_father')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="grooms_mom">Nama Ibu</label>
-              <input type="text" id="grooms_mom" name="grooms_mom" value="{{ old('grooms_mom') }}" required
+              <label for="groom_mother">Nama Ibu</label>
+              <input type="text" id="groom_mother" name="groom_mother" value="{{ old('groom_mother') }}" required
                 placeholder="Nama Lengkap Ibu"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('grooms_mom')
+              @error('groom_mother')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
           </div>
         </div>
-      
+
         <!-- Bride's Section -->
         <div>
           <div class="flex items-center flex-col">
@@ -202,41 +202,41 @@
           </div>
           <div class="grid grid-rows-4 gap-5">
             <div class="flex items-center flex-col">
-              <label for="brides_name">Nama Lengkap</label>
-              <input type="text" id="brides_name" name="brides_name" value="{{ old('brides_name') }}" required
+              <label for="bride_name">Nama Lengkap</label>
+              <input type="text" id="bride_name" name="bride_name" value="{{ old('bride_name') }}" required
                 placeholder="Nama Lengkap"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('brides_name')
+              @error('bride_name')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="brides_nickname">Nama Panggilan</label>
-              <input type="text" id="brides_nickname" name="brides_nickname" value="{{ old('brides_nickname') }}" required
+              <label for="bride_nickname">Nama Panggilan</label>
+              <input type="text" id="bride_nickname" name="bride_nickname" value="{{ old('bride_nickname') }}" required
                 placeholder="Nama Panggilan"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('brides_nickname')
+              @error('bride_nickname')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="brides_dad">Nama Ayah</label>
-              <input type="text" id="brides_dad" name="brides_dad" value="{{ old('brides_dad') }}" required
+              <label for="bride_dad">Nama Ayah</label>
+              <input type="text" id="bride_dad" name="bride_dad" value="{{ old('bride_dad') }}" required
                 placeholder="Nama Lengkap Ayah"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('brides_dad')
+              @error('bride_dad')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
-      
+
             <div class="flex items-center flex-col">
-              <label for="brides_mom">Nama Ibu</label>
-              <input type="text" id="brides_mom" name="brides_mom" value="{{ old('brides_mom') }}" required
+              <label for="bride_mother">Nama Ibu</label>
+              <input type="text" id="bride_mother" name="bride_mother" value="{{ old('bride_mother') }}" required
                 placeholder="Nama Lengkap Ibu"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('brides_mom')
+              @error('bride_mother')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -246,26 +246,26 @@
 
       <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
-          <label for="grooms_address">Alamat Orang Tua</label>
-          <textarea id="grooms_address" rows="5" name="grooms_address" value="{{ old('grooms_address') }}" required 
+          <label for="groom_parents_address">Alamat Orang Tua</label>
+          <textarea id="groom_parents_address" rows="5" name="groom_parents_address" value="{{ old('groom_parents_address') }}" required
             placeholder="Alamat Orang Tua"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('grooms_address')
+          @error('groom_parents_address')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
 
         <div class="flex items-center flex-col">
-          <label for="brides_address">Alamat Orang Tua</label>
-          <textarea id="brides_address" rows="5" name="brides_address" value="{{ old('brides_address') }}" required 
+          <label for="bride_parents_address">Alamat Orang Tua</label>
+          <textarea id="bride_parents_address" rows="5" name="bride_parents_address" value="{{ old('bride_parents_address') }}" required
             placeholder="Alamat Orang Tua"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('brides_address')
+          @error('bride_parents_address')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
       </div>
-      
+
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
         <!-- Akad & Pemberkatan -->
         <div>
@@ -325,8 +325,8 @@
       <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
           <label for="akad_pemberkatan_location">Lokasi Acara</label>
-          <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}" required 
-            placeholder="Lokasi Akad Pemberkatan" 
+          <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}" required
+            placeholder="Lokasi Akad Pemberkatan"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('akad_pemberkatan_location')
           <small class="text-danger">{{ $message }}</small>
@@ -335,8 +335,8 @@
 
         <div class="flex items-center flex-col">
           <label for="reception_location">Lokasi Acara</label>
-          <textarea id="reception_location" rows="5" name="reception_location" value="{{ old('reception_location') }}" required 
-            placeholder="Lokasi Resepsi" 
+          <textarea id="reception_location" rows="5" name="reception_location" value="{{ old('reception_location') }}" required
+            placeholder="Lokasi Resepsi"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('reception_location')
           <small class="text-danger">{{ $message }}</small>

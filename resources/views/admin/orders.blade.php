@@ -82,8 +82,9 @@
                     <div class="sticky top-24 bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">ORDER</div>
                     <div class="data mt-[11%] mb-5 px-3 gap-0">
                         <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
-                            <thead class="bg-green-main/30 backdrop-blur-lg">
+                            <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -92,46 +93,26 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
+                                @foreach($orders as $o)
+                                @if ($o->progress == 'Pemesanan Bahan')
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                        <a href="orders.detail" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                Next
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -143,6 +124,7 @@
                         <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -151,39 +133,32 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
+                                @foreach($orders as $o)
+                                @if ($o->progress == 'Proses Produksi')
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                Next
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -195,6 +170,7 @@
                         <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -203,39 +179,32 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
+                                @foreach($orders as $o)
+                                @if ($o->progress == 'Finishing')
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                Next
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                        <a href="#" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Next</a>
-                                    </td>
-                                </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -247,6 +216,7 @@
                         <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                             <thead class="bg-green-main/30 backdrop-blur-lg">
                                 <tr class="h-20">
+                                    <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -255,36 +225,26 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
+                                @foreach($orders as $o)
+                                @if ($o->progress == 'Selesai')
                                 <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
+                                    <td class="px-3 py-3 text-center">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                    </td>
-                                </tr>
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">John Doe</td>
-                                    <td class="px-3 py-3 text-center">Produk A</td>
-                                    <td class="px-3 py-3 text-center">2025-01-01</td>
-                                    <td class="px-3 py-3 text-center">2025-01-10</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                                        <a href="#" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">Previous</a>
-                                    </td>
-                                </tr>
+                                @endif
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -293,4 +253,12 @@
         </div>
     </div>
 </body>
+<script>
+    function confirmPreviousProgress() {
+        return confirm('Are you sure you want to go back to the previous progress?');
+    }
+    function confirmNextProgress() {
+        return confirm('Are you sure you want to go to the next progress?');
+    }
+</script>
 </html>

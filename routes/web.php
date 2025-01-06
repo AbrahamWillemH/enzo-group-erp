@@ -39,14 +39,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/orders', [InvitationController::class, 'index'])->name('orders.view');
+    Route::get('/admin/orders', [AdminController::class, 'orderIndex'])->name('orders.view');
+    Route::get('/admin/orders/{id}', [OrderController::class, 'index'])->name('orders.detail');
     Route::post('/admin/orders/approve/{id}', [InvitationController::class, 'approveOrder'])->name('orders.approve');
     Route::post('/admin/orders/decline/{id}', [InvitationController::class, 'declineOrder'])->name('orders.decline');
     // update progress
-    Route::post('/orders/invitation/{id}/update-progress', [InvitationController::class, 'updateProgress'])->name('orders.invitation.updateProgress');
-    Route::post('/orders/souvenir/{id}/update-progress', [SouvenirController::class, 'updateProgress'])->name('orders.souvenir.updateProgress');
-    Route::post('/orders/seminarkit/{id}/update-progress', [SeminarKitController::class, 'updateProgress'])->name('orders.seminarkit.updateProgress');
-    Route::post('/orders/packaging/{id}/update-progress', [PackagingController::class, 'updateProgress'])->name('orders.packaging.updateProgress');
+    Route::post('/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
+    Route::post('/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
 });
 
 // User routes

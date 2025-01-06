@@ -12,12 +12,64 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Mengambil semua pesanan yang terkait dengan user yang sedang login
-        $invitations = Invitation::all();
-        $souvenirs = Souvenir::all();
-        $seminarkits = SeminarKit::all();
-        $packagings = Packaging::all();
+        // Menambahkan properti type untuk membedakan jenis data
+        $invitations = Invitation::all()->map(function ($item) {
+            $item->type = 'invitation';
+            return $item;
+        });
 
-        return view('admin.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
+        $souvenirs = Souvenir::all()->map(function ($item) {
+            $item->type = 'souvenir';
+            return $item;
+        });
+
+        $seminarkits = SeminarKit::all()->map(function ($item) {
+            $item->type = 'seminar_kit';
+            return $item;
+        });
+
+        $packagings = Packaging::all()->map(function ($item) {
+            $item->type = 'packaging';
+            return $item;
+        });
+
+        // Menggabungkan semua koleksi menjadi satu
+        $orders = $invitations
+            ->concat($souvenirs)
+            ->concat($seminarkits)
+            ->concat($packagings);
+
+        return view('admin.dashboard', compact('orders', 'invitations', 'souvenirs', 'seminarkits', 'packagings'));
+    }
+        public function orderIndex()
+    {
+        // Menambahkan properti type untuk membedakan jenis data
+        $invitations = Invitation::all()->map(function ($item) {
+            $item->type = 'invitation';
+            return $item;
+        });
+
+        $souvenirs = Souvenir::all()->map(function ($item) {
+            $item->type = 'souvenir';
+            return $item;
+        });
+
+        $seminarkits = SeminarKit::all()->map(function ($item) {
+            $item->type = 'seminar_kit';
+            return $item;
+        });
+
+        $packagings = Packaging::all()->map(function ($item) {
+            $item->type = 'packaging';
+            return $item;
+        });
+
+        // Menggabungkan semua koleksi menjadi satu
+        $orders = $invitations
+            ->concat($souvenirs)
+            ->concat($seminarkits)
+            ->concat($packagings);
+
+        return view('admin.orders', compact('orders'));
     }
 }
