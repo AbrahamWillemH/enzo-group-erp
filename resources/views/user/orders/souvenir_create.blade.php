@@ -139,9 +139,8 @@
 
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="emboss_desain">Desain Emboss / Label Nama / Sablon</label>
-            <input type="text" id="emboss_desain" name="emboss_desain" value="{{ old('emboss_desain') }}" required
-              placeholder="Desain Emboss"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <input type="file" id="emboss_desain" name="emboss_desain" value="{{ old('emboss_desain') }}" required
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.45">
             @error('emboss_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -149,9 +148,8 @@
 
           <div class="flex items-center flex-col mx-20 mb-10">
             <label class="ml-2" for="thankscard_desain">Desain Thankscard</label>
-            <input type="text" id="thankscard_desain" name="thankscard_desain" value="{{ old('thankscard_desain') }}" required
-              placeholder="Desain Thankscard"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <input type="file" id="thankscard_desain" name="thankscard_desain" value="{{ old('thankscard_desain') }}" required
+              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-72 rounded-xl px-2 py-0.45">
             @error('thankscard_desain')
             <small class="text-danger">{{ $message }}</small>
             @enderror
