@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Dashboard</title>
+  <title>Admin Dashboard</title>
   @vite('resources/css/app.css')
 </head>
 
 <!-- <body class="font-mont">
   <div class="container flex flex-col items-center min-h-screen justify-center">
     <h1>Hello, {{ auth()->user()->name }}</h1>
-    <p>This is the user dashboard page, accessible to regular users.</p>
+    <p>This is the Admin dashboard page, accessible only for Admin.</p>
 
     @if($invitations->isEmpty() && $souvenirs->isEmpty() && $seminarkits->isEmpty() && $packagings->isEmpty())
-    <p class="mt-5">You have not made any orders yet.</p>
+    <p class="mt-5">There's no order yet.</p>
     @else
       @foreach(['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'] as $status)
         @php
@@ -128,7 +129,7 @@
 
           <div class="flex flex-col justify-center items-center bg-green-main/10">
             <h1>Hello, {{ auth()->user()->name }}</h1>
-            <p>This is the admin dashboard page, accessible to admins.</p>
+            <p>This is the admin dashboard page, accessible only for admin.</p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">
@@ -152,12 +153,12 @@
                   <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
-
+              
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Invitation
               </a>
-
+              
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
@@ -179,46 +180,46 @@
                   <img src="{{ asset('img/souvenirA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
-
+              
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Souvenir
               </a>
-
+              
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming1.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganB.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming2.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganC.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming3.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming1.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
-
+              
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Seminarkit
               </a>
-
+              
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
@@ -230,50 +231,20 @@
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
-
+              
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Packaging
               </a>
-
+              
             </div>
 
-            <!-- <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Souvenir</h2>
-                <a href="{{ route('user.orders.souvenir.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order souvenir</button>
-                </a>
-              </div>
-
-            </div>
-
-            <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Seminar Kit</h2>
-                <a href="{{ route('user.orders.seminarkit.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order seminar kit</button>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Packaging</h2>
-                <a href="{{ route('user.orders.packaging.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order packaging</button>
-                </a>
-              </div>
-            </div> -->
 
           </div>
-
+          
         </div>
 
         <div class="grid grid-cols-4 px-5 py-2 gap-3 h-full">
@@ -294,7 +265,7 @@
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">50</div>
           </div>
         </div>
-
+        
       </div>
 
     </div>
