@@ -192,19 +192,19 @@
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming1.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganB.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming2.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganC.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming3.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/coming1.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
               
@@ -219,7 +219,7 @@
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
@@ -231,7 +231,7 @@
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
               
@@ -242,36 +242,6 @@
               
             </div>
 
-            <!-- <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Souvenir</h2>
-                <a href="{{ route('user.orders.souvenir.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order souvenir</button>
-                </a>
-              </div>
-              
-            </div>
-
-            <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Seminar Kit</h2>
-                <a href="{{ route('user.orders.seminarkit.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order seminar kit</button>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <div class="bg-green-main w-50 h-full flex flex-col rounded-lg">
-                <h2>Packaging</h2>
-                <a href="{{ route('user.orders.packaging.create') }}"
-                  class="bg-brown-main text-white px-5 py-1 rounded-b-lg hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main">
-                  <button type="submit">Order packaging</button>
-                </a>
-              </div>
-            </div> -->
 
           </div>
           
