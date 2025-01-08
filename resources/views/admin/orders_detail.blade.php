@@ -76,9 +76,9 @@
                                     <td class="w-[35%] px-4 py-2">Nomor HP</td>
                                     <td class="px-4 py-2">081234567890</td>
                                 </tr>
-                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 lowercase">
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Instagram</td>
-                                    <td class="px-4 py-2">@yantogantenk</td>
+                                    <td class="px-4 py-2 lowercase">@yantogantenk</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Alamat Lengkap</td>
