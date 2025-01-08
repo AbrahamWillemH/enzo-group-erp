@@ -138,19 +138,19 @@
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/invitationA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganB.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/invitationB.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganC.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/invitationC.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/invitationA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
               
@@ -165,25 +165,52 @@
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/souvenirA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/souvenirsA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/souvenirB.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/souvenirsB.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/souvenirC.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/souvenirsC.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/souvenirA.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
+                  <img src="{{ asset('img/souvenirsA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
                 </div>
               </div>
               
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Souvenir
+              </a>
+              
+            </div>
+            
+            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+              <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
+                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
+                  <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
+                  <img src="{{ asset('img/packageA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
+                </div>
+                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
+                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
+                  <img src="{{ asset('img/packageB.png') }}" alt="Gambar" class=" h-full w-full object-cover">
+                </div>
+                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
+                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
+                  <img src="{{ asset('img/packageC.png') }}" alt="Gambar" class=" h-full w-full object-cover">
+                </div>
+                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
+                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
+                  <img src="{{ asset('img/packageA.png') }}" alt="Gambar" class=" h-full w-full object-cover">
+                </div>
+              </div>
+              
+              <a href="{{ route('user.orders.invitation.create') }}"
+                class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
+                Order Packaging
               </a>
               
             </div>
@@ -211,33 +238,6 @@
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Seminarkit
-              </a>
-              
-            </div>
-
-            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
-              <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
-                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
-                  <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
-                </div>
-                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
-                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingB.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
-                </div>
-                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
-                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingC.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
-                </div>
-                <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
-                  <div class="absolute inset-0 bg-black/10 hover:bg-black/10"></div>
-                  <img src="{{ asset('img/packagingD.jpeg') }}" alt="Gambar" class=" h-full w-full object-cover">
-                </div>
-              </div>
-              
-              <a href="{{ route('user.orders.invitation.create') }}"
-                class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
-                Order Packaging
               </a>
               
             </div>
