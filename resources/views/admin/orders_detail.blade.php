@@ -66,7 +66,7 @@
                 <section id="data_pemesan" class="data_pemesan mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
                     <div class="data mt-[11%] mb-5 px-3 gap-0 flex justify-center capitalize">
-                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-accept hover:shadow-lg transition duration-500">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Pemesan</td>
@@ -77,7 +77,7 @@
                                     <td class="px-4 py-2">081234567890</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                    <td class="w-[35%] px-4 py-2">Nama Instagram</td>
+                                    <td class="w-[35%] px-4 py-2">Username Instagram</td>
                                     <td class="px-4 py-2 lowercase">@yantogantenk</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
@@ -109,7 +109,7 @@
                 <section id="data_pria" class="data_pria mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI PRIA</div>
                     <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
-                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-accept hover:shadow-lg transition duration-500">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
@@ -140,7 +140,7 @@
                 <section id="data_wanita" class="data_wanita mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI WANITA</div>
                     <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
-                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-accept hover:shadow-lg transition duration-500">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
@@ -171,7 +171,7 @@
                 <section id="data_akad" class="data_akad mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA AKAD / PEMBERKATAN</div>
                     <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
-                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-accept hover:shadow-lg transition duration-500">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
@@ -179,7 +179,7 @@
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Waktu Acara</td>
-                                    <td class="px-4 py-2">10.00-11.00</td>
+                                    <td class="px-4 py-2">10.00 WIB</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
@@ -194,7 +194,7 @@
                 <section id="data_resepsi" class="data_resepsi mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA RESEPSI</div>
                     <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
-                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-accept hover:shadow-lg transition duration-500">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
@@ -202,7 +202,7 @@
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Waktu Acara</td>
-                                    <td class="px-4 py-2">10.00-11.00</td>
+                                    <td class="px-4 py-2">12.00 WIB</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
