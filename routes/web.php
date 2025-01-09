@@ -27,6 +27,14 @@ Route::get('/orders/detail', function(){
     return view('admin.orders_detail');
 });
 
+Route::get('/packaging/detail', function(){
+    return view('admin.packaging_detail');
+});
+
+Route::get('/souvenir/detail', function(){
+    return view('admin.souvenir_detail');
+});
+
 Route::get('/admin/reminder', function(){
     return view('admin.reminder');
 });

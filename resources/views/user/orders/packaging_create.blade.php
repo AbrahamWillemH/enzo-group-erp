@@ -10,7 +10,7 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <div class="z-10 fixed top-0 left-0 right-0 ht grid grid-cols-[70%_30%] px-4 py-5 bg-green-main">
+  <div class="fixed top-0 left-0 right-0 ht grid grid-cols-[70%_30%] px-4 py-5 bg-green-main">
     <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
       <h1>Enzo Group</h1>
     </div>
