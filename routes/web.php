@@ -27,6 +27,10 @@ Route::get('/orders/detail', function(){
     return view('admin.orders_detail');
 });
 
+Route::get('/admin/reminder', function(){
+    return view('admin.reminder');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);
