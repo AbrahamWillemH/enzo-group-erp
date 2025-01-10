@@ -52,7 +52,7 @@
 
     <header class="fixed top-0 right-0 w-[80.2%] bg-green-shadow h-[68px] flex items-center justify-between px-4">
         <h1 class="text-xl font-bold text-brown-enzo" style="letter-spacing: 1px">REMINDER</h1>
-        <div class="relative group">
+        <div class="relative group z-20"> <!-- Tambahkan z-20 untuk dropdown -->
             <!-- Dropdown Button -->
             <button class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
                 Filter
@@ -60,7 +60,7 @@
             </button>
     
             <!-- Dropdown Content with Checkbox -->
-            <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full left-[10px] w-[100px] transition-opacity duration-500 delay-25">
+            <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-30 top-full left-[10px] w-[100px] transition-opacity duration-500 delay-25">
                 <div class="block px-4 py-2">
                     <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
                         <input type="checkbox" class="mr-2 accent-green-main">
@@ -81,7 +81,153 @@
                 </div>
             </div>
         </div>
-    </header>
-    
-    
+    </header>    
+
+    <!-- Tabel Data Pesanan -->
+    <main class="pt-20 pl-[20%] pr-5">
+        <div class="overflow-x-auto px-3">
+            <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
+                <thead class="bg-green-main/30">
+                    <tr>
+                        <th class="text-center py-6">ID</th>
+                        <th class="text-center py-6">Nama Pelanggan</th>
+                        <th class="text-center py-6">Tipe Produk</th>
+                        <th class="text-center py-6">Tanggal Pesan</th>
+                        <th class="text-center py-6">Deadline</th>
+                        <th class="text-center py-6">Status Pembayaran</th>
+                        <th class="text-center py-6">Status Pengerjaan</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-green-main/10">
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">1</td>
+                        <td class="px-4 py-3">Alicia</td>
+                        <td class="px-4 py-3">Invitation Card</td>
+                        <td class="px-4 py-3 text-center">08-01-2025</td>
+                        <td class="px-4 py-3 text-center">15-01-2025</td>
+                        <td class="px-4 py-3 text-center">Lunas</td>
+                        <td class="px-4 py-3 text-center">Selesai</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                        <td class="px-4 py-3 text-center">2</td>
+                        <td class="px-4 py-3">Ibra</td>
+                        <td class="px-4 py-3">Souvenir</td>
+                        <td class="px-4 py-3 text-center">05-01-2025</td>
+                        <td class="px-4 py-3 text-center">12-01-2025</td>
+                        <td class="px-4 py-3 text-center">DP 1</td>
+                        <td class="px-4 py-3 text-center">Proses</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
+</html>
