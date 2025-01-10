@@ -106,10 +106,15 @@
                     </div>
                 </section>
 
-                <section id="data_pria" class="data_pria mb-20">
-                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI PRIA</div>
-                    <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
+                <section id="data_mempelai" class="data_mempelai mb-20">
+                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI</div>
+                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">PRIA</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
@@ -132,15 +137,13 @@
                                     <td class="px-4 py-2">Kampung Kecil RT 00/ RW 01, Kelurahan, Kecamatan, Solo, Surakarta Hadiningrat, Jawa Tengah, Indonesia Raya</td>
                                 </tr>
                             </tbody>
-                            
                         </table>
-                    </div>
-                </section>
-
-                <section id="data_wanita" class="data_wanita mb-20">
-                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI WANITA</div>
-                    <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">WANITA</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
@@ -168,10 +171,15 @@
                     </div>
                 </section>
 
-                <section id="data_akad" class="data_akad mb-20">
-                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA AKAD / PEMBERKATAN</div>
-                    <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
+                <section id="data_acara" class="data_acara mb-20">
+                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA ACARA</div>
+                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">AKAD</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
@@ -186,15 +194,13 @@
                                     <td class="px-4 py-2">Graha Saba Buana Gedunge Pak Jokowi</td>
                                 </tr>
                             </tbody>
-                            
                         </table>
-                    </div>
-                </section>
-
-                <section id="data_resepsi" class="data_resepsi mb-20">
-                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA RESEPSI</div>
-                    <div class="data mt-[4.5%] mb-5 px-3 gap-0 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">RESEPSI</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
@@ -213,6 +219,72 @@
                         </table>
                     </div>
                 </section>
+
+                <section id="info_tambahan" class="info_tambahan mb-16">
+                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">INFORMASI TAMBAHAN</div>
+                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="">DESAIN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-2 py-2">
+                                        <img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="object-cover w-full h-full bg-blue-200">
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <tbody class="">
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Status Progres</td>
+                                    <td class="px-4 py-2">Proses Produksi</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Status Bayar</td>
+                                    <td class="px-4 py-2">DP 2</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Tanggal DP</td>
+                                    <td class="px-4 py-2">20 Januari 2025</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Harga /pcs</td>
+                                    <td class="px-4 py-2">Rp 7000</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Printilan</td>
+                                    <td class="px-4 py-2">Printilan</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Ekspedisi</td>
+                                    <td class="px-4 py-2">JNT Ekspres</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">ACC Client</td>
+                                    <td class="px-4 py-2">ACC</td>
+                                </tr>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                    <div class="edit_button px-4 mt-10 grid justify-items-end">
+                        <a href="#" 
+                            class="relative bg-green-main/80 text-brown-enzo font-medium w-[6rem] h-[3rem] flex justify-center items-center rounded-lg overflow-hidden group">
+                            <!-- Layer latar belakang -->
+                            <span class="absolute inset-0 bg-green-main transition-transform -translate-x-full group-hover:translate-x-0 transition-duration duration-500"></span>
+                            <!-- Teks -->
+                            <span class="relative z-10">Edit</span>
+                        </a>
+                    </div>
+
+                </section>
+
+                
             </div>
 
             
