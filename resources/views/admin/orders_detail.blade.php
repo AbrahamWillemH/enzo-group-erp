@@ -65,8 +65,13 @@
             <div class="">
                 <section id="data_pemesan" class="data_pemesan mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
-                    <div class="data mt-[11%] mb-5 px-3 gap-0 flex justify-center capitalize">
+                    <div class="data mt-[12%] mb-5 px-3 gap-0 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">CUSTOMER</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Pemesan</td>
@@ -108,7 +113,7 @@
 
                 <section id="data_mempelai" class="data_mempelai mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA MEMPELAI</div>
-                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                    <div class="data mt-[5.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -173,7 +178,7 @@
 
                 <section id="data_acara" class="data_acara mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA ACARA</div>
-                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                    <div class="data mt-[5.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -221,8 +226,8 @@
                 </section>
 
                 <section id="info_tambahan" class="info_tambahan mb-16">
-                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">INFORMASI TAMBAHAN</div>
-                    <div class="data mt-[4.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                    <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DETAIL</div>
+                    <div class="data mt-[5.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -239,6 +244,11 @@
                             </tbody>
                         </table>
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">INFORMASI TAMBAHAN</th>
+                                </tr>
+                            </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Status Progres</td>
