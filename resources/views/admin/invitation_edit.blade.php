@@ -350,11 +350,11 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="groom_nickname">Progress</label>
-              <input type="text" id="groom_nickname" name="groom_nickname" value="{{ old('groom_nickname') }}" required
-                placeholder="Nama Panggilan"
+              <label for="progess_status">Progress</label>
+              <input type="text" id="progess_status" name="progess_status" value="{{ old('progess_status') }}" required
+                placeholder="Progress"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('groom_nickname')
+              @error('progess_status')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -374,10 +374,10 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="groom_mother">Tanggal Pembayaran</label>
-              <input type="date" id="groom_mother" name="groom_mother" value="{{ old('groom_mother') }}" required
+              <label for="payment_date">Tanggal Pembayaran</label>
+              <input type="date" id="payment_date" name="payment_date" value="{{ old('payment_date') }}" required
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('groom_mother')
+              @error('payment_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>

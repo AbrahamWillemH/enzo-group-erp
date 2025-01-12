@@ -178,28 +178,18 @@
       <!-- Detail Souvenir -->
       <div class="grid grid-cols-2 justify-center">
         <!-- Desain -->
-        <div class="grid grid-rows-5 gap-5">
+        <div class="grid grid-rows-3 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Desain dan Pembayaran</h2>
-            <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
+            <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
 
           <div class="flex items-center flex-col mx-20 mb-3">
-            <label for="invitation_desain">Desain</label>
-            <input type="file" id="invitation_desain" name="invitation_desain" 
-              accept=".jpg,.jpeg,.png,.pdf" required
-              class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45">
-            @error('invitation_desain')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col mx-20">
-            <label for="groom_nickname">Progress</label>
-            <input type="text" id="groom_nickname" name="groom_nickname" value="{{ old('groom_nickname') }}" required
+            <label for="progress_status">Progress</label>
+            <input type="text" id="progress_status" name="progress_status" value="{{ old('progress_status') }}" required
               placeholder="Nama Panggilan"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('groom_nickname')
+            @error('progress_status')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -219,23 +209,23 @@
           </div>
 
           <div class="flex items-center flex-col mx-20">
-            <label for="groom_mother">Tanggal Pembayaran</label>
-            <input type="date" id="groom_mother" name="groom_mother" value="{{ old('groom_mother') }}" required
+            <label for="payment_date">Tanggal Pembayaran</label>
+            <input type="date" id="payment_date" name="payment_date" value="{{ old('payment_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('groom_mother')
+            @error('payment_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
         </div>
 
         <!-- Informasi Tambahan -->
-        <div class="grid grid-rows-5 gap-5">
+        <div class="grid grid-rows-3 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Informasi Tambahan</h2>
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col mx-20 mb-3">
             <label for="item_price">Harga /Pcs</label>
             <input type="text" id="item_price" name="item_price" value="{{ old('item_price') }}" required
               placeholder="Harga /Pcs"
@@ -264,18 +254,23 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+        </div>
+      </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label for="client_acc">Acc Client</label>
-            <select id="client_acc" name="client_acc"
-              class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
-              <option value="Acc">Acc</option>
-              <option value="Belum">Belum</option>
-            </select>
-            @error('client_acc')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+      <div class="grid grid-cols-2 justify-center">
+        <div class="flex items-center flex-col mx-20 mb-3">
+        </div>
+
+        <div class="flex items-center flex-col mx-20">
+          <label for="client_acc">Acc Client</label>
+          <select id="client_acc" name="client_acc"
+            class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
+            <option value="Acc">Acc</option>
+            <option value="Belum">Belum</option>
+          </select>
+          @error('client_acc')
+          <small class="text-danger">{{ $message }}</small>
+          @enderror
         </div>
       </div>
 
