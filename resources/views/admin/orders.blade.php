@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
+                    <a href="{{route('orders.view')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
                         <span>Data Pesanan</span>
                     </a>
                 </li>
@@ -102,7 +102,13 @@
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <a href="orders.detail" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
@@ -142,7 +148,13 @@
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
@@ -188,7 +200,12 @@
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
@@ -234,7 +251,13 @@
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <a href="#" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">

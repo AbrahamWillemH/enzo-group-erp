@@ -98,7 +98,7 @@
           </a>
         </li>
         <li>
-          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="{{route('orders.view')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Data Pesanan</span>
           </a>
         </li>
@@ -153,12 +153,12 @@
                   <img src="{{ asset('img/invitationA.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
-              
+
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Invitation
               </a>
-              
+
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
@@ -180,12 +180,12 @@
                   <img src="{{ asset('img/souvenirsA.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
-              
+
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Souvenir
               </a>
-              
+
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
@@ -207,12 +207,12 @@
                   <img src="{{ asset('img/packageA.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
-              
+
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Packaging
               </a>
-              
+
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
@@ -234,17 +234,17 @@
                   <img src="{{ asset('img/coming1.png') }}" alt="Gambar" class=" h-full w-full">
                 </div>
               </div>
-              
+
               <a href="{{ route('user.orders.invitation.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Seminarkit
               </a>
-              
+
             </div>
 
 
           </div>
-          
+
         </div>
 
         <div class="grid grid-cols-4 px-5 py-2 gap-3 h-full">
@@ -265,7 +265,7 @@
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">50</div>
           </div>
         </div>
-        
+
       </div>
 
     </div>

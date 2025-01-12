@@ -106,4 +106,7 @@ class OrderController extends Controller
 
         return redirect()->back()->with('success', 'Order progress reverted to ' . $previousProgress);
     }
+    public function orderDetails(){
+
+    }
 }
