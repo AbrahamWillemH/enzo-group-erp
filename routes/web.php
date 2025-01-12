@@ -35,6 +35,18 @@ Route::get('/souvenir/detail', function(){
     return view('admin.souvenir_detail');
 });
 
+Route::get('/souvenir/edit', function(){
+    return view('admin.souvenir_edit');
+});
+
+Route::get('/packaging/edit', function(){
+    return view('admin.packaging_edit');
+});
+
+Route::get('/invitation/edit', function(){
+    return view('admin.invitation_edit');
+});
+
 Route::get('/admin/reminder', function(){
     return view('admin.reminder');
 });
