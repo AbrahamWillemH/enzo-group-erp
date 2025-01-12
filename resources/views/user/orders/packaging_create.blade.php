@@ -83,7 +83,7 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="deadline_date">Deadline</label>
             <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-              class="text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('deadline_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
