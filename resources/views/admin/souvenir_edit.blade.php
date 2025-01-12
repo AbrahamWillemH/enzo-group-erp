@@ -176,18 +176,18 @@
       </div>
 
       <!-- Detail Souvenir -->
-      <div class="grid grid-cols-2 justify-center">
+      <div class="grid grid-cols-2 justify-center w-full">
         <!-- Desain -->
         <div class="grid grid-rows-3 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Desain dan Pembayaran</h2>
-            <hr class="border-b-2 border-brown-enzo w-full mb-4">
+            <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
           <div class="flex items-center flex-col mx-20 mb-3">
             <label for="progress_status">Progress</label>
             <input type="text" id="progress_status" name="progress_status" value="{{ old('progress_status') }}" required
-              placeholder="Nama Panggilan"
+              placeholder="Progress"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('progress_status')
             <small class="text-danger">{{ $message }}</small>
@@ -257,7 +257,7 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-2 justify-center">
+      <div class="grid grid-cols-2 justify-center w-full">
         <div class="flex items-center flex-col mx-20 mb-3">
         </div>
 
