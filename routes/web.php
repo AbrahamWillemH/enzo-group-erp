@@ -15,42 +15,6 @@ Route::get('/', function(){
     return view('welcome');
 });
 
-Route::get('/orders/packaging', function(){
-    return view('user.orders.packaging_create');
-});
-
-Route::get('/orders/souvenir', function(){
-    return view('user.orders.souvenir_create');
-});
-
-Route::get('/orders/detail', function(){
-    return view('admin.orders_detail');
-});
-
-Route::get('/packaging/detail', function(){
-    return view('admin.packaging_detail');
-});
-
-Route::get('/souvenir/detail', function(){
-    return view('admin.souvenir_detail');
-});
-
-Route::get('/souvenir/edit', function(){
-    return view('admin.souvenir_edit');
-});
-
-Route::get('/packaging/edit', function(){
-    return view('admin.packaging_edit');
-});
-
-Route::get('/invitation/edit', function(){
-    return view('admin.invitation_edit');
-});
-
-Route::get('/admin/reminder', function(){
-    return view('admin.reminder');
-});
-
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);
@@ -64,12 +28,24 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/orders', [AdminController::class, 'orderIndex'])->name('orders.view');
-    Route::get('/admin/orders/{id}', [OrderController::class, 'index'])->name('orders.detail');
-    Route::post('/admin/orders/approve/{id}', [InvitationController::class, 'approveOrder'])->name('orders.approve');
-    Route::post('/admin/orders/decline/{id}', [InvitationController::class, 'declineOrder'])->name('orders.decline');
+    Route::post('/admin/orders/detail/{id}', [OrderController::class, 'orderDetails'])->name('orders.detail');
+    Route::post('/admin/orders/invitation/approve/{id}', [InvitationController::class, 'approveOrder'])->name('admin.orders.approve');
+    Route::post('/admin/orders/invitation/decline/{id}', [InvitationController::class, 'declineOrder'])->name('admin.orders.decline');
+    Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'index'])->name('admin.invitation.detail');
+    Route::get('admin/orders/invitation/edit', function(){return view('admin.invitation_edit');});
+    Route::get('admin/orders/packaging/detail', function(){return view('admin.packaging_detail');});
+    Route::get('admin/orders/packaging/edit', function(){return view('admin.packaging_edit');});
+    Route::get('admin/orders/souvenir', function(){return view('user.orders.souvenir_create');});
+    Route::get('admin/orders/souvenir/detail', function(){return view('admin.souvenir_detail');});
+    Route::get('admin/orders/souvenir/edit', function(){return view('admin.souvenir_edit');});
+    Route::get('/admin/reminder', function(){return view('admin.reminder');});
+
     // update progress
     Route::post('/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
     Route::post('/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
+    Route::get('/orders/packaging', function(){
+        return view('user.orders.packaging_create');
+    });
 });
 
 // User routes
