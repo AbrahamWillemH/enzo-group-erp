@@ -23,12 +23,15 @@ return new class extends Migration
             $table->integer('stok_awal')->default(0);
             $table->integer('stok_sekarang')->default(0);
             $table->timestamps();
+
+            // Menambahkan unique constraint gabungan
+            $table->unique(['kode_bahan', 'jenis_barang']);
         });
 
         // Tabel untuk detail transaksi (barang masuk/keluar)
         Schema::create('inventory_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inventory_id')->constrained('inventory')->onDelete('cascade'); // Relasi ke tabel kartu_persediaan
+            $table->foreignId('inventory_id')->constrained('inventory')->onDelete('cascade'); // Relasi ke tabel inventory
             $table->string('jenis_barang'); // Menambahkan jenis barang
             $table->date('tanggal_transaksi');
             $table->integer('kode_bahan');
@@ -37,6 +40,7 @@ return new class extends Migration
             $table->integer('jumlah_barang');
             $table->string('keterangan')->nullable();
             $table->timestamps();
+            
         });
     }
 
@@ -48,7 +52,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('inventory');
-        Schema::dropIfExists('transaksi_persediaan');
-        Schema::dropIfExists('kartu_persediaan');
+        Schema::dropIfExists('inventory_transactions');
     }
 };

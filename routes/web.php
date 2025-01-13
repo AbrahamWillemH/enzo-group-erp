@@ -46,8 +46,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::delete('/inventory/{id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
     Route::get('/inventory-transactions', [InventoryTransactionController::class, 'index'])->name('inventory.transactions.index');
     Route::post('/inventory-transactions', [InventoryTransactionController::class, 'store'])->name('inventory.transactions.store');
-    Route::get('/inventory-card', [InventoryCardController::class, 'index'])->name('inventory.card.index');
-    Route::get('/inventory-card/{id}', [InventoryCardController::class, 'show'])->name('inventory.card.show');
+    Route::get('/inventory-card', [InventoryController::class, 'indexCard'])->name('inventory.card.index');
+    Route::get('/inventory-card/{id}', [InventoryController::class, 'showCard'])->name('inventory.card.show');
 });
 
 // User routes

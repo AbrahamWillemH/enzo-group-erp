@@ -18,12 +18,12 @@ class InventoryController extends Controller
         // Filter data berdasarkan jenis_barang
         $inventory = Inventory::all();
         $transaksi = InventoryTransaction::where('jenis_barang', $jenis_barang)->get();
-        $kartu_persediaan = InventoryCard::where('jenis_barang', $jenis_barang)->get();
+        $kartu_persediaan = Inventory::where('jenis_barang', $jenis_barang)->get();
 
         // Stok real-time untuk kartu persediaan
         $stok_data = null;
         if ($kode_bahan) {
-            $stok_data = InventoryCard::where('jenis_barang', $jenis_barang)
+            $stok_data = Inventory::where('jenis_barang', $jenis_barang)
                         ->where('kode_bahan', $kode_bahan)
                         ->first();
         }
@@ -40,6 +40,9 @@ class InventoryController extends Controller
             'nama_bahan' => 'required|string',
             'stok_awal' => 'required|integer',
         ]);
+
+        // Menambahkan stok_sekarang yang disamakan dengan stok_awal
+        $request->merge(['stok_sekarang' => $request->stok_awal]);
 
         Inventory::create($request->all());
         return redirect()->route('inventory.index')->with('success', 'Data berhasil ditambahkan.');
@@ -62,6 +65,9 @@ class InventoryController extends Controller
             'stok_awal' => 'required|integer',
         ]);
 
+        // Jika stok_awal berubah, update stok_sekarang untuk menyesuaikan
+        $request->merge(['stok_sekarang' => $request->stok_awal]);
+
         $inventory = Inventory::findOrFail($id);
         $inventory->update($request->all());
         return redirect()->route('inventory.index')->with('success', 'Data berhasil diperbarui.');
@@ -77,5 +83,19 @@ class InventoryController extends Controller
 
     public function filter(Request $request){
         // ini nanti fungsi buat ngefilter tabel
+    }
+
+    public function indexCard()
+    {
+        $inventory = Inventory::with('transactions')->get();
+        return view('admin.inventory.card', compact('inventory'));
+    }
+
+    public function showCard($id)
+    {
+        $inventory = Inventory::with('transactions')->findOrFail($id);
+        $stok_sekarang = $inventory->stok_awal;
+
+        return view('admin.inventory.card-show', compact('inventory', 'stok_sekarang'));
     }
 }

@@ -25,8 +25,15 @@
                 @csrf
                 <div class="mb-3">
                     <label for="jenis_barang" class="form-label">Jenis Barang</label>
-                    <input type="text" name="jenis_barang" class="form-control" required>
+                    <select name="jenis_barang" id="jenis_barang" class="form-control" required>
+                        <option value="" disabled selected>Pilih Jenis Barang</option>
+                        <option value="Souvenir">Souvenir</option>
+                        <option value="Hardbox">Hardbox</option>
+                        <option value="Undangan">Undangan</option>
+                        <option value="Keperluan Bersama">Keperluan Bersama</option>
+                    </select>
                 </div>
+                
                 <div class="mb-3">
                     <label for="kode_bahan" class="form-label">Kode Bahan</label>
                     <input type="number" name="kode_bahan" class="form-control" required>
