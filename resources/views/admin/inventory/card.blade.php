@@ -35,7 +35,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($inventories as $inventory)
+            @foreach($inventory as $inventory)
                 <tr>
                     <td>{{ $inventory->id }}</td>
                     <td>{{ $inventory->nama_bahan }}</td>
