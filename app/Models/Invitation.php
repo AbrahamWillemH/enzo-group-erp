@@ -11,14 +11,39 @@ class Invitation extends Model
 
     protected $table = 'invitation';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'user_id',
+        'user_name',
+        'address',
+        'phone_number',
+        'instagram',
         'product_name',
         'quantity',
+        'type',
         'deadline_date',
+        'finishing',
         'status',
         'progress',
+        'bride_name',
+        'bride_nickname',
+        'bride_father',
+        'bride_mother',
+        'bride_parents_address',
+        'groom_name',
+        'groom_nickname',
+        'groom_father',
+        'groom_mother',
+        'groom_parents_address',
+        'akad_pemberkatan_date',
+        'akad_pemberkatan_time',
+        'akad_pemberkatan_location',
+        'reception_date',
+        'reception_time',
+        'reception_location',
     ];
+
 
     /**
      * Relasi ke pengguna yang melakukan pemesanan.

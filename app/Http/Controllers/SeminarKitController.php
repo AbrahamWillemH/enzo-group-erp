@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class SeminarKitController extends Controller
 {
-    //
+    public function seminarkitDetails($id){
+
+    }
 }

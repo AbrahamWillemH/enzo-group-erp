@@ -103,11 +103,11 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label for="type">Tipe Produk</label>
-            <input type="text" id="type" name="type" value="{{ old('type') }}" required
+            <label for="product_name">Tipe Produk</label>
+            <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
               placeholder="Tipe Produk"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('type')
+            @error('product_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -222,11 +222,11 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="bride_dad">Nama Ayah</label>
-              <input type="text" id="bride_dad" name="bride_dad" value="{{ old('bride_dad') }}" required
+              <label for="bride_father">Nama Ayah</label>
+              <input type="text" id="bride_father" name="bride_father" value="{{ old('bride_father') }}" required
                 placeholder="Nama Lengkap Ayah"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('bride_dad')
+              @error('bride_father')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -247,7 +247,7 @@
       <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
           <label for="groom_parents_address">Alamat Orang Tua</label>
-          <textarea id="groom_parents_address" rows="5" name="groom_parents_address" value="{{ old('groom_parents_address') }}" required
+          <textarea type="text" id="groom_parents_address" rows="5" name="groom_parents_address" value="{{ old('groom_parents_address') }}" required
             placeholder="Alamat Orang Tua"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('groom_parents_address')
@@ -257,7 +257,7 @@
 
         <div class="flex items-center flex-col">
           <label for="bride_parents_address">Alamat Orang Tua</label>
-          <textarea id="bride_parents_address" rows="5" name="bride_parents_address" value="{{ old('bride_parents_address') }}" required
+          <textarea type="text" id="bride_parents_address" rows="5" name="bride_parents_address" value="{{ old('bride_parents_address') }}" required
             placeholder="Alamat Orang Tua"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('bride_parents_address')
@@ -346,8 +346,7 @@
 
       <div>
         <!-- Submit Button -->
-        <button type="submit"
-                class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
+        <button type="submit" class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
           Buat Pesanan
         </button>
         <!-- tombol kembali -->

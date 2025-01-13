@@ -6,6 +6,7 @@ use App\Models\Invitation;
 use App\Models\Packaging;
 use App\Models\SeminarKit;
 use App\Models\Souvenir;
+use DB;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -106,7 +107,25 @@ class OrderController extends Controller
 
         return redirect()->back()->with('success', 'Order progress reverted to ' . $previousProgress);
     }
-    public function orderDetails(){
+    public function orderDetails($id){
+    $invitation = DB::table('invitation')->where('id', $id)->first();
+    $packaging = DB::table('packaging')->where('id', $id)->first();
+    $seminarkit = DB::table('seminarkit')->where('id', $id)->first();
+    $souvenir = DB::table('souvenir')->where('id', $id)->first();
+
+    if ($invitation) {
+        return app(InvitationController::class)->invitationDetails($id);
+    }
+    if ($packaging) {
+        return app(PackagingController::class)->packagingDetails($id);
+    }
+    if ($seminarkit) {
+        return app(SeminarKitController::class)->seminarkitDetails($id);
+    }
+    if ($souvenir) {
+        return app(SouvenirController::class)->souvenirDetails($id);
+    }
+
 
     }
 }

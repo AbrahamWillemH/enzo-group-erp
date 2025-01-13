@@ -47,7 +47,7 @@
             </ul>
         </div>
     </aside>
-    
+
     <div class="ml-[20%]">
 
         <div class="bg-green-light h-full grid grid-rows-[12%_88%] relative">
@@ -75,38 +75,38 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Pemesan</td>
-                                    <td class="px-4 py-2">Yanto Subekjo</td>
+                                    <td class="px-4 py-2">{{$invitation->user_name}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nomor HP</td>
-                                    <td class="px-4 py-2">081234567890</td>
+                                    <td class="px-4 py-2">{{$invitation->phone_number}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Username Instagram</td>
-                                    <td class="px-4 py-2 lowercase">@yantogantenk</td>
+                                    <td class="px-4 py-2 lowercase">{{$invitation->instagram}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Alamat Lengkap</td>
-                                    <td class="px-4 py-2">Kampung Kecil RT 00/ RW 01, Kelurahan, Kecamatan, Solo, Surakarta Hadiningrat, Jawa Tengah, Indonesia Raya</td>
+                                    <td class="px-4 py-2">{{$invitation->address}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Jumlah</td>
-                                    <td class="px-4 py-2">500</td>
+                                    <td class="px-4 py-2">{{$invitation->quantity}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tipe Produk</td>
-                                    <td class="px-4 py-2">Undangan Pernikahan</td>
+                                    <td class="px-4 py-2">{{$invitation->type}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Deadline</td>
-                                    <td class="px-4 py-2">Secepatnya</td>
+                                    <td class="px-4 py-2">{{$invitation->deadline_date}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Finishing</td>
-                                    <td class="px-4 py-2">Biasa</td>
+                                    <td class="px-4 py-2">{{$invitation->finishing}}</td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </section>
@@ -123,23 +123,23 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
-                                    <td class="px-4 py-2">Fulan bin Fulan</td>
+                                    <td class="px-4 py-2">{{$invitation->groom_name}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Panggilan</td>
-                                    <td class="px-4 py-2">Fulan</td>
+                                    <td class="px-4 py-2">{{$invitation->groom_nickname}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Ayah</td>
-                                    <td class="px-4 py-2">Bapaknya Fulan</td>
+                                    <td class="px-4 py-2">{{$invitation->groom_father}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Ibu</td>
-                                    <td class="px-4 py-2">Ibunya Fulan</td>
+                                    <td class="px-4 py-2">{{$invitation->groom_mother}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Alamat Orang Tua</td>
-                                    <td class="px-4 py-2">Kampung Kecil RT 00/ RW 01, Kelurahan, Kecamatan, Solo, Surakarta Hadiningrat, Jawa Tengah, Indonesia Raya</td>
+                                    <td class="px-4 py-2">{{$invitation->groom_parents_address}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -152,26 +152,26 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Lengkap</td>
-                                    <td class="px-4 py-2">Fulanah bin Fulan</td>
+                                    <td class="px-4 py-2">{{$invitation->bride_name}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Panggilan</td>
-                                    <td class="px-4 py-2">Fulanah</td>
+                                    <td class="px-4 py-2">{{$invitation->bride_nickname}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Ayah</td>
-                                    <td class="px-4 py-2">Bapaknya Fulanah</td>
+                                    <td class="px-4 py-2">{{$invitation->bride_father}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Nama Ibu</td>
-                                    <td class="px-4 py-2">Ibunya Fulanah</td>
+                                    <td class="px-4 py-2">{{$invitation->bride_mother}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Alamat Orang Tua</td>
-                                    <td class="px-4 py-2">Kampung Gede RT 00/ RW 01, Kelurahan, Kecamatan, Solo, Surakarta Hadiningrat, Jawa Tengah, Indonesia Raya</td>
+                                    <td class="px-4 py-2">{{$invitation->bride_parents_address}}</td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </section>
@@ -182,21 +182,21 @@
                         <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
-                                    <th class="" colspan="2">AKAD</th>
+                                    <th class="" colspan="2">AKAD / PEMBERKATAN</th>
                                 </tr>
                             </thead>
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                    <td class="px-4 py-2">29-02-2025</td>
+                                    <td class="px-4 py-2">{{$invitation->akad_pemberkatan_date}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Waktu Acara</td>
-                                    <td class="px-4 py-2">10.00 WIB</td>
+                                    <td class="px-4 py-2">{{$invitation->akad_pemberkatan_time}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
-                                    <td class="px-4 py-2">Graha Saba Buana Gedunge Pak Jokowi</td>
+                                    <td class="px-4 py-2">{{$invitation->akad_pemberkatan_location}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -209,18 +209,18 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                    <td class="px-4 py-2">29-02-2025</td>
+                                    <td class="px-4 py-2">{{$invitation->reception_date}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Waktu Acara</td>
-                                    <td class="px-4 py-2">12.00 WIB</td>
+                                    <td class="px-4 py-2">{{$invitation->reception_time}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
-                                    <td class="px-4 py-2">Graha Saba Buana Gedunge Pak Jokowi</td>
+                                    <td class="px-4 py-2">{{$invitation->reception_location}}</td>
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </section>
@@ -252,38 +252,42 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Status Progres</td>
-                                    <td class="px-4 py-2">Proses Produksi</td>
+                                    <td class="px-4 py-2">{{$invitation->status}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Status Bayar</td>
-                                    <td class="px-4 py-2">DP 2</td>
+                                    <td class="px-4 py-2">{{$invitation->payment_status}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Tanggal DP</td>
-                                    <td class="px-4 py-2">20 Januari 2025</td>
+                                    <td class="px-4 py-2">{{$invitation->dp_date}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Harga /pcs</td>
-                                    <td class="px-4 py-2">Rp 7000</td>
+                                    <td class="px-4 py-2">{{$invitation->price_per_pcs}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Printilan</td>
-                                    <td class="px-4 py-2">Printilan</td>
+                                    <td class="px-4 py-2">{{$invitation->printout}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">Ekspedisi</td>
-                                    <td class="px-4 py-2">JNT Ekspres</td>
+                                    <td class="px-4 py-2">{{$invitation->expedition}}</td>
                                 </tr>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-4 py-2">ACC Client</td>
-                                    <td class="px-4 py-2">ACC</td>
+                                    @if($invitation->acc_client == 1)
+                                        <td class="px-4 py-2">ACC</td>
+                                    @else
+                                        <td class="px-4 py-2">DECL</td>
+                                    @endif
                                 </tr>
                             </tbody>
-                            
+
                         </table>
                     </div>
                     <div class="edit_button px-4 mt-10 grid justify-items-end">
-                        <a href="#" 
+                        <a href="#"
                             class="relative bg-green-main/80 text-brown-enzo font-semibold w-[6rem] h-[3rem] flex justify-center items-center rounded-lg overflow-hidden group">
                             <!-- Layer latar belakang -->
                             <span class="absolute inset-0 bg-green-main transition-transform -translate-x-full group-hover:translate-x-0 transition-duration duration-500"></span>
@@ -294,10 +298,10 @@
 
                 </section>
 
-                
+
             </div>
 
-            
+
         </div>
     </div>
 </body>

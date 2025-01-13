@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class SouvenirController extends Controller
 {
-    //
+    public function souvenirDetails($id){
+
+    }
 }
