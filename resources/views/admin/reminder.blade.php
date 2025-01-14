@@ -52,7 +52,7 @@
 
     <header class="fixed top-0 right-0 w-[80.2%] bg-green-shadow h-[68px] flex items-center justify-between px-4">
         <h1 class="text-xl font-bold text-brown-enzo" style="letter-spacing: 1px">REMINDER</h1>
-        <div class="relative group z-20"> <!-- Tambahkan z-20 untuk dropdown -->
+        <div class="relative group z-20"> 
             <!-- Dropdown Button -->
             <button class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
                 Filter

@@ -57,7 +57,7 @@
                 <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                     <h1>DATA PESANAN</h1>
                 </div>
-                <div class="grid grid-cols-5 gap-1 font-medium">
+                <div class="grid grid-cols-6 gap-1 font-medium">
                     <a href="#order" class="text-brown-enzo flex flex-col justify-center items-center group">Order
                         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                     </a>
@@ -70,10 +70,23 @@
                     <a href="#ready" class="text-brown-enzo flex flex-col justify-center items-center group">Ready
                         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                     </a>
+                    <!-- Dropdown Menu -->
+                    <div class="flex flex-col justify-center items-center group relative">
+                        <!-- Dropdown Button -->
+                        <button class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
+                            <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
+                        </button>
+                        
+                        <!-- Dropdown Content -->
+                        <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
+                            <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
+                        </div>
+                    </div>
                     <div class="search flex items-center justify-center font-medium text-xs">
                         <input type="search" placeholder="Cari Customer" class="rounded-md w-full h-full px-1 bg-gray-50 border border-gray-300 text-gray-900 text-xs focus:ring-brown-enzo focus:border-brown-enzo block ">
                     </div>
-
                 </div>
             </div>
 
