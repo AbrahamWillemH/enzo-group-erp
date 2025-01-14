@@ -21,10 +21,10 @@
                         </div>
                     </div>
                     <div class="flex gap-10 justify-center">
-                        <a href="" class="bg-green-500 w-[7rem] h-10 flex items-center justify-center rounded-lg border hover:scale-110 hover:border-green-300 hover:border-3 hover:bg-black hover:text-white hover:shadow-green-500 hover:shadow-lg transition transform color duration-300 font-medium">LOGIN</a>
-                        <a href="" class="bg-green-500 w-[7rem] h-10 flex items-center justify-center rounded-lg border hover:scale-110 hover:border-green-300 hover:border-3 hover:bg-black hover:text-white hover:shadow-green-500 hover:shadow-lg transition transform color duration-300 font-medium">REGISTER</a>
+                        <a href="{{route('login')}}" class="bg-green-500 w-[7rem] h-10 flex items-center justify-center rounded-lg border hover:scale-110 hover:border-green-300 hover:border-3 hover:bg-black hover:text-white hover:shadow-green-500 hover:shadow-lg transition transform color duration-300 font-medium">LOGIN</a>
+                        <a href="{{route('register')}}" class="bg-green-500 w-[7rem] h-10 flex items-center justify-center rounded-lg border hover:scale-110 hover:border-green-300 hover:border-3 hover:bg-black hover:text-white hover:shadow-green-500 hover:shadow-lg transition transform color duration-300 font-medium">REGISTER</a>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="flex items-center justify-center relative">
@@ -41,9 +41,9 @@
                     <img src="{{ asset('img/undanganA.jpeg') }}" alt="Gambar" class="h-full w-full object-cover">
                 </div>
             </div>
-            
+
     </div>
-    
-    
+
+
 </body>
 </html>
