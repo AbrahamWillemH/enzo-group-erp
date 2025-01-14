@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 
 <head>
@@ -47,8 +47,10 @@
                 </li>
             </ul>
         </div>
-    </aside>
-
+    </aside> -->
+    @extends('admin/sidebar_admin')
+    @section('title', 'Data Pesanan')
+    @section('konten')
     <!-- Main Container -->
     <div class="ml-[20%]">
 
@@ -288,7 +290,8 @@
             </div>
         </div>
     </div>
-</body>
+    
+<!-- </body> -->
 <script>
     function confirmPreviousProgress() {
         return confirm('Are you sure you want to go back to the previous progress?');
@@ -297,4 +300,5 @@
         return confirm('Are you sure you want to go to the next progress?');
     }
 </script>
-</html>
+@endsection
+<!-- </html> -->

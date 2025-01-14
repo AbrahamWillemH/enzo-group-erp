@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard</title>
   @vite('resources/css/app.css')
-</head>
+</head> -->
 
 <!-- <body class="font-mont">
   <div class="container flex flex-col items-center min-h-screen justify-center">
@@ -80,8 +80,8 @@
   </div>
 </body> -->
 
-<body class="font-mont">
-  <aside class="z-40 w-1/5 fixed top-0 left-0">
+<!-- <body class="font-mont"> -->
+  <!-- <aside class="z-40 w-1/5 fixed top-0 left-0">
     <div class="bg-green-main min-h-screen">
       <ul class="space-y-5 py-10">
         <li>
@@ -119,8 +119,11 @@
         </li>
       </ul>
     </div>
-  </aside>
+  </aside> -->
   <!-- Main Container -->
+  @extends('admin/sidebar_admin')
+  @section('title', 'Admin Dashboard')
+  @section('konten')
   <div class="grid grid-cols-[80%_20%] ml-[20%] bg-green-light">
     <!-- main content -->
     <div class="container h-screen">
@@ -129,7 +132,7 @@
 
           <div class="flex flex-col justify-center items-center bg-green-main/10">
             <h1>Hello, {{ auth()->user()->name }}</h1>
-            <p>This is the user dashboard page, accessible to regular users.</p>
+            <p>This is the Admin dashboard page, accessible only for Admin</p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">
@@ -304,6 +307,7 @@
      </div>
 
   </div>
-</body>
+  @endsection
+<!-- </body>
 
-</html>
+</html> -->
