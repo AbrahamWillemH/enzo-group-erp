@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard</title>
   @vite('resources/css/app.css')
-</head>
+</head> -->
 
 <!-- <body class="font-mont">
   <div class="container flex flex-col items-center min-h-screen justify-center">
@@ -80,7 +80,7 @@
   </div>
 </body> -->
 
-<body class="font-mont">
+<!-- <body class="font-mont">
   <aside class="z-40 w-1/5 fixed top-0 left-0">
     <div class="bg-green-main min-h-screen">
       <ul class="space-y-5 py-10">
@@ -119,12 +119,15 @@
         </li>
       </ul>
     </div>
-  </aside>
+  </aside> -->
+  @extends('user/sidebar_user')
+  @section('title', 'User Dashboard')
+  @section('konten')
   <!-- Main Container -->
-  <div class="grid grid-cols-[80%_20%] ml-[20%] bg-green-light">
+  <div class="ml-[20%] bg-green-light">
     <!-- main content -->
     <div class="container h-screen">
-      <div class="h-screen grid grid-rows-[70%_30%]">
+      <div class="h-screen">
         <div class="grid grid-rows-[25%_75%]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/10">
@@ -132,9 +135,9 @@
             <p>This is the user dashboard page, accessible to regular users.</p>
           </div>
 
-          <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">
+          <div class="grid grid-cols-4 px-5 pt-[5rem] pb-6 gap-5">
 
-            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+            <div class="carousel rounded-lg w-full h-[320px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -161,7 +164,7 @@
               
             </div>
 
-            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+            <div class="carousel rounded-lg w-full h-[320px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -188,7 +191,7 @@
               
             </div>
 
-            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+            <div class="carousel rounded-lg w-full h-[320px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -215,7 +218,7 @@
               
             </div>
 
-            <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+            <div class="carousel rounded-lg w-full h-[320px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -247,7 +250,7 @@
           
         </div>
 
-        <div class="grid grid-cols-4 px-5 py-2 gap-3 h-full">
+        <!-- <div class="grid grid-cols-4 px-5 py-2 gap-3 h-full">
           <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-green-main/20 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
             <div class="flex-none h-[30%] flex items-center justify-center">Order</div>
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">340</div>
@@ -264,14 +267,14 @@
             <div class="flex-none h-[30%] flex items-center justify-center">Ready</div>
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">50</div>
           </div>
-        </div>
+        </div> -->
         
       </div>
 
     </div>
 
     <!-- deadline -->
-     <div class="container h-screen bg-green-shadow shadow-inner grid grid-rows-[15%_85%]">
+     <!-- <div class="container h-screen bg-green-shadow shadow-inner grid grid-rows-[15%_85%]">
       <div style="letter-spacing: 3px" class="font-sans bg-green-main flex items-center justify-center text-cream">
         <h1>DEADLINE</h1>
       </div>
@@ -301,9 +304,10 @@
         <br>
         <a href="" style="letter-spacing: 2px" class="font-sans bg-green-main text-cream rounded-lg px-3 py-2 flex justify-center mb-1  hover:bg-cream hover:text-green-main">Lihat Semua</a>
       </div>
-     </div>
+     </div> -->
 
   </div>
-</body>
+  @endsection
+<!-- </body>
 
-</html>
+</html> -->
