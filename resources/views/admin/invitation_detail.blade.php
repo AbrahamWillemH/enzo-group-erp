@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,8 +46,10 @@
                 </li>
             </ul>
         </div>
-    </aside>
-
+    </aside> -->
+    @extends('admin/sidebar_admin')
+    @section('title', 'Detail Undangan')
+    @section('konten')
     <div class="ml-[20%]">
 
         <div class="bg-green-light h-full grid grid-rows-[12%_88%] relative">
@@ -304,5 +306,6 @@
 
         </div>
     </div>
-</body>
-</html>
+    @endsection
+<!-- </body>
+</html> -->
