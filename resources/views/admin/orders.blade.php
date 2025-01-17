@@ -78,7 +78,7 @@
                         <button class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
                             <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                         </button>
-                        
+
                         <!-- Dropdown Content -->
                         <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
                             <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
@@ -102,7 +102,9 @@
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -114,7 +116,9 @@
                                     <td class="px-3 py-3 text-center">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -148,7 +152,9 @@
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -160,7 +166,9 @@
                                     <td class="px-3 py-3 text-center">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -200,7 +208,9 @@
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -212,7 +222,9 @@
                                     <td class="px-3 py-3 text-center">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -251,7 +263,9 @@
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -263,7 +277,9 @@
                                     <td class="px-3 py-3 text-center">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -290,7 +306,7 @@
             </div>
         </div>
     </div>
-    
+
 <!-- </body> -->
 <script>
     function confirmPreviousProgress() {
