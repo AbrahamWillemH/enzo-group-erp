@@ -46,8 +46,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('admin/orders/souvenir/edit', function(){return view('admin.souvenir_edit');});
 
     // update progress
-    Route::post('/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
-    Route::post('/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
+    Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
+    Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
     Route::get('/orders/packaging', function(){
         return view('user.orders.packaging_create');
     });
