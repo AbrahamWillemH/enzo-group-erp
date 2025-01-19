@@ -29,6 +29,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/orders', [AdminController::class, 'orderIndex'])->name('orders.view');
     Route::post('/admin/orders/detail/{id}', [OrderController::class, 'orderDetails'])->name('orders.detail');
+    Route::get('/admin/orders/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
     Route::post('/admin/orders/invitation/approve/{id}', [InvitationController::class, 'approveOrder'])->name('admin.orders.approve');
