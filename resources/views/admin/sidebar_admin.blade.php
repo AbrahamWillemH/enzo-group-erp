@@ -54,6 +54,34 @@
           </ul>
         </li>
         <li>
+          <!-- button -->
+          <button type="button" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main" id="dropdown-button2">
+            <span>Purchase</span>
+            <svg class="w-3 h-3 ml-[65px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+          </button>
+          <!-- dropdown -->
+          <ul class="hidden bg-white/10 mt-4" id="dropdown-menu2">
+            <li>
+              <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+
+          </ul>
+        </li>
+        <li>
           <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Inventory</span>
           </a>
@@ -84,6 +112,8 @@
 <script>
   const button = document.getElementById('dropdown-button');
   const menu = document.getElementById('dropdown-menu');
+  const button2 = document.getElementById('dropdown-button2');
+  const menu2 = document.getElementById('dropdown-menu2');
 
   button.addEventListener('click', () => {
     // Toggle dropdown visibility
@@ -94,6 +124,17 @@
   window.addEventListener('click', (event) => {
     if (!button.contains(event.target) && !menu.contains(event.target)) {
       menu.classList.add('hidden');
+    }
+  });
+  
+  button2.addEventListener('click', () => {
+    // Toggle dropdown visibility
+    menu2.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (event) => {
+    if (!button2.contains(event.target) && !menu2.contains(event.target)) {
+      menu2.classList.add('hidden');
     }
   });
 </script>
