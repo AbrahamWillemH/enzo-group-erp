@@ -59,8 +59,8 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
-                                    <th class="text-center">Pesan</th>
-                                    <th class="text-center">Acara</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Desain</th>
                                     <th class="text-center">Status Bayar</th>
                                     <th class="text-center">Action</th>
@@ -75,7 +75,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">ACC</td>
                                     <td class="px-3 py-3 text-center">DP2</td>
                                     <td class="px-3 py-3 text-center">
@@ -89,33 +89,6 @@
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
-                                                Next
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-
-                                <!-- contoh -->
-                                <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                    <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                    <td class="px-3 py-3 text-center">Not ACC</td>
-                                    <td class="px-3 py-3 text-center">DP2</td>
-                                    <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
-                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                                Detail
-                                            </button>
-                                        </form>
-
-                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
-                                            <button type="submit" class="bg-slate-600 rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                                 Next
                                             </button>
                                         </form>
@@ -153,8 +126,8 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                    <td class="px-3 py-3 text-center w-[7rem]"><input type="text" id="textInput" class="w-full rounded-sm" placeholder="2025-01-19"></td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
+                                    <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
 
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -164,9 +137,16 @@
                                             </button>
                                         </form>
 
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
-                                            <button type="submit" id="submitButton" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="return confirmNextProgress();">
+                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                            <button type="submit" id="submitButton_{{$o->id}}" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline({{$o->id}});">
                                                 Next
                                             </button>
                                         </form>
@@ -204,7 +184,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -214,9 +194,15 @@
                                             </button>
                                         </form>
 
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
-                                            <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                            <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                                 Next
                                             </button>
                                         </form>
@@ -254,7 +240,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -311,7 +297,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -367,7 +353,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -404,23 +390,33 @@
         return confirm('Are you sure you want to go to the next progress?');
     }
     // Ambil elemen input dan tombol
-    const textInput = document.getElementById('textInput');
-    const submitButton = document.getElementById('submitButton');
+    const textInput = document.getElementById('deadline_' + {{$o->id}});
+    const submitButton = document.getElementById('submitButton_' + {{$o->id}});
 
     // Event listener untuk mendeteksi perubahan di input
     textInput.addEventListener('input', () => {
-    if (textInput.value.trim() !== '') {
-    // Aktifkan tombol jika ada teks
-    submitButton.disabled = false;
-    submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
-    submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-    } else {
-    // Nonaktifkan tombol jika kosong
-    submitButton.disabled = true;
-    submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-    submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
-    }
+        if (textInput.value.trim() !== '') {
+            // Aktifkan tombol jika ada teks
+            submitButton.disabled = false;
+            submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
+            submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+        } else {
+            // Nonaktifkan tombol jika kosong
+            submitButton.disabled = true;
+            submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+            submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
+        }
     });
+
+    function copyDeadline(id) {
+        console.log('TEST')
+        confirmNextProgress();
+        const deadlineInput = document.getElementById(`deadline_${id}`);
+        const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
+        hiddenInput.value = deadlineInput.value;
+
+    }
+
 
 </script>
 @endsection

@@ -60,7 +60,7 @@ class OrderController extends Controller
         $modelClass::where('id', $id)->update(['progress' => $progress]);
     }
 
-    public function updateProgress($id)
+    public function updateProgress(Request $request, $id)
     {
         if (auth()->user()->role !== 'admin') {
             return redirect()->route('home')->with('error', 'You do not have permission to update progress.');
@@ -71,6 +71,12 @@ class OrderController extends Controller
 
         if (!$order) {
             return redirect()->back()->with('error', 'Order not found.');
+        }
+
+        if ($order->progress == 'Fix') {
+            $deadlineDate = $request->input('deadline_date');
+            $order->deadline_date = $deadlineDate;
+            $order->save();
         }
 
         $currentProgressIndex = array_search($order->progress, $this->progressStages);
@@ -110,24 +116,22 @@ class OrderController extends Controller
         return redirect()->back()->with('success', 'Order progress reverted to ' . $previousProgress);
     }
     public function orderDetails($id){
-    $invitation = DB::table('invitation')->where('id', $id)->first();
-    $packaging = DB::table('packaging')->where('id', $id)->first();
-    $seminarkit = DB::table('seminarkit')->where('id', $id)->first();
-    $souvenir = DB::table('souvenir')->where('id', $id)->first();
+        $invitation = DB::table('invitation')->where('id', $id)->first();
+        $packaging = DB::table('packaging')->where('id', $id)->first();
+        $seminarkit = DB::table('seminarkit')->where('id', $id)->first();
+        $souvenir = DB::table('souvenir')->where('id', $id)->first();
 
-    if ($invitation) {
-        return app(InvitationController::class)->invitationDetails($id);
-    }
-    if ($packaging) {
-        return app(PackagingController::class)->packagingDetails($id);
-    }
-    if ($seminarkit) {
-        return app(SeminarKitController::class)->seminarkitDetails($id);
-    }
-    if ($souvenir) {
-        return app(SouvenirController::class)->souvenirDetails($id);
-    }
-
-
+        if ($invitation) {
+            return app(InvitationController::class)->invitationDetails($id);
+        }
+        if ($packaging) {
+            return app(PackagingController::class)->packagingDetails($id);
+        }
+        if ($seminarkit) {
+            return app(SeminarKitController::class)->seminarkitDetails($id);
+        }
+        if ($souvenir) {
+            return app(SouvenirController::class)->souvenirDetails($id);
+        }
     }
 }

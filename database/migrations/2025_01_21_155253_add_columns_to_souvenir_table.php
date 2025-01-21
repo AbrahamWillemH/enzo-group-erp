@@ -40,9 +40,6 @@ return new class extends Migration
                 'thankscard',
                 'color_motif',
                 'motif_backup',
-                'deadline_date',
-                'warna_motif',
-                'motif_cadangan',
             ]);
         });
     }
