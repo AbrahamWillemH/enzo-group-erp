@@ -15,7 +15,12 @@ class InvitationController extends Controller
 {
     public function index()
     {
-        return view('admin.orders');
+        $invitation = Invitation::all()->map(function ($item) {
+            $item->type = 'invitation';
+            return $item;
+        });
+
+        return view('admin.invitation', compact('invitation'));
     }
 
     public function create()

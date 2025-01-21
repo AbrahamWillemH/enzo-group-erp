@@ -36,17 +36,17 @@
           <!-- dropdown -->
           <ul class="hidden bg-white/10 mt-4" id="dropdown-menu">
             <li>
-              <a href="{{route('orders.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <a href="{{route('invitation.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>
             <li>
-              <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <a href="{{route('souvenir.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>
             <li>
-              <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <a href="{{route('packaging.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>
@@ -106,7 +106,7 @@
   </aside>
   <!-- Main Container -->
    @yield('konten')
-  
+
 </body>
 
 <script>
@@ -126,7 +126,7 @@
       menu.classList.add('hidden');
     }
   });
-  
+
   button2.addEventListener('click', () => {
     // Toggle dropdown visibility
     menu2.classList.toggle('hidden');

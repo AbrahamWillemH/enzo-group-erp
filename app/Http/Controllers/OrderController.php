@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     private array $progressStages = [
+        'Pending',
+        'Fix',
         'Pemesanan Bahan',
         'Proses Produksi',
         'Finishing',

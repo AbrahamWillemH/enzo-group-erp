@@ -27,23 +27,24 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/orders', [AdminController::class, 'orderIndex'])->name('orders.view');
-    Route::post('/admin/orders/detail/{id}', [OrderController::class, 'orderDetails'])->name('orders.detail');
-    Route::get('/admin/orders/detail/test', function(){return view('admin.invitation_detail_test');});
+    Route::post('/admin/orders/invitation/detail/{id}', [OrderController::class, 'orderDetails'])->name('orders.detail');
+    Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
-    Route::post('/admin/orders/invitation/approve/{id}', [InvitationController::class, 'approveOrder'])->name('admin.orders.approve');
-    Route::post('/admin/orders/invitation/decline/{id}', [InvitationController::class, 'declineOrder'])->name('admin.orders.decline');
+    Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('invitation.view');
+    // Route::post('/admin/orders/invitation/approve/{id}', [InvitationController::class, 'approveOrder'])->name('admin.orders.approve');
+    // Route::post('/admin/orders/invitation/decline/{id}', [InvitationController::class, 'declineOrder'])->name('admin.orders.decline');
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetail'])->name('admin.invitation.detail');
     Route::get('admin/orders/invitation/edit', function(){return view('admin.invitation_edit');});
 
     //packaging
-    Route::get('admin/orders/packaging/detail', function(){return view('admin.packaging_detail');});
+    Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('packaging.view');
+    Route::get('admin/orders/packaging/{id}', function(){return view('admin.packaging_detail');});
     Route::get('admin/orders/packaging/edit', function(){return view('admin.packaging_edit');});
 
     //souvenir
-    Route::get('admin/orders/souvenir', function(){return view('user.orders.souvenir_create');});
-    Route::get('admin/orders/souvenir/detail', function(){return view('admin.souvenir_detail');});
+    Route::get('admin/orders/souvenir', [SouvenirController::class, 'index'])->name('souvenir.view');
+    Route::get('admin/orders/souvenir/{id}', function(){return view('admin.souvenir_detail');});
     Route::get('admin/orders/souvenir/edit', function(){return view('admin.souvenir_edit');});
 
     // update progress
@@ -60,6 +61,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 // User routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    Route::get('/user/orders', [OrderController::class, 'orderIndex'])->name('orders.view');
     // create order
     Route::get('/orders/invitation/create', [InvitationController::class, 'create'])->name('user.orders.invitation.create');
     Route::post('/orders/invitation/store', [InvitationController::class, 'store'])->name('user.orders.invitation.store');
