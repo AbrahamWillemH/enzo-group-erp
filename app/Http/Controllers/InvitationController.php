@@ -15,10 +15,9 @@ class InvitationController extends Controller
 {
     public function index()
     {
-        $invitation = Invitation::all()->map(function ($item) {
-            $item->type = 'invitation';
-            return $item;
-        });
+        $invitation = Invitation::all();
+
+        // dd($invitation);
 
         return view('admin.invitation', compact('invitation'));
     }
@@ -36,7 +35,7 @@ class InvitationController extends Controller
             'instagram' => 'nullable|string|max:255',
             'quantity' => 'required|integer',
             'product_name' => 'required|string|max:255',
-            'deadline_date' => 'required|date',
+            'deadline_date' => 'nullable|date',
             'address' => 'required|string|max:1000',
             'finishing' => 'required|string|max:255',
             'groom_name' => 'required|string|max:255',
@@ -70,8 +69,9 @@ class InvitationController extends Controller
         $user = auth()->user();
         $order = new Invitation($validated);
         $order->user_id = $user->id;
-        $order->user_name = $user->name;
         $order->type = 'Invitation';
+        $order->id = Invitation::generateInvitationId();
+
         $order->save();
 
         return redirect()->back()->with('success', 'Data saved successfully');

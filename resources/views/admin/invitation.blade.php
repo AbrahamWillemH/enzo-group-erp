@@ -70,7 +70,7 @@
                             @foreach($invitation as $o)
                             @if ($o->progress == 'Pending')
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
+                                <td class="px-3 py-3 text-center">{{ $o->id }}</td>
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>

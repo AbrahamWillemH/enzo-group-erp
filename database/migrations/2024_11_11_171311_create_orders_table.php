@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('invitation', function (Blueprint $table) {
-            $table->id();
+            $table->string('id')->primary();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('address');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->integer('quantity');
             $table->string('type');
-            $table->date('deadline_date');
+            $table->date('deadline_date')->nullable();
             $table->string('finishing');
             $table->enum('status', ['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'])->default('Menunggu Konfirmasi');
             $table->enum('progress', ['Pemesanan Bahan', 'Proses Produksi', 'Finishing', 'Selesai'])->default('Pemesanan Bahan');
@@ -45,32 +45,29 @@ return new class extends Migration
         });
 
         Schema::create('souvenir', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');
-            $table->date('deadline_date');
+            $table->date('deadline_date')->nullable();
             $table->enum('status', ['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'])->default('Menunggu Konfirmasi');
             $table->enum('progress', ['Pemesanan Bahan', 'Proses Produksi', 'Finishing', 'Selesai'])->default('Pemesanan Bahan');
             $table->timestamps();
         });
 
         Schema::create('seminarkit', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');
-            $table->date('deadline_date');
+            $table->date('deadline_date')->nullable();
             $table->enum('status', ['Menunggu Konfirmasi', 'Dikonfirmasi', 'Ditolak'])->default('Menunggu Konfirmasi');
             $table->enum('progress', ['Pemesanan Bahan', 'Proses Produksi', 'Finishing', 'Selesai'])->default('Pemesanan Bahan');
             $table->timestamps();
         });
 
         Schema::create('packaging', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');

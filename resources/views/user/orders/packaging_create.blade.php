@@ -18,7 +18,7 @@
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
-     
+
       <!-- Dropdown Menu -->
       <div class="flex flex-col justify-center items-center group relative">
         <!-- Dropdown Button -->
@@ -53,7 +53,7 @@
     </div>
     @endif
 
-    <form method="POST" class="flex flex-col gap-5 items-center">
+    <form action="{{route('user.orders.packaging.store')}}" method="POST" class="flex flex-col gap-5 items-center">
       @csrf
 
       <!-- Orders Info -->
@@ -61,40 +61,40 @@
         <div class="grid grid-rows-4 gap-5">
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="name">Nama Pemesan</label>
-            <input type="text" id="name" name="name" value="{{ old('name') }}" required
+            <label class="ml-2" for="user_name">Nama Pemesan</label>
+            <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
               placeholder="Nama Pemesan"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('name')
+            @error('user_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="phone">Nomor HP</label>
-            <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required
+            <label class="ml-2" for="phone_number">Nomor HP</label>
+            <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required
               placeholder="08XX-XXXX-XXXX"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('phone')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="deadline_date">Deadline</label>
-            <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('deadline_date')
+            @error('phone_number')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="quantity">Jumlah</label>
-            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required 
+            <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required
               placeholder="Jumlah"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('quantity')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="size">Ukuran</label>
+            <input type="text" id="size" name="size" value="{{ old('size') }}" required
+              placeholder="Ukuran"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('size')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -113,20 +113,20 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="type" name="type" required>
+            <label class="ml-2" for="package_type">Tipe</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="package_type" name="package_type" required>
               <option value="SB Diecut">SB Diecut</option>
               <option value="CB Diecut">CB Diecut</option>
               <option value="HB Tutup Lepas">HB Tutup Lepas</option>
               <option value="HB Pita">HB Pita</option>
               <option value="HB Magnet">HB Magnet</option>
             </select>
-            @error('type')
+            @error('package_type')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
 
-          
+
           <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
@@ -137,23 +137,13 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-          
-          <div class="flex items-center flex-col">
-            <label class="ml-2" for="size">Ukuran</label>
-            <input type="text" id="size" name="size" value="{{ old('size') }}" required
-              placeholder="Ukuran"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('size')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
         </div>
       </div>
-      
+
       <div class="grid grid-cols-2 gap-60 justify-center">
         <div class="flex items-center flex-col">
           <label class="ml-2" for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required 
+          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
             placeholder="Alamat Lengkap"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('note')
@@ -162,11 +152,11 @@
         </div>
 
         <div class="flex items-center flex-col">
-          <label class="ml-2" for="note">Note Desain</label>
-          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required 
+          <label class="ml-2" for="note_design">Note Desain</label>
+          <textarea id="note_design" rows="5" name="note_design" value="{{ old('note_design') }}" required
             placeholder="Tuliskan note desain disini..."
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('note')
+          @error('note_design')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>

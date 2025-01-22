@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -42,7 +43,51 @@ class Invitation extends Model
         'reception_date',
         'reception_time',
         'reception_location',
+        'design_status',
+        'note_cs',
+        'note_design',
+        'price_per_pcs',
+        'expedition',
+        'printout',
+        'acc_client'
     ];
+
+    // Fungsi membuat ID otomatis YYYYMMDD-XX
+    public static function generateInvitationId()
+    {
+        $date = now()->format('Ymd'); // Tanggal dalam format angka saja (contoh: 20250122)
+
+        // Ambil ID terakhir dari tiga tabel
+        $lastId = collect(DB::select("
+            SELECT id FROM invitation WHERE DATE(created_at) = :date1
+            UNION
+            SELECT id FROM souvenir WHERE DATE(created_at) = :date2
+            UNION
+            SELECT id FROM packaging WHERE DATE(created_at) = :date3
+            ORDER BY id DESC
+            LIMIT 1
+        ", [
+            'date1' => now()->toDateString(),
+            'date2' => now()->toDateString(),
+            'date3' => now()->toDateString(),
+        ]))->first();
+
+        if ($lastId) {
+            // Ambil nomor urut terakhir dari ID
+            $lastNumber = (int) substr($lastId->id, -3);
+            $newId = $lastNumber + 1;
+        } else {
+            // Jika belum ada ID pada tanggal hari ini
+            $newId = 1;
+        }
+
+        // Format nomor urut menjadi 3 digit
+        $orderNumber = str_pad($newId, 3, '0', STR_PAD_LEFT);
+
+        // Gabungkan tanggal dengan nomor urut
+        return $date . $orderNumber;
+    }
+
 
 
     /**
@@ -51,52 +96,5 @@ class Invitation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    // SCOPE STATUS PESANAN
-    public function scopeWaitingConfirmation($query)
-    {
-        return $query->where('status', AllOrder::STATUS_WAITING);
-    }
-    public function scopeConfirmed($query)
-    {
-        return $query->where('status', AllOrder::STATUS_CONFIRMED);
-    }
-    public function scopeDeclined($query)
-    {
-        return $query->where('status', AllOrder::STATUS_DECLINED);
-    }
-
-
-    // SCOPE PROGRESS PEMBUATAN BARANG
-    public function scopeProgress_1($query)
-    {
-        return $query->where('status', AllOrder::PROGRESS_1);
-    }
-    public function scopeProgress_2($query)
-    {
-        return $query->where('status', AllOrder::PROGRESS_2);
-    }
-    public function scopeProgress_3($query)
-    {
-        return $query->where('status', AllOrder::PROGRESS_3);
-    }
-    public function scopeProgress_4($query)
-    {
-        return $query->where('status', AllOrder::PROGRESS_4);
-    }
-
-    /**
-     * Metode untuk memperbarui status pesanan ke status yang diinginkan.
-     */
-    public function updateStatus($status)
-    {
-        $this->status = $status;
-        $this->save();
-    }
-    public function updateProgress($progress)
-    {
-        $this->progress = $progress;
-        $this->save();
     }
 }

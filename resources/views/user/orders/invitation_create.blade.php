@@ -113,10 +113,10 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label for="deadline_date">Deadline</label>
-            <input type="date" id="deadline_date" name="deadline_date" value="{{ old('deadline_date') }}" required
+            <label for="finishing">Finishing</label>
+            <input type="text" id="finishing" name="finishing" value="{{ old('finishing') }}" required placeholder="Finishing"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('deadline_date')
+            @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -130,15 +130,6 @@
             placeholder="Alamat Lengkap"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col">
-          <label for="finishing">Finishing</label>
-          <input type="text" id="finishing" name="finishing" value="{{ old('finishing') }}" required placeholder="Finishing"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-          @error('finishing')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>

@@ -1,54 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reminder</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="font-mont"> -->
-    <!-- Sidebar -->
-    <!-- <aside class="w-[19.8%] fixed top-0 left-0">
-        <div class="bg-green-main min-h-screen">
-            <ul class="space-y-5 py-10">
-                <li>
-                    <div class="flex items-center space-x-3">
-                        <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center ml-4">
-                        <span class="text-green-main font-medium">A</span>
-                        </div>
-                        <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">ADMIN</span>
-                    </div>
-                </li>
-                <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-                        <span>Data Pesanan</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-                        <span>Inventory</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl bg-cream text-green-main">
-                        <span>Reminder</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-                        <span>Calendar</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </aside> -->
     @extends('admin/sidebar_admin')
     @section('title', 'Reminder')
     @section('konten')
@@ -61,7 +10,7 @@
                     Filter
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                 </button>
-        
+
                 <!-- Dropdown Content with Checkbox -->
                 <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-30 top-full left-[10px] w-[100px] transition-opacity duration-500 delay-25">
                     <div class="block px-4 py-2">
@@ -225,7 +174,7 @@
                                 <td class="px-6 py-4">35.000</td>
                                 <td class="px-6 py-4">157.500</td>
                             </tr>
-                            
+
 
                         </tbody>
                     </table>
@@ -264,7 +213,7 @@
                                 <td class="px-4 py-4"><a href="" class="text-blue-600 font-medium hover:underline">Edit</a></td>
                                 <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
                             </tr>
-                            
+
 
                         </tbody>
                     </table>
@@ -312,9 +261,9 @@
                                 SUBMIT
                             </button>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
 
             </section>

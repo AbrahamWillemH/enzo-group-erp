@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invitation', function (Blueprint $table) {
-            $table->integer('price_per_pcs')->default('5000')->after('dp_date');
-            $table->string('printout')->default('Printilan')->after('price_per_pcs');
-            $table->string('expedition')->default('SiCepat')->after('printout');
-            $table->boolean('acc_client')->default(true)->after('printout');
+            $table->string('printout')->nullable();
+            $table->enum('acc_client', ['Pending', 'DECL', 'ACC'])->default('Pending');
+            $table->string('expedition')->nullable();
+            $table->integer('price_per_pcs')->nullable();
         });
     }
 
