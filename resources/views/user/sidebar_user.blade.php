@@ -45,7 +45,7 @@
   </aside>
   <!-- Main Container -->
    @yield('konten')
-  
+
 </body>
 
 </html>

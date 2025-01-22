@@ -77,8 +77,7 @@
                                 <td class="px-3 py-3 text-center">ACC</td>
                                 <td class="px-3 py-3 text-center">{{$o->payment_status}}</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
@@ -98,7 +97,7 @@
                                                 Next
                                             </button>
                                         </form>
-                                        @endif
+                                    @endif
                                 </td>
                             </tr>
                             @endif
@@ -135,8 +134,7 @@
                                 <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
 
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
@@ -190,8 +188,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
@@ -244,8 +241,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
@@ -299,8 +295,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
@@ -353,8 +348,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
+                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>

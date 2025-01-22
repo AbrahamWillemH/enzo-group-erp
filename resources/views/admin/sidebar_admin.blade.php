@@ -21,7 +21,7 @@
           </div>
         </li>
         <li>
-          <a href="{{('/admin/dashboard')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
+          <a href="{{route('admin.dashboard')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
             <span>Dashboard</span>
           </a>
         </li>
@@ -36,17 +36,17 @@
           <!-- dropdown -->
           <ul class="hidden bg-white/10 mt-4" id="dropdown-menu">
             <li>
-              <a href="{{route('invitation.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <a href="{{route('admin.invitation.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>
             <li>
-              <a href="{{route('souvenir.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <a href="{{route('admin.souvenir.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>
             <li>
-              <a href="{{route('packaging.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <a href="{{route('admin.packaging.view')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
               <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
               </a>
             </li>

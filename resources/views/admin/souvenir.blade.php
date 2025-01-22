@@ -78,22 +78,30 @@
                                     <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
-                                    <td class="px-3 py-3 text-center">ACC</td>
-                                    <td class="px-3 py-3 text-center">DP2</td>
+                                    <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->payment_status}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>
                                         </form>
 
+                                        @if ($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas')
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                                 Next
                                             </button>
                                         </form>
+                                        @else
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-slate-600 rounded-lg px-[3rem] py-2 inline-block text-white cursor-not-allowed" disabled>
+                                                Next
+                                            </button>
+                                        </form>
+                                    @endif
                                     </td>
                                 </tr>
                                 @endif
@@ -134,8 +142,7 @@
                                     <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
 
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>
@@ -193,8 +200,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>
@@ -251,8 +257,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>
@@ -310,8 +315,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>
@@ -368,8 +372,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
                                     <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('orders.detail', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
+                                        <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
                                             </button>

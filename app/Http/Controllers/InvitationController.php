@@ -77,6 +77,56 @@ class InvitationController extends Controller
         return redirect()->back()->with('success', 'Data saved successfully');
     }
 
+    public function edit($id){
+        $invitation = Invitation::findOrFail($id);
+        // dd($invitation);
+        return view('admin.invitation_edit', compact('invitation'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'user_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'instagram' => 'nullable|string|max:255',
+            'quantity' => 'required|integer',
+            'product_name' => 'required|string|max:255',
+            'deadline_date' => 'nullable|date',
+            'address' => 'required|string|max:1000',
+            'finishing' => 'required|string|max:255',
+            'groom_name' => 'required|string|max:255',
+            'groom_nickname' => 'required|string|max:255',
+            'groom_father' => 'required|string|max:255',
+            'groom_mother' => 'required|string|max:255',
+            'groom_parents_address' => 'required|string|max:255',
+            'bride_name' => 'required|string|max:255',
+            'bride_nickname' => 'required|string|max:255',
+            'bride_father' => 'required|string|max:255',
+            'bride_mother' => 'required|string|max:255',
+            'bride_parents_address' => 'required|string|max:255',
+            'akad_pemberkatan_date' => 'required|date',
+            'akad_pemberkatan_time' => 'required',
+            'akad_pemberkatan_location' => 'required|string',
+            'reception_date' => 'required|date',
+            'reception_time' => 'required',
+            'reception_location' => 'required|string',
+            'payment_status' => 'required|string',
+            'progress' => 'required|string',
+            'design_status' => 'required|string',
+            'printout' => 'nullable|string',
+            'price_per_pcs' => 'nullable|int',
+            'expedition' => 'nullable|string',
+            'dp2_date' => 'nullable|date'
+        ]);
+
+        $order = Invitation::findOrFail($id);
+        $order->update($validated);
+
+        return redirect()->back()->with('success', 'Data saved successfully');
+    }
+
+
+
     public function approveOrder($id)
     {
         $invitation = Invitation::findOrFail($id);

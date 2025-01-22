@@ -31,23 +31,25 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::post('/admin/orders/invitation/detail/{id}', [OrderController::class, 'orderDetails'])->name('orders.detail');
     Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
-    Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('invitation.view');
-    Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetail'])->name('admin.invitation.detail');
-    Route::get('/admin/orders/invitation/edit', function(){return view('admin.invitation_edit');});
+    Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
+    Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
+    Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
+    Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
 
     //packaging
-    Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('packaging.view');
-    Route::get('/admin/orders/packaging/{id}', function(){return view('admin.packaging_detail');});
-    Route::get('/admin/orders/packaging/edit', function(){return view('admin.packaging_edit');});
+    Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
+    Route::get('/admin/orders/packaging/{id}', [PackagingController::class, 'packagingDetails'])->name('admin.packaging.detail');
+    Route::get('/admin/orders/packaging/{id}/edit', [PackagingController::class, 'edit'])->name('admin.packaging.edit');
+    Route::post('/admin/orders/packaging/{id}/update', [PackagingController::class, 'update'])->name('admin.packaging.update');
 
     //souvenir
-    Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('souvenir.view');
-    Route::get('/admin/orders/souvenir/{id}', function(){return view('admin.souvenir_detail');});
-    Route::get('/admin/orders/souvenir/edit', function(){return view('admin.souvenir_edit');});
+    Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
+    Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
+    Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
+    Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');
 
     // update progress
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');

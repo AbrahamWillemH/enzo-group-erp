@@ -25,6 +25,7 @@ class Souvenir extends Model
         'event_date',
         'bridegroom_name',
         'pack',
+        'payment_status',
         'design',
         'thankscard',
         'color_motif',

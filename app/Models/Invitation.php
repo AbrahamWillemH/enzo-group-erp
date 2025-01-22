@@ -49,7 +49,11 @@ class Invitation extends Model
         'price_per_pcs',
         'expedition',
         'printout',
-        'acc_client'
+        'acc_client',
+        'dp1_date',
+        'dp2_date',
+        'paid_off_date',
+        'payment_status'
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX
