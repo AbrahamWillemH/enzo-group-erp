@@ -414,9 +414,6 @@
 
     }
 
-
-</script>
-
 </script>
 @endsection
 <!-- </html> -->
