@@ -59,6 +59,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Desain</th>
@@ -74,6 +75,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">ACC</td>
@@ -111,6 +113,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
@@ -125,6 +128,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
@@ -169,6 +173,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
@@ -183,6 +188,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
@@ -225,6 +231,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
@@ -239,6 +246,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
@@ -282,6 +290,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
@@ -296,6 +305,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
@@ -338,6 +348,7 @@
                                     <th class="text-center">Nama</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Kemas</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
@@ -352,6 +363,7 @@
                                     <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->pack}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->event_date}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
@@ -381,7 +393,6 @@
         </div>
     </div>
 
-<!-- </body> -->
 <script>
     function confirmPreviousProgress() {
         return confirm('Are you sure you want to go back to the previous progress?');
@@ -389,35 +400,35 @@
     function confirmNextProgress() {
         return confirm('Are you sure you want to go to the next progress?');
     }
-    // Ambil elemen input dan tombol
-    const textInput = document.getElementById('deadline_' + {{$o->id}});
-    const submitButton = document.getElementById('submitButton_' + {{$o->id}});
+    document.querySelectorAll('input[type="date"][id^="deadline_"]').forEach((textInput) => {
+        const id = textInput.id.split('_')[1]; // Ambil ID unik
+        const submitButton = document.getElementById(`submitButton_${id}`);
 
-    // Event listener untuk mendeteksi perubahan di input
-    textInput.addEventListener('input', () => {
-        if (textInput.value.trim() !== '') {
-            // Aktifkan tombol jika ada teks
-            submitButton.disabled = false;
-            submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
-            submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-        } else {
-            // Nonaktifkan tombol jika kosong
-            submitButton.disabled = true;
-            submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-            submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
-        }
+        // Event listener untuk setiap elemen input
+        textInput.addEventListener('input', () => {
+            if (textInput.value.trim() !== '') {
+                // Aktifkan tombol jika ada teks
+                submitButton.disabled = false;
+                submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
+                submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+            } else {
+                // Nonaktifkan tombol jika kosong
+                submitButton.disabled = true;
+                submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+                submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
+            }
+        });
     });
 
+    // Fungsi untuk menyalin deadline
     function copyDeadline(id) {
-        console.log('TEST')
         confirmNextProgress();
         const deadlineInput = document.getElementById(`deadline_${id}`);
         const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
-        hiddenInput.value = deadlineInput.value;
-
+        if (deadlineInput && hiddenInput) {
+            hiddenInput.value = deadlineInput.value;
+        }
     }
-
-
 </script>
 @endsection
 <!-- </html> -->

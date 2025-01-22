@@ -378,7 +378,6 @@
     </div>
 </div>
 
-<!-- </body> -->
 <script>
     function confirmPreviousProgress() {
         return confirm('Are you sure you want to go back to the previous progress?');
@@ -386,33 +385,36 @@
     function confirmNextProgress() {
         return confirm('Are you sure you want to go to the next progress?');
     }
-    // Ambil elemen input dan tombol
-    const textInput = document.getElementById('deadline_' + {{$o->id}});
-    const submitButton = document.getElementById('submitButton_' + {{$o->id}});
+    document.querySelectorAll('input[type="date"][id^="deadline_"]').forEach((textInput) => {
+        const id = textInput.id.split('_')[1]; // Ambil ID unik
+        const submitButton = document.getElementById(`submitButton_${id}`);
 
-    // Event listener untuk mendeteksi perubahan di input
-    textInput.addEventListener('input', () => {
-        if (textInput.value.trim() !== '') {
-            // Aktifkan tombol jika ada teks
-            submitButton.disabled = false;
-            submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
-            submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-        } else {
-            // Nonaktifkan tombol jika kosong
-            submitButton.disabled = true;
-            submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-            submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
-        }
+        // Event listener untuk setiap elemen input
+        textInput.addEventListener('input', () => {
+            if (textInput.value.trim() !== '') {
+                // Aktifkan tombol jika ada teks
+                submitButton.disabled = false;
+                submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
+                submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+            } else {
+                // Nonaktifkan tombol jika kosong
+                submitButton.disabled = true;
+                submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
+                submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
+            }
+        });
     });
 
+    // Fungsi untuk menyalin deadline
     function copyDeadline(id) {
-        console.log('TEST')
         confirmNextProgress();
         const deadlineInput = document.getElementById(`deadline_${id}`);
         const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
-        hiddenInput.value = deadlineInput.value;
-
+        if (deadlineInput && hiddenInput) {
+            hiddenInput.value = deadlineInput.value;
+        }
     }
+
 
 </script>
 @endsection
