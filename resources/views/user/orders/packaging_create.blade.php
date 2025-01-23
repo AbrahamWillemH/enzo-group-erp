@@ -152,9 +152,9 @@
         </div>
 
         <div class="flex items-center flex-col">
-          <label class="ml-2" for="note_design">Note Desain</label>
+          <label class="ml-2" for="note_design">Note</label>
           <textarea id="note_design" rows="5" name="note_design" value="{{ old('note_design') }}" required
-            placeholder="Tuliskan note desain disini..."
+            placeholder="Tulis catatan tambahan disini"
             class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
           @error('note_design')
           <small class="text-danger">{{ $message }}</small>
