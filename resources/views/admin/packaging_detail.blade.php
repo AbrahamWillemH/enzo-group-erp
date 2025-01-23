@@ -4,12 +4,15 @@
 <div class="ml-[20%]">
 
     <div class="bg-green-light h-full grid grid-rows-[12%_88%] relative">
-        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[89%_11%] px-4 py-5 bg-green-shadow">
+        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[76%_24%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN PACKAGING</h1>
             </div>
-            <div class="font-medium">
+            <div class="grid grid-cols-2 font-medium">
                 <a href="#" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
+                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+                </a>
+                <a href="#purchase" class="text-brown-enzo flex flex-col justify-center items-center group">Purchase Order
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
             </div>
