@@ -166,8 +166,16 @@
                                 <td class="px-4 py-2">{{$souvenir->payment_status}}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Tanggal DP</td>
-                                <td class="px-4 py-2">{{$souvenir->dp2_date}}</td>
+                                <td class="w-[35%] px-4 py-2">Tanggal DP 1</td>
+                                <td class="px-4 py-2"></td>
+                            </tr>
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Tanggal DP 2</td>
+                                <td class="px-4 py-2"></td>
+                            </tr>
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Tanggal Pelunasan</td>
+                                <td class="px-4 py-2"></td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
