@@ -19,6 +19,11 @@ Route::get('/pkg', function(){
     return view('admin.packaging_detail');
 });
 
+// bibi test inventory
+Route::get('/inventorytest', function(){
+    return view('frontend.inventorytest');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);
