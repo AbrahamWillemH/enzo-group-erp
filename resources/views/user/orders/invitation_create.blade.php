@@ -133,6 +133,16 @@
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
+
+        <div class="flex items-center flex-col">
+          <label for="note">Note</label>
+          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
+            placeholder="Tulis catatan tambahan disini"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+          @error('note')
+          <small class="text-danger">{{ $message }}</small>
+          @enderror
+        </div>
       </div>
 
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
