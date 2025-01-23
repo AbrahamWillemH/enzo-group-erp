@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AllOrder;
+use Carbon\Carbon;
 use DB;
-use Exception;
-use Illuminate\Support\Facades\Log;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class InvitationController extends Controller
@@ -16,9 +13,6 @@ class InvitationController extends Controller
     public function index()
     {
         $invitation = Invitation::all();
-
-        // dd($invitation);
-
         return view('admin.invitation', compact('invitation'));
     }
 
@@ -147,6 +141,14 @@ class InvitationController extends Controller
 
     public function invitationDetails($id){
         $invitation = DB::table('invitation')->find($id);
-        return view('admin.invitation_detail', compact('invitation'));
+        $purchase = DB::table('purchase_invitation')
+        ->where('invitation_id', $id)
+        ->get()
+        ->map(function ($item) {
+            $item->date = Carbon::parse($item->date)->format('d/m/Y');
+            return $item;
+        });
+
+        return view('admin.invitation_detail', compact('purchase', 'invitation'));
     }
 }

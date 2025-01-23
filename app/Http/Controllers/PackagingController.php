@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Packaging;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Validator;
@@ -100,6 +101,13 @@ class PackagingController extends Controller
 
     public function packagingDetails($id){
         $packaging = DB::table('packaging')->find($id);
-        return view('admin.packaging_detail', compact('packaging'));
+        $purchase = DB::table('purchase_packaging')
+        ->where('packaging_id', $id)
+        ->get()
+        ->map(function ($item) {
+            $item->date = Carbon::parse($item->date)->format('d/m/Y');
+            return $item;
+        });
+        return view('admin.packaging_detail', compact('packaging', 'purchase'));
     }
 }

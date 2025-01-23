@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Souvenir;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Validator;
@@ -103,6 +104,13 @@ class SouvenirController extends Controller
 
     public function souvenirDetails($id){
         $souvenir = DB::table('souvenir')->find($id);
-        return view('admin.souvenir_detail', compact('souvenir'));
+        $purchase = DB::table('purchase_souvenir')
+        ->where('souvenir_id', $id)
+        ->get()
+        ->map(function ($item) {
+            $item->date = Carbon::parse($item->date)->format('d/m/Y');
+            return $item;
+        });
+        return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
     }
 }

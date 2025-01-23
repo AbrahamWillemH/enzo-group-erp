@@ -41,28 +41,4 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact('orders', 'invitations', 'souvenirs', 'seminarkits', 'packagings'));
     }
-    public function orderIndex()
-    {
-        $invitations = Invitation::all()->map(function ($item) {
-            $item->type = 'invitation';
-            return $item;
-        });
-
-        $souvenirs = Souvenir::all()->map(function ($item) {
-            $item->type = 'souvenir';
-            return $item;
-        });
-
-        $seminarkits = SeminarKit::all()->map(function ($item) {
-            $item->type = 'seminar_kit';
-            return $item;
-        });
-
-        $packagings = Packaging::all()->map(function ($item) {
-            $item->type = 'packaging';
-            return $item;
-        });
-
-        return view('admin.orders', compact('orders'));
-    }
 }
