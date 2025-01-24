@@ -110,4 +110,14 @@ class PackagingController extends Controller
         });
         return view('admin.packaging_detail', compact('packaging', 'purchase'));
     }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Packaging::findOrFail($request->order_id);
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index();
+    }
 }

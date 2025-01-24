@@ -48,18 +48,21 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     //invitation
     Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
+    Route::post('/admin/orders/invitation', [InvitationController::class, 'updatePaymentStatus'])->name('admin.invitation.update_payment_status');
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
 
     //packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
+    Route::post('/admin/orders/packaging', [PackagingController::class, 'updatePaymentStatus'])->name('admin.packaging.update_payment_status');
     Route::get('/admin/orders/packaging/{id}', [PackagingController::class, 'packagingDetails'])->name('admin.packaging.detail');
     Route::get('/admin/orders/packaging/{id}/edit', [PackagingController::class, 'edit'])->name('admin.packaging.edit');
     Route::post('/admin/orders/packaging/{id}/update', [PackagingController::class, 'update'])->name('admin.packaging.update');
 
     //souvenir
     Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
+    Route::post('/admin/orders/souvenir', [SouvenirController::class, 'updatePaymentStatus'])->name('admin.souvenir.update_payment_status');
     Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
     Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
     Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');

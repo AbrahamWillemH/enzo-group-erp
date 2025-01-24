@@ -151,4 +151,14 @@ class InvitationController extends Controller
 
         return view('admin.invitation_detail', compact('purchase', 'invitation'));
     }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Invitation::findOrFail($request->order_id);
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index();
+    }
 }

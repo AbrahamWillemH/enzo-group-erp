@@ -113,4 +113,14 @@ class SouvenirController extends Controller
         });
         return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
     }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Souvenir::findOrFail($request->order_id);
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index();
+    }
 }
