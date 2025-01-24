@@ -86,7 +86,7 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2">
-                                        <img src="{{ asset('img/packagingD.jpeg') }}" alt="" class="object-cover max-w-full max-h-full">
+                                        <img src="{{ asset('storage/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover max-w-full max-h-full">
                                     </td>
                                 </tr>
 
@@ -101,7 +101,7 @@
                             <tbody class="">
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2">
-                                        <img src="{{ asset('img/packagingD.jpeg') }}" alt="" class="object-cover max-w-full max-h-full">
+                                        <img src="{{ asset('storage/' . $souvenir->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover max-w-full max-h-full">
                                     </td>
                                 </tr>
 
@@ -382,7 +382,7 @@
                 </div>
 
                 <div class="edit_button px-6 mt-10 grid justify-items-end">
-                    <a href="#"
+                    <a href="{{route('admin.souvenir.edit', ['id' => $souvenir->id])}}"
                         class="relative bg-green-main/80 text-brown-enzo font-semibold w-[6rem] h-[3rem] flex justify-center items-center rounded-lg overflow-hidden group">
                         <!-- Layer latar belakang -->
                         <span class="absolute inset-0 bg-green-main transition-transform -translate-x-full group-hover:translate-x-0 transition-duration duration-500"></span>

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 
 class InvitationController extends Controller
@@ -47,7 +48,7 @@ class InvitationController extends Controller
             'akad_pemberkatan_location' => 'required|string',
             'reception_date' => 'required|date',
             'reception_time' => 'required',
-            'reception_location' => 'required|string',
+            'reception_location' => 'required|string'
         ]);
 
 
@@ -79,6 +80,7 @@ class InvitationController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validasi input
         $validated = $request->validate([
             'user_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
@@ -110,14 +112,36 @@ class InvitationController extends Controller
             'printout' => 'nullable|string',
             'price_per_pcs' => 'nullable|int',
             'expedition' => 'nullable|string',
-            'dp2_date' => 'nullable|date'
+            'dp2_date' => 'nullable|date',
+            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
         ]);
 
         $order = Invitation::findOrFail($id);
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            if ($order->desain_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_path)) {
+                    try {
+                        Storage::delete($order->desain_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            $file = $request->file('desain_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('invitations', $fileName, 'public');
+
+            $validated['desain_path'] = $filePath;
+        }
+
         $order->update($validated);
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
+
+
 
 
 
@@ -150,5 +174,15 @@ class InvitationController extends Controller
         });
 
         return view('admin.invitation_detail', compact('purchase', 'invitation'));
+    }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Invitation::findOrFail($request->order_id);
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index();
     }
 }

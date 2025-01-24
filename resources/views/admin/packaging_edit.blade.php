@@ -37,7 +37,7 @@
     </div>
     @endif
 
-    <form action="{{route('admin.packaging.update', ['id' => $packaging->id])}}" method="POST" class="flex flex-col gap-5 items-center">
+    <form action="{{route('admin.packaging.update', ['id' => $packaging->id])}}" method="POST" class="flex flex-col gap-5 items-center" enctype="multipart/form-data">
       @csrf
 
       <!-- Orders Info -->
@@ -88,7 +88,7 @@
             <textarea id="address" rows="7" name="address" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->address }}</textarea>
-            @error('note')
+            @error('address')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -166,11 +166,11 @@
           <div class="grid grid-rows-4 gap-5">
 
             <div class="flex items-center flex-col">
-              <label for="invitation_desain">Desain</label>
-              <input type="file" id="invitation_desain" name="invitation_desain"
+              <label for="desain_path">Desain</label>
+              <input type="file" id="desain_path" name="desain_path"
                 accept=".jpg,.jpeg,.png,.pdf"
                 class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45">
-              @error('invitation_desain')
+              @error('desain_path')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -207,7 +207,7 @@
 
             <div class="flex items-center flex-col">
               <label for="dp1_date">Tanggal Pembayaran DP1</label>
-              <input type="date" id="dp1_date" name="dp1_date" value=""
+              <input type="date" id="dp1_date" name="dp1_date" value="{{$packaging->dp1_date}}"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('dp1_date')
               <small class="text-danger">{{ $message }}</small>
@@ -224,10 +224,10 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="payment_date">Tanggal Pelunasan</label>
-              <input type="date" id="payment_date" name="payment_date" value="" required
+              <label for="paid_off_date">Tanggal Pelunasan</label>
+              <input type="date" id="paid_off_date" name="paid_off_date" value="{{$packaging->paid_off_date}}"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('payment_date')
+              @error('paid_off_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -287,9 +287,9 @@
 
             <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>
-              <textarea id="note_cs" rows="5" name="note_cs" value="" required
+              <textarea id="note_cs" rows="5" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$packaging->note_cs}}</textarea>
               @error('note_cs')
               <small class="text-danger">{{ $message }}</small>
               @enderror

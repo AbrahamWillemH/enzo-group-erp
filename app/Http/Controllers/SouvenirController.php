@@ -6,6 +6,7 @@ use App\Models\Souvenir;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 
 class SouvenirController extends Controller
@@ -92,14 +93,51 @@ class SouvenirController extends Controller
             'expedition' => 'nullable|string|max:255',
             'printout' => 'nullable|string|max:255',
             'design_status' => 'nullable|string|max:255',
+            'desain_thankscard_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
+            'desain_emboss_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
         ]);
 
-        // dd($request->all());
-
         $order = Souvenir::findOrFail($id);
+
+        if ($request->hasFile('desain_emboss_path') && $request->file('desain_emboss_path')->isValid()) {
+            if ($order->desain_emboss_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_emboss_path)) {
+                    try {
+                        Storage::delete($order->desain_emboss_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            $file = $request->file('desain_emboss_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('souvenir/emboss', $fileName, 'public');
+
+            $validated['desain_emboss_path'] = $filePath;
+        }
+
+        if ($request->hasFile('desain_thankscard_path') && $request->file('desain_thankscard_path')->isValid()) {
+            if ($order->desain_thankscard_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_thankscard_path)) {
+                    try {
+                        Storage::delete($order->desain_thankscard_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            $file = $request->file('desain_thankscard_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('souvenir/thankscard', $fileName, 'public');
+
+            $validated['desain_thankscard_path'] = $filePath;
+        }
+
         $order->update($validated);
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
 
     public function souvenirDetails($id){
@@ -112,5 +150,15 @@ class SouvenirController extends Controller
             return $item;
         });
         return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
+    }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Souvenir::findOrFail($request->order_id);
+        $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index();
     }
 }

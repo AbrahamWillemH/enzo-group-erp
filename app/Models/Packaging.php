@@ -39,7 +39,8 @@ class Packaging extends Model
         'design_status',
         'type',
         'note_cs',
-        'status'
+        'status',
+        'desain_path'
     ];
 
     public static function generatePackagingId()

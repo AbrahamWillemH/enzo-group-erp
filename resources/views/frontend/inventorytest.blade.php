@@ -48,68 +48,20 @@
                             </tr>
                         </thead>
                         <tbody id="table-body" class="overflow-y-auto">
+                            @foreach ($rekapStok as $rekap)
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">B-001</td>
-                                <td class="px-6 py-4">Kanvas Putih</td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4">35.000</td>
-                                <td class="px-6 py-4">157.500</td>
+                                <td scope="row" class="px-6 py-4">{{ $rekap->kode_barang }}</td>
+                                <td class="px-6 py-4">{{ $rekap->nama_barang }}</td>
+                                <td class="px-6 py-4">{{ $rekap->stok_awal }}</td>
+                                <td class="px-6 py-4">{{ $rekap->barang_masuk }}</td>
+                                <td class="px-6 py-4">{{ $rekap->barang_keluar }}</td>
+                                <td class="px-6 py-4">{{ $rekap->stok_akhir }}</td>
+                                <td class="px-6 py-4">{{ $rekap->harga }}</td>
+                                <td class="px-6 py-4">{{ $rekap->total_harga }}</td>
                                 <td class="px-4 py-4"><button type="button" class="edit-rekap text-blue-600 font-medium hover:underline">Edit</button></td>
                                 <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">KJ</td>
-                                <td class="px-6 py-4">Kancing Jepret</td>
-                                <td class="px-6 py-4">500</td>
-                                <td class="px-6 py-4">0</td>
-                                <td class="px-6 py-4">0</td>
-                                <td class="px-6 py-4">500</td>
-                                <td class="px-6 py-4">450</td>
-                                <td class="px-6 py-4">225.000</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-rekap text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">H30</td>
-                                <td class="px-6 py-4">Handuk 30x70</td>
-                                <td class="px-6 py-4">7</td>
-                                <td class="px-6 py-4">0</td>
-                                <td class="px-6 py-4">0</td>
-                                <td class="px-6 py-4">7</td>
-                                <td class="px-6 py-4">10.000</td>
-                                <td class="px-6 py-4">70.000</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-rekap text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">B-001</td>
-                                <td class="px-6 py-4">Kanvas Putih</td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4">35.000</td>
-                                <td class="px-6 py-4">157.500</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-rekap text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">B-001</td>
-                                <td class="px-6 py-4">Kanvas Putih</td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4"></td>
-                                <td class="px-6 py-4">4.5</td>
-                                <td class="px-6 py-4">35.000</td>
-                                <td class="px-6 py-4">157.500</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-rekap text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-
-
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -187,51 +139,19 @@
                             </tr>
                         </thead>
                         <tbody id="table-body" class="overflow-y-auto">
+                            @foreach ($barangMasuk as $masuk )
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
+                                <td scope="row" class="px-6 py-4">{{ $masuk->tanggal }}</td>
+                                <td class="px-6 py-4">{{ $masuk->kode_barang }}</td>
+                                <td class="px-6 py-4">{{ $masuk->nama_barang }}</td>
+                                <td class="px-6 py-4">{{ $masuk->jumlah_barang }}</td>
+                                <td class="px-6 py-4">{{ $masuk->harga }}</td>
+                                <td class="px-6 py-4">{{ $masuk->total_harga }}</td>
+                                <td class="px-6 py-4">{{ $masuk->catatan }}</td>
                                 <td class="px-4 py-4"><button type="button" class="edit-masuk text-blue-600 font-medium hover:underline">Edit</button></td>
                                 <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-masuk text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-masuk text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-masuk text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -305,55 +225,20 @@
                             </tr>
                         </thead>
                         <tbody id="table-body" class="overflow-y-auto">
+                            @foreach ($barangKeluar as $keluar)
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-6 py-4">100</td>
+                                <td scope="row" class="px-6 py-4">{{ $keluar->tanggal }}</td>
+                                <td class="px-6 py-4">{{ $keluar->kode_barang }}</td>
+                                <td class="px-6 py-4">{{ $keluar->nama_barang }}</td>
+                                <td class="px-6 py-4">{{ $keluar->jumlah_barang }}</td>
+                                <td class="px-6 py-4">{{ $keluar->harga }}</td>
+                                <td class="px-6 py-4">{{ $keluar->total_harga }}</td>
+                                <td class="px-6 py-4">{{ $keluar->nama_cust }}</td>
+                                <td class="px-6 py-4">{{ $keluar->jumlah_order }}</td>
                                 <td class="px-4 py-4"><button type="button" class="edit-keluar text-blue-600 font-medium hover:underline">Edit</button></td>
                                 <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-keluar text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-keluar text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center border-t-[1.5px] border-black/30">
-                                <td scope="row" class="px-6 py-4">28/12/2024</td>
-                                <td class="px-6 py-4">B-040</td>
-                                <td class="px-6 py-4">Kanvas</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-6 py-4">2000</td>
-                                <td class="px-6 py-4">200.000</td>
-                                <td class="px-6 py-4">Shabrina</td>
-                                <td class="px-6 py-4">100</td>
-                                <td class="px-4 py-4"><button type="button" class="edit-keluar text-blue-600 font-medium hover:underline">Edit</button></td>
-                                <td class="px-4 py-4"><a href="" class="text-red-600 font-medium hover:underline">Delete</a></td>
-                            </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -532,126 +417,41 @@
 </div>
 
 <script>
-    // listener rekap
-    const addRekap = document.getElementById('dropdown-button-rekap');
-    const menuRekap = document.getElementById('dropdown-menu-rekap');
-    const editRekap = document.querySelectorAll('.edit-rekap');
+document.addEventListener('DOMContentLoaded', () => {
+    const sections = ['rekap', 'masuk', 'keluar', 'pesan'];
 
-    let isClosedRekap = false;
+    sections.forEach(section => {
+        const addButton = document.getElementById(`dropdown-button-${section}`);
+        const menu = document.getElementById(`dropdown-menu-${section}`);
+        const editButtons = document.querySelectorAll(`.edit-${section}`);
 
-    addRekap.addEventListener('click', () => {
-        // Toggle dropdown visibility
-        menuRekap.classList.toggle('hidden');
+        addButton.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            
+            if (menu.classList.contains('hidden')) {
+                // Reset input saat dropdown ditutup
+                menu.querySelectorAll('input').forEach(input => input.value = '');
+                addButton.textContent = 'TAMBAH DATA';
+            } else {
+                addButton.textContent = 'CLOSE';
+            }
+        });
 
-        if (!isClosedRekap){
-            addRekap.textContent = 'CLOSE';
-            isClosedRekap = true;
-        } else {
-            addRekap.textContent = 'TAMBAH DATA';
-            isClosedRekap = false;
-        }
-    });
+        editButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const row = button.closest('tr');
+                const cells = row.querySelectorAll('td');
+                const inputs = menu.querySelectorAll('input');
 
+                inputs.forEach((input, index) => {
+                    input.value = cells[index].textContent;
+                });
 
-    editRekap.forEach((button) => {
-        button.addEventListener('click', () => {
-            // Toggle dropdown visibility
-            menuRekap.classList.remove('hidden');
-            addRekap.textContent = 'CLOSE';
-            isClosedRekap = true;
+                menu.classList.remove('hidden');
+                addButton.textContent = 'CLOSE';
+            });
         });
     });
-
-    // listener masuk
-    const addMasuk = document.getElementById('dropdown-button-masuk');
-    const menuMasuk = document.getElementById('dropdown-menu-masuk');
-    const editMasuk = document.querySelectorAll('.edit-masuk');
-
-    let isClosedMasuk = false;
-
-    addMasuk.addEventListener('click', () => {
-        // Toggle dropdown visibility
-        menuMasuk.classList.toggle('hidden');
-
-        if (!isClosedMasuk){
-            addMasuk.textContent = 'CLOSE';
-            isClosedMasuk = true;
-        } else {
-            addMasuk.textContent = 'TAMBAH DATA';
-            isClosedMasuk = false;
-        }
-    });
-
-
-    editMasuk.forEach((button) => {
-        button.addEventListener('click', () => {
-            // Toggle dropdown visibility
-            menuMasuk.classList.remove('hidden');
-            addMasuk.textContent = 'CLOSE';
-            isClosedMasuk = true;
-        });
-    });
-
-    // listener keluar
-    const addKeluar = document.getElementById('dropdown-button-keluar');
-    const menuKeluar = document.getElementById('dropdown-menu-keluar');
-    const editKeluar = document.querySelectorAll('.edit-keluar');
-
-    let isClosedKeluar = false;
-
-    addKeluar.addEventListener('click', () => {
-        // Toggle dropdown visibility
-        menuKeluar.classList.toggle('hidden');
-
-        if (!isClosedKeluar){
-            addKeluar.textContent = 'CLOSE';
-            isClosedKeluar = true;
-        } else {
-            addKeluar.textContent = 'TAMBAH DATA';
-            isClosedKeluar = false;
-        }
-    });
-
-
-    editKeluar.forEach((button) => {
-        button.addEventListener('click', () => {
-            // Toggle dropdown visibility
-            menuKeluar.classList.remove('hidden');
-            addKeluar.textContent = 'CLOSE';
-            isClosedKeluar = true;
-        });
-    });
-
-    // listener pesan
-    const addPesan = document.getElementById('dropdown-button-pesan');
-    const menuPesan = document.getElementById('dropdown-menu-pesan');
-    const editPesan = document.querySelectorAll('.edit-pesan');
-
-    let isClosedPesan = false;
-
-    addPesan.addEventListener('click', () => {
-        // Toggle dropdown visibility
-        menuPesan.classList.toggle('hidden');
-
-        if (!isClosedPesan){
-            addPesan.textContent = 'CLOSE';
-            isClosedPesan = true;
-        } else {
-            addPesan.textContent = 'TAMBAH DATA';
-            isClosedPesan = false;
-        }
-    });
-
-
-    editPesan.forEach((button) => {
-        button.addEventListener('click', () => {
-            // Toggle dropdown visibility
-            menuPesan.classList.remove('hidden');
-            addPesan.textContent = 'CLOSE';
-            isClosedPesan = true;
-        });
-    });
-
-
+});
 </script>
 @endsection
