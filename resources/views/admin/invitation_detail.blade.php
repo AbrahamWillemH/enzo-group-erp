@@ -282,10 +282,10 @@
                                     Produk
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Motif
+                                    Ukuran/Jenis
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    Jml/Motif
+                                    Jml/Jenis
                                 </th>
                                 <th scope="col" class="px-6 py-3">
                                     Termin
@@ -359,10 +359,10 @@
                                     {{$p->unit}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{$p->total}}
+                                    {{$p->price_per_pcs}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{-- {{$p->total_price}} --}}
+                                    {{$p->total_price}}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->pic}}
@@ -450,57 +450,83 @@ const tableBody = document.getElementById('table-body');
 
 // Tambahkan event listener pada tombol
 addButton.addEventListener('click', (e) => {
-e.preventDefault(); // Mencegah reload halaman jika tombol bertipe <a>
+    e.preventDefault(); // Mencegah reload halaman jika tombol bertipe <a>
 
-// Buat elemen <tr> baru
-const newRow = document.createElement('tr');
-newRow.className = "bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center";
+    // Buat elemen <tr> baru
+    const newRow = document.createElement('tr');
+    newRow.className = "bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center";
 
-// Isi <tr> dengan <td> baru
-newRow.innerHTML = `
-    <td class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
-        <input class="w-full" type="text"></input>
-    </td>
-    <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
-        <input class="w-full" type="text"></input>
-    </td>
-    <td class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
-        <input class="w-full" type="text"></input>
-    </td>
-    <td class="px-6 py-4">
-        <input class="w-full" type="text"></input>
-    </td>
-    <td class="px-6 py-4">New Product</td>
-    <td class="px-6 py-4"></td>
-    <td class="px-6 py-4">0</td>
-    <td class="px-6 py-4">0</td>
-    <td class="px-6 py-4">0</td>
-    <td class="px-6 py-4">Unit</td>
-    <td class="px-6 py-4">0</td>
-    <td class="px-6 py-4">0</td>
-    <td class="px-6 py-4">New Field</td>
-    <td class="px-6 py-4">New Name</td>
-    <td class="px-6 py-4 bg-red-200">New Priority</td>
-    <td class="px-6 py-4">
-        <div>
-            <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-        </div>
-    </td>
-    <td class="px-6 py-4">
-        <div>
-            <input type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-        </div>
-    </td>
-    <td class="px-6 py-4">
-        <button type="submit" class="bg-blue-600 rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">
-            Done
-        </button>
-    </td>
-`;
+    // Isi <tr> dengan <td> baru
+    newRow.innerHTML = `
+        <form action="{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}">
+            <td class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
+                <input type='date' id='date' name='date' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
+                <input type='text' id='invoice' name='invoice' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
+                <input type='text' id='order_code' name='order_code' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='supplier' name='supplier' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='product' name='product' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='size_type' name='size_type' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='number' id='quantity_per_type' name='quantity_per_type' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='date' id='termin' name='termin' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='number' id='total' name='total' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='unit' name='unit' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='number' id='price_per_pcs' name='price_per_pcs' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='number' id='total_price' name='total_price' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='pic' name='pic' class="w-full" type="text"></input>
+            </td>
+            <td class="px-6 py-4">
+                <input type='text' id='note' name='note' class="w-full" type="text"></input>
+            </td>
+            <select class="px-6 py-4">
+                <option value="High Priority">High Priority</option>
+                <option value="Medium Priority">Medium Priority</option>
+                <option value="Low Priority">Low Priority</option>
+            </select>
+            <td class="px-6 py-4">
+                <div>
+                    <input id='bought' name='bought' type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                </div>
+            </td>
+            <td class="px-6 py-4">
+                <div>
+                    <input id='paid' name='paid' type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
+                </div>
+            </td>
+            <td class="px-6 py-4">
+                <button type="submit" class="bg-blue-600 rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                    Done
+                </button>
+            </td>
+        </form>
+    `;
 
-// Tambahkan baris baru ke tabel
-tableBody.appendChild(newRow);
-});
+    // Tambahkan baris baru ke tabel
+    tableBody.appendChild(newRow);
+    });
 
 </script>
 @endsection

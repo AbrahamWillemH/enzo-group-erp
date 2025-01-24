@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PurchaseInvitation;
 use Carbon\Carbon;
 use DB;
 use App\Models\Invitation;
@@ -141,10 +142,6 @@ class InvitationController extends Controller
         return redirect()->back()->with('success', 'Data updated successfully');
     }
 
-
-
-
-
     public function approveOrder($id)
     {
         $invitation = Invitation::findOrFail($id);
@@ -184,5 +181,35 @@ class InvitationController extends Controller
         $order->save();
 
         return $this->index();
+    }
+
+    public function purchaseInvitationStore(Request $request, $id) {
+        $validated = $request->validate([
+            'order_code' => 'required|string|max:255|unique:purchase_invitation',
+            'invoice' => 'nullable|string|max:255',
+            'date' => 'nullable|date',
+            'supplier' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|string|max:20',
+            'email' => 'nullable|email|max:255',
+            'product' => 'nullable|string|max:255',
+            'size_type' => 'nullable|string|max:255',
+            'quantity_per_type' => 'nullable|integer',
+            'termin' => 'nullable|date',
+            'total' => 'nullable|integer',
+            'unit' => 'nullable|string|max:255',
+            'pic' => 'nullable|string|max:255',
+            'note' => 'nullable|string|max:1000',
+            'status' => 'required|in:High Priority,Medium Priority,Low Priority',
+            'send' => 'nullable|string|max:255',
+            'bought' => 'nullable|boolean',
+            'paid' => 'nullable|boolean',
+        ]);
+
+
+
+        PurchaseInvitation::create($validated);
+
+        return redirect()->back()->with('success', 'Purchase invitation created successfully.');
     }
 }

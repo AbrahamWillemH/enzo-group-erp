@@ -21,7 +21,7 @@ Route::get('/pkg', function(){
 
 // bibi test inventory
 // Route::get('/inventorytest', function(){
-//     return view('frontend.inventorytest');  
+//     return view('frontend.inventorytest');
 // });
 Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index']);
 Route::post('/inventory/rekap-stok/store', [InventoryController::class, 'storeRekapStok']);
@@ -66,6 +66,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
+    // purchase invitation
+    Route::post('/admin/orders/invitation/{id}/purchase/store', [InvitationController::class, 'purchaseInvitationStore'])->name('admin.invitation.purchase.store');
 
     //packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
