@@ -26,7 +26,7 @@
           </a>
         </li>
         <li>
-          <a href="{{route('orders.view')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
+          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
             <span>Pesanan Saya</span>
           </a>
         </li>

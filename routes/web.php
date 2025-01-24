@@ -24,6 +24,10 @@ Route::get('/inventorytest', function(){
     return view('frontend.inventorytest');
 });
 
+Route::get('/pesanantest', function(){
+    return view('frontend.pesanansaya');
+});
+
 Route::get('/testedit', function(){
     return view('frontend.edit_test');
 });
