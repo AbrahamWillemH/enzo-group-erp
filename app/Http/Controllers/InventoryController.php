@@ -16,7 +16,7 @@ class InventoryController extends Controller
         $barangMasuk = InventoryBarangMasuk::where('jenis_inventory', $jenis_inventory)->get();
         $barangKeluar = InventoryBarangKeluar::where('jenis_inventory', $jenis_inventory)->get();
 
-        return view('frontend.inventorytest', compact('rekapStok', 'barangMasuk', 'barangKeluar', 'jenis_inventory'));
+        return view('admin.inventory.inventory', compact('rekapStok', 'barangMasuk', 'barangKeluar', 'jenis_inventory'));
     }
 
     public function storeRekapStok(Request $request)
