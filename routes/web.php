@@ -28,6 +28,10 @@ Route::get('/testedit', function(){
     return view('frontend.edit_test');
 });
 
+Route::get('/dataorder', function(){
+    return view('frontend.data_order');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);

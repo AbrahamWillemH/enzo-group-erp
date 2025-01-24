@@ -67,31 +67,32 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Pending')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Pending') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{ $o->id }}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                <td class="px-3 py-3 text-center">id</td>
+                                <td class="px-3 py-3 text-center">nama</td>
+                                <td class="px-3 py-3 text-center">tipe</td>
+                                <td class="px-3 py-3 text-center">10</td>
+                                <td class="px-3 py-3 text-center">14-01-2025</td>
+                                <td class="px-3 py-3 text-center">22-02-2025</td>
                                 <td class="px-3 py-3 text-center">ACC</td>
                                 <td class="px-3 py-3 text-center">
-                                <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1">
-                                    <option value="Pending">Pending</option>
-                                    <option value="DP 1">DP 1</option>
-                                    <option value="DP 2">DP 2</option>
-                                    <option value="Lunas">Lunas</option>
-                                </select></td>
+                                    <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1">
+                                        <option value="Belum Bayar">Belum Bayar</option>
+                                        <option value="DP 1">DP 1</option>
+                                        <option value="DP 2">DP 2</option>
+                                        <option value="Lunas">Lunas</option>
+                                    </select>
+                                </td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
 
-                                    @if ($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas')
+                                    {{-- @if ($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas')
                                     <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
@@ -105,11 +106,11 @@
                                             Next
                                         </button>
                                     </form>
-                                    @endif
+                                    @endif --}}
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -132,41 +133,41 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Fix')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Fix') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19"></td>
+                                <td class="px-3 py-3 text-center">id</td>
+                                <td class="px-3 py-3 text-center">nama</td>
+                                <td class="px-3 py-3 text-center">tipe</td>
+                                <td class="px-3 py-3 text-center">1</td>
+                                <td class="px-3 py-3 text-center">10-01-2025</td>
+                                <td class="px-3 py-3 text-center">14-02-2025</td>
+                                <td><input type="date" name="deadline_date_input" id="deadline_" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19"></td>
 
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                             Previous
                                         </button>
                                     </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
-                                        <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
-                                        <button type="submit" id="submitButton_{{$o->id}}" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline({{$o->id}});">
+                                        <input type="hidden" name="deadline_date" id="hidden_deadline_">
+                                        <button type="submit" id="submitButton_" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline();">
                                             Next
                                         </button>
                                     </form>
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -189,30 +190,30 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Pemesanan Bahan')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Pemesanan Bahan') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">id</td>
+                                <td class="px-3 py-3 text-center">nama</td>
+                                <td class="px-3 py-3 text-center">asd</td>
+                                <td class="px-3 py-3 text-center">1</td>
+                                <td class="px-3 py-3 text-center">12-01-2025</td>
+                                <td class="px-3 py-3 text-center">22-10-2025</td>
+                                <td class="px-3 py-3 text-center">10-10-2025</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                             Previous
                                         </button>
                                     </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                             Next
@@ -220,8 +221,8 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -244,30 +245,30 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Proses Produksi')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Proses Produksi') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">123</td>
+                                <td class="px-3 py-3 text-center">asd</td>
+                                <td class="px-3 py-3 text-center">asd</td>
+                                <td class="px-3 py-3 text-center">12</td>
+                                <td class="px-3 py-3 text-center">20-01-2025</td>
+                                <td class="px-3 py-3 text-center">20-03-2025</td>
+                                <td class="px-3 py-3 text-center">10-03-2025</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                             Previous
                                         </button>
                                     </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                             Next
@@ -275,8 +276,8 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -300,29 +301,29 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Finishing')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Finishing') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">123</td>
+                                <td class="px-3 py-3 text-center">awsd</td>
+                                <td class="px-3 py-3 text-center">asd</td>
+                                <td class="px-3 py-3 text-center">10</td>
+                                <td class="px-3 py-3 text-center">10-01-2025</td>
+                                <td class="px-3 py-3 text-center">20-01-2025</td>
+                                <td class="px-3 py-3 text-center">15-01-2025</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                             Previous
                                         </button>
                                     </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                             Next
@@ -330,8 +331,8 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -355,24 +356,24 @@
                             </tr>
                         </thead>
                         <tbody class="bg-green-main/10">
-                            @foreach($invitation as $o)
-                            @if ($o->progress == 'Selesai')
+                            {{-- @foreach($invitation as $o)
+                            @if ($o->progress == 'Selesai') --}}
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">123</td>
+                                <td class="px-3 py-3 text-center">awsd</td>
+                                <td class="px-3 py-3 text-center">asd</td>
+                                <td class="px-3 py-3 text-center">10</td>
+                                <td class="px-3 py-3 text-center">10-01-2025</td>
+                                <td class="px-3 py-3 text-center">20-01-2025</td>
+                                <td class="px-3 py-3 text-center">15-01-2025</td>
                                 <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                    <form action="" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
 
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                    <form action="" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                             Previous
@@ -380,8 +381,8 @@
                                     </form>
                                 </td>
                             </tr>
-                            @endif
-                            @endforeach
+                            {{-- @endif
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
