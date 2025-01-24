@@ -42,7 +42,7 @@
 
       <!-- Orders Info -->
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
-        <div class="grid grid-rows-4 gap-5">
+        <div class="grid grid-rows-3 gap-5">
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
@@ -79,6 +79,16 @@
               placeholder="Jumlah"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('quantity')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="7" name="address" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->address }}</textarea>
+            @error('note')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -131,28 +141,16 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-        </div>
-      </div>
 
-      <div class="grid grid-cols-2 gap-60 justify-center">
-        <div class="flex items-center flex-col">
-          <label class="ml-2" for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="5" name="address" required
-            placeholder="Alamat Lengkap"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->address }}</textarea>
-          @error('note')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col">
-          <label class="ml-2" for="note_design">Note Desain</label>
-          <textarea id="note_design" rows="5" name="note_design"
-            placeholder="Tuliskan note desain disini..."
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->note_design }}</textarea>
-          @error('note_design')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="note_design">Note Desain</label>
+            <textarea id="note_design" rows="4" name="note_design"
+              placeholder="Tuliskan note desain disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->note_design }}</textarea>
+            @error('note_design')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
       </div>
 
@@ -208,13 +206,32 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="dp2_date">Tanggal Pembayaran</label>
+              <label for="dp1_date">Tanggal Pembayaran DP1</label>
+              <input type="date" id="dp1_date" name="dp1_date" value=""
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('dp1_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label for="dp2_date">Tanggal Pembayaran DP2</label>
               <input type="date" id="dp2_date" name="dp2_date" value="{{ $packaging->dp2_date }}"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('dp2_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="payment_date">Tanggal Pelunasan</label>
+              <input type="date" id="payment_date" name="payment_date" value="" required
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('payment_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
           </div>
         </div>
 
@@ -264,6 +281,16 @@
                 <option value="DECL" {{ old('design_status', $packaging->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
               </select>
               @error('design_status')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label for="note_cs">Note Admin</label>
+              <textarea id="note_cs" rows="5" name="note_cs" value="" required
+                placeholder="Tulis catatan tambahan disini"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('note_cs')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>

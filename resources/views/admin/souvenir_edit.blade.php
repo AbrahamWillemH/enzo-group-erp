@@ -42,7 +42,7 @@
 
       <!-- Orders Info -->
       <div class="grid grid-cols-2 justify-center">
-        <div class="grid grid-rows-6 gap-5">
+        <div class="grid grid-rows-1 gap-5">
           <div class="flex items-center flex-col mx-20 mb-3">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
@@ -102,9 +102,19 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col mx-20 mt-5">
+            <label class="ml-2" for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="3" name="address" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('address')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
-        <div class="grid grid-rows-6 gap-5">
+        <div class="grid grid-rows-5 gap-5">
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
@@ -155,30 +165,21 @@
           </div>
 
           <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="deadline_date">Deadline</label>
-            <input type="date" id="deadline_date" name="deadline_date" value="{{ $souvenir->deadline_date }}"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('deadline_date')
+            <label class="ml-2" for="note_design">Note Desain</label>
+            <textarea id="note_design" rows="7" name="note_design"
+              placeholder="Tuliskan note desain disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note_design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-        </div>
-
-        <div class="flex items-center flex-col mx-20 mt-5">
-          <label class="ml-2" for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="3" name="address" required
-            placeholder="Alamat Lengkap"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $souvenir->address }}</textarea>
-          @error('address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
         </div>
       </div>
 
       <!-- Detail Souvenir -->
       <div class="grid grid-cols-2 justify-center w-full">
         <!-- Desain -->
-        <div class="grid grid-rows-3 gap-5">
+        <div class="grid grid-rows-7 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Desain dan Pembayaran</h2>
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
@@ -213,17 +214,35 @@
           </div>
 
           <div class="flex items-center flex-col mx-20">
-            <label for="dp2_date">Tanggal Pembayaran</label>
+            <label for="dp1_date">Tanggal Pembayaran DP1</label>
+            <input type="date" id="dp1_date" name="dp1_date" value="" required
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('dp1_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20">
+            <label for="dp2_date">Tanggal Pembayaran DP2</label>
             <input type="date" id="dp2_date" name="dp2_date" value="{{ $souvenir->dp2_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('dp2_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col mx-20">
+            <label for="payment_date">Tanggal Pelunasan</label>
+            <input type="date" id="payment_date" name="payment_date" value="" required
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('payment_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
         <!-- Informasi Tambahan -->
-        <div class="grid grid-rows-3 gap-5">
+        <div class="grid grid-rows-5 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Informasi Tambahan</h2>
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
@@ -258,24 +277,29 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-        </div>
-      </div>
 
-      <div class="grid grid-cols-2 justify-center w-full">
-        <div class="flex items-center flex-col mx-20 mb-3">
-        </div>
+          <div class="flex items-center flex-col mx-20">
+            <label for="design_status">Acc Client</label>
+            <select id="design_status" name="design_status"
+              class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
+              <option value="Pending" {{ old('design_status', $souvenir->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+              <option value="ACC" {{ old('design_status', $souvenir->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
+              <option value="DECL" {{ old('design_status', $souvenir->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
+            </select>
+            @error('design_status')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
 
-        <div class="flex items-center flex-col mx-20">
-          <label for="design_status">Acc Client</label>
-          <select id="design_status" name="design_status"
-            class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
-            <option value="Pending" {{ old('design_status', $souvenir->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
-            <option value="ACC" {{ old('design_status', $souvenir->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
-            <option value="DECL" {{ old('design_status', $souvenir->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
-          </select>
-          @error('design_status')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
+          <div class="flex items-center flex-col mx-20">
+            <label for="note_cs">Note Admin</label>
+            <textarea id="note_cs" rows="5" name="note_cs" value="" required
+              placeholder="Tulis catatan tambahan disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note_cs')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
       </div>
 

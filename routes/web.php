@@ -24,6 +24,10 @@ Route::get('/inventorytest', function(){
     return view('frontend.inventorytest');
 });
 
+Route::get('/testedit', function(){
+    return view('frontend.edit_test');
+});
+
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);

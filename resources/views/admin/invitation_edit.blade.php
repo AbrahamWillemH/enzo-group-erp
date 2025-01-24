@@ -97,10 +97,10 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label for="deadline_date">Deadline</label>
-            <input type="date" id="deadline_date" name="deadline_date" value="{{ $invitation->deadline_date }}"
+            <label for="finishing">Finishing</label>
+            <input type="text" id="finishing" name="finishing" value="{{ $invitation->finishing }}" required placeholder="Finishing"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('deadline_date')
+            @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -119,13 +119,15 @@
         </div>
 
         <div class="flex items-center flex-col">
-          <label for="finishing">Finishing</label>
-          <input type="text" id="finishing" name="finishing" value="{{ $invitation->finishing }}" required placeholder="Finishing"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-          @error('finishing')
+          <label for="note">Note</label>
+          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
+            placeholder="Tulis catatan tambahan disini"
+            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+          @error('note')
           <small class="text-danger">{{ $message }}</small>
           @enderror
         </div>
+        
       </div>
 
       <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
@@ -376,17 +378,34 @@
                 @error('payment_status')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
-              </div>
-
+            </div>
 
             <div class="flex items-center flex-col">
-              <label for="dp2_date">Tanggal Pembayaran</label>
+              <label for="dp1_date">Tanggal Pembayaran DP1</label>
+              <input type="date" id="dp1_date" name="dp1_date" value="" required
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('dp1_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label for="dp2_date">Tanggal Pembayaran DP2</label>
               <input type="date" id="dp2_date" name="dp2_date" value="{{ $invitation->dp2_date }}" required
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('dp2_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="payment_date">Tanggal Pelunasan</label>
+              <input type="date" id="payment_date" name="payment_date" value="" required
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('payment_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
           </div>
         </div>
 
@@ -438,7 +457,17 @@
                 @error('design_status')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
-              </div>
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label for="note_cs">Note Admin</label>
+              <textarea id="note_cs" rows="5" name="note_cs" value="" required
+                placeholder="Tulis catatan tambahan disini"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('note_cs')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+          </div>
           </div>
         </div>
       </div>
