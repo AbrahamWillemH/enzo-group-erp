@@ -53,7 +53,8 @@ class Invitation extends Model
         'dp1_date',
         'dp2_date',
         'paid_off_date',
-        'payment_status'
+        'payment_status',
+        'desain_path'
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX

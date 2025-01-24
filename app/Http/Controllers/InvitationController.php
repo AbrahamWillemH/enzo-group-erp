@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use DB;
 use App\Models\Invitation;
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 
 class InvitationController extends Controller
@@ -47,7 +48,7 @@ class InvitationController extends Controller
             'akad_pemberkatan_location' => 'required|string',
             'reception_date' => 'required|date',
             'reception_time' => 'required',
-            'reception_location' => 'required|string',
+            'reception_location' => 'required|string'
         ]);
 
 
@@ -79,6 +80,7 @@ class InvitationController extends Controller
 
     public function update(Request $request, $id)
     {
+        // Validasi input
         $validated = $request->validate([
             'user_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
@@ -110,14 +112,32 @@ class InvitationController extends Controller
             'printout' => 'nullable|string',
             'price_per_pcs' => 'nullable|int',
             'expedition' => 'nullable|string',
-            'dp2_date' => 'nullable|date'
+            'dp2_date' => 'nullable|date',
+            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
         ]);
 
         $order = Invitation::findOrFail($id);
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            $file = $request->file('desain_path');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('invitations', $fileName, 'public');
+
+            // Hapus file lama jika ada
+            if ($order->desain_path) {
+                Storage::delete('public/' . $order->desain_path);
+            }
+
+            $validated['desain_path'] = $filePath; // Simpan path baru
+        }
+
+        // Update data dan simpan perubahan ke database
         $order->update($validated);
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
+
+
 
 
 

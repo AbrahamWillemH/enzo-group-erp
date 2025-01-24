@@ -40,7 +40,8 @@ class Souvenir extends Model
         'price_per_pcs',
         'expedition',
         'printout',
-        'acc_client'
+        'acc_client',
+        'desain_path'
     ];
 
     /**
