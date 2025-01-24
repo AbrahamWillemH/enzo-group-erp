@@ -78,12 +78,16 @@
                                 <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
                                 <td class="px-3 py-3 text-center">ACC</td>
                                 <td class="px-3 py-3 text-center">
-                                <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1">
-                                    <option value="Pending">Pending</option>
-                                    <option value="DP 1">DP 1</option>
-                                    <option value="DP 2">DP 2</option>
-                                    <option value="Lunas">Lunas</option>
-                                </select></td>
+                                <form action="{{ route('admin.invitation.update_payment_status') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                    <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                        <option value="Pending" {{ old('payment_status', $o->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="DP 1" {{ old('payment_status', $o->payment_status) == 'DP 1' ? 'selected' : '' }}>DP 1</option>
+                                        <option value="DP 2" {{ old('payment_status', $o->payment_status) == 'DP 2' ? 'selected' : '' }}>DP 2</option>
+                                        <option value="Lunas" {{ old('payment_status', $o->payment_status) == 'Lunas' ? 'selected' : '' }}>Lunas</option>
+                                    </select>
+                                </form>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -426,8 +430,6 @@
             hiddenInput.value = deadlineInput.value;
         }
     }
-
-
 </script>
 @endsection
 <!-- </html> -->
