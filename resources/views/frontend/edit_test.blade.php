@@ -94,19 +94,9 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="pack">Kemas</label>
-            <input type="text" id="pack" name="pack" value="" required
-              placeholder="Kemas"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('pack')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
           <div class="flex items-center flex-col mx-20 mt-5">
             <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="3" name="address" required
+            <textarea id="address" rows="7" name="address" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('address')
@@ -115,12 +105,15 @@
           </div>
         </div>
 
-        <div class="grid grid-rows-5 gap-5">
+        <div class="grid grid-rows-6 gap-5">
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
-            <input type="text" id="design" name="design" value="" required
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-full px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+              id="design" name="design" required>
+              <option value="Desain pribadi/template">Desain pribadi/template</option>
+              <option value="Desain custom Enzo">Desain custom enzo</option>
+            </select> 
             @error('design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -128,8 +121,11 @@
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
-            <input type="text" id="thankscard" name="thankscard" value="" required
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-full px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+              id="design" name="design" required>
+              <option value="Desain pribadi/template">Desain pribadi/template</option>
+              <option value="Desain custom Enzo">Desain custom enzo</option>
+            </select>
             @error('thankscard')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -166,8 +162,18 @@
           </div>
 
           <div class="flex items-center flex-col mx-20">
+            <label class="ml-2" for="pack">Kemas</label>
+            <input type="text" id="pack" name="pack" value="" required
+              placeholder="Kemas"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('pack')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="note_design">Note Desain</label>
-            <textarea id="note_design" rows="7" name="note_design"
+            <textarea id="note_design" rows="4" name="note_design"
               placeholder="Tuliskan note desain disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('note_design')
@@ -413,6 +419,7 @@
             @enderror
           </div>
         </div>
+
         <div class="grid grid-rows-4 gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>

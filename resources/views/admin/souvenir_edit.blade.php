@@ -118,8 +118,11 @@
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
-            <input type="text" id="design" name="design" value="{{ $souvenir->design }}" required
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-full px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+              id="design" name="design" required>
+              <option value="Desain pribadi/template">Desain pribadi/template</option>
+              <option value="Desain custom Enzo">Desain custom enzo</option>
+            </select>
             @error('design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -127,8 +130,11 @@
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
-            <input type="text" id="thankscard" name="thankscard" value="{{ $souvenir->thankscard }}" required
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-full px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+              id="design" name="design" required>
+              <option value="Desain pribadi/template">Desain pribadi/template</option>
+              <option value="Desain custom Enzo">Desain custom enzo</option>
+            </select>
             @error('thankscard')
             <small class="text-danger">{{ $message }}</small>
             @enderror

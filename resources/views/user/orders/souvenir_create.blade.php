@@ -58,7 +58,7 @@
 
       <!-- Orders Info -->
       <div class="grid grid-cols-2 justify-center">
-        <div class="grid grid-rows-6 gap-5">
+        <div class="grid grid-rows-1 gap-5">
           <div class="flex items-center flex-col mx-20 mb-3">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
@@ -109,12 +109,12 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="pack">Kemas</label>
-            <input type="text" id="pack" name="pack" value="{{ old('pack') }}" required
-              placeholder="Kemas"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('pack')
+          <div class="flex items-center flex-col mx-20 mt-5">
+            <label class="ml-2" for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('address')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -175,27 +175,29 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col mx-20">
+            <label class="ml-2" for="pack">Kemas</label>
+            <input type="text" id="pack" name="pack" value="{{ old('pack') }}" required
+              placeholder="Kemas"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('pack')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col mx-20 mt-5">
+            <label class="ml-2" for="note">Note Desain</label>
+            <textarea id="note" rows="4" name="note" value="{{ old('note') }}" required
+              placeholder="Tuliskan catatan tambahan disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
-        <div class="flex items-center flex-col mx-20 mt-5">
-          <label class="ml-2" for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
-            placeholder="Alamat Lengkap"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col mx-20 mt-5">
-          <label class="ml-2" for="note">Note</label>
-          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
-            placeholder="Tuliskan catatan tambahan disini"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('note')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
+        
       </div>
 
       <div>
