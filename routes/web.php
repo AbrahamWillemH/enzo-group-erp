@@ -15,6 +15,7 @@ Route::get('/', function(){
     return view('welcome');
 });
 
+// PUNYA HABIBI & HANA
 Route::get('/pkg', function(){
     return view('admin.packaging_detail');
 });
@@ -23,16 +24,6 @@ Route::get('/pkg', function(){
 // Route::get('/inventorytest', function(){
 //     return view('frontend.inventorytest');
 // });
-Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index']);
-Route::post('/inventory/rekap-stok/store', [InventoryController::class, 'storeRekapStok']);
-Route::post('/inventory/rekap-stok/{kode_barang}/update', [InventoryController::class, 'updateRekapStok']);
-Route::delete('/inventory/rekap-stok/{kode_barang}/delete', [InventoryController::class, 'deleteRekapStok']);
-Route::post('/inventory/barang-masuk/store', [InventoryController::class, 'storeBarangMasuk']);
-Route::put('/inventory/barang-masuk/{id}/update', [InventoryController::class, 'updateBarangMasuk']);
-Route::delete('/inventory/barang-masuk/{id}/delete', [InventoryController::class, 'deleteBarangMasuk']);
-Route::post('/inventory/barang-keluar/store', [InventoryController::class, 'storeBarangKeluar']);
-Route::put('/inventory/barang-keluar/{id}/update', [InventoryController::class, 'updateBarangKeluar']);
-Route::delete('/inventory/barang-keluar/{id}/delete', [InventoryController::class, 'deleteBarangKeluar']);
 
 Route::get('/pesanantest', function(){
     return view('frontend.pesanansaya');
@@ -45,6 +36,18 @@ Route::get('/testedit', function(){
 Route::get('/dataorder', function(){
     return view('frontend.data_order');
 });
+
+// PUNYA OPAL
+Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index']);
+Route::post('/inventory/rekap-stok/store', [InventoryController::class, 'storeRekapStok']);
+Route::post('/inventory/rekap-stok/{kode_barang}/update', [InventoryController::class, 'updateRekapStok']);
+Route::delete('/inventory/rekap-stok/{kode_barang}/delete', [InventoryController::class, 'deleteRekapStok']);
+Route::post('/inventory/barang-masuk/store', [InventoryController::class, 'storeBarangMasuk']);
+Route::put('/inventory/barang-masuk/{id}/update', [InventoryController::class, 'updateBarangMasuk']);
+Route::delete('/inventory/barang-masuk/{id}/delete', [InventoryController::class, 'deleteBarangMasuk']);
+Route::post('/inventory/barang-keluar/store', [InventoryController::class, 'storeBarangKeluar']);
+Route::put('/inventory/barang-keluar/{id}/update', [InventoryController::class, 'updateBarangKeluar']);
+Route::delete('/inventory/barang-keluar/{id}/delete', [InventoryController::class, 'deleteBarangKeluar']);
 
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
