@@ -8,6 +8,7 @@ use App\Http\Controllers\PackagingController;
 use App\Http\Controllers\SeminarKitController;
 use App\Http\Controllers\SouvenirController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function(){
@@ -19,9 +20,19 @@ Route::get('/pkg', function(){
 });
 
 // bibi test inventory
-Route::get('/inventorytest', function(){
-    return view('frontend.inventorytest');
-});
+// Route::get('/inventorytest', function(){
+//     return view('frontend.inventorytest');  
+// });
+Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index']);
+Route::post('/inventory/rekap-stok/store', [InventoryController::class, 'storeRekapStok']);
+Route::post('/inventory/rekap-stok/{kode_barang}/update', [InventoryController::class, 'updateRekapStok']);
+Route::delete('/inventory/rekap-stok/{kode_barang}/delete', [InventoryController::class, 'deleteRekapStok']);
+Route::post('/inventory/barang-masuk/store', [InventoryController::class, 'storeBarangMasuk']);
+Route::put('/inventory/barang-masuk/{id}/update', [InventoryController::class, 'updateBarangMasuk']);
+Route::delete('/inventory/barang-masuk/{id}/delete', [InventoryController::class, 'deleteBarangMasuk']);
+Route::post('/inventory/barang-keluar/store', [InventoryController::class, 'storeBarangKeluar']);
+Route::put('/inventory/barang-keluar/{id}/update', [InventoryController::class, 'updateBarangKeluar']);
+Route::delete('/inventory/barang-keluar/{id}/delete', [InventoryController::class, 'deleteBarangKeluar']);
 
 Route::get('/testedit', function(){
     return view('frontend.edit_test');

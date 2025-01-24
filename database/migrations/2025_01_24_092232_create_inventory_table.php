@@ -11,20 +11,41 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rekap', function (Blueprint $table) {
-            $table->string('kode_barang');
-            $table->string('nama_barang');
-            $table->integer('stok_awal');
-            $table->integer('barang_masuk');
-            $table->integer('barang_keluar');
-            $table->integer('stok_akhir');
-            $table->timestamps();
+        Schema::create('rekap_stok', function (Blueprint $table) {
+            $table->string('kode_barang')->primary();
+            $table->string('jenis_inventory')->nullable();
+            $table->string('nama_barang')->nullable();
+            $table->float('stok_awal')->nullable();
+            $table->float('barang_masuk')->nullable();
+            $table->float('barang_keluar')->nullable();
+            $table->float('stok_akhir')->nullable();
+            $table->decimal('harga',15,2)->nullable();
+            $table->decimal('total_harga',20,2)->nullable();
         });
         Schema::create('barang_masuk', function (Blueprint $table) {
-            $table->timestamps();
+            $table->id();
+            $table->string('jenis_inventory')->nullable();
+            $table->date('tanggal')->nullable();
+            $table->string('kode_barang');
+            $table->foreign('kode_barang')->references('kode_barang')->on('rekap_stok')->onDelete('cascade');
+            $table->string('nama_barang')->nullable();
+            $table->float('jumlah_barang')->nullable();
+            $table->decimal('harga', 15, 2)->nullable();
+            $table->decimal('total_harga', 20, 2)->nullable();
+            $table->string('catatan')->nullable();
         });
         Schema::create('barang_keluar', function (Blueprint $table) {
-            $table->timestamps();
+            $table->id();
+            $table->string('jenis_inventory')->nullable();
+            $table->date('tanggal')->nullable();
+            $table->string('kode_barang');
+            $table->foreign('kode_barang')->references('kode_barang')->on('rekap_stok')->onDelete('cascade');
+            $table->string('nama_barang')->nullable();
+            $table->float('jumlah_barang')->nullable();
+            $table->decimal('harga', 15, 2)->nullable();
+            $table->decimal('total_harga', 20, 2)->nullable();
+            $table->string('nama_cust')->nullable();
+            $table->integer('jumlah_order')->nullable();
         });
     }
 
@@ -33,6 +54,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inventory');
+        Schema::dropIfExists('rekap_stok');
+        Schema::dropIfExists('barang_masuk');
+        Schema::dropIfExists('barang_keluar');
     }
 };
