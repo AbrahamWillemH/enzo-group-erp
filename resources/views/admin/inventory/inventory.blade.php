@@ -72,49 +72,50 @@
                         TAMBAH DATA
                     </button>
                     <div class="hidden bg-white/40 backdrop-blur-md px-4 py-4 rounded-xl my-2" id="dropdown-menu-rekap">
-                        <div class="grid grid-cols-3 gap-2">
-                            <div class="flex items-center flex-col">
-                                <label for="tanggal" class="text-white">Kode Barang</label>
-                                <input type="date" id="tanggal" name="tanggal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                        <form action="{{ route('admin.rekap.store') }}" method="POST" id="rekapStokForm">
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="flex items-center flex-col">
+                                    <label for="kode_barang" class="text-white">Kode Barang</label>
+                                    <input type="text" id="kode_barang" name="kode_barang" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="nama_barang" class="text-white">Nama Barang</label>
+                                    <input type="text" id="nama_barang" name="nama_barang" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="stok_awal" class="text-white">Stok Awal</label>
+                                    <input type="text" id="stok_awal" name="stok_awal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="barang_masuk" class="text-white">Barang Masuk</label>
+                                    <input type="text" id="barang_masuk" name="barang_masuk" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="barang_keluar" class="text-white">Barang Keluar</label>
+                                    <input type="text" id="barang_keluar" name="barang_keluar" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="stok_akhir" class="text-white">Stok Akhir</label>
+                                    <input type="text" id="stok_akhir" name="stok_akhir" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
                             </div>
-                            <div class="flex items-center flex-col">
-                                <label for="kode_barang" class="text-white">Nama Barang</label>
-                                <input type="text" id="kode_barang" name="kode_barang" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                            <div class="grid grid-cols-2 gap3 mt-2">
+                                <div class="flex items-center flex-col">
+                                    <label for="harga" class="text-white">Harga</label>
+                                    <input type="text" id="harga" name="harga" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-[22.5rem] px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div>
+                                <div class="flex items-center flex-col">
+                                    <label for="total_harga" class="text-white">Total Harga</label>
+                                    <input type="text" id="total_harga" name="total_harga" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-[22.5rem] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                                </div> 
                             </div>
-                            <div class="flex items-center flex-col">
-                                <label for="nama_barang" class="text-white">Stok Awal</label>
-                                <input type="nama_barang" id="nama_barang" name="nama_barang" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                            </div>
-                            <div class="flex items-center flex-col">
-                                <label for="barang_masuk" class="text-white">Barang Masuk</label>
-                                <input type="tanggal" id="tanggal" name="tanggal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                            </div>
-                            <div class="flex items-center flex-col">
-                                <label for="tanggal" class="text-white">Barang Keluar</label>
-                                <input type="tanggal" id="tanggal" name="tanggal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                            </div>
-                            <div class="flex items-center flex-col">
-                                <label for="tanggal" class="text-white">Stok Akhir</label>
-                                <input type="tanggal" id="tanggal" name="tanggal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-60 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                            <div class="flex items-center justify-center mt-4">
+                                <button type="submit" class="bg-blue-600 w-[7rem] rounded-md text-white hover:scale-105 transition-all duration-300">
+                                    DONE
+                                </button>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap3 mt-2">
-                            <div class="flex items-center flex-col">
-                                <label for="harga" class="text-white">Harga</label>
-                                <input type="harga" id="harga" name="harga" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-[22.5rem] px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                            </div>
-                            <div class="flex items-center flex-col">
-                                <label for="tanggal" class="text-white">Total Harga</label>
-                                <input type="tanggal" id="tanggal" name="tanggal" class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-[22.5rem] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                            </div> 
-                        </div>
-                        <div class="flex items-center justify-center mt-4">
-                            <button type="submit" class="bg-blue-600 w-[7rem] rounded-md text-white hover:scale-105 transition-all duration-300">
-                                DONE
-                            </button>
-                        </div>
-                    </div>
-
+                    </form>
                 </div>
             </section>
 

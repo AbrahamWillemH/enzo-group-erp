@@ -38,16 +38,16 @@ Route::get('/dataorder', function(){
 });
 
 // PUNYA OPAL
-Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index']);
-Route::post('/inventory/rekap-stok/store', [InventoryController::class, 'storeRekapStok']);
-Route::post('/inventory/rekap-stok/{kode_barang}/update', [InventoryController::class, 'updateRekapStok']);
-Route::delete('/inventory/rekap-stok/{kode_barang}/delete', [InventoryController::class, 'deleteRekapStok']);
-Route::post('/inventory/barang-masuk/store', [InventoryController::class, 'storeBarangMasuk']);
-Route::put('/inventory/barang-masuk/{id}/update', [InventoryController::class, 'updateBarangMasuk']);
-Route::delete('/inventory/barang-masuk/{id}/delete', [InventoryController::class, 'deleteBarangMasuk']);
-Route::post('/inventory/barang-keluar/store', [InventoryController::class, 'storeBarangKeluar']);
-Route::put('/inventory/barang-keluar/{id}/update', [InventoryController::class, 'updateBarangKeluar']);
-Route::delete('/inventory/barang-keluar/{id}/delete', [InventoryController::class, 'deleteBarangKeluar']);
+Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index'])->name('admin.inventory.view');
+Route::post('/inventory/{{ rekap-stok/store }}', [InventoryController::class, 'storeRekapStok'])->name('admin.rekap.store');
+Route::post('/inventory/rekap-stok/{kode_barang}/update', [InventoryController::class, 'updateRekapStok'])->name('admin.rekap.edit');
+Route::delete('/inventory/rekap-stok/{kode_barang}/delete', [InventoryController::class, 'deleteRekapStok'])->name('admin.rekap.delete');
+Route::post('/inventory/barang-masuk/store', [InventoryController::class, 'storeBarangMasuk'])->name('admin.masuk.store');
+Route::put('/inventory/barang-masuk/{id}/update', [InventoryController::class, 'updateBarangMasuk'])->name('admin.masuk.edit');
+Route::delete('/inventory/barang-masuk/{id}/delete', [InventoryController::class, 'deleteBarangMasuk'])->name('admin.masuk.delete');
+Route::post('/inventory/barang-keluar/store', [InventoryController::class, 'storeBarangKeluar'])->name('admin.keluar.store');
+Route::put('/inventory/barang-keluar/{id}/update', [InventoryController::class, 'updateBarangKeluar'])->name('admin.keluar.edit');
+Route::delete('/inventory/barang-keluar/{id}/delete', [InventoryController::class, 'deleteBarangKeluar'])->name('admin.keluar.delete');
 
 // Register
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
