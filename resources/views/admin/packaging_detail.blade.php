@@ -68,7 +68,7 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="" class="object-cover max-w-full max-h-full">
+                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover max-w-full max-h-full">
                                 </td>
                             </tr>
 

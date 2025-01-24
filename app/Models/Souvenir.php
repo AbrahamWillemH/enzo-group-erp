@@ -41,7 +41,8 @@ class Souvenir extends Model
         'expedition',
         'printout',
         'acc_client',
-        'desain_path'
+        'desain_emboss_path',
+        'desain_thankscard_path'
     ];
 
     /**

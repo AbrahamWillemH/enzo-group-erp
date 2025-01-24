@@ -107,8 +107,8 @@ class PackagingController extends Controller
                 }
             }
             $file = $request->file('desain_path');
-            $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('invitations', $fileName, 'public');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('packaging', $fileName, 'public');
 
             $validated['desain_path'] = $filePath;
         }

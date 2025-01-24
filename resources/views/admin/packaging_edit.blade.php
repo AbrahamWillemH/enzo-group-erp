@@ -287,9 +287,9 @@
 
             <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>
-              <textarea id="note_cs" rows="5" name="note_cs" value="{{$packaging->note_cs}}"
+              <textarea id="note_cs" rows="5" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$packaging->note_cs}}</textarea>
               @error('note_cs')
               <small class="text-danger">{{ $message }}</small>
               @enderror

@@ -37,150 +37,158 @@
     </div>
     @endif
 
-    <form action="{{route('admin.souvenir.update', ['id' => $souvenir->id])}}" method="POST" class="flex flex-col gap-5 items-center">
+    <form action="{{route('admin.souvenir.update', ['id' => $souvenir->id])}}" method="POST" class="flex flex-col gap-5 items-center" enctype="multipart/form-data">
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-2 justify-center">
-        <div class="grid grid-rows-1 gap-5">
-          <div class="flex items-center flex-col mx-20 mb-3">
-            <label class="ml-2" for="user_name">Nama Pemesan</label>
-            <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
-              placeholder="Nama Pemesan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('user_name')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+      <div class="grid grid-cols-2 gap-5 justify-center">
+        <div class="flex flex-col gap-5">
+            <div class="flex items-center flex-col mx-20 mb-3">
+                <label class="ml-2" for="user_name">Nama Pemesan</label>
+                <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
+                  placeholder="Nama Pemesan"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('user_name')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="phone_number">Nomor HP</label>
-            <input type="text" id="phone_number" name="phone_number" value="{{ $souvenir->phone_number }}" required
-              placeholder="08XX-XXXX-XXXX"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('phone_number')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="phone_number">Nomor HP</label>
+                <input type="text" id="phone_number" name="phone_number" value="{{ $souvenir->phone_number }}" required
+                  placeholder="08XX-XXXX-XXXX"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('phone_number')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
-            <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ $souvenir->bridegroom_name }}" required
-              placeholder="Nama Mempelai"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('bridegroom_name')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
+                <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ $souvenir->bridegroom_name }}" required
+                  placeholder="Nama Mempelai"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('bridegroom_name')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="event_date">Tanggal Acara</label>
+                <input type="date" id="event_date" name="event_date" value="{{ $souvenir->event_date }}" required
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('event_date')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="event_date">Tanggal Acara</label>
-            <input type="date" id="event_date" name="event_date" value="{{ $souvenir->event_date }}" required
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('event_date')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="product_name">Jenis Souvenir</label>
+                <input type="text" id="product_name" name="product_name" value="{{ $souvenir->product_name }}" required
+                  placeholder="Jenis Souvenir"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('product_name')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="product_name">Jenis Souvenir</label>
-            <input type="text" id="product_name" name="product_name" value="{{ $souvenir->product_name }}" required
-              placeholder="Jenis Souvenir"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('product_name')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="pack">Kemas</label>
+                <input type="text" id="pack" name="pack" value="{{ $souvenir->pack }}" required
+                  placeholder="Kemas"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('pack')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="pack">Kemas</label>
-            <input type="text" id="pack" name="pack" value="{{ $souvenir->pack }}" required
-              placeholder="Kemas"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('pack')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col mx-20 mt-5">
-            <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="3" name="address" required
-              placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-            @error('address')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20 mt-5">
+                <label class="ml-2" for="address">Alamat Lengkap</label>
+                <textarea id="address" rows="3" name="address"
+                  placeholder="Alamat Lengkap"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->address}}</textarea>
+                @error('address')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
         </div>
 
-        <div class="grid grid-rows-5 gap-5">
+        <div class="flex flex-col gap-5">
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
+                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+                  id="design" name="design" required>
+                  <option value="Desain Pribadi/Template" {{ old('design', $souvenir->design) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Pribadi/Template</option>
+                  <option value="Desain Custom Enzo" {{ old('design', $souvenir->design) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom Enzo</option>
+                </select>
+                <input type="file" id="desain_emboss_path" name="desain_emboss_path"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 mt-3">
+                @error('design')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+                @error('desain_emboss_path')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
-              id="design" name="design" required>
-              <option value="Desain pribadi/template">Desain pribadi/template</option>
-              <option value="Desain custom Enzo">Desain custom enzo</option>
-            </select>
-            @error('design')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="thankscard">Desain Thankscard</label>
+                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+                  id="thankscard" name="thankscard" required>
+                  <option value="Desain Pribadi/Template" {{ old('thankscard', $souvenir->thankscard) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Pribadi/Template</option>
+                  <option value="Desain Custom Enzo" {{ old('thankscard', $souvenir->thankscard) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom Enzo</option>
+                </select>
+                <input type="file" id="desain_thankscard_path" name="desain_thankscard_path"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 mt-3">
+                @error('thankscard')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="thankscard">Desain Thankscard</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
-              id="design" name="design" required>
-              <option value="Desain pribadi/template">Desain pribadi/template</option>
-              <option value="Desain custom Enzo">Desain custom enzo</option>
-            </select>
-            @error('thankscard')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="color_motif">Warna / Motif</label>
+                <input type="text" id="color_motif" name="color_motif" value="{{ $souvenir->color_motif }}" required
+                placeholder="Warna / Motif"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('color_motif')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="color_motif">Warna / Motif</label>
-            <input type="text" id="color_motif" name="color_motif" value="{{ $souvenir->color_motif }}" required
-            placeholder="Warna / Motif"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('color_motif')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="motif_backup">Motif Cadangan</label>
+                <input type="text" id="motif_backup" name="motif_backup" value="{{ $souvenir->motif_backup }} "
+                placeholder="Motif Cadangan"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('motif_backup')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="motif_backup">Motif Cadangan</label>
-            <input type="text" id="motif_backup" name="motif_backup" value="{{ $souvenir->motif_backup }}"
-            placeholder="Motif Cadangan"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('motif_backup')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="quantity">Jumlah</label>
+                <input type="number" id="quantity" name="quantity" value="{{ $souvenir->quantity }}" required
+                  placeholder="Jumlah"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('quantity')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
 
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="quantity">Jumlah</label>
-            <input type="number" id="quantity" name="quantity" value="{{ $souvenir->quantity }}" required
-              placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('quantity')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col mx-20">
-            <label class="ml-2" for="note_design">Note Desain</label>
-            <textarea id="note_design" rows="7" name="note_design"
-              placeholder="Tuliskan note desain disini"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-            @error('note_design')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
+            <div class="flex items-center flex-col mx-20">
+                <label class="ml-2" for="note_design">Note Desain</label>
+                <textarea id="note_design" rows="7" name="note_design"
+                  placeholder="Tuliskan note desain disini"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->note_design}}</textarea>
+                @error('note_design')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
         </div>
-      </div>
+    </div>
+
 
       <!-- Detail Souvenir -->
       <div class="grid grid-cols-2 justify-center w-full">
@@ -221,7 +229,7 @@
 
           <div class="flex items-center flex-col mx-20">
             <label for="dp1_date">Tanggal Pembayaran DP1</label>
-            <input type="date" id="dp1_date" name="dp1_date" value="" required
+            <input type="date" id="dp1_date" name="dp1_date" value="{{ $souvenir->dp1_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('dp1_date')
             <small class="text-danger">{{ $message }}</small>
@@ -238,10 +246,10 @@
           </div>
 
           <div class="flex items-center flex-col mx-20">
-            <label for="payment_date">Tanggal Pelunasan</label>
-            <input type="date" id="payment_date" name="payment_date" value="" required
+            <label for="paid_off_date">Tanggal Pelunasan</label>
+            <input type="date" id="paid_off_date" name="paid_off_date" value="{{ $souvenir->paid_off_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('payment_date')
+            @error('paid_off_date')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
@@ -299,9 +307,9 @@
 
           <div class="flex items-center flex-col mx-20">
             <label for="note_cs">Note Admin</label>
-            <textarea id="note_cs" rows="5" name="note_cs" value="" required
+            <textarea id="note_cs" rows="5" name="note_cs"
               placeholder="Tulis catatan tambahan disini"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->note_cs}}</textarea>
             @error('note_cs')
             <small class="text-danger">{{ $message }}</small>
             @enderror

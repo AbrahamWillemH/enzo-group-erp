@@ -153,7 +153,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
-                                <td class="px-4 py-2">{{$invitation->akad_pemberkatan_location}}/td>
+                                <td class="px-4 py-2">{{$invitation->akad_pemberkatan_location}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -194,7 +194,7 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Invitation Desain" class="object-cover w-full h-full">
+                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
                                 </td>
                             </tr>
 

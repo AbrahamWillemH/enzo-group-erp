@@ -9,7 +9,6 @@ use App\Http\Controllers\SeminarKitController;
 use App\Http\Controllers\SouvenirController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
-use App\Models\AllOrder;
 
 Route::get('/', function(){
     return view('welcome');
