@@ -14,6 +14,8 @@ class Invitation extends Model
 
     protected $primaryKey = 'id';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'user_id',
         'user_name',

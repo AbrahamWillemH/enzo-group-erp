@@ -206,9 +206,11 @@ class InvitationController extends Controller
             'paid' => 'nullable|boolean',
         ]);
 
+        $validated['invitation_id'] = $id;
 
+        $order = new PurchaseInvitation($validated);
+        $order->save();
 
-        PurchaseInvitation::create($validated);
 
         return redirect()->back()->with('success', 'Purchase invitation created successfully.');
     }

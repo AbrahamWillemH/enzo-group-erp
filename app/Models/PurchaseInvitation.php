@@ -11,8 +11,10 @@ class PurchaseInvitation extends Model
 
     protected $table = 'purchase_invitation';
     protected $primaryKey = 'order_code';
-    public $incrementing = false; // Karena primary key bukan integer auto-increment
+    public $timestamps = false;
     protected $keyType = 'string';
+
+
 
     protected $fillable = [
         'order_code',

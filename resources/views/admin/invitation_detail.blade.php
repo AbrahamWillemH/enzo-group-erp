@@ -1,4 +1,6 @@
-
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 @extends('admin/sidebar_admin')
 @section('title', 'Detail Undangan')
 @section('konten')
@@ -261,8 +263,9 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     PURCHASE ORDER
                 </div>
-
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[3.25rem] mb-5">
+                    <form action="{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}" method="POST">
+                    @csrf
                     <table class="w-full text-sm text-left rtl:text-right">
                         <thead class="text-xs text-brown-enzo uppercase bg-green-main/80">
                             <tr>
@@ -329,12 +332,12 @@
                             @foreach($purchase as $p)
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center">
                                 <td scope="row" class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
-                                    {{ Carbon::parse($p->date)->format('d/m/Y') }}
+                                    {{ $p->date }}
                                 </td>
                                 <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
                                     {{$p->invoice}}
                                 </td>
-                                <td class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
+                                <td data-column='order_code' class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
                                     {{$p->order_code}}
                                 </td>
                                 <td class="px-6 py-4">
@@ -406,12 +409,14 @@
                                     @endif
                                 </td>
                                 <td class="px-6 py-4 flex flex-col gap-4">
-                                    <button type="submit" class="bg-brown-enzo rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
+                                    <button id="editPurchase_{{$invitation->id}}" class="bg-brown-enzo rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
                                         Edit
                                     </button>
-                                    <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
-                                        Delete
-                                    </button>
+                                    <form action="{{route('admin.invitation.purchase.delete', ['id' => $invitation->id])}}">
+                                        <button class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
                                 @endforeach
                             </tr>
@@ -420,13 +425,13 @@
                 </div>
 
                 <div class="add_data mt-10 grid justify-items-center">
-                    <a href="#"
+                    <button id="addDataButton"
                         class="relative bg-green-main/80 text-brown-enzo font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">
                         <!-- Layer latar belakang -->
                         <span class="absolute inset-0 bg-green-main transition-transform -translate-y-full group-hover:translate-y-0 transition-duration duration-500"></span>
                         <!-- Teks -->
                         <span class="relative z-10">TAMBAH DATA</span>
-                    </a>
+                    </button>
                 </div>
 
                 <div class="edit_button px-6 mt-10 grid justify-items-end">
@@ -444,77 +449,75 @@
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
     // Tangkap elemen tombol dan tbody
-const addButton = document.querySelector('.add_data a'); // Sesuaikan selector jika perlu
-const tableBody = document.getElementById('table-body');
+    const addButton = document.getElementById('addDataButton');
+    const tableBody = document.getElementById('table-body');
 
-// Tambahkan event listener pada tombol
-addButton.addEventListener('click', (e) => {
-    e.preventDefault(); // Mencegah reload halaman jika tombol bertipe <a>
+    // Fungsi untuk menambahkan baris baru
+    addButton.addEventListener('click', (e) => {
+        e.preventDefault(); // Mencegah reload halaman
 
-    // Buat elemen <tr> baru
-    const newRow = document.createElement('tr');
-    newRow.className = "bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center";
+        // Buat elemen <tr> baru di dalam tbody
+        const newRow = document.createElement('tr');
+        newRow.className = "bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center";
 
-    // Isi <tr> dengan <td> baru
-    newRow.innerHTML = `
-        <form action="{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}">
+        // Tambahkan elemen <td> untuk form input
+        newRow.innerHTML = `
             <td class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
-                <input type='date' id='date' name='date' class="w-full" type="text"></input>
+                <input type="date" name="date" class="w-full">
             </td>
             <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
-                <input type='text' id='invoice' name='invoice' class="w-full" type="text"></input>
+                <input type="text" name="invoice" class="w-full">
             </td>
             <td class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
-                <input type='text' id='order_code' name='order_code' class="w-full" type="text"></input>
+                <input type="text" name="order_code" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='supplier' name='supplier' class="w-full" type="text"></input>
+                <input type="text" name="supplier" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='product' name='product' class="w-full" type="text"></input>
+                <input type="text" name="product" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='size_type' name='size_type' class="w-full" type="text"></input>
+                <input type="text" name="size_type" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='number' id='quantity_per_type' name='quantity_per_type' class="w-full" type="text"></input>
+                <input type="number" name="quantity_per_type" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='date' id='termin' name='termin' class="w-full" type="text"></input>
+                <input type="date" name="termin" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='number' id='total' name='total' class="w-full" type="text"></input>
+                <input type="number" name="total" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='unit' name='unit' class="w-full" type="text"></input>
+                <input type="text" name="unit" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='number' id='price_per_pcs' name='price_per_pcs' class="w-full" type="text"></input>
+                <input type="number" name="price_per_pcs" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='number' id='total_price' name='total_price' class="w-full" type="text"></input>
+                <input type="number" name="total_price" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='pic' name='pic' class="w-full" type="text"></input>
+                <input type="text" name="pic" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <input type='text' id='note' name='note' class="w-full" type="text"></input>
-            </td>
-            <select class="px-6 py-4">
-                <option value="High Priority">High Priority</option>
-                <option value="Medium Priority">Medium Priority</option>
-                <option value="Low Priority">Low Priority</option>
-            </select>
-            <td class="px-6 py-4">
-                <div>
-                    <input id='bought' name='bought' type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-                </div>
+                <input type="text" name="note" class="w-full">
             </td>
             <td class="px-6 py-4">
-                <div>
-                    <input id='paid' name='paid' type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
-                </div>
+                <select name="status" class="w-full">
+                    <option value="High Priority">High Priority</option>
+                    <option value="Medium Priority">Medium Priority</option>
+                    <option value="Low Priority">Low Priority</option>
+                </select>
+            </td>
+            <td class="px-6 py-4">
+                <input name="bought" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
+            </td>
+            <td class="px-6 py-4">
+                <input name="paid" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded">
             </td>
             <td class="px-6 py-4">
                 <button type="submit" class="bg-blue-600 rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -522,11 +525,86 @@ addButton.addEventListener('click', (e) => {
                 </button>
             </td>
         </form>
-    `;
+        </tr>
+        `;
 
-    // Tambahkan baris baru ke tabel
-    tableBody.appendChild(newRow);
+        // Tambahkan baris ke dalam tbody
+        tableBody.appendChild(newRow);
     });
+});
+
+// EDIT PURCHASE
+document.querySelectorAll('[id^="editPurchase_"]').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log("Button clicked");
+        const id = button.id.split('_')[1];
+        console.log("Row ID:", id);
+        const row = button.closest('tr');
+        if (row) {
+            if (button.textContent.trim() === 'Edit') {
+                console.log("Switching to edit mode");
+                row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                    if (!cell.querySelector('input')) {
+                        const value = cell.textContent.trim();
+                        const input = document.createElement('input');
+                        input.type = 'text';
+                        input.value = value;
+                        input.classList.add('border', 'p-2', 'rounded');
+                        cell.textContent = '';
+                        cell.appendChild(input);
+                    }
+                });
+                button.textContent = 'Save';
+                button.classList.add('bg-green-500');
+            } else {
+                console.log("Saving data...");
+                const formData = new FormData();
+                row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                    const input = cell.querySelector('input');
+                    if (input) {
+                        const columnName = cell.dataset.column;
+                        formData.append(columnName, input.value);
+                    }
+                });
+
+                fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    },
+                    body: formData,
+                })
+                .then(response => {
+                    console.log("Response received:", response);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Data received:", data);
+                    if (data.success) {
+                        alert('Data berhasil disimpan.');
+                        row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                            const input = cell.querySelector('input');
+                            if (input) {
+                                cell.textContent = input.value;
+                            }
+                        });
+                        button.textContent = 'Edit';
+                        button.classList.remove('bg-green-500');
+                    } else {
+                        alert('Gagal menyimpan data.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan.');
+                });
+            }
+        }
+    });
+});
+
+
 
 </script>
 @endsection

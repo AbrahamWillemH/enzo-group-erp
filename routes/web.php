@@ -71,6 +71,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
     // purchase invitation
     Route::post('/admin/orders/invitation/{id}/purchase/store', [InvitationController::class, 'purchaseInvitationStore'])->name('admin.invitation.purchase.store');
+    Route::post('/admin/orders/invitation/{id}/purchase/delete', [InvitationController::class, 'purchaseInvitationDelete'])->name('admin.invitation.purchase.delete');
 
     //packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
