@@ -119,19 +119,23 @@ class InvitationController extends Controller
         $order = Invitation::findOrFail($id);
 
         if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            if ($order->desain_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_path)) {
+                    try {
+                        Storage::delete($order->desain_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
             $file = $request->file('desain_path');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('invitations', $fileName, 'public');
 
-            // Hapus file lama jika ada
-            if ($order->desain_path) {
-                Storage::delete('public/' . $order->desain_path);
-            }
-
-            $validated['desain_path'] = $filePath; // Simpan path baru
+            $validated['desain_path'] = $filePath;
         }
 
-        // Update data dan simpan perubahan ke database
         $order->update($validated);
 
         return redirect()->back()->with('success', 'Data updated successfully');

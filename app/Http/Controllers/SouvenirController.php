@@ -6,6 +6,7 @@ use App\Models\Souvenir;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 
 class SouvenirController extends Controller
@@ -94,12 +95,29 @@ class SouvenirController extends Controller
             'design_status' => 'nullable|string|max:255',
         ]);
 
-        // dd($request->all());
-
         $order = Souvenir::findOrFail($id);
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            if ($order->desain_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_path)) {
+                    try {
+                        Storage::delete($order->desain_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            $file = $request->file('desain_path');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('invitations', $fileName, 'public');
+
+            $validated['desain_path'] = $filePath;
+        }
+
         $order->update($validated);
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
 
     public function souvenirDetails($id){

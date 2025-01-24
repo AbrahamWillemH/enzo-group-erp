@@ -6,6 +6,7 @@ use App\Models\Packaging;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Storage;
 use Validator;
 
 class PackagingController extends Controller
@@ -83,20 +84,38 @@ class PackagingController extends Controller
             'payment_status' => 'nullable|string',
             'price_per_pcs' => 'nullable|string',
             'printout' => 'nullable|string',
-            // 'dp1_date' => 'nullable|date',
+            'dp1_date' => 'nullable|date',
             'dp2_date' => 'nullable|date',
-            // 'paid_off_date' => 'nullable|date',
+            'paid_off_date' => 'nullable|date',
             'expedition' => 'nullable|string',
             'design_status' => 'nullable|string',
-            // 'note_cs' => 'nullable|string'
+            'note_cs' => 'nullable|string',
+            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
         ]);
 
-        // dd($request->all());
-
         $order = Packaging::findOrFail($id);
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            if ($order->desain_path) {
+                // dd(Storage::path( $order->desain_path));
+                if (Storage::exists($order->desain_path)) {
+                    try {
+                        Storage::delete($order->desain_path);
+                    } catch (\Exception $e) {
+                        dd($e->getMessage());
+                    }
+                }
+            }
+            $file = $request->file('desain_path');
+            $fileName = time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('invitations', $fileName, 'public');
+
+            $validated['desain_path'] = $filePath;
+        }
+
         $order->update($validated);
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->back()->with('success', 'Data updated successfully');
     }
 
     public function packagingDetails($id){
