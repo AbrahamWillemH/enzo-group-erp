@@ -21,33 +21,42 @@ class OrderController extends Controller
         'Selesai'
     ];
 
+    
+    public function showOrders()
+    {
+        $orders = $this->getOrders();
+        return view('user.progress_order', compact('orders'));
+    }
+    
     private function getOrders()
     {
-        $invitations = Invitation::all()->map(function ($item) {
+        $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
             $item->setAttribute('type', 'invitation');
             return $item;
         });
-
-        $souvenirs = Souvenir::all()->map(function ($item) {
+    
+        $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
             $item->setAttribute('type', 'souvenir');
             return $item;
         });
-
-        $seminarkits = SeminarKit::all()->map(function ($item) {
+    
+        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
             $item->setAttribute('type', 'seminar_kit');
             return $item;
         });
-
-        $packagings = Packaging::all()->map(function ($item) {
+    
+        $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
             $item->setAttribute('type', 'packaging');
             return $item;
         });
-
+    
         return $invitations
             ->concat($souvenirs)
             ->concat($seminarkits)
             ->concat($packagings);
     }
+
+    
 
     private function updateOrderProgress($order, $id, $progress)
     {

@@ -25,8 +25,8 @@ Route::get('/pkg', function(){
 //     return view('frontend.inventorytest');
 // });
 
-Route::get('/pesanantest', function(){
-    return view('frontend.pesanansaya');
+Route::get('/user/order', function(){
+    return view('user.progress_order');
 });
 
 Route::get('/testedit', function(){
@@ -102,7 +102,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 // User routes
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
-    Route::get('/user/orders', [OrderController::class, 'orderIndex'])->name('orders.view');
+    Route::get('/user/orders', [OrderController::class, 'showOrders'])->name('orders.view');
     // create order
     Route::get('/orders/invitation/create', [InvitationController::class, 'create'])->name('user.orders.invitation.create');
     Route::post('/orders/invitation/store', [InvitationController::class, 'store'])->name('user.orders.invitation.store');

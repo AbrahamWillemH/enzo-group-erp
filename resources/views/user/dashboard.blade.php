@@ -62,7 +62,7 @@
                 </div>
               </div>
 
-              <a href="{{ route('user.orders.invitation.create') }}"
+              <a href="{{ route('user.orders.souvenir.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Souvenir
               </a>
@@ -89,7 +89,7 @@
                 </div>
               </div>
 
-              <a href="{{ route('user.orders.invitation.create') }}"
+              <a href="{{ route('user.orders.packaging.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Packaging
               </a>
@@ -116,7 +116,7 @@
                 </div>
               </div>
 
-              <a href="{{ route('user.orders.invitation.create') }}"
+              <a href="{{ route('user.orders.seminarkit.create') }}"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Seminarkit
               </a>

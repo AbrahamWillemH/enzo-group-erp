@@ -32,6 +32,7 @@ class PackagingController extends Controller
             'user_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
             'quantity' => 'required|integer',
+            'deadline_date' => 'nullable|date',
             'address' => 'required|string|max:1000',
             'finishing' => 'required|string|max:255',
             'model' => 'required|string|max:255',
