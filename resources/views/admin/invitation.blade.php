@@ -37,9 +37,9 @@
 
                     <!-- Dropdown Content -->
                     <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
-                        <a href="sort" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
-                        <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
-                        <a href="#" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
+                        <a href="{{route('admin.invitation.view', ['sort' => 'alphabetical'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
+                        <a href="{{route('admin.invitation.view', ['sort' => 'order'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
+                        <a href="{{route('admin.invitation.view', ['sort' => 'deadline'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
                     </div>
                 </div>
                 <div class="search flex items-center justify-center font-medium text-xs">
@@ -76,7 +76,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">ACC</td>
+                                <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
                                 <td class="px-3 py-3 text-center">
                                 <form action="{{ route('admin.invitation.update_payment_status') }}" method="POST">
                                     @csrf
@@ -95,7 +95,7 @@
                                         </button>
                                     </form>
 
-                                    @if ($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas')
+                                    @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
                                     <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
@@ -423,13 +423,25 @@
 
     // Fungsi untuk menyalin deadline
     function copyDeadline(id) {
-        confirmNextProgress();
-        const deadlineInput = document.getElementById(`deadline_${id}`);
-        const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
-        if (deadlineInput && hiddenInput) {
-            hiddenInput.value = deadlineInput.value;
+        if (confirmNextProgress()){
+            const deadlineInput = document.getElementById(`deadline_${id}`);
+            const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
+            if (deadlineInput && hiddenInput) {
+                hiddenInput.value = deadlineInput.value;
+            }
+        } else {
+            return false;
         }
     }
 </script>
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}'
+        });
+    </script>
+@endif
 @endsection
 <!-- </html> -->

@@ -49,11 +49,21 @@ class OrderController extends Controller
             $item->setAttribute('type', 'packaging');
             return $item;
         });
+<<<<<<< Updated upstream
     
         return $invitations
             ->concat($souvenirs)
             ->concat($seminarkits)
             ->concat($packagings);
+=======
+
+        $orders = $invitations
+        ->concat($souvenirs)
+        ->concat($seminarkits)
+        ->concat($packagings);
+
+        return $orders;
+>>>>>>> Stashed changes
     }
 
     
@@ -85,8 +95,19 @@ class OrderController extends Controller
 
         if ($order->progress == 'Fix') {
             $deadlineDate = $request->input('deadline_date');
-            $order->deadline_date = $deadlineDate;
-            $order->save();
+            if ($deadlineDate == NULL){
+                return redirect()->back();
+            }
+
+            $deadlineCount = $orders->where('deadline_date', $deadlineDate)->count();
+
+            if ($deadlineCount >= 5){
+                return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($deadlineDate)->format('d/m/Y'));
+            } else{
+                $order->deadline_date = $deadlineDate;
+                $order->save();
+            }
+
         }
 
         $currentProgressIndex = array_search($order->progress, $this->progressStages);
@@ -112,6 +133,11 @@ class OrderController extends Controller
 
         if (!$order) {
             return redirect()->back()->with('error', 'Order not found.');
+        }
+
+        if ($order->progress == 'Fix' || $order->progress == 'Pemesanan Bahan') {
+            $order->deadline_date = NULL;
+            $order->save();
         }
 
         $currentProgressIndex = array_search($order->progress, $this->progressStages);
@@ -242,6 +268,5 @@ class OrderController extends Controller
         }
 
         return redirect()->back()->with('error', 'Order not found');
-
     }
 }
