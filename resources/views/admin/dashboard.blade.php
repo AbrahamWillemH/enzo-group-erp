@@ -14,8 +14,8 @@
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">
-
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+                <a href="{{ route('user.orders.invitation.create') }}">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -40,9 +40,11 @@
                 Order Invitation
               </a>
 
+            </a>
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+                <a href="{{route('user.orders.souvenir.create')}}">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -67,9 +69,12 @@
                 Order Souvenir
               </a>
 
+            </a>
+
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
+                <a href="{{route('user.orders.packaging.create')}}">
               <div class="carousel-inner flex w-[300%] h-full hover:animate-carousel">
                 <div class="carousel-item relative flex-shrink-0 w-1/3 h-full ">
                   <div class="absolute inset-0 bg-black/40 hover:bg-black/10"></div>
@@ -93,7 +98,7 @@
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Packaging
               </a>
-
+            </a>
             </div>
 
             <div class="carousel rounded-lg w-full h-[265px] grid grid-rows-[1fr_30px] overflow-hidden relative hover:scale-110 transition duration-300 shadow-lg">
@@ -116,7 +121,7 @@
                 </div>
               </div>
 
-              <a href="{{ route('user.orders.seminarkit.create') }}"
+              <a href="#"
                 class=" text-black font-medium rounded-b-lg bg-green-main/50 hover:bg-green-main/90 hover:text-cream transition duration-300 text-center flex items-center justify-center">
                 Order Seminarkit
               </a>
