@@ -40,7 +40,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Deadline</td>
-                                <td class="px-4 py-2">{{ $souvenir->deadline_date ? \Carbon\Carbon::parse($souvenir->deadline_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->deadline_date ? \Carbon\Carbon::parse($souvenir->deadline_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jumlah</td>
@@ -56,7 +56,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jenis Souvenir</td>
@@ -124,7 +124,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jenis Souvenir</td>
@@ -170,15 +170,15 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 1</td>
-                                <td class="px-4 py-2">{{ $souvenir->dp1_date ? \Carbon\Carbon::parse($souvenir->dp1_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->dp1_date ? \Carbon\Carbon::parse($souvenir->dp1_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 2</td>
-                                <td class="px-4 py-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Pelunasan</td>
-                                <td class="px-4 py-2">{{ $souvenir->paid_off_date ? \Carbon\Carbon::parse($souvenir->paid_off_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $souvenir->paid_off_date ? \Carbon\Carbon::parse($souvenir->paid_off_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
@@ -278,7 +278,7 @@
                             @foreach($purchase as $p)
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center">
                                 <td scope="row" class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
-                                    {{ $p->date ? \Carbon\Carbon::parse($p->date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+                                    {{ $p->date ? \Carbon\Carbon::parse($p->date)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
                                     {{$p->invoice}}
@@ -299,7 +299,7 @@
                                     {{$p->quantity_per_motif}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->purchase_amount}}

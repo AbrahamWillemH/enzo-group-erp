@@ -55,11 +55,12 @@ Route::post('/register', [UserController::class, 'register']);
 
 // Login and Logout
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('loginRedirect');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    // dashboard and tests
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
@@ -90,9 +91,6 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // update progress
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
-    Route::get('/orders/packaging', function(){
-        return view('user.orders.packaging_create');
-    });
 
     //reminder
     Route::get('/admin/reminder', [OrderController::class, 'reminder'])->name('admin.reminder');

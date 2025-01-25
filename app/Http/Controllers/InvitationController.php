@@ -12,9 +12,30 @@ use Validator;
 
 class InvitationController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $invitation = Invitation::all();
+        $invitation = Invitation::query();
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'alphabetical':
+                    $invitation->orderBy('user_name', 'asc');
+                    break;
+                case 'order':
+                    $invitation->orderBy('created_at', 'asc');
+                    break;
+                case 'deadline':
+                    $invitation->orderBy('deadline_date', 'asc');
+                    break;
+                default:
+                    $invitation->orderBy('created_at', 'desc');
+                    break;
+            }
+        } else {
+            $invitation->orderBy('created_at', 'desc');
+        }
+
+        $invitation = $invitation->get();
+
         return view('admin.invitation', compact('invitation'));
     }
 
@@ -180,7 +201,7 @@ class InvitationController extends Controller
         $order->payment_status = $request->payment_status;
         $order->save();
 
-        return $this->index();
+        return $this->index($request);
     }
 
     public function purchaseInvitationStore(Request $request, $id) {

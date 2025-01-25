@@ -98,7 +98,7 @@
                                             </button>
                                         </form>
 
-                                        @if ($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas')
+                                        @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
@@ -436,13 +436,25 @@
 
     // Fungsi untuk menyalin deadline
     function copyDeadline(id) {
-        confirmNextProgress();
-        const deadlineInput = document.getElementById(`deadline_${id}`);
-        const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
-        if (deadlineInput && hiddenInput) {
-            hiddenInput.value = deadlineInput.value;
+        if (confirmNextProgress()){
+            const deadlineInput = document.getElementById(`deadline_${id}`);
+            const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
+            if (deadlineInput && hiddenInput) {
+                hiddenInput.value = deadlineInput.value;
+            }
+        } else {
+            return false;
         }
     }
 </script>
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}'
+        });
+    </script>
+@endif
 @endsection
 <!-- </html> -->

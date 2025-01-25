@@ -58,7 +58,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Deadline</td>
-                                <td class="px-4 py-2">{{ \Carbon\Carbon::parse($invitation->deadline_date)->format('d/m/Y') }}</td>
+                                <td class="px-4 py-2">{{ $invitation->deadline_date ? \Carbon\Carbon::parse($invitation->deadline_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Finishing</td>
@@ -147,7 +147,7 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                <td class="px-4 py-2">{{ \Carbon\Carbon::parse($invitation->akad_pemberkatan_date)->format('d/m/Y') }}</td>
+                                <td class="px-4 py-2">{{ $invitation->akad_pemberkatan_date ? \Carbon\Carbon::parse($invitation->akad_pemberkatan_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Waktu Acara</td>
@@ -168,7 +168,7 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                <td class="px-4 py-2">{{ \Carbon\Carbon::parse($invitation->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-4 py-2">{{ $invitation->reception_date ? \Carbon\Carbon::parse($invitation->reception_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Waktu Acara</td>
@@ -219,15 +219,15 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 1</td>
-                                <td class="px-4 py-2">{{ $invitation->dp1_date ? \Carbon\Carbon::parse($invitation->dp1_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $invitation->dp1_date ? \Carbon\Carbon::parse($invitation->dp1_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 2</td>
-                                <td class="px-4 py-2">{{ $invitation->dp2_date ? \Carbon\Carbon::parse($invitation->dp2_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $invitation->dp2_date ? \Carbon\Carbon::parse($invitation->dp2_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Pelunasan</td>
-                                <td class="px-4 py-2">{{ $invitation->paid_off_date ? \Carbon\Carbon::parse($invitation->paid_off_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                                <td class="px-4 py-2">{{ $invitation->paid_off_date ? \Carbon\Carbon::parse($invitation->paid_off_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
@@ -350,7 +350,7 @@
                                     {{$p->quantity_per_type}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
+                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : '-' }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->total}}
