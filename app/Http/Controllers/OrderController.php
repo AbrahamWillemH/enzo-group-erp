@@ -6,6 +6,7 @@ use App\Models\Invitation;
 use App\Models\Packaging;
 use App\Models\SeminarKit;
 use App\Models\Souvenir;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 
@@ -133,5 +134,105 @@ class OrderController extends Controller
         if ($souvenir) {
             return app(SouvenirController::class)->souvenirDetails($id);
         }
+    }
+
+    public function reminder()
+    {
+        $reminderDays = 21;
+        $today = Carbon::today()->toDateString();
+
+        // Ambil data dari masing-masing tabel dengan filter berdasarkan deadline
+        $invitations = Invitation::where('progress', '!=', 'Selesai')
+        ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        ->get()
+        ->map(function ($item) {
+            $item->type = 'invitation';
+            return $item;
+        });
+
+        $souvenirs = Souvenir::where('progress', '!=', 'Selesai')
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'souvenir';
+                return $item;
+            });
+
+
+        // $seminarkits = SeminarKit::whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'seminarkit';
+        //         return $item;
+        //     });
+
+        $packagings = Packaging::where('progress', '!=', 'Selesai')
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'packaging';
+                return $item;
+            });
+
+        // Gabungkan semua data
+        $orders = $invitations
+            ->concat($souvenirs)
+            // ->concat($seminarkits)
+            ->concat($packagings);
+
+        $sortedOrders = $orders->sortBy('deadline_date');
+
+        // Kirim data ke view
+        return view('admin.reminder', ['orders' => $sortedOrders]);
+    }
+
+    public function reminderDetail($id) {
+        $invitation = Invitation::find($id);
+        if ($invitation) {
+            $invitation->type = 'invitation';
+            $purchase = DB::table('purchase_invitation')
+            ->where('invitation_id', $id)
+            ->get()
+            ->map(function ($item) {
+                $item->date = Carbon::parse($item->date)->format('d/m/Y');
+                return $item;
+            });
+            return view('admin.invitation_detail', compact('invitation', 'purchase'));
+        }
+
+        $souvenir = Souvenir::find($id);
+        if ($souvenir) {
+            $souvenir->type = 'souvenir';
+            $purchase = DB::table('purchase_souvenir')
+            ->where('souvenir_id', $id)
+            ->get()
+            ->map(function ($item) {
+                $item->date = Carbon::parse($item->date)->format('d/m/Y');
+                return $item;
+            });
+            return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
+        }
+
+        // $seminarKit = SeminarKit::find($id);
+        // if ($seminarKit) {
+        //     $seminarKit->type = 'seminar_kit';
+        //     return view('admin.seminarkit_detail', ['order' => $seminarKit]);
+        // }
+
+        $packaging = Packaging::find($id);
+        if ($packaging) {
+            $packaging->type = 'packaging';
+            $purchase = DB::table('purchase_packaging')
+            ->where('packaging_id', $id)
+            ->get()
+            ->map(function ($item) {
+                $item->date = Carbon::parse($item->date)->format('d/m/Y');
+                return $item;
+            });
+            return view('admin.packaging_detail', compact('packaging', 'purchase'));
+        }
+
+        return redirect()->back()->with('error', 'Order not found');
+
     }
 }
