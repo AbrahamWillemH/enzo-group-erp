@@ -6,16 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitation Form</title>
   @vite('resources/css/app.css')
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
   <div class="fixed top-0 left-0 right-0 ht grid grid-cols-[70%_30%] px-4 py-5 bg-green-main">
     <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
-        <form action="{{route('loginRedirect')}}" method="POST">
-            @csrf
-            <button type="submit">Enzo Group</button>
-        </form>
+        <a href="{{route('loginRedirect')}}">Enzo Group</a>
     </div>
     <div class="grid grid-cols-3 gap-1 font-medium">
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
@@ -361,6 +359,16 @@
       </div>
     </form>
   </div>
+
+@if(session('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ session('error') }}'
+        });
+    </script>
+@endif
 </body>
 
 </html>

@@ -21,71 +21,35 @@ class OrderController extends Controller
         'Selesai'
     ];
 
-
-    public function showOrders()
-    {
-        $orders = $this->getOrders();
-        return view('user.progress_order', compact('orders'));
-    }
-
     private function getOrders()
     {
-        $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
+        $invitations = Invitation::all()->map(function ($item) {
             $item->setAttribute('type', 'invitation');
             return $item;
         });
 
-        $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
+        $souvenirs = Souvenir::all()->map(function ($item) {
             $item->setAttribute('type', 'souvenir');
             return $item;
         });
 
-        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'seminar_kit');
-            return $item;
-        });
+        // $seminarkits = SeminarKit::all()->map(function ($item) {
+        //     $item->setAttribute('type', 'seminar_kit');
+        //     return $item;
+        // });
 
-        $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
+        $packagings = Packaging::all()->map(function ($item) {
             $item->setAttribute('type', 'packaging');
             return $item;
         });
 
         $orders = $invitations
         ->concat($souvenirs)
-        ->concat($seminarkits)
+        // ->concat($seminarkits)
         ->concat($packagings);
 
         return $orders;
     }
-
-    private function getOrdersUser()
-    {
-        $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'invitation');
-            return $item;
-        });
-
-        $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'souvenir');
-            return $item;
-        });
-
-        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'seminar_kit');
-            return $item;
-        });
-
-        $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'packaging');
-            return $item;
-        });
-
-        return $invitations
-            ->concat($souvenirs)
-            ->concat($seminarkits)
-            ->concat($packagings);
-    }
-
 
 
     private function updateOrderProgress($order, $id, $progress)
@@ -289,4 +253,39 @@ class OrderController extends Controller
 
         return redirect()->back()->with('error', 'Order not found');
     }
+
+    private function getOrdersUser()
+    {
+        $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'invitation');
+            return $item;
+        });
+
+        $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'souvenir');
+            return $item;
+        });
+
+        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'seminar_kit');
+            return $item;
+        });
+
+        $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'packaging');
+            return $item;
+        });
+
+        return $invitations
+            ->concat($souvenirs)
+            ->concat($seminarkits)
+            ->concat($packagings);
+    }
+
+    public function showOrders()
+    {
+        $orders = $this->getOrdersUser();
+        return view('user.progress_order', compact('orders'));
+    }
+
 }

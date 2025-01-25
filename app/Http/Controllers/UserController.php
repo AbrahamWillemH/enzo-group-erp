@@ -47,4 +47,13 @@ class UserController extends Controller
 
         return view('user.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
     }
+
+    public function dashboardCheck() {
+        if (auth()->user()->isAdmin()) {
+            return redirect()->route('admin.dashboard');
+        } else {
+            return redirect()->route('user.dashboard');
+        }
+    }
+
 }

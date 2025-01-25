@@ -12,7 +12,7 @@
   <!-- Navigation Bar -->
   <div class="fixed top-0 left-0 right-0 ht grid grid-cols-[70%_30%] px-4 py-5 bg-green-main">
     <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
-      <h1>Enzo Group</h1>
+        <a href="{{route('loginRedirect')}}">Enzo Group</a>
     </div>
     <div class="grid grid-cols-3 gap-1 font-medium">
       <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard

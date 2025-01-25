@@ -55,8 +55,10 @@ Route::post('/register', [UserController::class, 'register']);
 
 // Login and Logout
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('loginRedirect');
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', [UserController::class, 'dashboardCheck'])->name('loginRedirect');
 
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {

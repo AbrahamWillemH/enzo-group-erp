@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use App\Models\Souvenir;
 use Carbon\Carbon;
 use DB;
@@ -43,6 +44,14 @@ class SouvenirController extends Controller
             'motif_backup' => 'required|string|max:255',
         ]);
 
+        $a = $request->event_date;
+        $souvenirCount = Souvenir::where('event_date', $a)->count();
+        $invitationCount = Invitation::where('reception_date', $a)->count();
+        $eventCount = $souvenirCount + $invitationCount;
+
+        if ($eventCount >= 5){
+            return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($request->event_date)->format('d/m/Y'));
+        }
 
         if ($validator->fails()) {
             dd($validator->errors());

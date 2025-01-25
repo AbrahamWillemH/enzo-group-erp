@@ -6,6 +6,7 @@ use App\Models\PurchaseInvitation;
 use Carbon\Carbon;
 use DB;
 use App\Models\Invitation;
+use App\Models\Souvenir;
 use Illuminate\Http\Request;
 use Storage;
 use Validator;
@@ -73,6 +74,14 @@ class InvitationController extends Controller
             'reception_location' => 'required|string'
         ]);
 
+        $a = $request->reception_date;
+        $souvenirCount = Souvenir::where('event_date', $a)->count();
+        $invitationCount = Invitation::where('reception_date', $a)->count();
+        $eventCount = $souvenirCount + $invitationCount;
+
+        if ($eventCount >= 5){
+            return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($request->reception_date)->format('d/m/Y'));
+        }
 
         if ($validator->fails()) {
             dd($validator->errors());
