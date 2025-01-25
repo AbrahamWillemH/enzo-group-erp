@@ -2,34 +2,45 @@
     @section('title', 'Reminder')
     @section('konten')
     <div class="ml-[20%]">
+        <!-- Header -->
         <header class="fixed top-0 right-0 w-[80%] bg-green-shadow h-[68px] flex items-center justify-between px-4">
             <h1 class="text-xl font-bold text-brown-enzo" style="letter-spacing: 1px">REMINDER</h1>
             <div class="relative group z-20">
-                <button id="filter-button" class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
+                <button class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
                     Filter
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                 </button>
 
-                <div id="filter-menu" class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-30 top-full left-[10px] w-[100px] transition-opacity duration-500 delay-25">
+                <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-30 top-full left-[10px] w-[120px] transition-opacity duration-500 delay-25">
                     <div class="block px-4 py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="dp1"> DP 1
+                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="Pending">
+                            Pending
                         </label>
                     </div>
                     <div class="block px-4 py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="dp2"> DP 2
+                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="DP 1">
+                            DP 1
                         </label>
                     </div>
                     <div class="block px-4 py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="lunas"> Lunas
+                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="DP 2">
+                            DP 2
+                        </label>
+                    </div>
+                    <div class="block px-4 py-2">
+                        <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
+                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="Lunas">
+                            Lunas
                         </label>
                     </div>
                 </div>
             </div>
         </header>
-        <!-- Tabel Data Pesanan -->
+
+        <!-- Tabel -->
         <main class="pt-20 pr-5 bg-green-light h-full">
             <div class="overflow-x-auto px-3">
                 <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner">
@@ -47,16 +58,16 @@
                     </thead>
                     <tbody class="bg-green-main/10">
                         @foreach ($orders as $o)
-                        <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                            <td class="px-4 py-3 text-center">{{$o->id}}</td>
-                            <td class="px-4 py-3">{{$o->user_name}}</td>
-                            <td class="px-4 py-3">{{$o->type}}</td>
-                            <td class="px-4 py-3 text-center">{{$o->created_at}}</td>
-                            <td class="px-4 py-3 text-center"><strong>{{$o->deadline_date}}</strong></td>
-                            <td class="px-4 py-3 text-center">{{$o->payment_status}}</td>
-                            <td class="px-4 py-3 text-center">{{$o->progress}}</td>
+                        <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15" data-progress="{{ $o->payment_status }}">
+                            <td class="px-4 py-3 text-center">{{ $o->id }}</td>
+                            <td class="px-4 py-3">{{ $o->user_name }}</td>
+                            <td class="px-4 py-3">{{ $o->type }}</td>
+                            <td class="px-4 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                            <td class="px-4 py-3 text-center"><strong>{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</strong></td>
+                            <td class="px-4 py-3 text-center">{{ $o->payment_status }}</td>
+                            <td class="px-4 py-3 text-center">{{ $o->progress }}</td>
                             <td class="px-3 py-3 text-center">
-                                <a href="{{route('admin.reminder.detail', ['id' => $o->id])}}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                                <a href="{{ route('admin.reminder.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
                             </td>
                         </tr>
                         @endforeach
@@ -66,28 +77,30 @@
         </main>
     </div>
 
+
 <script>
-  const button3 = document.getElementById('dropdown-button3');
-  const menu3 = document.getElementById('dropdown-menu3');
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const rows = document.querySelectorAll('tbody tr');
 
-  let isClosed = false;
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            const activeFilters = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
 
-  button3.addEventListener('click', () => {
-    // Toggle dropdown visibility
-    menu3.classList.toggle('hidden');
+            rows.forEach(row => {
+                const progress = row.getAttribute('data-progress');
+                if (activeFilters.length === 0 || activeFilters.includes(progress)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+});
 
-    if (!isClosed){
-        button3.textContent = 'CLOSE';
-        button3.classList.remove('bg-green-main/80');
-        button3.classList.add('bg-red-600');
-        isClosed = true;
-    } else {
-        button3.textContent = 'TAMBAH DATA';
-        button3.classList.remove('bg-red-600');
-        button3.classList.add('bg-green-main/80');
-        isClosed = false;
-    }
-  });
 </script>
 
     @endsection

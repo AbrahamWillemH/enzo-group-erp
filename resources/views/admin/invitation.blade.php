@@ -74,8 +74,8 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">ACC</td>
                                 <td class="px-3 py-3 text-center">
                                 <form action="{{ route('admin.invitation.update_payment_status') }}" method="POST">
@@ -143,8 +143,8 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
                                 <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19"></td>
 
                                 <td class="px-3 py-3 text-center">
@@ -200,9 +200,9 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -255,9 +255,9 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -311,9 +311,9 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -366,9 +366,9 @@
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->created_at->toDateString()}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->reception_date}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->deadline_date}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
