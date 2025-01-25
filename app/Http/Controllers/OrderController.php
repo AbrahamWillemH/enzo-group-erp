@@ -56,6 +56,34 @@ class OrderController extends Controller
             ->concat($packagings);
     }
 
+    private function getOrdersUser()
+    {
+        $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'invitation');
+            return $item;
+        });
+    
+        $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'souvenir');
+            return $item;
+        });
+    
+        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'seminar_kit');
+            return $item;
+        });
+    
+        $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'packaging');
+            return $item;
+        });
+    
+        return $invitations
+            ->concat($souvenirs)
+            ->concat($seminarkits)
+            ->concat($packagings);
+    }
+
     
 
     private function updateOrderProgress($order, $id, $progress)
