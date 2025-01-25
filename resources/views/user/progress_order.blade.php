@@ -8,21 +8,6 @@
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>PESANAN SAYA</h1>
             </div>
-            <div class="grid grid-cols-4 gap-1 font-medium">
-                <a href="#rekap" class="text-brown-enzo flex flex-col justify-center items-center group">Rekap
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                <a href="#barang_masuk" class="text-brown-enzo flex flex-col justify-center items-center group">Barang Masuk
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                <a href="#barang_keluar" class="text-brown-enzo flex flex-col justify-center items-center group">Barang Keluar
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                <a href="#pesan" class="text-brown-enzo flex flex-col justify-center items-center group">Pesan
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                
-            </div>
         </div>
         
         <!-- konten utama -->
@@ -276,7 +261,6 @@
         </div>
     </div>
 </div>
-
 <script>
     const buttonProgres = document.querySelectorAll('.button-progres');
     const menuProgres = document.getElementById('timeline-modal');
