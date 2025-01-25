@@ -63,7 +63,7 @@
                             <td class="px-4 py-3">{{ $o->user_name }}</td>
                             <td class="px-4 py-3">{{ $o->type }}</td>
                             <td class="px-4 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                            <td class="px-4 py-3 text-center"><strong>{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</strong></td>
+                            <td class="px-4 py-3 text-center"><strong>{{ $o->deadline_date ? \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</strong></td>
                             <td class="px-4 py-3 text-center">{{ $o->payment_status }}</td>
                             <td class="px-4 py-3 text-center">{{ $o->progress }}</td>
                             <td class="px-3 py-3 text-center">

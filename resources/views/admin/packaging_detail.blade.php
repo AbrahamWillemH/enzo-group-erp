@@ -39,7 +39,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Deadline</td>
-                                <td class="px-4 py-2">{{$packaging->deadline_date}}</td>
+                                <td class="px-4 py-2">{{ \Carbon\Carbon::parse($packaging->deadline_date)->format('d/m/Y') }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jumlah</td>
@@ -128,15 +128,15 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 1</td>
-                                <td class="px-4 py-2">{{$packaging->dp1_date}}</td>
+                                <td class="px-4 py-2">{{ $packaging->dp1_date ? \Carbon\Carbon::parse($packaging->dp1_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal DP 2</td>
-                                <td class="px-4 py-2">{{$packaging->dp2_date}}</td>
+                                <td class="px-4 py-2">{{ $packaging->dp2_date ? \Carbon\Carbon::parse($packaging->dp2_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Pelunasan</td>
-                                <td class="px-4 py-2">{{$packaging->paid_off_date}}</td>
+                                <td class="px-4 py-2">{{ $packaging->paid_off_date ? \Carbon\Carbon::parse($packaging->paid_off_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
@@ -230,9 +230,6 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
-                            @php
-                                use Carbon\Carbon;
-                            @endphp
                             @foreach($purchase as $p)
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center">
                                 <td scope="row" class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
@@ -257,7 +254,7 @@
                                     {{$p->size_per_motif}}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ Carbon::parse($p->termin)->format('d/m/Y') }}
+                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : 'Tanggal tidak tersedia' }}
                                 </td>
                                 <td class="px-6 py-4">
                                     {{$p->stock}}
