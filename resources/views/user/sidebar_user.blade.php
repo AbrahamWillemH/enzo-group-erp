@@ -17,7 +17,7 @@
             <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center ml-4">
               <span class="text-green-main font-medium">U</span>
             </div>
-            <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">USER</span>
+            <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">{{auth()->user()->name}}</span>
           </div>
         </li>
         <li>
@@ -36,9 +36,12 @@
           </a>
         </li>
         <li>
-          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+        <form action="{{route('logout')}}" method="POST">
+        @csrf
+            <button type="submit" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             Logout
-          </a>
+            </button>
+        </form>
         </li>
       </ul>
     </div>

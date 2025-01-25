@@ -9,8 +9,8 @@
         <div class="grid grid-rows-[25%_75%]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/10">
-            <h1>Hello, {{ auth()->user()->name }}</h1>
-            <p>This is the Admin dashboard page, accessible only for Admin</p>
+            <h1><strong>Hello, {{ auth()->user()->name }}</strong></h1>
+            <p><strong>This is the Admin dashboard page, accessible only for Admin</strong></p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">

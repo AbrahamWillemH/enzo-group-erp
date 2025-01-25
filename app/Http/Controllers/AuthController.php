@@ -18,6 +18,9 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+
+        Auth::logout();
+
         if ($request){
             $credentials = $request->validate([
                 'name' => ['required', 'string'],
@@ -29,11 +32,13 @@ class AuthController extends Controller
                 $request->session()->regenerate();
         }
 
-            // Redirect based on role
-            if (auth()->user()->isAdmin()) {
-                return redirect()->route('admin.dashboard');
-            } else {
-                return redirect()->route('user.dashboard');
+            if (auth()->user() != NULL){
+                // Redirect based on role
+                if (auth()->user()->isAdmin()) {
+                    return redirect()->route('admin.dashboard');
+                } else {
+                    return redirect()->route('user.dashboard');
+                }
             }
         }
 

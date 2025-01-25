@@ -11,7 +11,8 @@
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                 </button>
 
-                <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-30 top-full left-[10px] w-[120px] transition-opacity duration-500 delay-25">
+                <!-- Dropdown Filter -->
+                <div class="absolute bg-green-light shadow-lg rounded-md z-30 top-full left-[10px] w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
                     <div class="block px-4 py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
                             <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="Pending">
