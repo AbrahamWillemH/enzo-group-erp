@@ -24,6 +24,17 @@ Route::get('/pkg', function(){
 // Route::get('/inventorytest', function(){
 //     return view('frontend.inventorytest');
 // });
+Route::get('/tesdetail', function(){
+    return view('frontend.detailundangan');
+});
+
+Route::get('/tesdetailpackaging', function(){
+    return view('frontend.detailpackaging');
+});
+
+Route::get('/tesdetailsouvenir', function(){
+    return view('frontend.detailsouvenir');
+});
 
 Route::get('/user/order', function(){
     return view('user.progress_order');
