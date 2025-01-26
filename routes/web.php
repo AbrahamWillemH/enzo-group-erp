@@ -37,6 +37,10 @@ Route::get('/dataorder', function(){
     return view('frontend.data_order');
 });
 
+Route::get('/calendar', function(){
+    return view('frontend.calendar');
+});
+
 // PUNYA OPAL
 Route::get('/inventory/{jenis_inventory}', [InventoryController::class, 'index'])->name('admin.inventory.view');
 Route::post('/inventory/{{ rekap-stok/store }}', [InventoryController::class, 'storeRekapStok'])->name('admin.rekap.store');

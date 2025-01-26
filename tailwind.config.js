@@ -23,7 +23,9 @@ export default {
                 'green-light': '#F7FCF5',
                 'green-dark': '#8A9F92',
                 'cream': '#F0EBCE',
-
+                'invit-cal': '#726A95',
+                'pack-cal': '#576CBC',
+                'souv-cal': '#4E9F3D',
             },
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],

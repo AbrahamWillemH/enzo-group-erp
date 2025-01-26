@@ -12,28 +12,28 @@
                 </button>
 
                 <!-- Dropdown Filter -->
-                <div class="absolute bg-green-light shadow-lg rounded-md z-30 top-full left-[10px] w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
-                    <div class="block px-4 py-2">
+                <div class="absolute bg-green-light shadow-lg rounded-md z-30 top-full left-0 w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
+                    <div class="block py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="Pending">
+                            <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="Pending" checked>
                             Pending
                         </label>
                     </div>
-                    <div class="block px-4 py-2">
+                    <div class="block py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="DP 1">
+                            <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="DP 1" checked>
                             DP 1
                         </label>
                     </div>
-                    <div class="block px-4 py-2">
+                    <div class="block py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="DP 2">
+                            <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="DP 2" checked>
                             DP 2
                         </label>
                     </div>
-                    <div class="block px-4 py-2">
+                    <div class="block py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                            <input type="checkbox" class="filter-checkbox mr-2 accent-green-main" value="Lunas">
+                            <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="Lunas" checked>
                             Lunas
                         </label>
                     </div>
