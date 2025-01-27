@@ -273,8 +273,10 @@
             </td>
             <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
               <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
-                <div class="top mt-1 h-5 w-full">
-                  <span class="text-gray-500">15</span>
+                <div class="top mt-1 h-5 w-full flex justify-center items-center">
+                  <span class="text-white border border-gray-600 bg-gray-600 rounded-full w-6 h-6 flex items-center justify-center">
+                    15
+                  </span>
                 </div>
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
               </div>
@@ -308,10 +310,12 @@
 
           <!--         line 3 -->
           <tr class="text-center h-20">
-            <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
+            <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-200">
               <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
                 <div class="top mt-1 h-5 w-full">
-                  <span class="text-gray-500">19</span>
+                  <span class="text-gray-500">
+                    19
+                  </span>
                 </div>
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
               </div>
@@ -377,16 +381,14 @@
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
               </div>
             </td>
-            <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-200">
-                <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
-                  <div class="top mt-1 h-5 w-full flex justify-center items-center">
-                    <span class="text-white border border-gray-600 bg-gray-600 rounded-full w-6 h-6 flex items-center justify-center">
-                      27
-                    </span>
-                  </div>
-                  <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
+            <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
+              <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
+                <div class="top h-5 w-full">
+                  <span class="text-gray-500">27</span>
                 </div>
-            </td>              
+                <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer"></div>
+              </div>
+            </td>           
             <td class="border p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
                 <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
                   <div class="top mt-1 h-5 w-full">
