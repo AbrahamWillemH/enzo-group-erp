@@ -89,43 +89,61 @@
         </thead>
         <tbody>
           <tr class="text-center h-20">
-            <td class="border bg-gray-100 p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
-                <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
-                  <div class="top mt-1 h-5 w-full">
-                    <span class="text-gray-500">29</span>
-                  </div>
+            <td class="border bg-gray-100 p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease hover:bg-gray-200">
+              <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
+                <div class="top mt-1 h-5 w-full">
+                  <span class="text-gray-500">29</span>
+                </div>
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer text-left">
-                  <div
-                    class="event bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover"
-                  >
-                    <span class="event-name">
-                      Robby Shopee
-                    </span>
+                  <div class="event bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">
+                    <span class="event-name">Robby Shopee</span>
                   </div>
-                  <div
-                    class="event bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover"
-                  >
-                    <span class="event-name">
-                      Sofia De Eerste
-                    </span>
+                  <div class="event bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">
+                    <span class="event-name">Sofia De Eerste</span>
                   </div>
-                  <div
-                    class="event bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover"
-                  >
-                    <span class="event-name">
-                      John English
-                    </span>
+                  <div class="event bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">
+                    <span class="event-name">John English</span>
                   </div>
-                  <div
-                    class="text-left event rounded p-1 text-sm mb-1 hover:bg-gray-300"
-                  >
-                    <span class="event-name">
+            
+                  <div class="calendar-cell relative">
+                    <!-- Button untuk "3 more" -->
+                    <button class="button-more text-gray-600 text-left rounded p-1 text-sm mb-1 w-[160px] hover:bg-gray-300">
                       3 more
-                    </span>
-                  </div>                    
+                    </button>
+                  
+                    <!-- Pop-up -->
+                    <div 
+                      id="popup" 
+                      class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 pl-[20%]"
+                    >
+                      <!-- Konten pop-up -->
+                      <div class="bg-white rounded-lg shadow-lg w-80 p-4 relative">
+                        <!-- Tombol Close -->
+                        <button 
+                          class="close-popup absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+                        >
+                          ✖
+                        </button>
+
+                        <!-- Isi Pop-up -->
+                        <h3 class="text-lg font-semibold mb-2 text-center">Sunday</h3>
+                        <h3 class="text-lg font-semibold mb-2 text-center">29</h3>
+                        <ul class="text-gray-700 space-y-2">
+                          <li class="bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">Robby Shopee</li>
+                          <li class="bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">Helsinki Stone</li>
+                          <li class="bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">Sofia De Eerste</li>
+                          <li class="bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">Rio Robin</li>
+                          <li class="bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">John English</li>
+                          <li class="bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">Sonya Green</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>         
+                  
                 </div>
               </div>
             </td>
+            
             <td class="border bg-gray-100 p-1 h-40 xl:w-40 lg:w-30 md:w-30 sm:w-20 w-10 overflow-auto transition cursor-pointer duration-500 ease  hover:bg-gray-200">
               <div class="flex flex-col h-40 xl:w-40 lg:w-30 md:w-30 sm:w-full w-10 overflow-hidden">
                 <div class="top mt-1 h-5 w-full">
@@ -165,7 +183,7 @@
                 </div>
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer">
                   <div
-                    class="event bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover"
+                    class="event bg-pack-cal text-white text-left rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover"
                   >
                     <span class="event-name">
                       Robin Dish
@@ -434,3 +452,26 @@
         </tbody>
     </table>
 </div>
+
+<script>
+  const buttonMore = document.querySelectorAll('.button-more');
+  const menuMore = document.getElementById('popup');
+  const closePopup = document.querySelectorAll('.close-popup');
+
+  // Menambahkan event listener untuk tombol "3 more"
+  buttonMore.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Menampilkan pop-up
+      menuMore.classList.remove('hidden');
+    });
+  });
+
+  // Menambahkan event listener untuk tombol close (✖)
+  closePopup.forEach((button) => {
+    button.addEventListener('click', () => {
+      // Menyembunyikan pop-up
+      menuMore.classList.add('hidden');
+    });
+  });
+</script>
+@endsection
