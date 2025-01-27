@@ -36,9 +36,9 @@ Route::get('/tesdetailsouvenir', function(){
     return view('frontend.detailsouvenir');
 });
 
-Route::get('/user/order', function(){
-    return view('user.progress_order');
-});
+// Route::get('/user/order', function(){
+//     return view('user.progress_order');
+// });
 
 Route::get('/testedit', function(){
     return view('frontend.edit_test');
