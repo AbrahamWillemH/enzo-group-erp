@@ -118,6 +118,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/user/orders', [OrderController::class, 'showOrders'])->name('orders.view');
+    Route::get('/user/orders/{type}/{id}', [OrderController::class, 'showOrderDetail'])->name('orders.detail');
+
     // create order
     Route::get('/orders/invitation/create', [InvitationController::class, 'create'])->name('user.orders.invitation.create');
     Route::post('/orders/invitation/store', [InvitationController::class, 'store'])->name('user.orders.invitation.store');

@@ -164,7 +164,7 @@
                         <!-- button -->
                         <div class="grid grid-cols-2 gap-1 p-1 place-items-center">
                             <button type="button" class="button-progres bg-green-main/80 rounded-lg px-2 py-1 w-[120px] text-sm text-white hover:border-2 hover:border-green-main/80 hover:bg-green-main/0 hover:text-green-main/80 transition duration-300 border-white/0 font-medium">Lihat Progres</button>
-                            <button type="button" class="bg-green-main/80 rounded-lg px-2 py-1 w-[120px] text-sm text-white hover:border-2 hover:border-green-main/80 hover:bg-green-main/0 hover:text-green-main/80 transition duration-300 border-white/0 font-medium">Detail</button>
+                            <a href="{{ route('orders.detail', ['id' => $order->id, 'type' => $order->type]) }}" class="bg-green-main/80 rounded-lg px-2 py-1 w-[120px] text-sm text-white hover:border-2 hover:border-green-main/80 hover:bg-green-main/0 hover:text-green-main/80 transition duration-300 border-white/0 font-medium">Detail</a>
                         </div>
                         
                         <!-- Main modal -->
