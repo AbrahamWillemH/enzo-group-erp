@@ -96,13 +96,13 @@
                 </div>
                 <div class="bottom flex-grow h-30 py-1 w-full cursor-pointer text-left">
                   <div class="event bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">
-                    <span class="event-name">Robby Shopee</span>
+                    <a href="" class="event-name">Robby Shopee</a>
                   </div>
                   <div class="event bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">
-                    <span class="event-name">Sofia De Eerste</span>
+                    <a href="" class="event-name">Sofia De Eerste</a>
                   </div>
                   <div class="event bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">
-                    <span class="event-name">John English</span>
+                    <a href="" class="event-name">John English</a>
                   </div>
             
                   <div class="calendar-cell relative">
@@ -129,12 +129,24 @@
                         <h3 class="text-lg font-semibold mb-2 text-center">Sunday</h3>
                         <h3 class="text-lg font-semibold mb-2 text-center">29</h3>
                         <ul class="text-gray-700 space-y-2">
-                          <li class="bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">Robby Shopee</li>
-                          <li class="bg-invit-cal text-white rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">Helsinki Stone</li>
-                          <li class="bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">Sofia De Eerste</li>
-                          <li class="bg-pack-cal text-white rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">Rio Robin</li>
-                          <li class="bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">John English</li>
-                          <li class="bg-souv-cal text-white rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">Sonya Green</li>
+                          <li class="bg-invit-cal rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">
+                            <a href="" class="text-white">Robby Shopee</a>
+                          </li>
+                          <li class="bg-invit-cal rounded p-1 text-sm mb-1 hover:bg-invit-cal-hover">
+                            <a href="" class="text-white">Helsinki Stone</a>
+                          </li>
+                          <li class="bg-pack-cal rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">
+                            <a href="" class="text-white">Sofia De Eerste</a>
+                          </li>
+                          <li class="bg-pack-cal rounded p-1 text-sm mb-1 hover:bg-pack-cal-hover">
+                            <a href="" class="text-white">Rio Robin</a>
+                          </li>
+                          <li class="bg-souv-cal rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">
+                            <a href="" class="text-white">John English</a>
+                          </li>
+                          <li class="bg-souv-cal rounded p-1 text-sm mb-1 hover:bg-souv-cal-hover">
+                            <a href="" class="text-white">Sonya Green</a>
+                          </li>
                         </ul>
                       </div>
                     </div>
