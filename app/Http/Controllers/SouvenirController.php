@@ -82,7 +82,7 @@ class SouvenirController extends Controller
         $user = auth()->user();
         $order = new Souvenir($validated);
         $order->user_id = $user->id;
-        $order->type = 'Souvenir';
+        $order->type = 'souvenir';
         $order->id = Souvenir::generateSouvenirId();
 
         $order->save();

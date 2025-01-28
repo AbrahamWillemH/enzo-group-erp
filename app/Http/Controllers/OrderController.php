@@ -257,28 +257,27 @@ class OrderController extends Controller
     private function getOrdersUser()
     {
         $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'Invitation');
+            $item->setAttribute('type', 'invitation');
             return $item;
         });
 
         $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'Souvenir');
+            $item->setAttribute('type', 'souvenir');
             return $item;
         });
 
-        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'seminar_kit');
-            return $item;
-        });
+        // $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
+        //     $item->setAttribute('type', 'seminar_kit');
+        //     return $item;
+        // });
 
         $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'Packaging');
+            $item->setAttribute('type', 'packaging');
             return $item;
         });
 
         return $invitations
             ->concat($souvenirs)
-            ->concat($seminarkits)
             ->concat($packagings);
     }
 
@@ -305,9 +304,9 @@ class OrderController extends Controller
                 $order = Packaging::with(['user'])->findOrFail($id);
                 return view('user.packaging_detail', compact('order'));
 
-            case 'seminar_kit':
-                $order = SeminarKit::with(['user'])->findOrFail($id);
-                return view('user.seminarkit_detail', compact('order'));
+            // case 'seminar_kit':
+            //     $order = SeminarKit::with(['user'])->findOrFail($id);
+            //     return view('user.seminarkit_detail', compact('order'));
 
             default:
                 abort(404);

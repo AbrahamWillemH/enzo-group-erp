@@ -71,7 +71,7 @@ class PackagingController extends Controller
         $user = auth()->user();
         $order = new Packaging($validated);
         $order->user_id = $user->id;
-        $order->type = 'Packaging';
+        $order->type = 'packaging';
         $order->id = Packaging::generatePackagingId();
 
         $order->save();

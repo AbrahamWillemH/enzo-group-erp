@@ -95,7 +95,7 @@ class InvitationController extends Controller
         $user = auth()->user();
         $order = new Invitation($validated);
         $order->user_id = $user->id;
-        $order->type = 'Invitation';
+        $order->type = 'invitation';
         $order->id = Invitation::generateInvitationId();
 
         $order->save();

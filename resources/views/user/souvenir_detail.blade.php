@@ -35,10 +35,6 @@
                                 <td class="w-[35%] px-4 py-2">Nomor HP</td>
                                 <td class="px-4 py-2">{{$order->phone_number}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Deadline</td>
-                                <td class="px-4 py-2">{{ $order->deadline_date ? \Carbon\Carbon::parse($souvenir->deadline_date)->format('d/m/Y') : '-' }}</td>
-                            </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jumlah</td>
                                 <td class="px-4 py-2">{{$order->quantity}}</td>
@@ -195,10 +191,6 @@
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$order->note_design}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Note Admin</td>
-                                <td class="px-4 py-2">{{$order->note_cs}}</td>
                             </tr>
                         </tbody>
 
