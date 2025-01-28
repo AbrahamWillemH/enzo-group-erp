@@ -88,12 +88,12 @@
           </a>
         </li>
         <li>
-          <a href="{{('/admin/reminder')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="{{route('admin.reminder')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Reminder</span>
           </a>
         </li>
         <li>
-          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <a href="{{route('admin.calendar')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <span>Calendar</span>
           </a>
         </li>
