@@ -291,26 +291,50 @@ class OrderController extends Controller
     public function showOrderDetail($type, $id)
     {
         $order = null;
-        
+
         switch ($type) {
             case 'invitation':
                 $order = Invitation::with(['user'])->findOrFail($id);
                 return view('user.invitation_detail', compact('order'));
-                
+
             case 'souvenir':
                 $order = Souvenir::with(['user'])->findOrFail($id);
                 return view('user.souvenir_detail', compact('order'));
-                
+
             case 'packaging':
                 $order = Packaging::with(['user'])->findOrFail($id);
                 return view('user.packaging_detail', compact('order'));
-                
+
             case 'seminar_kit':
                 $order = SeminarKit::with(['user'])->findOrFail($id);
                 return view('user.seminarkit_detail', compact('order'));
-                
+
             default:
                 abort(404);
         }
+    }
+
+    public function calendar(){
+        return view('admin.calendar');
+    }
+
+    public function getDeadlines()
+    {
+        $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
+
+        $orders = $invitations->concat($souvenirs)->concat($packagings);
+
+        // Format data untuk kalender
+        $events = $orders->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'start' => $order->deadline_date,
+            ];
+        });
+
+        return response()->json($events);
     }
 }

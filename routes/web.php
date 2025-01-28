@@ -120,6 +120,10 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     //reminder
     Route::get('/admin/reminder', [OrderController::class, 'reminder'])->name('admin.reminder');
     Route::get('/admin/reminder/{id}', [OrderController::class, 'reminderDetail'])->name('admin.reminder.detail');
+
+    // calendar
+    Route::get('/admin/calendar', [OrderController::class, 'calendar'])->name('admin.calendar');
+    Route::get('/api/deadlines', [OrderController::class, 'getDeadlines']);
 });
 
 // User routes

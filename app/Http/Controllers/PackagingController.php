@@ -11,12 +11,29 @@ use Validator;
 
 class PackagingController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $packaging = Packaging::all()->map(function ($item) {
-            $item->type = 'packaging';
-            return $item;
-        });
+        $packaging = Packaging::query();
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'alphabetical':
+                    $packaging->orderBy('user_name', 'asc');
+                    break;
+                case 'order':
+                    $packaging->orderBy('created_at', 'asc');
+                    break;
+                case 'deadline':
+                    $packaging->orderBy('deadline_date', 'asc');
+                    break;
+                default:
+                    $packaging->orderBy('created_at', 'desc');
+                    break;
+            }
+        } else {
+            $packaging->orderBy('created_at', 'desc');
+        }
+
+        $packaging = $packaging->get();
 
         return view('admin.packaging', compact('packaging'));
     }
@@ -138,6 +155,6 @@ class PackagingController extends Controller
         $order->payment_status = $request->payment_status;
         $order->save();
 
-        return $this->index();
+        return $this->index($request);
     }
 }

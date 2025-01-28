@@ -12,12 +12,29 @@ use Validator;
 
 class SouvenirController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $souvenir = Souvenir::all()->map(function ($item) {
-            $item->type = 'souvenir';
-            return $item;
-        });
+        $souvenir = Souvenir::query();
+        if ($request->has('sort')) {
+            switch ($request->sort) {
+                case 'alphabetical':
+                    $souvenir->orderBy('user_name', 'asc');
+                    break;
+                case 'order':
+                    $souvenir->orderBy('created_at', 'asc');
+                    break;
+                case 'deadline':
+                    $souvenir->orderBy('deadline_date', 'asc');
+                    break;
+                default:
+                    $souvenir->orderBy('created_at', 'desc');
+                    break;
+            }
+        } else {
+            $souvenir->orderBy('created_at', 'desc');
+        }
+
+        $souvenir = $souvenir->get();
 
         return view('admin.souvenir', compact('souvenir'));
     }
@@ -168,6 +185,6 @@ class SouvenirController extends Controller
         $order->payment_status = $request->payment_status;
         $order->save();
 
-        return $this->index();
+        return $this->index($request);
     }
 }
