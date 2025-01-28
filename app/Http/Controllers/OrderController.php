@@ -257,12 +257,12 @@ class OrderController extends Controller
     private function getOrdersUser()
     {
         $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'invitation');
+            $item->setAttribute('type', 'Invitation');
             return $item;
         });
 
         $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'souvenir');
+            $item->setAttribute('type', 'Souvenir');
             return $item;
         });
 
@@ -272,7 +272,7 @@ class OrderController extends Controller
         });
 
         $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->setAttribute('type', 'packaging');
+            $item->setAttribute('type', 'Packaging');
             return $item;
         });
 
