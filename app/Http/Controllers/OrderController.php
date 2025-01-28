@@ -33,6 +33,11 @@ class OrderController extends Controller
             return $item;
         });
 
+        // $seminarkits = SeminarKit::all()->map(function ($item) {
+        //     $item->setAttribute('type', 'seminar_kit');
+        //     return $item;
+        // });
+
         $packagings = Packaging::all()->map(function ($item) {
             $item->setAttribute('type', 'packaging');
             return $item;
@@ -40,6 +45,7 @@ class OrderController extends Controller
 
         $orders = $invitations
         ->concat($souvenirs)
+        // ->concat($seminarkits)
         ->concat($packagings);
 
         return $orders;
@@ -248,27 +254,37 @@ class OrderController extends Controller
         return redirect()->back()->with('error', 'Order not found');
     }
 
-    public function showOrders()
+    private function getOrdersUser()
     {
         $invitations = Invitation::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->type = 'invitation';
+            $item->setAttribute('type', 'Invitation');
             return $item;
         });
 
         $souvenirs = Souvenir::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->type = 'souvenir';
+            $item->setAttribute('type', 'Souvenir');
+            return $item;
+        });
+
+        $seminarkits = SeminarKit::where('user_id', auth()->id())->get()->map(function ($item) {
+            $item->setAttribute('type', 'seminar_kit');
             return $item;
         });
 
         $packagings = Packaging::where('user_id', auth()->id())->get()->map(function ($item) {
-            $item->type = 'packaging';
+            $item->setAttribute('type', 'Packaging');
             return $item;
         });
 
-        $orders = $invitations
-        ->concat($souvenirs)
-        ->concat($packagings);
+        return $invitations
+            ->concat($souvenirs)
+            ->concat($seminarkits)
+            ->concat($packagings);
+    }
 
+    public function showOrders()
+    {
+        $orders = $this->getOrdersUser();
         return view('user.progress_order', compact('orders'));
     }
 
@@ -289,9 +305,9 @@ class OrderController extends Controller
                 $order = Packaging::with(['user'])->findOrFail($id);
                 return view('user.packaging_detail', compact('order'));
 
-            // case 'seminar_kit':
-            //     $order = SeminarKit::with(['user'])->findOrFail($id);
-            //     return view('user.seminarkit_detail', compact('order'));
+            case 'seminar_kit':
+                $order = SeminarKit::with(['user'])->findOrFail($id);
+                return view('user.seminarkit_detail', compact('order'));
 
             default:
                 abort(404);

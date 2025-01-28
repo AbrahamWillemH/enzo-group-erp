@@ -12,31 +12,31 @@
                 <div class="bg-green-main/20 rounded-sm overflow-hidden">
                     <div class="grid grid-cols-6 text-center text-green-main font-medium">
                         <button type="button" id="btn-pending" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Pending
+                            Pending 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-pending"></div>
                         </button>
                         <button type="button" id="btn-fix" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Diterima
+                            Fix 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-fix"></div>
                         </button>
                         <button type="button" id="btn-order" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Pemesanan Bahan
+                            Order 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-order"></div>
                         </button>
                         <button type="button" id="btn-proses" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Proses Produksi
+                            Proses 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-proses"></div>
                         </button>
                         <button type="button" id="btn-finish" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Finishing
+                            Finishing 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-finish"></div>
                         </button>
                         <button type="button" id="btn-ready" class="px-2 py-2 flex-col group flex justify-center items-center">
-                            Ready
+                            Ready 
                             <div class="bg-green-main h-[2px] w-0 group-hover:w-[70%] transition-all duration-500" id="style-ready"></div>
                         </button>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -55,12 +55,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -68,18 +68,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
@@ -118,12 +118,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -131,18 +131,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
@@ -181,12 +181,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -194,18 +194,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
@@ -244,12 +244,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -257,18 +257,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
@@ -307,12 +307,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -320,18 +320,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
@@ -370,12 +370,12 @@
                     </div>
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="px-3 py-3 overflow-hidden">
-                            @if ($order->type == 'souvenir')
+                            @if ($order->type == 'Souvenir')
                             <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'invitation')
+                            @elseif ($order->type == 'Invitation')
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full rounded-md bg-gray-200">
-                            @elseif ($order->type == 'packaging')
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
+                            @elseif ($order->type == 'Packaging')
+                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                         </div>
                         <div class="grid grid-cols-2">
@@ -383,18 +383,18 @@
                                 <p class="text-sm mb-1">Alamat</p>
                                 <p class="text-md capitalize font-medium">{{ $order->address }}</p>
                             </div>
-                            @if ($order->type =='souvenir')
+                            @if ($order->type =='Souvenir')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Acara</p>
                                 <p class="text-md capitalize font-medium">{{ $order->event_date }}</p>
                             </div>
-                            @elseif($order->type =='invitation')
+                            @elseif($order->type =='Invitation')
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Tanggal Akad</p>
                                 <p class="text-md capitalize font-medium">{{ $order->akad_pemberkatan_date}}</p>
                             </div>
                             @else
-
+                            
                             @endif
                             <div class="flex flex-col px-1 py-2">
                                 <p class="text-sm mb-1">Harga per pcs</p>
