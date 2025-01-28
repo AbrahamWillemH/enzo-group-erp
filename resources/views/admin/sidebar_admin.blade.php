@@ -57,12 +57,12 @@
         </li>
         <li>
           <!-- button -->
-          <button type="button" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main" id="dropdown-button2">
+          {{-- <button type="button" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-4/5 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main" id="dropdown-button2">
             <span>Purchase</span>
             <svg class="w-3 h-3 ml-[65px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
-          </button>
+          </button> --}}
           <!-- dropdown -->
           <ul class="hidden bg-white/10 mt-4" id="dropdown-menu2">
             <li>
