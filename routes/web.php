@@ -36,6 +36,14 @@ Route::get('/tesdetailsouvenir', function(){
     return view('frontend.detailsouvenir');
 });
 
+Route::get('/pesanansaya', function(){
+    return view('frontend.pesanansaya');
+});
+
+Route::get('/pesanannew', function(){
+    return view('frontend.newpesanan');
+});
+
 // Route::get('/user/order', function(){
 //     return view('user.progress_order');
 // });
