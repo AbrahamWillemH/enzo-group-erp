@@ -115,6 +115,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // calendar
     Route::get('/admin/calendar', [OrderController::class, 'calendar'])->name('admin.calendar');
+    Route::get('/admin/calendartest', function(){
+        return view('admin.calendartest');});
+    Route::get('/api/deadlines', [OrderController::class, 'getDeadlines']);
 });
 
 // User routes
