@@ -61,7 +61,7 @@ class AdminController extends Controller
             })->count();
 
             $readyCount = $orders->filter(function ($order) {
-                return $order->progress == 'Ready';
+                return $order->progress == 'Selesai';
             })->count();
 
             $today = Carbon::today()->toDateString();
