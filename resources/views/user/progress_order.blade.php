@@ -9,7 +9,7 @@
                 <h1>PESANAN SAYA</h1>
             </div>
         </div>
-        
+
         <!-- konten utama -->
     @if ($orders->isNotEmpty())
         <!-- kartu pesanan saya -->
@@ -29,12 +29,19 @@
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                             <div class="grid grid-rows-2 place-items-center">
+                                @if ($order->design_status == 'Pending')
                                 <p class="text-sm">Setuju dengan desain?</p>
                                 <div class="grid grid-cols-2 gap-2">
-                                    <button type="button" class="bg-green-400 w-[90px] h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-sm border border-white/0 hover:border-green-400 hover:shadow-green-600 hover:shadow-md transition transform color duration-300 overflow-hidden group">YA</button>
-                                    <button type="button" class="bg-red-400 w-[90px] h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-sm border border-white/0 hover:border-red-400 hover:shadow-red-800 hover:shadow-md transition transform color duration-300 overflow-hidden group">TIDAK</button>
-
+                                    <form action="{{route('user.accept.design', ['id' => $order->id])}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-green-400 w-[90px] h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-sm border border-white/0 hover:border-green-400 hover:shadow-green-600 hover:shadow-md transition transform color duration-300 overflow-hidden group">YA</button>
+                                    </form>
+                                    <form action="{{route('user.decline.design', ['id' => $order->id])}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-red-400 w-[90px] h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-sm border border-white/0 hover:border-red-400 hover:shadow-red-800 hover:shadow-md transition transform color duration-300 overflow-hidden group">TIDAK</button>
+                                    </form>
                                 </div>
+                                @endif
                             </div>
                         </div>
                         <div class="grid grid-rows-[75%_25%] p-1">
@@ -77,7 +84,7 @@
                                     </div>
                                     <p class="text-xs">Pending</p>
                                 </div>
-        
+
                                 <!-- Fix Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Fix' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[40px] h-[40px] grid rounded-full place-items-center">
@@ -96,7 +103,7 @@
                                     </div>
                                     <p class="text-xs">Fix</p>
                                 </div>
-        
+
                                 <!-- Order Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Pemesanan Bahan' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Pending' || $order->progress == 'Fix' ? 'gray-500' : 'white' }} border-2 w-[40px] h-[40px] grid rounded-full place-items-center">
@@ -119,7 +126,7 @@
                                     </div>
                                     <p class="text-xs">Order</p>
                                 </div>
-        
+
                                 <!-- Proses Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Proses Produksi' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Proses Produksi' || $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[40px] h-[40px] grid rounded-full place-items-center">
@@ -142,7 +149,7 @@
                                     </div>
                                     <p class="text-xs">Proses</p>
                                 </div>
-        
+
                                 <!-- Finishing Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Finishing' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[40px] h-[40px] grid rounded-full place-items-center">
@@ -165,7 +172,7 @@
                                     </div>
                                     <p class="text-xs">Finishing</p>
                                 </div>
-        
+
                                 <!-- Ready Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Selesai' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[40px] h-[40px] grid rounded-full place-items-center">

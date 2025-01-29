@@ -165,6 +165,7 @@ class InvitationController extends Controller
             $filePath = $file->storeAs('invitations', $fileName, 'public');
 
             $validated['desain_path'] = $filePath;
+            $validated['design_status'] = 'Pending';
         }
 
         $order->update($validated);

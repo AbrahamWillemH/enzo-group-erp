@@ -141,6 +141,7 @@ class SouvenirController extends Controller
             $filePath = $file->storeAs('souvenir/emboss', $fileName, 'public');
 
             $validated['desain_emboss_path'] = $filePath;
+            $validated['desain_status'] = 'Pending';
         }
 
         if ($request->hasFile('desain_thankscard_path') && $request->file('desain_thankscard_path')->isValid()) {
@@ -159,6 +160,7 @@ class SouvenirController extends Controller
             $filePath = $file->storeAs('souvenir/thankscard', $fileName, 'public');
 
             $validated['desain_thankscard_path'] = $filePath;
+            $validated['design_status'] = 'Pending';
         }
 
         $order->update($validated);

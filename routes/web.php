@@ -130,6 +130,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/user/orders', [OrderController::class, 'showOrders'])->name('orders.view');
+    Route::post('/user/orders/{id}/accept', [OrderController::class, 'acceptImage'])->name('user.accept.design');
+    Route::post('/user/orders/{id}/decline', [OrderController::class, 'declineImage'])->name('user.decline.design');
     Route::get('/user/orders/{type}/{id}', [OrderController::class, 'showOrderDetail'])->name('orders.detail');
 
     // create order
