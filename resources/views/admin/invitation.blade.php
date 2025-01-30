@@ -244,6 +244,7 @@
                                 <th class="text-center">Tanggal Pesan</th>
                                 <th class="text-center">Tanggal Acara</th>
                                 <th class="text-center">Deadline</th>
+                                <th class="text-center">Detail Proses</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -258,6 +259,7 @@
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">TEST</td>
                                 <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
