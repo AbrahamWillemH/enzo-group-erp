@@ -50,7 +50,7 @@
 
         <div class="">
             <section id="pending" class="pending mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PENDING</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Pembayaran dan Desain</div>
                 <div class="data mt-[11%] mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -120,7 +120,7 @@
             </section>
 
             <section id="fix" class="fix mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">FIX</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menentukan Deadline</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -177,7 +177,7 @@
             </section>
 
             <section id="order" class="order mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">ORDER</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Pemesanan Bahan</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -232,7 +232,7 @@
             </section>
 
             <section id="proses" class="proses mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PROSES</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Proses Produksi</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                         <thead class="bg-green-main/30 backdrop-blur-lg">
@@ -343,7 +343,7 @@
             </section>
 
             <section id="ready" class="ready mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">READY</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Selesai</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                         <thead class="bg-green-main/30 backdrop-blur-lg">
