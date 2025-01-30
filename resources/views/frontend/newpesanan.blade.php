@@ -168,7 +168,6 @@
                     <div class="px-3 flex justify-center items-center py-2 border-t-2 border-black/40">
                         <a href="" class="relative border border-white/0 hover:border-green-main hover:shadow-green-main hover:shadow-md transition transform color duration-300 font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">Lihat Detail</a>
                     </div>
-            
                 </div>
             </div>
         </div>

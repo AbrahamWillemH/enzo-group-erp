@@ -16,7 +16,7 @@
         <a href="{{route('loginRedirect')}}">Enzo Group</a>
     </div>
     <div class="grid grid-cols-3 gap-1 font-medium">
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
+      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="text-brown-enzo flex flex-col justify-center items-center group mr-7">Dashboard
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
 
@@ -29,10 +29,10 @@
 
         <!-- Dropdown Content -->
         <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full left-5 w-50 transition-opacity duration-500 delay-25">
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Invitation</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Souvenir</a>
+          <a href="/orders/invitation/create" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Invitation</a>
+          <a href="/orders/souvenir/create" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Souvenir</a>
           <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Seminar Kit</a>
-          <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Packaging</a>
+          <a href="/orders/packaging/create" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
 

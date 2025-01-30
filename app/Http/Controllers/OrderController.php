@@ -336,4 +336,67 @@ class OrderController extends Controller
 
         return response()->json($events);
     }
+
+    public function acceptImage($id) {
+        $found = false;
+
+        $invitation = Invitation::find($id);
+        if ($invitation) {
+            $invitation->design_status = 'ACC';
+            $invitation->save();
+            $found = true;
+        }
+
+        $souvenir = Souvenir::find($id);
+        if ($souvenir) {
+            $souvenir->design_status = 'ACC';
+            $souvenir->save();
+            $found = true;
+        }
+
+        $packaging = Packaging::find($id);
+        if ($packaging) {
+            $packaging->design_status = 'ACC';
+            $packaging->save();
+            $found = true;
+        }
+
+        if (!$found) {
+            return redirect()->back()->with('error', 'Order tidak ditemukan.');
+        }
+
+        return redirect()->route('orders.view')->with('success', 'Desain telah disetujui.');
+    }
+
+    public function declineImage($id) {
+        $found = false;
+
+        $invitation = Invitation::find($id);
+        if ($invitation) {
+            $invitation->design_status = 'DECL';
+            $invitation->save();
+            $found = true;
+        }
+
+        $souvenir = Souvenir::find($id);
+        if ($souvenir) {
+            $souvenir->design_status = 'DECL';
+            $souvenir->save();
+            $found = true;
+        }
+
+        $packaging = Packaging::find($id);
+        if ($packaging) {
+            $packaging->design_status = 'DECL';
+            $packaging->save();
+            $found = true;
+        }
+
+        if (!$found) {
+            return redirect()->back()->with('error', 'Order tidak ditemukan.');
+        }
+
+        return redirect()->route('orders.view')->with('success', 'Desain telah ditolak.');
+    }
+
 }
