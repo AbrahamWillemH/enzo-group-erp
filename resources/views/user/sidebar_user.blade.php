@@ -15,7 +15,7 @@
         <li>
           <div class="flex items-center space-x-3">
             <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center ml-4">
-              <span class="text-green-main font-medium">U</span>
+              <span class="text-green-main font-medium">{{Str::substr(auth()->user()->name, 0, 1)}}</span>
             </div>
             <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">{{auth()->user()->name}}</span>
           </div>
