@@ -35,10 +35,6 @@
           <a href="/orders/packaging/create" class="block px-4 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
-
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Admin
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-      </a>
     </div>
   </div>
 
@@ -208,7 +204,7 @@
           Buat Pesanan
         </button>
         <!-- tombol kembali -->
-        <a href=""
+        <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}"
            class="bg-brown-main text-white px-10 py-[11px] rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center ml-8">
           Kembali
         </a>
