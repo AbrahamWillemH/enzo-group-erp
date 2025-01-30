@@ -56,12 +56,12 @@ class AdminController extends Controller
                 return $order->progress == 'Proses Produksi';
             })->count();
 
-            $finishingCount = $orders->filter(function ($order) {
-                return $order->progress == 'Finishing';
-            })->count();
-
             $readyCount = $orders->filter(function ($order) {
                 return $order->progress == 'Selesai';
+            })->count();
+
+            $doneCount = $orders->filter(function ($order) {
+                return $order->progress == 'Selesai Beneran';
             })->count();
 
             $today = Carbon::today()->toDateString();
@@ -73,6 +73,6 @@ class AdminController extends Controller
                 }
             });
 
-        return view('admin.dashboard', compact('orderDeadline', 'pendingCount', 'fixCount', 'orderCount', 'productionCount', 'finishingCount', 'readyCount'));
+        return view('admin.dashboard', compact('orderDeadline', 'pendingCount', 'fixCount', 'orderCount', 'productionCount', 'readyCount', 'doneCount'));
     }
 }

@@ -120,7 +120,8 @@ class SouvenirController extends Controller
             'printout' => 'nullable|string|max:255',
             'design_status' => 'nullable|string|max:255',
             'desain_thankscard_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
-            'desain_emboss_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
+            'desain_emboss_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
+            'subprocess' => 'nullable|enum'
         ]);
 
         $order = Souvenir::findOrFail($id);
@@ -185,6 +186,16 @@ class SouvenirController extends Controller
         // Perbarui status pembayaran di database
         $order = Souvenir::findOrFail($request->order_id);
         $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index($request);
+    }
+
+    public function updateSubprocess(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Souvenir::findOrFail($request->order_id);
+        $order->subprocess = $request->subprocess;
         $order->save();
 
         return $this->index($request);

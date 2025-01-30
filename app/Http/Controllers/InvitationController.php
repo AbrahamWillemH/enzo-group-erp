@@ -144,7 +144,8 @@ class InvitationController extends Controller
             'price_per_pcs' => 'nullable|int',
             'expedition' => 'nullable|string',
             'dp2_date' => 'nullable|date',
-            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
+            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
+            'subprocess' => 'nullable|enum'
         ]);
 
         $order = Invitation::findOrFail($id);
@@ -245,5 +246,15 @@ class InvitationController extends Controller
 
 
         return redirect()->back()->with('success', 'Purchase invitation created successfully.');
+    }
+
+    public function updateSubprocess(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Invitation::findOrFail($request->order_id);
+        $order->subprocess = $request->subprocess;
+        $order->save();
+
+        return $this->index($request);
     }
 }

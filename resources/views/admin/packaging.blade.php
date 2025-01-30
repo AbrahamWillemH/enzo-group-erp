@@ -235,6 +235,7 @@
                                 <th class="text-center">Jumlah</th>
                                 <th class="text-center">Tanggal Pesan</th>
                                 <th class="text-center">Deadline</th>
+                                <th class="text-center">Detail Proses</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -249,12 +250,23 @@
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.update_subprocess') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                            <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                                <option value="Cetak" {{ old('subprocess', $o->subprocess) == 'Cetak' ? 'selected' : '' }}>Cetak</option>
+                                                <option value="Laminasi" {{ old('subprocess', $o->subprocess) == 'Laminasi' ? 'selected' : '' }}>Laminasi</option>
+                                                <option value="Foil" {{ old('subprocess', $o->subprocess) == 'Foil' ? 'selected' : '' }}>Foil</option>
+                                                <option value="Proses Lem" {{ old('subprocess', $o->subprocess) == 'Proses Lem' ? 'selected' : '' }}>Proses Lem</option>
+                                                <option value="Packing" {{ old('subprocess', $o->subprocess) == 'Packing' ? 'selected' : '' }}>Packing</option>
+                                            </select>
+                                        </form>
+                                <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                         <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Detail
                                         </button>
                                     </form>
-
                                     <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                         @csrf
                                         <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">

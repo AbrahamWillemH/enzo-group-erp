@@ -40,7 +40,8 @@ class Packaging extends Model
         'type',
         'note_cs',
         'status',
-        'desain_path'
+        'desain_path',
+        'subprocess'
     ];
 
     public static function generatePackagingId()

@@ -42,7 +42,8 @@ class Souvenir extends Model
         'printout',
         'acc_client',
         'desain_emboss_path',
-        'desain_thankscard_path'
+        'desain_thankscard_path',
+        'subprocess'
     ];
 
     /**

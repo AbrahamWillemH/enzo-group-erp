@@ -249,6 +249,7 @@
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
+                                    <th class="text-center">Detail Proses</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -264,6 +265,19 @@
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->event_date)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <td class="px-3 py-3 text-center">
+                                            <form action="{{ route('admin.souvenir.update_subprocess') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                                <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                                    <option value="Potong Kain" {{ old('subprocess', $o->subprocess) == 'Potong Kain' ? 'selected' : '' }}>Potong Kain</option>
+                                                    <option value="Proses Sablon/Decal" {{ old('subprocess', $o->subprocess) == 'Proses Sablon/Decal' ? 'selected' : '' }}>Proses Sablon/Decal</option>
+                                                    <option value="Proses Jahit" {{ old('subprocess', $o->subprocess) == 'Proses Jahit' ? 'selected' : '' }}>Proses Jahit</option>
+                                                    <option value="Proses Kemas" {{ old('subprocess', $o->subprocess) == 'Proses Kemas' ? 'selected' : '' }}>Proses Kemas</option>
+                                                    <option value="Packing" {{ old('subprocess', $o->subprocess) == 'Packing' ? 'selected' : '' }}>Packing</option>
+                                                </select>
+                                            </form>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">

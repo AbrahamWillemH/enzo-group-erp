@@ -17,7 +17,8 @@ class OrderController extends Controller
         'Fix',
         'Pemesanan Bahan',
         'Proses Produksi',
-        'Selesai'
+        'Selesai',
+        'Selesai Beneran'
     ];
 
     private function getOrders()

@@ -151,12 +151,12 @@
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$productionCount}}</div>
           </div>
           <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Finishing</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$finishingCount}}</div>
-          </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
             <div class="flex-none h-[30%] flex items-center justify-center">Ready</div>
             <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$readyCount}}</div>
+          </div>
+          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
+            <div class="flex-none h-[30%] flex items-center justify-center">Done</div>
+            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$doneCount}}</div>
           </div>
         </div>
 

@@ -108,7 +108,8 @@ class PackagingController extends Controller
             'expedition' => 'nullable|string',
             'design_status' => 'nullable|string',
             'note_cs' => 'nullable|string',
-            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf'
+            'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
+            'subprocess' => 'nullable|enum'
         ]);
 
         $order = Packaging::findOrFail($id);
@@ -154,6 +155,16 @@ class PackagingController extends Controller
         // Perbarui status pembayaran di database
         $order = Packaging::findOrFail($request->order_id);
         $order->payment_status = $request->payment_status;
+        $order->save();
+
+        return $this->index($request);
+    }
+
+    public function updateSubprocess(Request $request)
+    {
+        // Perbarui status pembayaran di database
+        $order = Packaging::findOrFail($request->order_id);
+        $order->subprocess = $request->subprocess;
         $order->save();
 
         return $this->index($request);
