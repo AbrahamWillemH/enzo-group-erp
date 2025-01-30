@@ -196,7 +196,13 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
+                                    @if ($invitation->design_status == 'DECL')
+                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-red-600">
+                                    @elseif($invitation->design_status == 'ACC')
+                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-green-600">
+                                    @else
                                     <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                    @endif
                                 </td>
                             </tr>
 
