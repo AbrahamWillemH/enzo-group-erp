@@ -9,7 +9,7 @@
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DATA PACKAGING</h1>
             </div>
-            <div class="grid grid-cols-8 gap-1 font-medium">
+            <div class="grid grid-cols-7 gap-1 font-medium">
                 <a href="#pending" class="text-brown-enzo flex flex-col justify-center items-center group">Pending
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
@@ -20,9 +20,6 @@
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
                 <a href="#proses" class="text-brown-enzo flex flex-col justify-center items-center group">Proses
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                <a href="#finishing" class="text-brown-enzo flex flex-col justify-center items-center group">Finishing
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
                 <a href="#ready" class="text-brown-enzo flex flex-col justify-center items-center group">Ready
@@ -37,11 +34,9 @@
 
                     <!-- Dropdown Content -->
                     <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
-                        <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
-                            <a href="{{route('admin.packaging.view', ['sort' => 'alphabetical'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
-                            <a href="{{route('admin.packaging.view', ['sort' => 'order'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
-                            <a href="{{route('admin.packaging.view', ['sort' => 'deadline'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
-                        </div>
+                        <a href="{{route('admin.packaging.view', ['sort' => 'alphabetical'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
+                        <a href="{{route('admin.packaging.view', ['sort' => 'order'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
+                        <a href="{{route('admin.packaging.view', ['sort' => 'deadline'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
                     </div>
                 </div>
                 <div class="search flex items-center justify-center font-medium text-xs">
@@ -52,7 +47,7 @@
 
         <div class="">
             <section id="pending" class="pending mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PENDING</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Pembayaran dan Desain</div>
                 <div class="data mt-[11%] mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -121,7 +116,7 @@
             </section>
 
             <section id="fix" class="fix mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">FIX</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menentukan Deadline</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -176,7 +171,7 @@
             </section>
 
             <section id="order" class="order mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">ORDER</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Pemesanan Bahan</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
                         <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
@@ -229,7 +224,7 @@
             </section>
 
             <section id="proses" class="proses mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">PROSES</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Proses Produksi</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                         <thead class="bg-green-main/30 backdrop-blur-lg">
@@ -282,61 +277,8 @@
 
             </section>
 
-            <section id="finishing" class="finishing mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">FINISHING</div>
-                <div class="data mt-11 mb-5 px-3 gap-0">
-                    <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
-                        <thead class="bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Deadline</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Finishing')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
-                                            Previous
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
-                                            Next
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-
-            </section>
-
             <section id="ready" class="ready mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">READY</div>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Ambil / Kirim</div>
                 <div class="data mt-11 mb-5 px-3 gap-0">
                     <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
                         <thead class="bg-green-main/30 backdrop-blur-lg">
