@@ -71,7 +71,7 @@
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">ACC</td>
+                                <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
                                 <td class="px-3 py-3 text-center">
                                 <form action="{{ route('admin.packaging.update_payment_status') }}" method="POST">
                                     @csrf
