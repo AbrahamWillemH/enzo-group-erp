@@ -15,11 +15,7 @@
       <h1>Enzo Group</h1>
     </div>
     <div class="grid grid-cols-2 font-medium">
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-0">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-      </a>
-
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Admin
+      <a href="/admin/dashboard" class="text-brown-enzo flex flex-col justify-center items-center group mr-0">Dashboard
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
       </a>
     </div>
