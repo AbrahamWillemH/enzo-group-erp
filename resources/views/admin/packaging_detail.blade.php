@@ -68,7 +68,13 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover max-w-full max-h-full">
+                                    @if ($packaging->design_status == 'DECL')
+                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full border-8 border-red-600">
+                                    @elseif($packaging->design_status == 'ACC')
+                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full border-8 border-green-600">
+                                    @else
+                                    <img src="{{ asset('storage/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full">
+                                    @endif
                                 </td>
                             </tr>
 
