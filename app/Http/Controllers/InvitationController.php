@@ -215,6 +215,7 @@ class InvitationController extends Controller
     }
 
     public function purchaseInvitationStore(Request $request, $id) {
+        // dd($request);
         $validated = $request->validate([
             'order_code' => 'required|string|max:255|unique:purchase_invitation',
             'invoice' => 'nullable|string|max:255',
