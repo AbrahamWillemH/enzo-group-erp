@@ -29,6 +29,7 @@
                             <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
                             @endif
                             <div class="grid grid-rows-2 place-items-center">
+                                @if ($order->desain_path || $order->desain_thankscard_path)
                                 @if ($order->design_status == 'Pending')
                                 <p class="text-sm">Setuju dengan desain?</p>
                                 <div class="grid grid-cols-2 gap-2">
@@ -41,6 +42,7 @@
                                         <button type="submit" class="bg-red-400 w-[90px] h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-sm border border-white/0 hover:border-red-400 hover:shadow-red-800 hover:shadow-md transition transform color duration-300 overflow-hidden group">TIDAK</button>
                                     </form>
                                 </div>
+                                @endif
                                 @endif
                             </div>
                         </div>
