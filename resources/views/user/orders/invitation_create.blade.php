@@ -14,25 +14,25 @@
   <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-6 py-4 bg-green-main text-brown-enzo shadow-md">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
     <div class="flex space-x-6">
-      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group mr-7 font-semibold">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-      </a>
-
       <!-- Dropdown Menu -->
       <div class="group relative">
         <!-- Dropdown Button -->
-        <button class="flex flex-col justify-center items-center font-semibold">Form Order
+        <button class="flex flex-col justify-center items-center font-semibold mr-7">Form Order
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
         </button>
 
         <!-- Dropdown Content -->
-        <div class="absolute left-0 mt-2 w-48 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-          <a href="/orders/invitation/create" class="block px-4 py-2 hover:bg-cream rounded-md">Invitation</a>
-          <a href="/orders/souvenir/create" class="block px-4 py-2 hover:bg-cream rounded-md">Souvenir</a>
-          <a href="#" class="block px-4 py-2 hover:bg-cream rounded-md">Seminar Kit</a>
-          <a href="/orders/packaging/create" class="block px-4 py-2 hover:bg-cream rounded-md">Packaging</a>
+        <div class="absolute mt-2 right-2 w-32 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+          <a href="/orders/invitation/create" class="block px-4 py-1 hover:bg-cream rounded-md">Invitation</a>
+          <a href="/orders/souvenir/create" class="block px-4 py-1 hover:bg-cream rounded-md">Souvenir</a>
+          <a href="#" class="block px-4 py-1 hover:bg-cream rounded-md">Seminar Kit</a>
+          <a href="/orders/packaging/create" class="block px-4 py-1 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
+
+      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Dashboard
+        <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
+    </a>
     </div>
   </nav>
 
