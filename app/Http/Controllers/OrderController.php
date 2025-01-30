@@ -17,7 +17,6 @@ class OrderController extends Controller
         'Fix',
         'Pemesanan Bahan',
         'Proses Produksi',
-        'Finishing',
         'Selesai'
     ];
 
