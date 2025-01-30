@@ -12,7 +12,7 @@
                 <h1>DETAIL PEMESANAN UNDANGAN</h1>
             </div>
             <div class="grid grid-cols-2 font-medium">
-                <a href="#" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
+                <a href="/admin/orders/invitation" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
                 <a href="#purchase" class="text-brown-enzo flex flex-col justify-center items-center group">Purchase Order
