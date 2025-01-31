@@ -73,7 +73,7 @@
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
                                 <td class="px-3 py-3 text-center">
-                                <form action="{{ route('admin.packaging.update_payment_status') }}" method="POST">
+                                <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="order_id" value="{{ $o->id }}">
                                     <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
@@ -250,7 +250,7 @@
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                 <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('admin.packaging.update_subprocess') }}" method="POST">
+                                        <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="order_id" value="{{ $o->id }}">
                                             <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">

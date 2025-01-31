@@ -205,11 +205,19 @@ class InvitationController extends Controller
         return view('admin.invitation_detail', compact('purchase', 'invitation'));
     }
 
-    public function updatePaymentStatus(Request $request)
+    public function updatePaymentSubprocess(Request $request)
     {
         // Perbarui status pembayaran di database
         $order = Invitation::findOrFail($request->order_id);
-        $order->payment_status = $request->payment_status;
+
+        if ($request->has('payment_status')) {
+            $order->payment_status = $request->payment_status;
+        }
+
+        if ($request->has('subprocess')) {
+            $order->subprocess = $request->subprocess;
+        }
+
         $order->save();
 
         return $this->index($request);
@@ -246,15 +254,5 @@ class InvitationController extends Controller
 
 
         return redirect()->back()->with('success', 'Purchase invitation created successfully.');
-    }
-
-    public function updateSubprocess(Request $request)
-    {
-        // Perbarui status pembayaran di database
-        $order = Invitation::findOrFail($request->order_id);
-        $order->subprocess = $request->subprocess;
-        $order->save();
-
-        return $this->index($request);
     }
 }

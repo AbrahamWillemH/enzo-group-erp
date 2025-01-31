@@ -181,21 +181,19 @@ class SouvenirController extends Controller
         return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
     }
 
-    public function updatePaymentStatus(Request $request)
+    public function updatePaymentSubprocess(Request $request)
     {
         // Perbarui status pembayaran di database
         $order = Souvenir::findOrFail($request->order_id);
-        $order->payment_status = $request->payment_status;
-        $order->save();
 
-        return $this->index($request);
-    }
+        if ($request->has('payment_status')) {
+            $order->payment_status = $request->payment_status;
+        }
 
-    public function updateSubprocess(Request $request)
-    {
-        // Perbarui status pembayaran di database
-        $order = Souvenir::findOrFail($request->order_id);
-        $order->subprocess = $request->subprocess;
+        if ($request->has('subprocess')) {
+            $order->subprocess = $request->subprocess;
+        }
+
         $order->save();
 
         return $this->index($request);

@@ -150,21 +150,19 @@ class PackagingController extends Controller
         return view('admin.packaging_detail', compact('packaging', 'purchase'));
     }
 
-    public function updatePaymentStatus(Request $request)
+    public function updatePaymentSubprocess(Request $request)
     {
         // Perbarui status pembayaran di database
         $order = Packaging::findOrFail($request->order_id);
-        $order->payment_status = $request->payment_status;
-        $order->save();
 
-        return $this->index($request);
-    }
+        if ($request->has('payment_status')) {
+            $order->payment_status = $request->payment_status;
+        }
 
-    public function updateSubprocess(Request $request)
-    {
-        // Perbarui status pembayaran di database
-        $order = Packaging::findOrFail($request->order_id);
-        $order->subprocess = $request->subprocess;
+        if ($request->has('subprocess')) {
+            $order->subprocess = $request->subprocess;
+        }
+
         $order->save();
 
         return $this->index($request);
