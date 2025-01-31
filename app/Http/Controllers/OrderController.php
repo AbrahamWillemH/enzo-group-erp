@@ -399,4 +399,11 @@ class OrderController extends Controller
         return redirect()->route('orders.view')->with('success', 'Desain telah ditolak.');
     }
 
+    public function finishedOrders() {
+        $orders = $this->getOrders();
+        $filteredOrders = $orders->filter(function ($order) {
+            return isset($order->progress) && $order->progress === 'Selesai Beneran';
+        });
+        return view('admin.orders_done', compact('filteredOrders'));
+    }
 }

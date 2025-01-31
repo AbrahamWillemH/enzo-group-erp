@@ -44,7 +44,7 @@
         <!-- Tabel -->
         <main class="pt-20 bg-green-light h-screen">
             <!-- <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[1.5rem] mb-6 max-h-[400px]">
-           
+
                 <table class="w-full border rounded-lg capitalize shadow-inner">
                     <thead class="text-brown-enzo">
                         <tr>
@@ -180,7 +180,7 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>      
+            </div>
         </main>
     </div>
 

@@ -10,7 +10,7 @@
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
             <h1 class="font-cookie text-5xl">Hello, {{ auth()->user()->name }}</h1>
-            <p><strong>This is the Admin dashboard page, accessible only for Admin</strong></p>
+            <p class="font-semibold">You can track order progress, create new orders, and keep track of the deadlines here!</p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">

@@ -54,6 +54,7 @@
                             <tr class="h-20">
                                 <th class="text-center">ID</th>
                                 <th class="text-center">Nama</th>
+                                <th class="text-center">Nomor Telepon</th>
                                 <th class="text-center">Tipe Produk</th>
                                 <th class="text-center">Jumlah</th>
                                 <th class="text-center">Tanggal Pesan</th>
@@ -67,8 +68,16 @@
                             @foreach($invitation as $o)
                             @if ($o->progress == 'Pending')
                             <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{ $o->id }}</td>
+                                <td class="px-3 py-3 text-center flex flex-row mt-4 ml-4">
+                                    @if (($o->payment_status =='DP 1' || $o->payment_status == 'Pending') && $o->design_status == 'ACC')
+                                        <div class="w-3 h-3 bg-green-500 rounded-full text-center m-auto"></div>
+                                    @endif
+                                    <div>
+                                        {{ $o->id }}
+                                    </div>
+                                </td>
                                 <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                <td class="px-3 py-3 text-center">{{$o->phone_number}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                 <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                 <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
