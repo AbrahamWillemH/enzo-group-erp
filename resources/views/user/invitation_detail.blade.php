@@ -4,11 +4,11 @@
 <div class="ml-[20%]">
 
     <div class="bg-green-light h-full">
-        <header class="z-30 fixed top-0 right-0 h-[68px] w-[80%] grid grid-cols-[80%_20%] px-4 py-5 bg-green-shadow">
+        <header class="z-30 fixed top-0 right-0 h-[68px] w-[80%] grid grid-cols-[88%_12%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN UNDANGAN</h1>
             </div>
-            <div class="grid grid-cols-1 font-medium">
+            <div class="font-medium">
                 <a href="/user/orders" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
@@ -50,7 +50,7 @@
                                 <td class="w-[35%] px-4 py-2">Tipe Produk</td>
                                 <td class="px-4 py-2">{{ $order->type }}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Finishing</td>
                                 <td class="px-4 py-2">{{ $order->finishing }}</td>
                             </tr>
@@ -186,7 +186,11 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                    @if(!is_null($order->desain_path))
+                                        <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                    @else
+                                        <p class="text-center">Belum Terdapat Desain</p>
+                                    @endif
                                 </td>
                             </tr>
 

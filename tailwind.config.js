@@ -33,6 +33,7 @@ export default {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
                 mont: ['Montserrat', 'sans-serif'],
+                cookie: ['Cookie', 'serif'],
             },
             keyframes: {
                 carousel: {

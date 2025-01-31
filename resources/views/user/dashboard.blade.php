@@ -9,7 +9,7 @@
         <div class="grid grid-rows-[100px_auto]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
-            <h1><strong>Hello, {{ auth()->user()->name }}</strong></h1>
+            <h1 class="font-cookie text-5xl">Hello, {{ auth()->user()->name }}</h1>
             <p><strong>This is the user dashboard page, accessible to regular users.</strong></p>
           </div>
 
@@ -184,8 +184,8 @@
                                       <li>Pada menu 'Dashboard', pilih menu order jenis item yang hendak dipesan.</li>
                                       <li>Isi form order dengan data yang lengkap dan benar.</li>
                                       <li>Pastikan data yang diisi sudah benar, lalu klik 'Buat Pesanan'.</li>
-                                      <li>Pantau progres dan lihat detail pesanan Anda pada menu 'Pesanan Saya'</li>
-                                      <li>Jika terdapat kesalahan data, harap hubungi Admin</li>
+                                      <li>Pantau progres dan lihat detail pesanan Anda pada menu 'Pesanan Saya'.</li>
+                                      <li>Jika terdapat kesalahan data, harap hubungi Admin.</li>
                                     </ol>
                                 </div>
                             </div>

@@ -24,9 +24,17 @@
                     <div class="grid grid-cols-[40%_60%] gap-2">
                         <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1">
                             @if ($order->type == 'souvenir')
-                            <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
+                                @if(!is_null($order->desain_thankscard_path))
+                                    <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
+                                @else
+                                    <p class="flex justify-center items-center bg-gray-200 rounded-md">Belum Terdapat Desain</p>
+                                @endif
                             @else
-                            <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
+                                @if(!is_null($order->desain_path))
+                                    <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
+                                @else
+                                    <p class="flex justify-center items-center bg-gray-200 rounded-md">Belum Terdapat Desain</p>
+                                @endif
                             @endif
                             <div class="grid grid-rows-2 place-items-center">
                                 @if ($order->desain_path || $order->desain_thankscard_path)
@@ -209,8 +217,8 @@
         </div>
         @endforeach
     @else
-    <div class="px-4 py-6">
-        <h1>ANDA BELUM MEMESAN APAPUN.</h1>
+    <div class="px-4 py-6 flex justify-center items-center">
+        <h1 class="bg-gray-600 w-[320px] h-[50px] rounded-md text-green-light p-1 font-medium flex justify-center items-center">ANDA BELUM MEMESAN APAPUN</h1>
     </div>
     @endif
     </div>

@@ -8,6 +8,9 @@
   @vite('resources/css/app.css')
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
 </head>
 
 <body class="font-mont">

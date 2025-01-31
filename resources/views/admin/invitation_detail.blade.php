@@ -6,22 +6,19 @@
 @section('konten')
 <div class="ml-[20%]">
 
-    <div class="bg-green-light h-full">
-        <header class="z-30 fixed top-0 right-0 h-[68px] w-[80%] grid grid-cols-[76%_24%] px-4 py-5 bg-green-shadow">
+    <div class="bg-green-light h-full relative">
+        <header class="z-30 fixed top-0 right-0 h-[68px] w-[80%] grid grid-cols-[88%_12%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN UNDANGAN</h1>
             </div>
-            <div class="grid grid-cols-2 font-medium">
+            <div class="font-medium">
                 <a href="/admin/orders/invitation" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
-                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-                </a>
-                <a href="#purchase" class="text-brown-enzo flex flex-col justify-center items-center group">Purchase Order
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
             </div>
 
         </header>
-        <main class="">
+        <main class="bg-green-light">
             <section id="data_pemesan" class="data_pemesan mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
                 <div class="data mt-[7.25rem] mb-5 px-3 gap-0 flex justify-center capitalize">
@@ -184,7 +181,7 @@
                 </div>
             </section>
 
-            <section id="info_tambahan" class="info_tambahan mb-20">
+            <section id="info_tambahan" class="info_tambahan pb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DETAIL</div>
                 <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
@@ -196,12 +193,16 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    @if ($invitation->design_status == 'DECL')
-                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-red-600">
-                                    @elseif($invitation->design_status == 'ACC')
-                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-green-600">
+                                    @if (!is_null($invitation->desain_path))
+                                        @if ($invitation->design_status == 'DECL')
+                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-red-600">
+                                        @elseif($invitation->design_status == 'ACC')
+                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-green-600">
+                                        @else
+                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                        @endif
                                     @else
-                                    <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                        <p class="text-center">Belum Terdapat Desain</p>
                                     @endif
                                 </td>
                             </tr>
@@ -263,9 +264,18 @@
 
                     </table>
                 </div>
+                <div class="edit_button px-6 mt-10 grid justify-items-end">
+                    <a href="{{route('admin.invitation.edit', ['id' => $invitation->id])}}"
+                        class="relative bg-green-main/80 text-brown-enzo font-semibold w-[6rem] h-[3rem] flex justify-center items-center rounded-lg overflow-hidden group">
+                        <!-- Layer latar belakang -->
+                        <span class="absolute inset-0 bg-green-main transition-transform -translate-x-full group-hover:translate-x-0 transition-duration duration-500"></span>
+                        <!-- Teks -->
+                        <span class="relative z-10">EDIT</span>
+                    </a>
+                </div>
             </section>
 
-            <section id="purchase" class="purchase pb-16">
+            <!-- <section id="purchase" class="purchase pb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     PURCHASE ORDER
                 </div>
@@ -430,23 +440,13 @@
                 <div class="add_data mt-10 grid justify-items-center">
                     <button id="addDataButton"
                         class="relative bg-green-main/80 text-brown-enzo font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">
-                        <!-- Layer latar belakang -->
+                        
                         <span class="absolute inset-0 bg-green-main transition-transform -translate-y-full group-hover:translate-y-0 transition-duration duration-500"></span>
-                        <!-- Teks -->
+                       
                         <span class="relative z-10">TAMBAH DATA</span>
                     </button>
                 </div>
-
-                <div class="edit_button px-6 mt-10 grid justify-items-end">
-                    <a href="{{route('admin.invitation.edit', ['id' => $invitation->id])}}"
-                        class="relative bg-green-main/80 text-brown-enzo font-semibold w-[6rem] h-[3rem] flex justify-center items-center rounded-lg overflow-hidden group">
-                        <!-- Layer latar belakang -->
-                        <span class="absolute inset-0 bg-green-main transition-transform -translate-x-full group-hover:translate-x-0 transition-duration duration-500"></span>
-                        <!-- Teks -->
-                        <span class="relative z-10">EDIT</span>
-                    </a>
-                </div>
-            </section>
+            </section> -->
         </main>
     </div>
 </div>

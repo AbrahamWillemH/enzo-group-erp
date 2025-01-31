@@ -9,7 +9,7 @@
         <div class="grid grid-rows-[25%_75%]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
-            <h1><strong>Hello, {{ auth()->user()->name }}</strong></h1>
+            <h1 class="font-cookie text-5xl">Hello, {{ auth()->user()->name }}</h1>
             <p><strong>This is the Admin dashboard page, accessible only for Admin</strong></p>
           </div>
 

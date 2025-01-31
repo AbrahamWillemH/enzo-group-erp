@@ -13,7 +13,7 @@
       <h1 class="text-cream font-bold text-4xl sm:text-4xl md:text-5xl lg:text-6xl">Login</h1>
 
       @if ($errors->any())
-      <div class="alert alert-danger mt-5">
+      <div class="alert alert-danger mt-5 text-green-light">
         <ul>
           @foreach ($errors->all() as $error)
           <li>{{ $error }}</li>

@@ -4,11 +4,11 @@
 <div class="ml-[20%]">
 
     <div class="bg-green-light h-full relative">
-        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[80%_20%] px-4 py-5 bg-green-shadow">
+        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[88%_12%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN PACKAGING</h1>
             </div>
-            <div class="grid grid-cols-2 font-medium">
+            <div class="font-medium">
                 <a href="/user/orders" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
@@ -18,7 +18,7 @@
         <div class="">
             <section id="data_pemesan" class="data_pemesan mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
-                <div class="data mt-[12%] mb-5 px-3 gap-0 flex justify-center capitalize">
+                <div class="data mt-[7.25rem] mb-5 px-3 gap-0 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
                         <thead>
                             <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -34,11 +34,11 @@
                                 <td class="w-[35%] px-4 py-2">Nomor HP</td>
                                 <td class="px-4 py-2">{{$order->phone_number}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Jumlah</td>
                                 <td class="px-4 py-2">{{$order->quantity}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Alamat Lengkap</td>
                                 <td class="px-4 py-2">{{$order->address}}</td>
                             </tr>
@@ -49,9 +49,9 @@
                 </div>
             </section>
 
-            <section id="info_tambahan" class="info_tambahan mb-16">
+            <section id="detail" class="detail mb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DETAIL</div>
-                <div class="data mt-[5.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
                         <thead>
                             <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -61,7 +61,11 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
-                                    <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover max-w-full max-h-full">
+                                    @if(!is_null($order->desain_path))
+                                        <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Packaging" class="object-cover max-w-full max-h-full">
+                                    @else
+                                        <p class="text-center">Belum Terdapat Desain</p>
+                                    @endif
                                 </td>
                             </tr>
 
@@ -103,7 +107,7 @@
 
             <section id="info_tambahan" class="info_tambahan pb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">INFORMASI TAMBAHAN</div>
-                <div class="data mt-[5.5%] mb-5 px-4 gap-5 flex justify-center capitalize">
+                <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
                         <thead>
                             <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
