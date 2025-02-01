@@ -11,7 +11,7 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-6 py-4 bg-green-main text-brown-enzo shadow-md">
+  <nav class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
     <div class="flex space-x-6">
       <!-- Dropdown Menu -->
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Dashboard
+      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
     </a>
     </div>
@@ -345,11 +345,6 @@
         <button type="submit" class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
           Buat Pesanan
         </button>
-        <!-- tombol kembali -->
-        <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}"
-           class="bg-brown-main text-white px-10 py-[11px] rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center ml-8">
-          Kembali
-        </a>
       </div>
     </form>
   </div>

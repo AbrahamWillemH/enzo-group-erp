@@ -22,7 +22,8 @@
     </div>
   </div>
 
-  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-8 sm:py-16">
+  <!-- Main Content -->
+  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-16 sm:py-16">
     <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT PACKAGING : {{$packaging->user_name}}</h2>
     <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
     <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
@@ -38,8 +39,8 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
-        <div class="grid grid-rows-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
+        <div class="flex flex-col gap-5">
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
@@ -90,7 +91,8 @@
             @enderror
           </div>
         </div>
-        <div class="grid grid-rows-4 gap-5">
+
+        <div class="flex flex-col gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
@@ -152,15 +154,15 @@
       </div>
 
       <!-- Detail Packaging -->
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <!-- Desain -->
         <div>
           <div class="flex items-center flex-col">
-            <h2 class="text-center"><br>Desain dan Pembayaran</h2>
+            <h2 class="text-center font-medium"><br>Desain dan Pembayaran</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
 
-          <div class="grid grid-rows-4 gap-5">
+          <div class="flex flex-col gap-5">
 
             <div class="flex items-center flex-col">
               <label for="desain_path">Desain</label>
@@ -235,10 +237,10 @@
         <!-- Informasi Tambahan -->
         <div>
           <div class="flex items-center flex-col">
-            <h2 class="text-center"><br>Informasi Tambahan</h2>
+            <h2 class="text-center font-medium"><br>Informasi Tambahan</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
-          <div class="grid grid-rows-4 gap-5">
+          <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="price_per_pcs">Harga /Pcs</label>
               <input type="text" id="price_per_pcs" name="price_per_pcs" value="{{ $packaging->price_per_pcs }}"
