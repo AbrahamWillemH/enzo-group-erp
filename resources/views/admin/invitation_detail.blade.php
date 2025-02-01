@@ -280,7 +280,7 @@
                     PURCHASE ORDER
                 </div>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[3.25rem] mb-5">
-                    <form action="{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}" method="POST">
+                    {{-- <form action="{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}" method="POST"> --}}
                     @csrf
                     <table class="w-full text-sm text-left rtl:text-right">
                         <thead class="text-xs text-brown-enzo uppercase bg-green-main/80">
@@ -425,7 +425,7 @@
                                     <button id="editPurchase_{{$invitation->id}}" class="bg-brown-enzo rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
                                         Edit
                                     </button>
-                                    <form action="{{route('admin.invitation.purchase.delete', ['id' => $invitation->id])}}">
+                                    {{-- <form action="{{route('admin.invitation.purchase.delete', ['id' => $invitation->id])}}"> --}}
                                         <button class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                             Delete
                                         </button>
@@ -440,9 +440,9 @@
                 <div class="add_data mt-10 grid justify-items-center">
                     <button id="addDataButton"
                         class="relative bg-green-main/80 text-brown-enzo font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">
-                        
+
                         <span class="absolute inset-0 bg-green-main transition-transform -translate-y-full group-hover:translate-y-0 transition-duration duration-500"></span>
-                       
+
                         <span class="relative z-10">TAMBAH DATA</span>
                     </button>
                 </div>
@@ -451,7 +451,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
 document.addEventListener('DOMContentLoaded', () => {
     // Tangkap elemen tombol dan tbody
     const addButton = document.getElementById('addDataButton');
@@ -609,7 +609,7 @@ document.querySelectorAll('[id^="editPurchase_"]').forEach(button => {
 
 
 
-</script>
+</script> --}}
 @endsection
 <!-- </body>
 </html> -->

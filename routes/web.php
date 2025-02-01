@@ -10,6 +10,8 @@ use App\Http\Controllers\SouvenirController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Models\User;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function(){
     return view('welcome');
@@ -81,6 +83,30 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+//Google OAuth
+Route::get('/auth/google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('auth.google');
+
+Route::get('/auth/google/callback', function () {
+    $googleUser = Socialite::driver('google')->user();
+
+    $user = User::updateOrCreate(
+        ['email' => $googleUser->getEmail()],
+        [
+            'name' => $googleUser->getName(),
+            'google_id' => $googleUser->getId(),
+            'avatar' => $googleUser->getAvatar(),
+            'password' => bcrypt(str()->random(16)), // Password acak untuk berjaga-jaga
+        ]
+    );
+
+    Auth::login($user);
+
+    return redirect('/dashboard'); // Redirect ke halaman utama setelah login
+});
+
+// dashboard checker
 Route::get('/dashboard', [UserController::class, 'dashboardCheck'])->name('loginRedirect');
 
 // Admin routes
@@ -96,8 +122,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
     // purchase invitation
-    Route::post('/admin/orders/invitation/{id}/purchase/store', [InvitationController::class, 'purchaseInvitationStore'])->name('admin.invitation.purchase.store');
-    Route::post('/admin/orders/invitation/{id}/purchase/delete', [InvitationController::class, 'purchaseInvitationDelete'])->name('admin.invitation.purchase.delete');
+    // Route::post('/admin/orders/invitation/{id}/purchase/store', [InvitationController::class, 'purchaseInvitationStore'])->name('admin.invitation.purchase.store');
+    // Route::post('/admin/orders/invitation/{id}/purchase/delete', [InvitationController::class, 'purchaseInvitationDelete'])->name('admin.invitation.purchase.delete');
 
     //packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
@@ -112,6 +138,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
     Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
     Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');
+
+    // pesanan selesai
+    Route::get('/admin/orders/done', [OrderController::class, 'finishedOrders'])->name('admin.done.view');
 
     // update progress
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');

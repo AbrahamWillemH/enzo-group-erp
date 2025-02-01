@@ -77,6 +77,62 @@
                                     <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
                                     <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.invitation.update_payment_subprocess') }}" method="POST">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Pembayaran dan Desain</div>
+                <div class="data mt-[11%] mb-5 px-3 gap-0">
+                    <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
+                        <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
+                            <tr class="h-20">
+                                <th class="text-center">ID</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">Nomor Telepon</th>
+                                <th class="text-center">Tipe Produk</th>
+                                <th class="text-center">Jumlah</th>
+                                <th class="text-center">Tanggal Pesan</th>
+                                <th class="text-center">Tanggal Acara</th>
+                                <th class="text-center">Desain</th>
+                                <th class="text-center">Status Bayar</th>
+                                <th class="text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-green-main/10">
+                            @foreach($invitation as $o)
+                            @if ($o->progress == 'Pending')
+                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
+                                <td class="px-3 py-3 text-center flex flex-row mt-4 ml-4">
+                                    @if (($o->payment_status =='DP 1' || $o->payment_status == 'Pending') && $o->design_status == 'ACC')
+                                        <div class="w-3 h-3 bg-green-500 rounded-full text-center m-auto"></div>
+                                    @endif
+                                    <div>
+                                        {{ $o->id }}
+                                    </div>
+                                </td>
+                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
+                                <td class="px-3 py-3 text-center">{{$o->phone_number}}</td>
+                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
+                                <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
+                                <td class="px-3 py-3 text-center">
+                                <form action="{{ route('admin.invitation.update_payment_subprocess') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                    <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                        <option value="Pending" {{ old('payment_status', $o->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                        <option value="DP 1" {{ old('payment_status', $o->payment_status) == 'DP 1' ? 'selected' : '' }}>DP 1</option>
+                                        <option value="DP 2" {{ old('payment_status', $o->payment_status) == 'DP 2' ? 'selected' : '' }}>DP 2</option>
+                                        <option value="Lunas" {{ old('payment_status', $o->payment_status) == 'Lunas' ? 'selected' : '' }}>Lunas</option>
+                                    </select>
+                                </form>
+                                <td class="px-3 py-3 text-center">
+                                    <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            Detail
+                                        </button>
+                                    </form>
+
+                                    @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
+                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                         @csrf
                                         <input type="hidden" name="order_id" value="{{ $o->id }}">
                                         <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
