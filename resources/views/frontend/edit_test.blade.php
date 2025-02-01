@@ -11,25 +11,23 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <div class="fixed top-0 left-0 right-0 ht grid grid-cols-[80%_20%] px-4 py-5 bg-green-main">
-    <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
+  <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
+    <div class="flex text-left text-lg sm:text-xl font-bold items-center">
       <h1>Enzo Group</h1>
     </div>
-    <div class="grid grid-cols-2 font-medium">
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group mr-0">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
-      </a>
-
-      <a href="" class="text-brown-enzo flex flex-col justify-center items-center group">Admin
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+    <div class="font-medium">
+      <a href="/admin/dashboard" class="flex flex-col justify-center items-center group">
+        Kembali
+        <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
     </div>
   </div>
 
-  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex flex-col items-center min-h-screen justify-start py-24">
-    <h2 style="font-size: 22px">EDIT SOUVENIR : </h2>
-    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
-    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
+  <!-- Main Content -->
+  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-16 sm:py-16">
+    <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT SOUVENIR :</h2>
+    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
     <br>
 
     @if(session('success'))
@@ -42,8 +40,8 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-2 justify-center">
-        <div class="grid grid-rows-1 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 justify-center">
+        <div class="flex flex-col gap-5">
           <div class="flex items-center flex-col mx-20 mb-3">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="" required
@@ -94,7 +92,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mt-5">
+          <div class="flex items-center flex-col mx-20 mt-5 mb-7">
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <textarea id="address" rows="7" name="address" required
               placeholder="Alamat Lengkap"
@@ -105,7 +103,7 @@
           </div>
         </div>
 
-        <div class="grid grid-rows-6 gap-5">
+        <div class="flex flex-col gap-5">
 
           <div class="flex items-center flex-col mx-20">
             <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
@@ -114,6 +112,9 @@
               <option value="Desain pribadi/template">Desain pribadi/template</option>
               <option value="Desain custom Enzo">Desain custom enzo</option>
             </select> 
+            <input type="file" id="desain_emboss_path" name="desain_emboss_path"
+                    accept=".jpg,.jpeg,.png,.pdf"
+                    class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 mt-3">
             @error('design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -126,6 +127,9 @@
               <option value="Desain pribadi/template">Desain pribadi/template</option>
               <option value="Desain custom Enzo">Desain custom enzo</option>
             </select>
+            <input type="file" id="desain_thankscard_path" name="desain_thankscard_path"
+                  accept=".jpg,.jpeg,.png,.pdf"
+                  class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 mt-3">
             @error('thankscard')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -185,11 +189,11 @@
       </div>
 
       <!-- Detail Souvenir -->
-      <div class="grid grid-cols-2 justify-center w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-2 justify-center w-full">
         <!-- Desain -->
         <div class="grid grid-rows-7 gap-5">
           <div class="flex items-center flex-col">
-            <h2 class="text-center"><br>Progress dan Pembayaran</h2>
+            <h2 class="text-center font-medium"><br>Progress dan Pembayaran</h2>
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
@@ -252,7 +256,7 @@
         <!-- Informasi Tambahan -->
         <div class="grid grid-rows-5 gap-5">
           <div class="flex items-center flex-col">
-            <h2 class="text-center"><br>Informasi Tambahan</h2>
+            <h2 class="text-center font-medium"><br>Informasi Tambahan</h2>
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
@@ -317,11 +321,6 @@
                 class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
           Perbarui Pesanan
         </button>
-        <!-- tombol kembali -->
-        <a href=""
-           class="bg-brown-main text-white px-10 py-[11px] rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center ml-8">
-          Kembali
-        </a>
       </div>
 
     </form>
@@ -332,7 +331,7 @@
 
 
 
-<!-- Packagin Edit -->
+<!-- Packaging Edit -->
 {{-- <!DOCTYPE html>
 <html lang="en">
 

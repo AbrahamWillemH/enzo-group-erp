@@ -10,21 +10,22 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <div class="fixed top-0 left-0 right-0 ht grid grid-cols-[80%_20%] px-4 py-5 bg-green-main">
-    <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
+  <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
+    <div class="flex text-left text-lg sm:text-xl font-bold items-center">
       <h1>Enzo Group</h1>
     </div>
-    <div class="grid grid-cols-2 font-medium">
-      <a href="/admin/dashboard" class="text-brown-enzo flex flex-col justify-center items-center group mr-0">Dashboard
-          <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+    <div class="font-medium">
+      <a href="{{route('admin.invitation.detail', ['id' => $invitation->id])}}" class="flex flex-col justify-center items-center group">
+        Kembali
+        <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
     </div>
   </div>
 
-  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex items-center flex-col min-h-screen justify-start py-24">
-    <h2 style="font-size: 22px">EDIT UNDANGAN</h2>
-    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
-    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
+  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-8 sm:py-16">
+    <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT INVITATION : {{$invitation->user_name}}</h2>
+    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
     <br>
 
     @if(session('success'))
@@ -475,11 +476,6 @@
                 class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
           Perbarui Pesanan
         </button>
-        <!-- tombol kembali -->
-        <a href="{{route('admin.invitation.detail', ['id' => $invitation->id])}}"
-           class="bg-brown-main text-white px-10 py-[11px] rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center ml-8">
-          Kembali
-        </a>
       </div>
 
     </form>
