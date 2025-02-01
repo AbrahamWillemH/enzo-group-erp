@@ -33,7 +33,7 @@ Route::get('/tesdetailpackaging', function(){
 });
 
 Route::get('/tesdetailsouvenir', function(){
-    return view('frontend.detailsouvenir');
+    return view('admin.invitation_detail_test');
 });
 
 Route::get('/pesanansaya', function(){
