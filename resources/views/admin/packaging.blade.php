@@ -5,35 +5,35 @@
 <div class="ml-[20%]">
 
     <div class="bg-green-light h-full grid grid-rows-[12%_88%] relative">
-        <div class="z-30 fixed top-0 left-[20%] right-0 ht grid grid-cols-[28%_72%] px-4 py-5 bg-green-shadow">
+        <div class="z-40 fixed top-0 left-[20%] right-0 ht grid grid-cols-[28%_72%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DATA PACKAGING</h1>
             </div>
             <div class="grid grid-cols-7 gap-1 font-medium">
-                <a href="#pending" class="text-brown-enzo flex flex-col justify-center items-center group">Pending
+                <a href="#pending" id="nav-pending" class="text-brown-enzo flex flex-col justify-center items-center group">Pending
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
-                <a href="#fix" class="text-brown-enzo flex flex-col justify-center items-center group">Fix
+                <a href="#fix" id="nav-fix" class="text-brown-enzo flex flex-col justify-center items-center group">Fix
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
-                <a href="#order" class="text-brown-enzo flex flex-col justify-center items-center group">Order
+                <a href="#order" id="nav-order" class="text-brown-enzo flex flex-col justify-center items-center group">Order
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
-                <a href="#proses" class="text-brown-enzo flex flex-col justify-center items-center group">Proses
+                <a href="#proses" id="nav-proses" class="text-brown-enzo flex flex-col justify-center items-center group">Proses
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
-                <a href="#ready" class="text-brown-enzo flex flex-col justify-center items-center group">Ready
+                <a href="#ready" id="nav-ready" class="text-brown-enzo flex flex-col justify-center items-center group">Ready
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
                 <!-- Dropdown Menu -->
                 <div class="flex flex-col justify-center items-center group relative">
                     <!-- Dropdown Button -->
-                    <button class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
+                    <button id="dropdown-sort" class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
                         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                     </button>
 
                     <!-- Dropdown Content -->
-                    <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
+                    <div id="menu-sort" class="hidden absolute bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 duration-500 delay-25">
                         <a href="{{route('admin.packaging.view', ['sort' => 'alphabetical'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
                         <a href="{{route('admin.packaging.view', ['sort' => 'order'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
                         <a href="{{route('admin.packaging.view', ['sort' => 'deadline'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
@@ -47,301 +47,306 @@
 
         <div class="">
             <section id="pending" class="pending mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Pembayaran dan Desain</div>
-                <div class="data mt-[11%] mb-5 px-3 gap-0">
-                    <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
-                        <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Nomor Telepon</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Desain</th>
-                                <th class="text-center">Status Bayar</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Pending')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center flex flex-row mt-4 ml-4">
-                                    @if (($o->payment_status =='DP 1' || $o->payment_status == 'Pending') && $o->design_status == 'ACC')
-                                        <div class="w-3 h-3 bg-green-500 rounded-full text-center m-auto"></div>
-                                    @endif
-                                    <div>
-                                        {{ $o->id }}
-                                    </div>
-                                </td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->phone_number}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
-                                <td class="px-3 py-3 text-center">
-                                <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="order_id" value="{{ $o->id }}">
-                                    <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
-                                        <option value="Pending" {{ old('payment_status', $o->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="DP 1" {{ old('payment_status', $o->payment_status) == 'DP 1' ? 'selected' : '' }}>DP 1</option>
-                                        <option value="DP 2" {{ old('payment_status', $o->payment_status) == 'DP 2' ? 'selected' : '' }}>DP 2</option>
-                                        <option value="Lunas" {{ old('payment_status', $o->payment_status) == 'Lunas' ? 'selected' : '' }}>Lunas</option>
-                                    </select>
-                                </form>
-                                </td>
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Pembayaran dan Desain</div>
+                <div class="px-3 w-[1010px]">
+                    <div class="data mt-[6.75rem] mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]">
+                        <table class="w-[1200px] border capitalize shadow-inner z-10">
+                            <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
+                                <tr class="h-20">
+                                    <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
+                                    <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Nomor Telepon</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Desain</th>
+                                    <th class="text-center">Status Bayar</th>
+                                    <th class="text-center w-[250px]">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                @foreach($packaging as $o)
+                                @if ($o->progress == 'Pending')
+                                <tr class="h-20 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center flex flex-row bg-green-main/0 backdrop-blur-xl sticky left-0 h-20 items-center justify-center">
+                                        @if (($o->payment_status =='DP 1' || $o->payment_status == 'Pending') && $o->design_status == 'ACC')
+                                            <div class="w-3 h-3 bg-red-500 rounded-full text-center m-auto"></div>
+                                        @endif
+                                        <div class="text-center">
+                                            {{ $o->id }}
+                                        </div>
+                                    </td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->phone_number}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
+                                    <td class="px-3 py-3 text-center">
+                                    <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                        <select name="payment_status" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                            <option value="Pending" {{ old('payment_status', $o->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                            <option value="DP 1" {{ old('payment_status', $o->payment_status) == 'DP 1' ? 'selected' : '' }}>DP 1</option>
+                                            <option value="DP 2" {{ old('payment_status', $o->payment_status) == 'DP 2' ? 'selected' : '' }}>DP 2</option>
+                                            <option value="Lunas" {{ old('payment_status', $o->payment_status) == 'Lunas' ? 'selected' : '' }}>Lunas</option>
+                                        </select>
                                     </form>
+                                    </td>
+                                    <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+                                        @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
+                                            <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                                @csrf
+                                                <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                    Next
+                                                </button>
+                                            </form>
+                                            @else
+                                            <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                                @csrf
+                                                <button type="submit" class="bg-slate-600 rounded-lg px-[3rem] py-2 inline-block text-white cursor-not-allowed" disabled>
+                                                    Next
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
-                                    @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
+            <section id="fix" class="fix mb-20">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menentukan Deadline</div>
+                <div class="px-3 w-[1010px]">
+                    <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-fix">
+                        <table class="w-[1150px] border capitalize shadow-inner z-10">
+                            <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
+                                <tr class="h-20">
+                                    <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
+                                    <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center w-[320px]">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                @foreach($packaging as $o)
+                                @if ($o->progress == 'Fix')
+                                <tr class="h-20 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
+                                    <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                            <button type="submit" id="submitButton_{{$o->id}}" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline({{$o->id}});">
+                                                Next
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="order" class="order mb-20">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Pemesanan Bahan</div>
+                <div class="px-3 w-[1010px]">
+                    <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-order">
+                        <table class="w-[1150px] border capitalize shadow-inner z-10">
+                            <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
+                                <tr class="h-20">
+                                    <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
+                                    <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center w-[320px]">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                @foreach($packaging as $o)
+                                @if ($o->progress == 'Pemesanan Bahan')
+                                <tr class="h-20 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
                                                 Next
                                             </button>
                                         </form>
-                                        @else
-                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                            @csrf
-                                            <button type="submit" class="bg-slate-600 rounded-lg px-[3rem] py-2 inline-block text-white cursor-not-allowed" disabled>
-                                                Next
-                                            </button>
-                                        </form>
-                                    @endif
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="fix" class="fix mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menentukan Deadline</div>
-                <div class="data mt-11 mb-5 px-3 gap-0">
-                    <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
-                        <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Deadline</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Fix')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
-
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
-                                    </form>
-
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
-                                            Previous
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
-                                        <button type="submit" id="submitButton_{{$o->id}}" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline({{$o->id}});">
-                                            Next
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section id="order" class="order mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Pemesanan Bahan</div>
-                <div class="data mt-11 mb-5 px-3 gap-0">
-                    <table class="table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner z-20">
-                        <thead class="sticky top-0 bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Deadline</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Pemesanan Bahan')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
-                                    </form>
-
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
-                                            Previous
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-accept rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
-                                            Next
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
             <section id="proses" class="proses mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Proses Produksi</div>
-                <div class="data mt-11 mb-5 px-3 gap-0">
-                    <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
-                        <thead class="bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Deadline</th>
-                                <th class="text-center">Detail Proses</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Proses Produksi')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">
-                                        <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
-                                            @csrf
-                                            <input type="hidden" name="order_id" value="{{ $o->id }}">
-                                            <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
-                                                <option value="Cetak" {{ old('subprocess', $o->subprocess) == 'Cetak' ? 'selected' : '' }}>Cetak</option>
-                                                <option value="Laminasi" {{ old('subprocess', $o->subprocess) == 'Laminasi' ? 'selected' : '' }}>Laminasi</option>
-                                                <option value="Foil" {{ old('subprocess', $o->subprocess) == 'Foil' ? 'selected' : '' }}>Foil</option>
-                                                <option value="Proses Lem" {{ old('subprocess', $o->subprocess) == 'Proses Lem' ? 'selected' : '' }}>Proses Lem</option>
-                                                <option value="Packing" {{ old('subprocess', $o->subprocess) == 'Packing' ? 'selected' : '' }}>Packing</option>
-                                            </select>
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Proses Produksi</div>
+                <div class="px-3 w-[1010px]">
+                    <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-proses">
+                        <table class="w-[1190px] border capitalize shadow-inner z-10">
+                            <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
+                                <tr class="h-20">
+                                    <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
+                                    <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Detail Proses</th>
+                                    <th class="text-center w-[320px]">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                @foreach($packaging as $o)
+                                @if ($o->progress == 'Proses Produksi')
+                                <tr class="h-20 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">
+                                            <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="order_id" value="{{ $o->id }}">
+                                                <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                                    <option value="Cetak" {{ old('subprocess', $o->subprocess) == 'Cetak' ? 'selected' : '' }}>Cetak</option>
+                                                    <option value="Laminasi" {{ old('subprocess', $o->subprocess) == 'Laminasi' ? 'selected' : '' }}>Laminasi</option>
+                                                    <option value="Foil" {{ old('subprocess', $o->subprocess) == 'Foil' ? 'selected' : '' }}>Foil</option>
+                                                    <option value="Proses Lem" {{ old('subprocess', $o->subprocess) == 'Proses Lem' ? 'selected' : '' }}>Proses Lem</option>
+                                                    <option value="Packing" {{ old('subprocess', $o->subprocess) == 'Packing' ? 'selected' : '' }}>Packing</option>
+                                                </select>
+                                            </form>
+                                    <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
                                         </form>
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
-                                            Previous
-                                        </button>
-                                    </form>
-                                    <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
-                                            Next
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                Next
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </section>
 
-            <section id="ready" class="ready mb-20">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">Menunggu Ambil / Kirim</div>
-                <div class="data mt-11 mb-5 px-3 gap-0">
-                    <table class="sticky top-[17.5%] table-auto w-full border rounded-t-lg overflow-hidden capitalize shadow-inner ">
-                        <thead class="bg-green-main/30 backdrop-blur-lg">
-                            <tr class="h-20">
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Nama</th>
-                                <th class="text-center">Tipe Produk</th>
-                                <th class="text-center">Jumlah</th>
-                                <th class="text-center">Tanggal Pesan</th>
-                                <th class="text-center">Deadline</th>
-                                <th class="text-center">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-green-main/10">
-                            @foreach($packaging as $o)
-                            @if ($o->progress == 'Selesai')
-                            <tr class="h-20 border-t-[1.5px] border-black/30 hover:bg-green-main/15">
-                                <td class="px-3 py-3 text-center">{{$o->id}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->user_name}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->type}}</td>
-                                <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
-                                <td class="px-3 py-3 text-center">
-                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
-                                        <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
-                                            Detail
-                                        </button>
-                                    </form>
-
-                                    <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
-                                        @csrf
-                                        <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
-                                            Previous
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+            <section id="ready" class="ready pb-20">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Ambil / Kirim</div>
+                <div class="px-3 w-[1010px]">
+                    <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-ready">
+                        <table class="w-[1120px] border capitalize shadow-inner z-10">
+                            <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
+                                <tr class="h-20">
+                                    <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
+                                    <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Tipe Produk</th>
+                                    <th class="text-center">Jumlah</th>
+                                    <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center w-[260px]">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-green-main/10">
+                                @foreach($packaging as $o)
+                                @if ($o->progress == 'Selesai')
+                                <tr class="h-20 hover:bg-green-main/15">
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                    <td class="px-3 py-3 text-center">
+                                        <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                            @csrf
+                                            <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                Previous
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
         </div>
@@ -387,6 +392,48 @@
             return false;
         }
     }
+
+    // Menambah margin ketika navigasi diklik
+    const sections = [
+        { nav: 'nav-pending', page: null },
+        { nav: 'nav-fix', page: 'page-fix' },
+        { nav: 'nav-order', page: 'page-order' },
+        { nav: 'nav-proses', page: 'page-proses' },
+        { nav: 'nav-ready', page: 'page-ready' }
+    ];
+
+    function updateMargin(activePage) {
+        sections.forEach(({ page }) => {
+            if (page) {
+                document.getElementById(page).classList.toggle('mt-[6.75rem]', page === activePage);
+                document.getElementById(page).classList.toggle('mt-11', page !== activePage);
+            }
+        });
+    }
+
+    sections.forEach(({ nav, page }) => {
+        const navElement = document.getElementById(nav);
+        if (navElement) {
+            navElement.addEventListener('click', () => updateMargin(page));
+        }
+    });
+
+    //dropdown sort
+    const buttonSort = document.getElementById('dropdown-sort');
+    const menuSort = document.getElementById('menu-sort');
+
+    buttonSort.addEventListener('click', () => {
+        // Toggle dropdown visibility
+        menuSort.classList.toggle('hidden');
+    });
+
+    // Menutup dropdown ketika klik di luar
+    window.addEventListener('click', (event) => {
+        if (!buttonSort.contains(event.target) && !menuSort.contains(event.target)) {
+        menuSort.classList.add('hidden');
+        }
+    });
+    
 </script>
 @if(session('error'))
     <script>

@@ -28,12 +28,12 @@
                 <!-- Dropdown Menu -->
                 <div class="flex flex-col justify-center items-center group relative">
                     <!-- Dropdown Button -->
-                    <button class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
+                    <button id="dropdown-sort" class="text-brown-enzo flex flex-col justify-center items-center mr-5 w-[100px]">Sort by
                         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                     </button>
 
                     <!-- Dropdown Content -->
-                    <div class="absolute opacity-0 group-hover:opacity-100 bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 transition-opacity duration-500 delay-25">
+                    <div id="menu-sort" class="hidden absolute bg-green-light shadow-lg mt-2 rounded-md z-10 top-full w-50 duration-500 delay-25">
                         <a href="{{route('admin.invitation.view', ['sort' => 'alphabetical'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Alphabetical</a>
                         <a href="{{route('admin.invitation.view', ['sort' => 'order'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Order</a>
                         <a href="{{route('admin.invitation.view', ['sort' => 'deadline'])}}" class="block px-3 py-2 text-sm text-gray-700 hover:bg-cream rounded-md">Tanggal Deadline</a>
@@ -428,6 +428,21 @@
         }
     });
 
+    //dropdown sort
+    const buttonSort = document.getElementById('dropdown-sort');
+    const menuSort = document.getElementById('menu-sort');
+
+    buttonSort.addEventListener('click', () => {
+        // Toggle dropdown visibility
+        menuSort.classList.toggle('hidden');
+    });
+
+    // Menutup dropdown ketika klik di luar
+    window.addEventListener('click', (event) => {
+        if (!buttonSort.contains(event.target) && !menuSort.contains(event.target)) {
+        menuSort.classList.add('hidden');
+        }
+    });
 </script>
 @if(session('error'))
     <script>
