@@ -20,8 +20,9 @@
       <ul class="space-y-5 py-10">
         <li>
           <div class="flex items-center space-x-3">
+            <!-- <img src="{{ asset('img/logo_enzo(1).png') }}" alt="Gambar" class=" h-[70px] w-[70px]"> -->
             <div class="w-10 h-10 bg-cream rounded-full flex items-center justify-center ml-4">
-              <span class="text-green-main font-medium">A</span>
+              <img src="{{ asset('img/logo_enzo(1).png') }}" alt="Gambar" class=" h-[40px] w-[40px]">
             </div>
             <span style="letter-spacing: 3px" class="font-sans ms-3 text-2xl font-medium text-cream px-1">{{auth()->user()->name}}</span>
           </div>

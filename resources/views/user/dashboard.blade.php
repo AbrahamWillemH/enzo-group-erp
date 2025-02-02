@@ -146,7 +146,7 @@
                 <img src="{{ asset('img/souvenir-kaesang.jpeg') }}" alt="" class="w-full h-full object-cover">
               </a>
               <div class="w-full h-full grid grid-rows-2 gap-3">
-                <button type="button" class="button-panduan bg-green-main/40 w-full h-full rounded-lg p-3 flex flex-row gap-2 justify-center items-center tracking-wider hover:bg-green-main/70 hover:text-white hover:scale-105 transition transform duration-300">
+                <button type="button" id="button-panduan" class="bg-green-main/40 w-full h-full rounded-lg p-3 flex flex-row gap-2 justify-center items-center tracking-wider hover:bg-green-main/70 hover:text-white hover:scale-105 transition transform duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-8">
                     <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
                   </svg>
@@ -163,33 +163,85 @@
 
             <div id="page-panduan" class="hidden">
                 <div tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-screen bg-black/50">
-                    <div class="relative p-4 w-full max-w-md max-h-full">
-                        <!-- Modal content -->
-                        <div class="relative bg-white/70 backdrop-blur-lg rounded-lg shadow-sm">
-                                <!-- Modal header -->
-                                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-900">
-                                    <h3 class="text-lg font-semibold text-gray-900">
-                                        Panduan Pemesanan
-                                    </h3>
-                                    <button type="button" class="button-panduan text-gray-900 bg-transparent hover:bg-gray-200 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center">
-                                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                        </svg>
-                                        <span class="sr-only">Close</span>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="p-4 md:p-5">
-                                    <ol class="ms-3.5 mb-4 list-decimal space-y-3">
-                                      <li>Pada menu 'Dashboard', pilih menu order jenis item yang hendak dipesan.</li>
-                                      <li>Isi form order dengan data yang lengkap dan benar.</li>
-                                      <li>Pastikan data yang diisi sudah benar, lalu klik 'Buat Pesanan'.</li>
-                                      <li>Pantau progres dan lihat detail pesanan Anda pada menu 'Pesanan Saya'.</li>
-                                      <li>Jika terdapat kesalahan data, harap hubungi Admin.</li>
-                                    </ol>
-                                </div>
-                            </div>
-                    </div>
+                  <div class="opacity-0 mr-1 h-8 w-8"></div>
+
+                  <div class="relative p-1 w-full max-w-md max-h-full">
+                      <!-- Modal content -->
+                      <div class="relative bg-white/70 backdrop-blur-lg rounded-lg shadow-sm">
+                              <!-- Modal header -->
+                              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-900">
+                                  <h3 class="text-lg font-semibold text-gray-900">
+                                      Panduan Pemesanan
+                                  </h3>
+                                  <button type="button" class="button-close text-gray-900 bg-transparent hover:bg-gray-200 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center">
+                                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                      </svg>
+                                      <span class="sr-only">Close</span>
+                                  </button>
+                              </div>
+                              <!-- Modal body -->
+                              <div class="p-4 md:p-5 border-b border-gray-900">
+                                <ol class="ms-3.5 mb-3 list-decimal space-y-3">
+                                  <li>Pada menu 'Dashboard', pilih menu order jenis item yang hendak dipesan.</li>
+                                  <li>Isi form order dengan data yang lengkap dan benar.</li>
+                                  <li>Pastikan data yang diisi sudah benar, lalu klik 'Buat Pesanan'.</li>
+                                  <li>Pantau progres dan lihat detail pesanan Anda pada menu 'Pesanan Saya'.</li>
+                                  <li>Jika terdapat kesalahan data, harap hubungi Admin.</li>
+                                </ol>
+                              </div>
+                          </div>
+                  </div>
+
+                  <button id="next-guide" class="relative bg-white/70 backdrop-blur-xl rounded-full shadow-sm ml-1 flex items-center justify-center text-gray-900 hover:bg-gray-200 text-sm h-8 w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                      <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+            </div>
+
+            <div id="page-panduan-next" class="hidden">
+                <div tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-screen bg-black/50">
+
+                  <button id="previous-guide" class="relative bg-white/70 backdrop-blur-xl rounded-full shadow-sm mr-1 flex items-center justify-center text-gray-900 hover:bg-gray-200 text-sm h-8 w-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                      <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+                    </svg>
+
+                  </button>
+
+                  <div class="relative p-1 w-full max-w-md max-h-full">
+                      <!-- Modal content -->
+                      <div class="relative bg-white/70 backdrop-blur-lg rounded-lg shadow-sm">
+                              <!-- Modal header -->
+                              <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-900">
+                                  <h3 class="text-lg font-semibold text-gray-900">
+                                      Proses Produksi
+                                  </h3>
+                                  <button type="button" class="button-close text-gray-900 bg-transparent hover:bg-gray-200 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center">
+                                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                      </svg>
+                                      <span class="sr-only">Close</span>
+                                  </button>
+                              </div>
+                              <!-- Modal body -->
+                              <div class="p-4 md:p-5 border-b border-gray-900">
+                                <ol class="ms-3.5 mb-3 list-decimal space-y-3">
+                                  <li>Pembayaran akan dibagi menjadi 3 tahap, yaitu DP 1, DP 2, dan pelunasan.</li>
+                                  <li>Desain produk akan diproses setelah Anda melakukan pembayaran DP 1.</li>
+                                  <li>Pantau desain produk pada menu 'Pesanan Saya'.</li>
+                                  <li>Klik 'Ya' untuk menyetujui desain, klik 'Tidak' untuk mengubah desain.</li>
+                                  <li>Desain yang telah disetujui tidak dapat dibatalkan.</li>
+                                  <li>Proses produksi akan dilakukan setelah Anda mekakukan pembayaran DP 2 dan menyetujui desain.</li>
+                                  <li>Pengiriman produk dilakukan setelah Anda melakukan pelunasan.</li>
+                                </ol>
+                              </div>
+                          </div>
+                  </div>
+
+                  <div class="opacity-0 ml-1 h-8 w-8"></div>
                 </div>
             </div>
             
@@ -208,15 +260,27 @@
   </div>
 
   <script>
-    const buttonPanduan = document.querySelectorAll('.button-panduan');
-    const pagePanduan = document.getElementById('page-panduan');
+  const pages = [
+      'page-panduan',
+      'page-panduan-next'
+  ];
 
-    buttonPanduan.forEach((button) => {
-      button.addEventListener('click', () => {
-          pagePanduan.classList.toggle('hidden');
+  let currentIndex = 0;
+
+  function showPage(index) {
+      pages.forEach((id, i) => {
+          document.getElementById(id).classList.toggle('hidden', i !== index);
       });
-    })
+      currentIndex = index;
+  }
 
+  document.getElementById('button-panduan').addEventListener('click', () => showPage(0));
+  document.getElementById('next-guide').addEventListener('click', () => showPage(1));
+  document.getElementById('previous-guide').addEventListener('click', () => showPage(0));
+
+  document.querySelectorAll('.button-close').forEach(button => {
+      button.addEventListener('click', () => pages.forEach(id => document.getElementById(id).classList.add('hidden')));
+  });
   </script>
   @endsection
 <!-- </body>
