@@ -661,7 +661,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-16 sm:py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
     <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT UNDANGAN :</h2>
     <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
     <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
