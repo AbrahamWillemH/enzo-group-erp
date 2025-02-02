@@ -23,7 +23,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="font-sans text-green-main w-full flex flex-col items-center min-h-screen justify-center py-16 sm:py-16">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
     <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT SOUVENIR : {{$souvenir->user_name}}</h2>
     <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
     <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
@@ -39,9 +39,9 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <div class="flex flex-col gap-5">
-            <div class="flex items-center flex-col mx-20 mb-3">
+            <div class="flex items-center flex-col  mb-3">
                 <label class="ml-2" for="user_name">Nama Pemesan</label>
                 <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
                   placeholder="Nama Pemesan"
@@ -51,7 +51,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="phone_number">Nomor HP</label>
                 <input type="text" id="phone_number" name="phone_number" value="{{ $souvenir->phone_number }}" required
                   placeholder="08XX-XXXX-XXXX"
@@ -61,7 +61,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
                 <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ $souvenir->bridegroom_name }}" required
                   placeholder="Nama Mempelai"
@@ -71,7 +71,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="event_date">Tanggal Acara</label>
                 <input type="date" id="event_date" name="event_date" value="{{ $souvenir->event_date }}" required
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -80,7 +80,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="product_name">Jenis Souvenir</label>
                 <input type="text" id="product_name" name="product_name" value="{{ $souvenir->product_name }}" required
                   placeholder="Jenis Souvenir"
@@ -90,7 +90,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="pack">Kemas</label>
                 <input type="text" id="pack" name="pack" value="{{ $souvenir->pack }}" required
                   placeholder="Kemas"
@@ -100,7 +100,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20 mt-5 mb-7">
+            <div class="flex items-center flex-col  mt-5 mb-7">
                 <label class="ml-2" for="address">Alamat Lengkap</label>
                 <textarea id="address" rows="3" name="address"
                   placeholder="Alamat Lengkap"
@@ -112,7 +112,7 @@
         </div>
 
         <div class="flex flex-col gap-5">
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
                 <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
                   id="design" name="design" required>
@@ -130,7 +130,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="thankscard">Desain Thankscard</label>
                 <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
                   id="thankscard" name="thankscard" required>
@@ -145,7 +145,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="color_motif">Warna / Motif</label>
                 <input type="text" id="color_motif" name="color_motif" value="{{ $souvenir->color_motif }}" required
                 placeholder="Warna / Motif"
@@ -155,7 +155,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="motif_backup">Motif Cadangan</label>
                 <input type="text" id="motif_backup" name="motif_backup" value="{{ $souvenir->motif_backup }} "
                 placeholder="Motif Cadangan"
@@ -165,7 +165,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="quantity">Jumlah</label>
                 <input type="number" id="quantity" name="quantity" value="{{ $souvenir->quantity }}" required
                   placeholder="Jumlah"
@@ -175,7 +175,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col mx-20">
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="note_design">Note Desain</label>
                 <textarea id="note_design" rows="7" name="note_design"
                   placeholder="Tuliskan note desain disini"
@@ -197,7 +197,7 @@
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
-          <div class="flex items-center flex-col mx-20 mb-3">
+          <div class="flex items-center flex-col  mb-3">
             <label for="progress">Progress</label>
             <select id="progress" name="progress"
                 class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
@@ -213,7 +213,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="payment_status">Status Bayar</label>
             <select id="payment_status" name="payment_status" class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
                 <option value="Pending" {{ old('payment_status', $souvenir->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
@@ -225,7 +225,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="dp1_date">Tanggal Pembayaran DP1</label>
             <input type="date" id="dp1_date" name="dp1_date" value="{{ $souvenir->dp1_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -234,7 +234,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="dp2_date">Tanggal Pembayaran DP2</label>
             <input type="date" id="dp2_date" name="dp2_date" value="{{ $souvenir->dp2_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -243,7 +243,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="paid_off_date">Tanggal Pelunasan</label>
             <input type="date" id="paid_off_date" name="paid_off_date" value="{{ $souvenir->paid_off_date }}"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -260,7 +260,7 @@
             <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
           </div>
 
-          <div class="flex items-center flex-col mx-20 mb-3">
+          <div class="flex items-center flex-col  mb-3">
             <label for="price_per_pcs">Harga /Pcs</label>
             <input type="text" id="price_per_pcs" name="price_per_pcs" value="{{ $souvenir->price_per_pcs }}"
               placeholder="Harga /Pcs"
@@ -270,7 +270,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="printout">Printilan</label>
             <input type="text" id="printout" name="printout" value="{{ $souvenir->printout }}"
               placeholder="Printilan"
@@ -280,7 +280,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="expedition">Ekspedisi</label>
             <input type="text" id="expedition" name="expedition" value="{{ $souvenir->expedition }}"
               placeholder="Ekspedisi"
@@ -290,7 +290,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="design_status">Acc Client</label>
             <select id="design_status" name="design_status"
               class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
@@ -303,7 +303,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col ">
             <label for="note_cs">Note Admin</label>
             <textarea id="note_cs" rows="5" name="note_cs"
               placeholder="Tulis catatan tambahan disini"

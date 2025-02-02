@@ -11,36 +11,38 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 right-0 flex justify-between items-center px-6 py-4 bg-green-main text-brown-enzo shadow-md">
+  <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
-    <div class="flex space-x-6">
+    
+    <div class="flex items-center space-x-4 sm:space-x-6">
       <!-- Dropdown Menu -->
       <div class="group relative">
         <!-- Dropdown Button -->
-        <button class="flex flex-col justify-center items-center font-semibold mr-7">Form Order
+        <button class="flex flex-col justify-center items-center font-semibold mr-3 sm:mr-7">Form Order
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
         </button>
 
         <!-- Dropdown Content -->
-        <div class="absolute mt-2 right-2 w-32 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-          <a href="/orders/invitation/create" class="block px-4 py-1 hover:bg-cream rounded-md">Invitation</a>
-          <a href="/orders/souvenir/create" class="block px-4 py-1 hover:bg-cream rounded-md">Souvenir</a>
-          <a href="#" class="block px-4 py-1 hover:bg-cream rounded-md">Seminar Kit</a>
-          <a href="/orders/packaging/create" class="block px-4 py-1 hover:bg-cream rounded-md">Packaging</a>
+        <div class="absolute mt-2 right-0 sm:right-2 w-40 sm:w-32 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+          <a href="/orders/invitation/create" class="block px-4 py-2 hover:bg-cream rounded-md">Invitation</a>
+          <a href="/orders/souvenir/create" class="block px-4 py-2 hover:bg-cream rounded-md">Souvenir</a>
+          <a href="#" class="block px-4 py-2 hover:bg-cream rounded-md">Seminar Kit</a>
+          <a href="/orders/packaging/create" class="block px-4 py-2 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
-
-      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Dashboard
+      
+      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
-    </a>
+      </a>
     </div>
   </nav>
 
-  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex flex-col items-center min-h-screen justify-start py-24">
-    <h2 style="font-size: 22px">FORM ORDER SOUVENIR</h2>
-    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
-    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
-    <br>
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
+    <h2 class="text-lg sm:text-xl md:text-2xl">FORM ORDER SOUVENIR</h2>
+    <hr class="border-b-4 border-brown-enzo w-3/4 sm:w-1/2 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 mb-5">
+
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -52,9 +54,9 @@
       @csrf
 
       <!-- Orders Info -->
-      <div class="grid grid-cols-2 justify-center">
-        <div class="grid grid-rows-1 gap-5">
-          <div class="flex items-center flex-col mx-20 mb-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
+        <div class="flex flex-col gap-5">
+          <div class="flex items-center flex-col mb-3">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
               placeholder="Nama Pemesan"
@@ -64,7 +66,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="phone_number">Nomor HP</label>
             <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required
               placeholder="08XX-XXXX-XXXX"
@@ -74,7 +76,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
             <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ old('bridegroom_name') }}" required
               placeholder="Nama Mempelai"
@@ -84,8 +86,7 @@
             @enderror
           </div>
 
-
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="event_date">Tanggal Acara</label>
             <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -94,7 +95,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="product_name">Jenis Souvenir</label>
             <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
               placeholder="Jenis Souvenir"
@@ -104,7 +105,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mt-5">
+          <div class="flex items-center flex-col mt-5 mb-7">
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
@@ -115,9 +116,9 @@
           </div>
         </div>
 
-        <div class="grid grid-rows-6 gap-5">
+        <div class="flex flex-col gap-5">
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="design">Desain Emboss / Label / Sablon</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
               id="design" name="design" required>
@@ -129,7 +130,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
               id="thankscard" name="thankscard" required>
@@ -141,7 +142,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="color_motif">Warna / Motif</label>
             <input type="text" id="color_motif" name="color_motif" value="{{ old('color_motif') }}" required
               placeholder="Warna / Motif"
@@ -151,7 +152,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="motif_backup">Motif Cadangan</label>
             <input type="text" id="motif_backup" name="motif_backup" value="{{ old('motif_backup') }}" required
               placeholder="Motif Cadangan"
@@ -161,7 +162,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required
               placeholder="Jumlah"
@@ -171,7 +172,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="pack">Kemas</label>
             <input type="text" id="pack" name="pack" value="{{ old('pack') }}" required
               placeholder="Kemas"
@@ -181,7 +182,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mx-20 mt-5">
+          <div class="flex items-center flex-col mt-5">
             <label class="ml-2" for="note">Note Desain</label>
             <textarea id="note" rows="4" name="note" value="{{ old('note') }}" required
               placeholder="Tuliskan catatan tambahan disini"
@@ -191,8 +192,6 @@
             @enderror
           </div>
         </div>
-
-
       </div>
 
       <div>
@@ -201,11 +200,6 @@
                 class="bg-brown-main text-white px-5 py-2 rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center mt-5">
           Buat Pesanan
         </button>
-        <!-- tombol kembali -->
-        <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}"
-           class="bg-brown-main text-white px-10 py-[11px] rounded-xl drop-shadow-xl hover:bg-[#fff] hover:text-brown-main border hover:border-brown-main justify-center ml-8">
-          Kembali
-        </a>
       </div>
     </form>
   </div>

@@ -11,36 +11,38 @@
 
 <body class="bg-[#F7FCF5] font-mont">
   <!-- Navigation Bar -->
-  <nav class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
+  <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
-    <div class="flex space-x-6">
+    
+    <div class="flex items-center space-x-4 sm:space-x-6">
       <!-- Dropdown Menu -->
       <div class="group relative">
         <!-- Dropdown Button -->
-        <button class="flex flex-col justify-center items-center font-semibold mr-7">Form Order
+        <button class="flex flex-col justify-center items-center font-semibold mr-3 sm:mr-7">Form Order
           <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
         </button>
 
         <!-- Dropdown Content -->
-        <div class="absolute mt-2 right-2 w-32 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-          <a href="/orders/invitation/create" class="block px-4 py-1 hover:bg-cream rounded-md">Invitation</a>
-          <a href="/orders/souvenir/create" class="block px-4 py-1 hover:bg-cream rounded-md">Souvenir</a>
-          <a href="#" class="block px-4 py-1 hover:bg-cream rounded-md">Seminar Kit</a>
-          <a href="/orders/packaging/create" class="block px-4 py-1 hover:bg-cream rounded-md">Packaging</a>
+        <div class="absolute mt-2 right-0 sm:right-2 w-40 sm:w-32 bg-green-light text-gray-700 shadow-lg rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
+          <a href="/orders/invitation/create" class="block px-4 py-2 hover:bg-cream rounded-md">Invitation</a>
+          <a href="/orders/souvenir/create" class="block px-4 py-2 hover:bg-cream rounded-md">Souvenir</a>
+          <a href="#" class="block px-4 py-2 hover:bg-cream rounded-md">Seminar Kit</a>
+          <a href="/orders/packaging/create" class="block px-4 py-2 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
-
+      
       <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
-    </a>
+      </a>
     </div>
   </nav>
 
-  <div style="letter-spacing: 3px" class="font-sans text-green-main container flex items-center flex-col min-h-screen justify-start py-24">
-    <h2 style="font-size: 22px">FORM ORDER UNDANGAN</h2>
-    <hr class="border-b-4 border-brown-enzo w-1/2 my-3">
-    <hr class="border-b-4 border-brown-enzo w-1/3 mb-5">
-    <br>
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
+    <h2 class="text-lg sm:text-xl md:text-2xl">FORM ORDER UNDANGAN</h2>
+    <hr class="border-b-4 border-brown-enzo w-3/4 sm:w-1/2 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 mb-5">
+
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -52,8 +54,8 @@
     @csrf
 
       <!-- Customer Info -->
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
-        <div class="grid grid-rows-3 gap-5">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-52 justify-center w-full max-w-5xl mx-auto px-4">
+        <div class="flex flex-col gap-5">
 
           <div class="flex items-center flex-col">
             <label for="user_name">Nama Pemesan</label>
@@ -84,9 +86,19 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('address')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
-        <div class="grid grid-rows-3 gap-5">
+        <div class="flex flex-col gap-5">
 
           <div class="flex items-center flex-col">
             <label for="quantity">Jumlah</label>
@@ -115,39 +127,27 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label for="note">Note</label>
+            <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
+              placeholder="Tulis catatan tambahan disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-60 justify-center">
-        <div class="flex items-center flex-col">
-          <label for="address">Alamat Lengkap</label>
-          <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
-            placeholder="Alamat Lengkap"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col">
-          <label for="note">Note</label>
-          <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
-            placeholder="Tulis catatan tambahan disini"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('note')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-      </div>
-
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-52 justify-center w-full max-w-5xl mx-auto px-4">
         <!-- Groom's Section -->
         <div>
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Data Mempelai Pria</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
-          <div class="grid grid-rows-4 gap-5">
+          <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="groom_name">Nama Lengkap</label>
               <input type="text" id="groom_name" name="groom_name" value="{{ old('groom_name') }}" required
@@ -187,6 +187,16 @@
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="groom_parents_address">Alamat Orang Tua</label>
+              <textarea type="text" id="groom_parents_address" rows="5" name="groom_parents_address" value="{{ old('groom_parents_address') }}" required
+                placeholder="Alamat Orang Tua"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('groom_parents_address')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
         </div>
 
@@ -196,7 +206,7 @@
             <h2 class="text-center"><br>Data Mempelai Wanita</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
-          <div class="grid grid-rows-4 gap-5">
+          <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="bride_name">Nama Lengkap</label>
               <input type="text" id="bride_name" name="bride_name" value="{{ old('bride_name') }}" required
@@ -236,40 +246,28 @@
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="bride_parents_address">Alamat Orang Tua</label>
+              <textarea type="text" id="bride_parents_address" rows="5" name="bride_parents_address" value="{{ old('bride_parents_address') }}" required
+                placeholder="Alamat Orang Tua"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('bride_parents_address')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-2 gap-60 justify-center">
-        <div class="flex items-center flex-col">
-          <label for="groom_parents_address">Alamat Orang Tua</label>
-          <textarea type="text" id="groom_parents_address" rows="5" name="groom_parents_address" value="{{ old('groom_parents_address') }}" required
-            placeholder="Alamat Orang Tua"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('groom_parents_address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col">
-          <label for="bride_parents_address">Alamat Orang Tua</label>
-          <textarea type="text" id="bride_parents_address" rows="5" name="bride_parents_address" value="{{ old('bride_parents_address') }}" required
-            placeholder="Alamat Orang Tua"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('bride_parents_address')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-      </div>
-
-      <div class="grid grid-cols-[50%_50%] gap-40 justify-center">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-52 justify-center w-full max-w-5xl mx-auto px-4">
         <!-- Akad & Pemberkatan -->
         <div>
           <div class="flex items-center flex-col">
             <h2 class="text-center"><br>Data Akad / Pemberkatan</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
-          <div class="grid grid-rows-2 gap-5">
+          <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="akad_pemberkatan_date">Tanggal Acara</label>
               <input type="date" id="akad_pemberkatan_date" name="akad_pemberkatan_date" value="{{ old('akad_pemberkatan_date') }}" required
@@ -287,6 +285,16 @@
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="akad_pemberkatan_location">Lokasi Acara</label>
+              <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}" required
+                placeholder="Lokasi Akad Pemberkatan"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('akad_pemberkatan_location')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
         </div>
 
@@ -296,7 +304,7 @@
             <h2 class="text-center"><br>Data Resepsi</h2>
             <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
-          <div class="grid grid-rows-2 gap-5">
+          <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="reception_date">Tanggal Acara</label>
               <input type="date" id="reception_date" name="reception_date" value="{{ old('reception_date') }}" required
@@ -314,29 +322,17 @@
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+              <label for="reception_location">Lokasi Acara</label>
+              <textarea id="reception_location" rows="5" name="reception_location" value="{{ old('reception_location') }}" required
+                placeholder="Lokasi Resepsi"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('reception_location')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-2 gap-60 justify-center">
-        <div class="flex items-center flex-col">
-          <label for="akad_pemberkatan_location">Lokasi Acara</label>
-          <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}" required
-            placeholder="Lokasi Akad Pemberkatan"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('akad_pemberkatan_location')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
-        </div>
-
-        <div class="flex items-center flex-col">
-          <label for="reception_location">Lokasi Acara</label>
-          <textarea id="reception_location" rows="5" name="reception_location" value="{{ old('reception_location') }}" required
-            placeholder="Lokasi Resepsi"
-            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-          @error('reception_location')
-          <small class="text-danger">{{ $message }}</small>
-          @enderror
         </div>
       </div>
 
