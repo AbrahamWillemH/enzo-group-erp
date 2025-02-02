@@ -85,11 +85,18 @@
                             <!-- progres -->
                             <div class="grid grid-cols-6 h-[60px] lg:h-auto">
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Pending' ? 'bg-green-main/20 rounded-lg' : '' }}"> <!--bg untuk ketika proses tsb -->
-                                    <div class="border-white border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
-                                        <div class="bg-white w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                    <div class="border-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
+                                        <div class="bg-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                            @if($order->progress =='Pending')
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
+                                                </svg>
+                                            @else
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-green-500 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
+                                            @endif
                                         </div>
                                     </div>
                                     <p class="text-[10px] lg:text-xs">Pending</p>
@@ -97,9 +104,13 @@
 
                                 <!-- Fix Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Fix' ? 'bg-green-main/20 rounded-lg' : '' }}">
-                                    <div class="border-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
-                                        <div class="bg-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                    <div class="border-{{ $order->progress == 'Fix' || $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
+                                        <div class="bg-{{ $order->progress == 'Fix' || $order->progress == 'Pending' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
                                             @if($order->progress == 'Pending')
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                                                </svg>
+                                            @elseif ($order->progress =='Fix')
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
@@ -116,14 +127,14 @@
 
                                 <!-- Order Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Pemesanan Bahan' ? 'bg-green-main/20 rounded-lg' : '' }}">
-                                    <div class="border-{{ $order->progress == 'Pending' || $order->progress == 'Fix' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
-                                        <div class="bg-{{ $order->progress == 'Pending' || $order->progress == 'Fix' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
-                                            @if($order->progress == 'Fix')
+                                    <div class="border-{{ $order->progress == 'Pending' || $order->progress == 'Pemesanan Bahan' || $order->progress == 'Fix' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
+                                        <div class="bg-{{ $order->progress == 'Pending' || $order->progress == 'Pemesanan Bahan' || $order->progress == 'Fix' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                            @if($order->progress == 'Pemesanan Bahan')
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
                                                 </svg>
-                                            @elseif($order->progress == 'Pending')
+                                            @elseif($order->progress == 'Pending' || $order->progress == 'Fix')
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
                                                 </svg>
@@ -139,14 +150,14 @@
 
                                 <!-- Proses Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Proses Produksi' ? 'bg-green-main/20 rounded-lg' : '' }}">
-                                    <div class="border-{{ $order->progress == 'Proses Produksi' || $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
-                                        <div class="bg-{{ $order->progress == 'Proses Produksi' || $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
-                                            @if($order->progress == 'Pemesanan Bahan')
+                                    <div class="border-{{ $order->progress == 'Selesai Beneran' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
+                                        <div class="bg-{{ $order->progress == 'Selesai Beneran' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                            @if($order->progress == 'Proses Produksi')
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
                                                 </svg>
-                                            @elseif ($order->progress == 'Pending' || $order->progress == 'Fix')
+                                            @elseif ($order->progress == 'Pending' || $order->progress == 'Fix' || $order->progress == 'Pemesanan Bahan' )
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
                                                 </svg>
@@ -160,7 +171,7 @@
                                     <p class="text-[10px] lg:text-xs">Proses</p>
                                 </div>
 
-                                <!-- Finishing Step -->
+                                {{-- <!-- Finishing Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Finishing' ? 'bg-green-main/20 rounded-lg' : '' }}">
                                     <div class="border-{{ $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
                                         <div class="bg-{{ $order->progress == 'Finishing' || $order->progress == 'Selesai' ? 'white' : 'gray-500' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
@@ -181,18 +192,18 @@
                                         </div>
                                     </div>
                                     <p class="text-[10px] lg:text-xs">Finishing</p>
-                                </div>
+                                </div> --}}
 
                                 <!-- Ready Step -->
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Selesai' ? 'bg-green-main/20 rounded-lg' : '' }}">
-                                    <div class="border-{{ $order->progress == 'Selesai' ? 'white' : 'gray-500' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
-                                        <div class="bg-{{ $order->progress == 'Selesai' ? 'white' : 'gray-500' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
-                                            @if($order->progress == 'Selesai')
+                                    <div class="border-{{ $order->progress == 'Selesai Beneran' ? 'white' : 'gray-500' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
+                                        <div class="bg-{{ $order->progress == 'Selesai Beneran' ? 'white' : 'gray-500' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
+                                            @if($order->progress == 'Selesai Beneran')
                                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                                 </svg>
-                                            @elseif ($order->progress == 'Finishing')
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                                            @elseif ($order->progress == 'Selesai')
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-[15px] lg:h-[25px] w-auto text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                                                     <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2" />
                                                 </svg>

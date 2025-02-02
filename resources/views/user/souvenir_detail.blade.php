@@ -162,7 +162,13 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Status Progres</td>
-                                <td class="px-4 py-2">{{$order->progress}}</td>
+                                @if ($order->progress == 'Selesai Beneran')
+                                    <td class="px-4 py-2">Done</td>
+                                @elseif ($order->progress =='Selesai')
+                                    <td class="px-4 py-2">Ready</td>
+                                @else
+                                    <td class="px-4 py-2">{{ $order->progress }}</td>
+                                @endif
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Status Bayar</td>
