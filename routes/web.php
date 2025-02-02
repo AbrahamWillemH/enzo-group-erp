@@ -89,7 +89,11 @@ Route::get('/auth/google', function () {
 })->name('auth.google');
 
 Route::get('/auth/google/callback', function () {
-    $googleUser = Socialite::driver('google')->user();
+    try {
+        $googleUser = Socialite::driver('google')->stateless()->user();
+    } catch (\Exception $e) {
+        dd($e->getMessage());
+    }
 
     $user = User::updateOrCreate(
         ['email' => $googleUser->getEmail()],
