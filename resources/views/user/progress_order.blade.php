@@ -22,7 +22,7 @@
                         <h1 class="text-xs">{{ $order->user_name }}</h1>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-2">
-                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1 h-auto lg:h-auto">
+                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1 h-[250px] lg:h-auto">
                             @if ($order->type == 'souvenir')
                                 <div class="relative">
                                     <!-- Slideshow Container -->
@@ -117,7 +117,7 @@
                             </div>
 
                             <!-- progres -->
-                            <div class="grid grid-cols-6 h-[60px] lg:h-auto mt-5">
+                            <div class="grid grid-cols-6 h-[60px] lg:h-auto mt-1">
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Pending' ? 'bg-green-main/20 rounded-lg' : '' }}"> <!--bg untuk ketika proses tsb -->
                                     <div class="border-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
                                         <div class="bg-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
