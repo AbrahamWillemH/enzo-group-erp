@@ -43,7 +43,7 @@
           </p>
         </div>
         <div class="text-center mt-5">
-          <button type="submit" class="bg-cream text-green-main px-5 py-1 rounded-lg hover:bg-green-main hover:text-cream border hover:border-cream">
+          <button type="submit" class="bg-cream text-green-main w-full h-11 px-5 py-1 rounded-lg hover:bg-green-main hover:text-cream border hover:border-cream">
             Register
           </button>
         </div>
