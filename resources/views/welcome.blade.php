@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Enzo Group</title>
+    <link rel="icon" type="image/png" href="{{ asset('img/logo_enzo(1).png') }}">
     @vite('resources/css/app.css')
 </head>
 <body class="font-mont">
