@@ -22,13 +22,46 @@
                         <h1 class="text-xs">{{ $order->user_name }}</h1>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-2">
-                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1 h-[250px] lg:h-auto">
+                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1 h-auto lg:h-auto">
                             @if ($order->type == 'souvenir')
-                                @if(!is_null($order->desain_thankscard_path))
-                                    <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full rounded-md bg-gray-200">
-                                @else
-                                    <p class="flex justify-center items-center bg-gray-200 rounded-md">Belum Terdapat Desain</p>
-                                @endif
+                                <div class="relative">
+                                    <!-- Slideshow Container -->
+                                    <div id="slideshow" class="relative w-full h-full overflow-hidden rounded-md bg-gray-200">
+                                        <!-- Slide 1: Desain Emboss -->
+                                        @if(!is_null($order->desain_emboss_path))
+                                            <div id="slide-1" class="absolute inset-0 w-full h-full transition-transform duration-500 ease-in-out">
+                                                <img src="{{ asset('storage/' . $order->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
+                                            </div>
+                                        @else
+                                            <div id="slide-1" class="absolute inset-0 w-full h-full flex justify-center items-center">
+                                                <p>Belum Terdapat Desain</p>
+                                            </div>
+                                        @endif
+                        
+                                        <!-- Slide 2: Desain Thankscard -->
+                                        @if(!is_null($order->desain_thankscard_path))
+                                            <div id="slide-2" class="absolute inset-0 w-full h-full transition-transform duration-500 ease-in-out transform translate-x-full">
+                                                <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full">
+                                            </div>
+                                        @else
+                                            <div id="slide-2" class="absolute inset-0 w-full h-full flex justify-center items-center transform translate-x-full">
+                                                <p>Belum Terdapat Desain</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                        
+                                    <!-- Navigation Buttons -->
+                                    <button id="prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 hover:bg-white/75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 lg:size-6">
+                                            <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                    <button id="next" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 hover:bg-white/75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 lg:size-6">
+                                            <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </div>
                             @else
                                 @if(!is_null($order->desain_path))
                                     <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
@@ -36,21 +69,22 @@
                                     <p class="flex justify-center items-center bg-gray-200 rounded-md">Belum Terdapat Desain</p>
                                 @endif
                             @endif
+                        
                             <div class="grid grid-rows-2 place-items-center">
                                 @if ($order->desain_path || $order->desain_thankscard_path)
-                                @if ($order->design_status == 'Pending')
-                                <p class="text-xs lg:text-sm">Setuju dengan desain?</p>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <form action="{{route('user.accept.design', ['id' => $order->id])}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="bg-green-400 w-[70px] h-[5px] lg:w-[90px] lg:h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-xs lg:text-sm border border-white/0 hover:border-green-400 hover:shadow-green-600 hover:shadow-md transition transform color duration-300 overflow-hidden group">YA</button>
-                                    </form>
-                                    <form action="{{route('user.decline.design', ['id' => $order->id])}}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="bg-red-400 w-[70px] h-[5px] lg:w-[90px] lg:h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-xs lg:text-sm border border-white/0 hover:border-red-400 hover:shadow-red-800 hover:shadow-md transition transform color duration-300 overflow-hidden group">TIDAK</button>
-                                    </form>
-                                </div>
-                                @endif
+                                    @if ($order->design_status == 'Pending')
+                                        <p class="text-xs lg:text-sm">Setuju dengan desain?</p>
+                                        <div class="grid grid-cols-2 gap-2">
+                                            <form action="{{route('user.accept.design', ['id' => $order->id])}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="bg-green-400 w-[70px] h-[5px] lg:w-[90px] lg:h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-xs lg:text-sm border border-white/0 hover:border-green-400 hover:shadow-green-600 hover:shadow-md transition transform color duration-300 overflow-hidden group">YA</button>
+                                            </form>
+                                            <form action="{{route('user.decline.design', ['id' => $order->id])}}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="bg-red-400 w-[70px] h-[5px] lg:w-[90px] lg:h-[25px] rounded-md p-2 flex items-center justify-center font-medium text-xs lg:text-sm border border-white/0 hover:border-red-400 hover:shadow-red-800 hover:shadow-md transition transform color duration-300 overflow-hidden group">TIDAK</button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 @endif
                             </div>
                         </div>
@@ -83,7 +117,7 @@
                             </div>
 
                             <!-- progres -->
-                            <div class="grid grid-cols-6 h-[60px] lg:h-auto">
+                            <div class="grid grid-cols-6 h-[60px] lg:h-auto mt-5">
                                 <div class="grid grid-rows-[70%_30%] place-items-center {{ $order->progress == 'Pending' ? 'bg-green-main/20 rounded-lg' : '' }}"> <!--bg untuk ketika proses tsb -->
                                     <div class="border-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} border-2 w-[30px] h-[30px] lg:w-[40px] lg:h-[40px] grid rounded-full place-items-center">
                                         <div class="bg-{{ $order->progress == 'Pending' ? 'gray-500' : 'white' }} w-[20px] h-[20px] lg:w-[30px] lg:h-[30px] rounded-full grid place-items-center">
@@ -234,4 +268,32 @@
     @endif
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const slideshow = document.getElementById('slideshow');
+        const slides = document.querySelectorAll('#slideshow > div');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.transform = `translateX(${100 * (i - index)}%)`;
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        // Initialize the first slide
+        showSlide(currentSlide);
+    });
+</script>
 @endsection

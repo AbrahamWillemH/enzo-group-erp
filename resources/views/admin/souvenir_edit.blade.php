@@ -189,7 +189,7 @@
 
 
       <!-- Detail Souvenir -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 justify-center w-full">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <!-- Desain -->
         <div class="grid grid-rows-7 gap-5">
           <div class="flex items-center flex-col">
