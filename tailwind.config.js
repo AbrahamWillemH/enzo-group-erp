@@ -34,6 +34,9 @@ export default {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
                 mont: ['Montserrat', 'sans-serif'],
                 cookie: ['Cookie', 'serif'],
+                quattro: ['Quattrocento', 'serif'],
+                azeret: ['Azeret Mono', 'monospace'],
+                garamond: ['Garamond', 'serif'],
             },
             keyframes: {
                 carousel: {

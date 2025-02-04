@@ -9,8 +9,8 @@
         <div class="grid grid-rows-[25%_75%]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
-            <h1 class="font-cookie text-5xl">Hello, {{ auth()->user()->name }}</h1>
-            <p class="font-semibold">You can track order progress, create new orders, and keep track of the deadlines here!</p>
+            <h1 class="font-quattro text-3xl lg:text-5xl font-bold">Hello, {{ auth()->user()->name }}</h1>
+            <p class="font-azeret">You can track order progress, create new orders, and keep track of the deadlines here!</p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">

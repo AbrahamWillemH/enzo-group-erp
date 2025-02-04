@@ -9,8 +9,8 @@
         <div class="grid grid-rows-[70px_auto] lg:grid-rows-[100px_auto]">
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
-            <h1 class="font-cookie text-3xl lg:text-5xl">Hello, {{ auth()->user()->name }}</h1>
-            <p class="text-xs lg:text-base"><strong>Welcome to Enzo Creatives</strong></p>
+            <h1 class="font-quattro text-3xl lg:text-5xl font-bold">Hello, {{ auth()->user()->name }}</h1>
+            <p class="font-azeret">Welcome to Enzo Creatives</p>
           </div>
 
           <div class="grid grid-rows-[520px_auto] lg:grid-rows-[350px_auto]">
