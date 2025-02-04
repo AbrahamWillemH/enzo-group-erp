@@ -10,7 +10,7 @@
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
             <h1 class="font-quattro text-3xl lg:text-5xl font-bold">Hello, {{ auth()->user()->name }}</h1>
-            <p class="font-azeret">You can track order progress, create new orders, and keep track of the deadlines here!</p>
+            <p class="font-azeret mt-1">You can track order progress, create new orders, and keep track of the deadlines here!</p>
           </div>
 
           <div class="grid grid-cols-4 px-5 pt-8 pb-6 gap-3">
