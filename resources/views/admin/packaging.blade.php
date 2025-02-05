@@ -48,9 +48,9 @@
         <div class="">
             <section id="pending" class="pending mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Pembayaran dan Desain</div>
-                <div class="px-3 w-[1010px]">
+                <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-[6.75rem] mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]">
-                        <table class="w-[1200px] border capitalize shadow-inner z-10">
+                        <table class="w-[1200px] 2xl:w-[1300px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -127,9 +127,9 @@
 
             <section id="fix" class="fix mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menentukan Deadline</div>
-                <div class="px-3 w-[1010px]">
+                <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-fix">
-                        <table class="w-[1150px] border capitalize shadow-inner z-10">
+                        <table class="w-[1150px] 2xl:w-[1250px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -182,9 +182,9 @@
 
             <section id="order" class="order mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Pemesanan Bahan</div>
-                <div class="px-3 w-[1010px]">
+                <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-order">
-                        <table class="w-[1150px] border capitalize shadow-inner z-10">
+                        <table class="w-[1150px] 2xl:w-[1250px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -236,9 +236,9 @@
 
             <section id="proses" class="proses mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Proses Produksi</div>
-                <div class="px-3 w-[1010px]">
+                <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-proses">
-                        <table class="w-[1190px] border capitalize shadow-inner z-10">
+                        <table class="w-[1190px] 2xl:w-[1290px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -304,9 +304,9 @@
 
             <section id="ready" class="ready pb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Ambil / Kirim</div>
-                <div class="px-3 w-[1010px]">
+                <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-ready">
-                        <table class="w-[1120px] border capitalize shadow-inner z-10">
+                        <table class="w-[1120px] 2xl:w-[1220px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
