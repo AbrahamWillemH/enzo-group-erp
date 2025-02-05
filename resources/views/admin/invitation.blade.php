@@ -55,7 +55,7 @@
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
                                     <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
-                                    <th class="text-center">Nomor Telepon</th>
+                                    <th class="text-center">Alamat</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -77,8 +77,13 @@
                                             {{ $o->id }}
                                         </div>
                                     </td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
-                                    <td class="px-3 py-3 text-center">{{$o->phone_number}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px] hover:cursor-pointer" onclick="showModal('user_name', '{{ $o->user_name }}')">
+                                        {{ Str::limit($o->user_name, 25) }}
+                                    </td>
+                                    <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('address', '{{ $o->address }}')">
+                                        {{ Str::limit($o->address, 15) }}
+                                    </td>
+
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
@@ -135,6 +140,7 @@
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
                                     <th class="text-center sticky left-[149px] bg-green-main">Nama</th>
+                                    <th class="text-center">Alamat</th>
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
@@ -148,7 +154,12 @@
                                 @if ($o->progress == 'Fix')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px] hover:cursor-pointer" onclick="showModal('user_name', '{{ $o->user_name }}')">
+                                        {{ Str::limit($o->user_name, 25) }}
+                                    </td>
+                                    <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('address', '{{ $o->address }}')">
+                                        {{ Str::limit($o->address, 15) }}
+                                    </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
@@ -359,6 +370,14 @@
                 </div>
             </section>
         </div>
+
+        <div id="infoModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+            <div class="bg-white p-6 rounded-lg max-w-sm w-full">
+                <h2 class="text-xl font-semibold mb-4" id="modalTitle"></h2>
+                <p id="modalContent" class="text-gray-700"></p>
+                <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -442,6 +461,29 @@
         menuSort.classList.add('hidden');
         }
     });
+
+    function showModal(type, content) {
+        const modal = document.getElementById('infoModal');
+        const title = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+
+        // Set modal content based on type (user_name or address)
+        if (type === 'user_name') {
+            title.innerText = 'Nama Lengkap';
+        } else if (type === 'address') {
+            title.innerText = 'Alamat Lengkap';
+        }
+
+        modalContent.innerText = content;
+
+        // Show the modal
+        modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+        // Hide the modal
+        document.getElementById('infoModal').classList.add('hidden');
+    }
 </script>
 @if(session('error'))
     <script>
