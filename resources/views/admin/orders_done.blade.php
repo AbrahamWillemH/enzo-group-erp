@@ -1,5 +1,5 @@
 @extends('admin/sidebar_admin')
-@section('title', 'Reminder')
+@section('title', 'Pesanan Selesai | Enzo Creatives ERP')
 @section('konten')
 <div class="ml-[20%]">
     <!-- Header -->
@@ -73,8 +73,16 @@
                         <td class="px-4 py-3 text-center">Tidak ada</td>
                         @endif
                         <td class="px-4 py-3 text-center"><strong>{{ $o->deadline_date ? \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</strong></td>
-                        <td class="px-3 py-3 text-center">
+                        <td class="px-3 py-3 text-center space-y-2">
                             <a href="{{ route('admin.reminder.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                            <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)">
+                                @csrf
+                                @method('POST')
+                                <button type="submit"
+                                        class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                    Delete
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -107,6 +115,12 @@ checkboxes.forEach(checkbox => {
     });
 });
 });
+
+function confirmDelete(event) {
+    if (!confirm("Are you sure you want to delete this order?")) {
+        event.preventDefault();
+    }
+}
 
 </script>
 

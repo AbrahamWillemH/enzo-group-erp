@@ -345,7 +345,7 @@
                                         <th class="text-center">Tanggal Pesan</th>
                                         <th class="text-center">Tanggal Acara</th>
                                         <th class="text-center">Deadline</th>
-                                        <th class="text-center w-[260px]">Action</th>
+                                        <th class="text-center w-[320px]">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-green-main/10">
@@ -361,15 +361,21 @@
                                         <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->event_date)->format('d/m/Y') }}</td>
                                         <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                         <td class="px-3 py-3 text-center">
-                                            <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
+                                            <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                                 <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                     Detail
                                                 </button>
                                             </form>
                                             <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                                 @csrf
-                                                <button type="submit" class="bg-decline rounded-lg px-[3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
+                                                <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
                                                     Previous
+                                                </button>
+                                            </form>
+                                            <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
+                                                @csrf
+                                                <button type="submit" class="bg-accept rounded-lg px-[2rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmNextProgress();">
+                                                    Done
                                                 </button>
                                             </form>
                                         </td>

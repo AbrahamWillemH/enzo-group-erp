@@ -145,6 +145,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // pesanan selesai
     Route::get('/admin/orders/done', [OrderController::class, 'finishedOrders'])->name('admin.done.view');
+    Route::post('/admin/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('admin.order.delete');
 
     // update progress
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');

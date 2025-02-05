@@ -406,4 +406,17 @@ class OrderController extends Controller
         });
         return view('admin.orders_done', compact('filteredOrders'));
     }
+
+    public function deleteOrder($id) {
+        $orders = $this->getOrders();
+
+        $order = $orders->firstWhere('id', $id);
+
+        if ($order) {
+            $order->delete();
+            return redirect()->route('admin.done.view');
+        } else {
+            return redirect()->route('admin.done.view');
+        }
+    }
 }
