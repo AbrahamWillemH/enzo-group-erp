@@ -10,7 +10,7 @@
 
           <div class="flex flex-col justify-center items-center bg-green-main/20">
             <h1 class="font-quattro text-3xl lg:text-5xl font-bold">Hello, {{ auth()->user()->name }}</h1>
-            <p class="font-azeret mt-1">Welcome to Enzo Creatives. Let's craft unforgettable memories together!</p>
+            <p class="font-azeret mt-1 text-center">Welcome to Enzo Creatives!</p>
           </div>
 
           <div class="grid grid-rows-[520px_auto] lg:grid-rows-[350px_auto]">
