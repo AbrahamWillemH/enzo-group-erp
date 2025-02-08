@@ -55,7 +55,9 @@ class PackagingController extends Controller
             'model' => 'required|string|max:255',
             'package_type' => 'required|string|max:255',
             'note_design' => 'required|string|max:255',
-            'size' => 'required|string|max:255'
+            'size' => 'required|string|max:255',
+            'kemas'=>'required|string|max:255',
+            'source'=>'required|string|max:255'
         ]);
 
 
@@ -109,7 +111,9 @@ class PackagingController extends Controller
             'design_status' => 'nullable|string',
             'note_cs' => 'nullable|string',
             'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
-            'subprocess' => 'nullable|enum'
+            'subprocess' => 'nullable|enum',
+            'kemas'=>'required|string|max:255',
+            'source'=>'required|string|max:255'
         ]);
 
         $order = Packaging::findOrFail($id);

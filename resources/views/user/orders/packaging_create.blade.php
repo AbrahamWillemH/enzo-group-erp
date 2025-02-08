@@ -55,7 +55,6 @@
       <!-- Orders Info -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <div class="flex flex-col gap-5">
-
           <div class="flex items-center flex-col">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
@@ -95,15 +94,28 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="kemas">Kemas</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="kemas" name="kemas"required>
+              <option value="Bubble 1-1">Bubble 1-1</option>
+              <option value="Bubble 1-1 + Bubble Luar">Bubble 1-1 + Bubble Luar</option>
+              <option value="Bubble Luar">Bubble Luar</option>
+              <option value="Tanpa Bubble">Tanpa Bubble</option>
+            </select>
+            @error('kemas')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
         <div class="flex flex-col gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
-              <option value="Softbox">Softbox</option>
-              <option value="Corrugatedbox">Corrugatedbox</option>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" onchange="updatePackageTypes()" required>
               <option value="Hardbox">Hardbox</option>
+              <option value="Softbox">Softbox</option>
+              <option value="Corrugatedbox">Corrugated Box</option>
             </select>
             @error('model')
             <small class="text-danger">{{ $message }}</small>
@@ -113,11 +125,7 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="package_type">Tipe</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="package_type" name="package_type" required>
-              <option value="SB Diecut">SB Diecut</option>
-              <option value="CB Diecut">CB Diecut</option>
-              <option value="HB Tutup Lepas">HB Tutup Lepas</option>
-              <option value="HB Pita">HB Pita</option>
-              <option value="HB Magnet">HB Magnet</option>
+              <option value="">Pilih Tipe</option>
             </select>
             @error('package_type')
             <small class="text-danger">{{ $message }}</small>
@@ -127,8 +135,15 @@
           <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
-              <option value="Foil">Foil</option>
               <option value="Laminasi Doff">Laminasi Doff</option>
+              <option value="Laminasi Glossy">Laminasi Glossy</option>
+              <option value="Tanpa Laminasi">Tanpa Laminasi</option>
+              <option value="Foil">Foil</option>
+              <option value="Emboss">Emboss</option> 
+              <option value="Attire">Attire</option> 
+              <option value="Sekat">Sekat</option> 
+              <option value="Brosur">Brosur</option> 
+              <option value="Lainnya">Lainnya</option> 
             </select>
             @error('finishing')
             <small class="text-danger">{{ $message }}</small>
@@ -154,6 +169,19 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="source">Source</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="source" name="source" required>
+              <option value="Shopee">Shopee</option>
+              <option value="Deonkraft">Deonkraft</option>
+              <option value="Enzo Wedding">Enzo Wedding</option>
+              <option value="Grizelle">Grizelle</option>
+            </select>
+            @error('source')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
       </div>
 
@@ -166,6 +194,49 @@
       </div>
     </form>
   </div>
+  <script>
+     function updatePackageTypes() {
+            const modelSelect = document.getElementById('model');
+            const packageTypeSelect = document.getElementById('package_type');
+            const selectedModel = modelSelect.value;
+
+            packageTypeSelect.innerHTML = '<option value="">Pilih Tipe</option>';
+
+            const packageTypes = {
+                'Hardbox': [
+                    'Hardbox Pita',
+                    'Hardbox Magnet',
+                    'Hardbox Tutup Lepas',
+                    'Hardbox Sliding',
+                    'Hardbox Magnet 2 Pintu'
+                ],
+                'Softbox': [
+                    'Folding Box',
+                    'Toplock',
+                    'Tutup Lepas',
+                    'Earlock',
+                    'Snack Box',
+                    'Sliding Luar Papperbag',
+                    'Lainnya'
+                ],
+                'Corrugatedbox': [
+                    'Sleeve Box',
+                    'Lainnya'
+                ]
+            };
+
+            if (selectedModel && packageTypes[selectedModel]) {
+                packageTypes[selectedModel].forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    packageTypeSelect.appendChild(option);
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', updatePackageTypes);
+  </script>
 </body>
 
 </html>
