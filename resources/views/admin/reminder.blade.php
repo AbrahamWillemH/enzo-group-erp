@@ -3,16 +3,16 @@
     @section('konten')
     <div class="ml-[20%]">
         <!-- Header -->
-        <header class="fixed top-0 right-0 w-[80%] bg-green-shadow h-[68px] flex items-center justify-between px-4">
+        <header class="fixed top-0 right-0 w-[80%] bg-green-shadow h-[68px] flex items-center justify-between px-4 z-40">
             <h1 class="text-xl font-bold text-brown-enzo" style="letter-spacing: 1px">REMINDER</h1>
-            <div class="relative group z-20">
+            <div class="relative group">
                 <button class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
                     Filter
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
                 </button>
 
                 <!-- Dropdown Filter -->
-                <div class="absolute bg-green-light shadow-lg rounded-md z-30 top-full left-0 w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
+                <div class="absolute bg-green-light shadow-lg rounded-md z-40 top-full left-0 w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
                     <div class="block py-2">
                         <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
                             <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="Pending" checked>
@@ -43,9 +43,9 @@
 
         <!-- Tabel -->
         <main class="pt-20 bg-green-light h-screen">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[1.5rem] mb-5 max-h-[530px]">
-                <table class="w-full text-sm text-center capitalize">
-                    <thead class="text-brown-enzo">
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[1.5rem] mb-5 max-h-[530px] lg:max-h-[690px]">
+                <table class="w-full text-sm text-center capitalize z-10">
+                    <thead class="text-brown-enzo z-20">
                         <tr>
                             <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">ID</th>
                             <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Nama Pelanggan</th>
