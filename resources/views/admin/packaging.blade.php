@@ -278,11 +278,17 @@
                                                 @csrf
                                                 <input type="hidden" name="order_id" value="{{ $o->id }}">
                                                 <select name="subprocess" class="bg-green-light border border-gray-300 rounded-md px-2 py-1" onchange="this.form.submit()">
+                                                    <option value="Antri Cetak" {{ old('subprocess', $o->subprocess) == 'Antri Cetak' ? 'selected' : '' }}>Antri Cetak</option>
                                                     <option value="Cetak" {{ old('subprocess', $o->subprocess) == 'Cetak' ? 'selected' : '' }}>Cetak</option>
+                                                    <option value="Antri Laminasi" {{ old('subprocess', $o->subprocess) == 'Antri Laminasi' ? 'selected' : '' }}>Antri Laminasi</option>
                                                     <option value="Laminasi" {{ old('subprocess', $o->subprocess) == 'Laminasi' ? 'selected' : '' }}>Laminasi</option>
-                                                    <option value="Foil" {{ old('subprocess', $o->subprocess) == 'Foil' ? 'selected' : '' }}>Foil</option>
+                                                    <option value="Antri Foil/Emboss" {{ old('subprocess', $o->subprocess) == 'Antri Foil/Emboss' ? 'selected' : '' }}>Antri Foil/Emboss</option>
+                                                    <option value="Foil/Emboss" {{ old('subprocess', $o->subprocess) == 'Foil/Emboss' ? 'selected' : '' }}>Foil/Emboss</option>
+                                                    <option value="Antri Pon" {{ old('subprocess', $o->subprocess) == 'Antri Pon' ? 'selected' : '' }}>Antri Pon</option>
+                                                    <option value="Potong Kertas/Pon" {{ old('subprocess', $o->subprocess) == 'Potong Kertas/Pon' ? 'selected' : '' }}>Potong Kertas/Pon</option>
+                                                    <option value="Antri Lem" {{ old('subprocess', $o->subprocess) == 'Antri Lem' ? 'selected' : '' }}>Antri Lem</option>
                                                     <option value="Proses Lem" {{ old('subprocess', $o->subprocess) == 'Proses Lem' ? 'selected' : '' }}>Proses Lem</option>
-                                                    <option value="Packing" {{ old('subprocess', $o->subprocess) == 'Packing' ? 'selected' : '' }}>Packing</option>
+                                                    <option value="Rangkai" {{ old('subprocess', $o->subprocess) == 'Rangkai' ? 'selected' : '' }}>Rangkai</option>
                                                 </select>
                                             </form>
                                     <td class="px-3 py-3 text-center">
