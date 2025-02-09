@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
@@ -56,7 +56,7 @@
       <!-- Orders Info -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <div class="flex flex-col gap-5">
-          <div class="flex items-center flex-col mb-3">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
               placeholder="Nama Pemesan"
@@ -105,9 +105,19 @@
             @enderror
           </div>
 
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="size">Ukuran Jadi</label>
+            <input type="text" id="size" name="size" value="{{ old('size') }}" required
+              placeholder="Ukuran Jadi"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('size')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
           <div class="flex items-center flex-col mt-5 mb-7">
             <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
+            <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('address')
@@ -120,7 +130,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="design">Desain Emboss / Label / Sablon</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="design" name="design" required>
               <option value="Desain pribadi/template">Desain pribadi/template</option>
               <option value="Desain custom Enzo">Desain custom enzo</option>
@@ -132,7 +142,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="thankscard" name="thankscard" required>
               <option value="Desain pribadi/template">Desain pribadi/template</option>
               <option value="Desain custom Enzo">Desain custom enzo</option>
@@ -183,8 +193,8 @@
           </div>
 
           <div class="flex items-center flex-col mt-5">
-            <label class="ml-2" for="note">Note Desain</label>
-            <textarea id="note" rows="4" name="note" value="{{ old('note') }}" required
+            <label class="ml-2" for="note">Note</label>
+            <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
               placeholder="Tuliskan catatan tambahan disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('note')

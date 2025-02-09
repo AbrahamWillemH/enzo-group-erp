@@ -197,26 +197,30 @@
                                 <td class="px-4 py-2">{{ $souvenir->paid_off_date ? \Carbon\Carbon::parse($souvenir->paid_off_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Tanggal Fix Desain</td>
+                                <td class="px-4 py-2"></td>
+                            </tr>
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
                                 <td class="px-4 py-2">{{$souvenir->price_per_pcs}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Printilan</td>
                                 <td class="px-4 py-2">{{$souvenir->printout}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ekspedisi</td>
                                 <td class="px-4 py-2">{{$souvenir->expedition}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
                                 <td class="px-4 py-2">{{$souvenir->design_status}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$souvenir->note_design}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Admin</td>
                                 <td class="px-4 py-2">{{$souvenir->note_cs}}</td>
                             </tr>

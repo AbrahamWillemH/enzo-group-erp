@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>

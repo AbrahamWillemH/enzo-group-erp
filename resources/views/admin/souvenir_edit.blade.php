@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <div class="flex text-left text-lg sm:text-xl font-bold items-center">
@@ -41,7 +41,7 @@
       <!-- Orders Info -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <div class="flex flex-col gap-5">
-            <div class="flex items-center flex-col  mb-3">
+            <div class="flex items-center flex-col">
                 <label class="ml-2" for="user_name">Nama Pemesan</label>
                 <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
                   placeholder="Nama Pemesan"
@@ -91,18 +91,18 @@
             </div>
 
             <div class="flex items-center flex-col ">
-                <label class="ml-2" for="pack">Kemas</label>
-                <input type="text" id="pack" name="pack" value="{{ $souvenir->pack }}" required
-                  placeholder="Kemas"
-                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-                @error('pack')
-                <small class="text-danger">{{ $message }}</small>
-                @enderror
+              <label class="ml-2" for="size">Ukuran Jadi</label>
+              <input type="text" id="size" name="size" value="{{ $souvenir->size }}" required
+                placeholder="Ukuran Jadi"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('pack')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
             </div>
 
-            <div class="flex items-center flex-col  mt-5 mb-7">
+            <div class="flex items-center flex-col">
                 <label class="ml-2" for="address">Alamat Lengkap</label>
-                <textarea id="address" rows="3" name="address"
+                <textarea id="address" rows="5" name="address"
                   placeholder="Alamat Lengkap"
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->address}}</textarea>
                 @error('address')
@@ -114,7 +114,7 @@
         <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col ">
                 <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
-                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
                   id="design" name="design" required>
                   <option value="Desain Pribadi/Template" {{ old('design', $souvenir->design) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Pribadi/Template</option>
                   <option value="Desain Custom Enzo" {{ old('design', $souvenir->design) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom Enzo</option>
@@ -132,7 +132,7 @@
 
             <div class="flex items-center flex-col ">
                 <label class="ml-2" for="thankscard">Desain Thankscard</label>
-                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
+                <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
                   id="thankscard" name="thankscard" required>
                   <option value="Desain Pribadi/Template" {{ old('thankscard', $souvenir->thankscard) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Pribadi/Template</option>
                   <option value="Desain Custom Enzo" {{ old('thankscard', $souvenir->thankscard) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom Enzo</option>
@@ -176,8 +176,18 @@
             </div>
 
             <div class="flex items-center flex-col ">
+              <label class="ml-2" for="pack">Kemas</label>
+              <input type="text" id="pack" name="pack" value="{{ $souvenir->pack }}" required
+                placeholder="Kemas"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('pack')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col ">
                 <label class="ml-2" for="note_design">Note Desain</label>
-                <textarea id="note_design" rows="7" name="note_design"
+                <textarea id="note_design" rows="5" name="note_design"
                   placeholder="Tuliskan note desain disini"
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->note_design}}</textarea>
                 @error('note_design')
@@ -194,7 +204,7 @@
         <div class="grid grid-rows-7 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center font-medium"><br>Desain dan Pembayaran</h2>
-            <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
+            <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
 
           <div class="flex items-center flex-col  mb-3">
@@ -251,13 +261,22 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col ">
+            <label for="fix_desain_date">Tanggal Fix Desain</label>
+            <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $souvenir->fix_desain_date }}"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+            @error('fix_desain_date')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
         </div>
 
         <!-- Informasi Tambahan -->
         <div class="grid grid-rows-5 gap-5">
           <div class="flex items-center flex-col">
             <h2 class="text-center font-medium"><br>Informasi Tambahan</h2>
-            <hr class="border-b-2 border-brown-enzo w-4/5 mb-4">
+            <hr class="border-b-2 border-brown-enzo w-full mb-4">
           </div>
 
           <div class="flex items-center flex-col  mb-3">

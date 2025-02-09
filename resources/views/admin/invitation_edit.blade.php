@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <div class="flex text-left text-lg sm:text-xl font-bold items-center">
@@ -396,7 +396,16 @@
               @error('paid_off_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
-          </div>
+            </div>
+
+            <div class="flex items-center flex-col ">
+              <label for="fix_desain_date">Tanggal Fix Desain</label>
+              <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $invitation->fix_desain_date }}"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('fix_desain_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
         </div>
 
@@ -452,7 +461,7 @@
 
             <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>
-              <textarea id="note_cs" rows="5" name="note_cs"
+              <textarea id="note_cs" rows="6" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$invitation->note_cs}}</textarea>
               @error('note_cs')

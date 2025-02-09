@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <div class="flex text-left text-lg sm:text-xl font-bold items-center">
@@ -82,8 +82,21 @@
           </div>
 
           <div class="flex items-center flex-col">
+            <label class="ml-2" for="kemas">Kemas</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="kemas" name="kemas"required>
+              <option value="Bubble 1-1" {{ old('kemas', $packaging->kemas) == 'Bubble 1-1' ? 'selected' : '' }}>Bubble 1-1</option>
+              <option value="Bubble 1-1 + Bubble Luar" {{ old('kemas', $packaging->kemas) == 'Bubble 1-1 + Bubble Luar' ? 'selected' : '' }}>Bubble 1-1 + Bubble Luar</option>
+              <option value="Bubble Luar" {{ old('kemas', $packaging->kemas) == 'Bubble Luar' ? 'selected' : '' }}>Bubble Luar</option>
+              <option value="Tanpa Bubble" {{ old('kemas', $packaging->kemas) == 'Tanpa Bubble' ? 'selected' : '' }}>Tanpa Bubble</option>
+            </select>
+            @error('kemas')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="7" name="address" required
+            <textarea id="address" rows="4" name="address" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->address }}</textarea>
             @error('address')
@@ -95,7 +108,7 @@
         <div class="flex flex-col gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="model" name="model" required>
                 <option value="Softbox" {{ old('model', $packaging->model) == 'Softbox' ? 'selected' : '' }}>Softbox</option>
                 <option value="Corrugatedbox" {{ old('model', $packaging->model) == 'Corrugatedbox' ? 'selected' : '' }}>Corrugatedbox</option>
                 <option value="Hardbox" {{ old('model', $packaging->model) == 'Hardbox' ? 'selected' : '' }}>Hardbox</option>
@@ -107,7 +120,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="package_type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="package_type" name="package_type" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="package_type" name="package_type" required>
                 <option value="SB Diecut" {{ old('package_type', $packaging->package_type) == 'SB Diecut' ? 'selected' : '' }}>SB Diecut</option>
                 <option value="CB Diecut" {{ old('package_type', $packaging->package_type) == 'CB Diecut' ? 'selected' : '' }}>CB Diecut</option>
                 <option value="HB Tutup Lepas" {{ old('package_type', $packaging->package_type) == 'HB Tutup Lepas' ? 'selected' : '' }}>HB Tutup Lepas</option>
@@ -122,7 +135,7 @@
 
         <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="finishing" name="finishing" required>
                 <option value="Foil" {{ old('finishing', $packaging->finishing) == 'Foil' ? 'selected' : '' }}>Foil</option>
                 <option value="Laminasi Doff" {{ old('finishing', $packaging->finishing) == 'Laminasi Doff' ? 'selected' : '' }}>Laminasi Doff</option>
             </select>
@@ -142,8 +155,8 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="note_design">Note Desain</label>
-            <textarea id="note_design" rows="4" name="note_design"
+            <label class="ml-2" for="note_design">Note</label>
+            <textarea id="note_design" rows="7" name="note_design"
               placeholder="Tuliskan note desain disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->note_design }}</textarea>
             @error('note_design')
@@ -231,6 +244,14 @@
               @enderror
             </div>
 
+            <div class="flex items-center flex-col ">
+              <label for="fix_desain_date">Tanggal Fix Desain</label>
+              <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $packaging->fix_desain_date }}"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('fix_desain_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
           </div>
         </div>
 
@@ -286,7 +307,7 @@
 
             <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>
-              <textarea id="note_cs" rows="5" name="note_cs"
+              <textarea id="note_cs" rows="6" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$packaging->note_cs}}</textarea>
               @error('note_cs')

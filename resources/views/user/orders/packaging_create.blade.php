@@ -8,7 +8,7 @@
   @vite('resources/css/app.css')
 </head>
 
-<body class="bg-[#F7FCF5] font-mont">
+<body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
   <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
@@ -86,18 +86,8 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
-              placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-            @error('note')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col">
             <label class="ml-2" for="kemas">Kemas</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="kemas" name="kemas"required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="kemas" name="kemas"required>
               <option value="Bubble 1-1">Bubble 1-1</option>
               <option value="Bubble 1-1 + Bubble Luar">Bubble 1-1 + Bubble Luar</option>
               <option value="Bubble Luar">Bubble Luar</option>
@@ -107,12 +97,24 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="address">Alamat Lengkap</label>
+            <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
+              placeholder="Alamat Lengkap"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          
         </div>
 
         <div class="flex flex-col gap-5">
           <div class="flex items-center flex-col">
             <label class="ml-2" for="model">Model</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="model" name="model" onchange="updatePackageTypes()" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="model" name="model" onchange="updatePackageTypes()" required>
               <option value="Hardbox">Hardbox</option>
               <option value="Softbox">Softbox</option>
               <option value="Corrugatedbox">Corrugated Box</option>
@@ -124,7 +126,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="package_type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="package_type" name="package_type" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="package_type" name="package_type" required>
               <option value="">Pilih Tipe</option>
             </select>
             @error('package_type')
@@ -134,7 +136,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="finishing" name="finishing" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="finishing" name="finishing" required>
               <option value="Laminasi Doff">Laminasi Doff</option>
               <option value="Laminasi Glossy">Laminasi Glossy</option>
               <option value="Tanpa Laminasi">Tanpa Laminasi</option>
@@ -161,18 +163,8 @@
           </div>
 
           <div class="flex items-center flex-col">
-            <label class="ml-2" for="note_design">Note Desain</label>
-            <textarea id="note_design" rows="4" name="note_design" value="{{ old('note_design') }}" required
-              placeholder="Tulis catatan tambahan disini"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-            @error('note_design')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col">
             <label class="ml-2" for="source">Source</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5" id="source" name="source" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source" required>
               <option value="Shopee">Shopee</option>
               <option value="Deonkraft">Deonkraft</option>
               <option value="Enzo Wedding">Enzo Wedding</option>
@@ -182,6 +174,18 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="note_design">Note</label>
+            <textarea id="note_design" rows="4" name="note_design" value="{{ old('note_design') }}" required
+              placeholder="Tulis catatan tambahan disini"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+            @error('note_design')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          
         </div>
       </div>
 

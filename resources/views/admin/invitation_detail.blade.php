@@ -237,26 +237,30 @@
                                 <td class="px-4 py-2">{{ $invitation->paid_off_date ? \Carbon\Carbon::parse($invitation->paid_off_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Tanggal Fix Desain</td>
+                                <td class="px-4 py-2"></td>
+                            </tr>
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
                                 <td class="px-4 py-2">{{$invitation->price_per_pcs}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Printilan</td>
                                 <td class="px-4 py-2">{{$invitation->printout}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ekspedisi</td>
                                 <td class="px-4 py-2">{{$invitation->expedition}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
                                 <td class="px-4 py-2">{{$invitation->design_status}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$invitation->note_design}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Admin</td>
                                 <td class="px-4 py-2">{{$invitation->note_cs}}</td>
                             </tr>
