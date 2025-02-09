@@ -191,12 +191,12 @@
               <label for="progress">Progress</label>
               <select id="progress" name="progress"
                   class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
-                  <option value="Pending" {{ old('progress', $packaging->progress) == 'Pending' ? 'selected' : '' }}>Pending</option>
-                  <option value="Fix" {{ old('progress', $packaging->progress) == 'Fix' ? 'selected' : '' }}>Fix</option>
+                  <option value="Pending" {{ old('progress', $packaging->progress) == 'Pending' ? 'selected' : '' }}>Menunggu Pembayaran dan Desain</option>
+                  <option value="Fix" {{ old('progress', $packaging->progress) == 'Fix' ? 'selected' : '' }}>Menentukan Deadline</option>
                   <option value="Pemesanan Bahan" {{ old('progress', $packaging->progress) == 'Pemesanan Bahan' ? 'selected' : '' }}>Pemesanan Bahan</option>
                   <option value="Proses Produksi" {{ old('progress', $packaging->progress) == 'Proses Produksi' ? 'selected' : '' }}>Proses Produksi</option>
-                  <option value="Finishing" {{ old('progress', $packaging->progress) == 'Finishing' ? 'selected' : '' }}>Finishing</option>
-                  <option value="Selesai" {{ old('progress', $packaging->progress) == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                  <option value="Selesai" {{ old('progress', $packaging->progress) == 'Selesai' ? 'selected' : '' }}>Menunggu Ambil / Kirim</option>
+                  <option value="Selesai Beneran" {{ old('progress', $packaging->progress) == 'Selesai Beneran' ? 'selected' : '' }}>Pesanan Selesai</option>
                 </select>
               @error('progress')
               <small class="text-danger">{{ $message }}</small>

@@ -211,12 +211,12 @@
             <label for="progress">Progress</label>
             <select id="progress" name="progress"
                 class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
-                <option value="Pending" {{ old('progress', $souvenir->progress) == 'Pending' ? 'selected' : '' }}>Pending</option>
-                <option value="Fix" {{ old('progress', $souvenir->progress) == 'Fix' ? 'selected' : '' }}>Fix</option>
+                <option value="Pending" {{ old('progress', $souvenir->progress) == 'Pending' ? 'selected' : '' }}>Menunggu Pembayaran dan Desain</option>
+                <option value="Fix" {{ old('progress', $souvenir->progress) == 'Fix' ? 'selected' : '' }}>Menentukan Deadline</option>
                 <option value="Pemesanan Bahan" {{ old('progress', $souvenir->progress) == 'Pemesanan Bahan' ? 'selected' : '' }}>Pemesanan Bahan</option>
                 <option value="Proses Produksi" {{ old('progress', $souvenir->progress) == 'Proses Produksi' ? 'selected' : '' }}>Proses Produksi</option>
-                <option value="Finishing" {{ old('progress', $souvenir->progress) == 'Finishing' ? 'selected' : '' }}>Finishing</option>
-                <option value="Selesai" {{ old('progress', $souvenir->progress) == 'Selesai' ? 'selected' : '' }}>Selesai</option>
+                <option value="Selesai" {{ old('progress', $souvenir->progress) == 'Selesai' ? 'selected' : '' }}>Menunggu Ambil / Kirim</option>
+                <option value="Selesai Beneran" {{ old('progress', $souvenir->progress) == 'Selesai Beneran' ? 'selected' : '' }}>Pesanan Selesai</option>
             </select>
             @error('progress')
             <small class="text-danger">{{ $message }}</small>
