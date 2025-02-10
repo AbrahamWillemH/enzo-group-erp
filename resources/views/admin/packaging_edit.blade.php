@@ -130,19 +130,42 @@
             @error('package_type')
             <small class="text-danger">{{ $message }}</small>
             @enderror
-        </div>
+          </div>
 
-
-        <div class="flex items-center flex-col">
+          <div class="flex flex-col items-center relative w-80">
             <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="finishing" name="finishing" required>
-                <option value="Foil" {{ old('finishing', $packaging->finishing) == 'Foil' ? 'selected' : '' }}>Foil</option>
-                <option value="Laminasi Doff" {{ old('finishing', $packaging->finishing) == 'Laminasi Doff' ? 'selected' : '' }}>Laminasi Doff</option>
-            </select>
+        
+            <!-- Custom Dropdown Button -->
+            <button id="dropdownButton" type="button" class="w-full text-left form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 flex justify-between items-center">
+                <span id="selectedOptions">
+                    {{ implode(', ', old('finishing', explode(',', $packaging->finishing))) ?: 'Pilih Finishing' }}
+                </span>
+                <svg class="w-4 h-4 ml-2 transition-transform duration-300 transform" id="dropdownIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+        
+            <!-- Dropdown List -->
+            <div id="dropdownMenu" class="absolute w-full bg-white border border-[#e0e0e0] rounded-xl shadow-lg mt-1 hidden top-14">
+                <div class="flex flex-col p-2 max-h-40 overflow-y-auto space-y-1">
+                    @php
+                        $selectedFinishing = explode(',', old('finishing', $packaging->finishing)); 
+                    @endphp
+                    @foreach(['Laminasi Doff', 'Laminasi Glossy', 'Tanpa Laminasi', 'Foil', 'Emboss', 'Attire', 'Sekat', 'Brosur', 'Lainnya'] as $option)
+                        <label class="flex items-center space-x-2">
+                            <input type="checkbox" name="finishing[]" value="{{ $option }}" class="checkbox-finishing"
+                                {{ in_array($option, $selectedFinishing) ? 'checked' : '' }}>
+                            <span>{{ $option }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            </div>
+        
             @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+        
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="size">Ukuran</label>
@@ -327,6 +350,36 @@
       </div>
     </form>
   </div>
+
+  <script>
+    const dropdownButton = document.getElementById("dropdownButton");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    const dropdownIcon = document.getElementById("dropdownIcon");
+    const checkboxes = document.querySelectorAll(".checkbox-finishing");
+    const selectedOptions = document.getElementById("selectedOptions");
+
+    dropdownButton.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("hidden");
+        dropdownIcon.classList.toggle("rotate-180");
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.add("hidden");
+            dropdownIcon.classList.remove("rotate-180");
+        }
+    });
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", () => {
+            let selected = Array.from(checkboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+            selectedOptions.textContent = selected.length ? selected.join(", ") : "Pilih Finishing";
+        });
+    });
+  </script>
+
 </body>
 
 </html>

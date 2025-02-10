@@ -134,23 +134,64 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex flex-col items-center relative w-80">
             <label class="ml-2" for="finishing">Finishing</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="finishing" name="finishing" required>
-              <option value="Laminasi Doff">Laminasi Doff</option>
-              <option value="Laminasi Glossy">Laminasi Glossy</option>
-              <option value="Tanpa Laminasi">Tanpa Laminasi</option>
-              <option value="Foil">Foil</option>
-              <option value="Emboss">Emboss</option> 
-              <option value="Attire">Attire</option> 
-              <option value="Sekat">Sekat</option> 
-              <option value="Brosur">Brosur</option> 
-              <option value="Lainnya">Lainnya</option> 
-            </select>
+        
+            <!-- Dropdown Button -->
+            <button id="dropdownButton" type="button" class="w-full text-left form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 flex justify-between items-center">
+                <span id="selectedOptions">Pilih Finishing</span>
+                <svg class="w-4 h-4 ml-1 transition-transform duration-300 transform" id="dropdownIcon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+        
+            <!-- Dropdown List -->
+            <div id="dropdownMenu" class="absolute w-full bg-white border border-[#e0e0e0] rounded-xl shadow-lg mt-1 hidden top-14">
+                <div class="flex flex-col p-2 max-h-40 overflow-y-auto space-y-1">
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Laminasi Doff" class="checkbox-finishing">
+                        <span>Laminasi Doff</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Laminasi Glossy" class="checkbox-finishing">
+                        <span>Laminasi Glossy</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Tanpa Laminasi" class="checkbox-finishing">
+                        <span>Tanpa Laminasi</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Foil" class="checkbox-finishing">
+                        <span>Foil</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Emboss" class="checkbox-finishing">
+                        <span>Emboss</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Attire" class="checkbox-finishing">
+                        <span>Attire</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Sekat" class="checkbox-finishing">
+                        <span>Sekat</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Brosur" class="checkbox-finishing">
+                        <span>Brosur</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="checkbox" name="finishing[]" value="Lainnya" class="checkbox-finishing">
+                        <span>Lainnya</span>
+                    </label>
+                </div>
+            </div>
+        
             @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
+        
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="size">Ukuran</label>
@@ -164,7 +205,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="source">Source</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source" required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source" required>
               <option value="Shopee">Shopee</option>
               <option value="Deonkraft">Deonkraft</option>
               <option value="Enzo Wedding">Enzo Wedding</option>
@@ -240,6 +281,33 @@
         }
 
         document.addEventListener('DOMContentLoaded', updatePackageTypes);
+
+        const dropdownButton = document.getElementById("dropdownButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownIcon = document.getElementById("dropdownIcon");
+        const checkboxes = document.querySelectorAll(".checkbox-finishing");
+        const selectedOptions = document.getElementById("selectedOptions");
+
+        dropdownButton.addEventListener("click", () => {
+            dropdownMenu.classList.toggle("hidden");
+            dropdownIcon.classList.toggle("rotate-180");
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.add("hidden");
+                dropdownIcon.classList.remove("rotate-180");
+            }
+        });
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener("change", () => {
+                let selected = Array.from(checkboxes)
+                    .filter(checkbox => checkbox.checked)
+                    .map(checkbox => checkbox.value);
+                selectedOptions.textContent = selected.length ? selected.join(", ") : "Pilih Finishing";
+            });
+        });
   </script>
 </body>
 
