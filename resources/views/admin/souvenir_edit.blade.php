@@ -10,17 +10,15 @@
 
 <body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
-  <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
-    <div class="flex text-left text-lg sm:text-xl font-bold items-center">
-      <h1>Enzo Group</h1>
-    </div>
+  <nav class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
+    <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
     <div class="font-medium">
       <a href="{{route('admin.souvenir.detail', ['id' => $souvenir->id])}}" class="flex flex-col justify-center items-center group">
         Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
     </div>
-  </div>
+  </nav>
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
@@ -186,7 +184,7 @@
             </div>
 
             <div class="flex items-center flex-col ">
-                <label class="ml-2" for="note_design">Note Desain</label>
+                <label class="ml-2" for="note_design">Note</label>
                 <textarea id="note_design" rows="5" name="note_design"
                   placeholder="Tuliskan note desain disini"
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->note_design}}</textarea>

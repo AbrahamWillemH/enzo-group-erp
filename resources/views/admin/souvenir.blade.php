@@ -46,6 +46,7 @@
             </div>
 
             <div class="">
+                <!-- Menunggu Pembayaran dan Desain -->
                 <section id="pending" class="pending mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Pembayaran dan Desain</div>
                     <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
@@ -134,6 +135,7 @@
                     </div>
                 </section>
 
+                <!-- Menentukan Deadline -->
                 <section id="fix" class="fix mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menentukan Deadline</div>
                     <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
@@ -199,6 +201,7 @@
                     </div>
                 </section>
 
+                <!-- Pemesanan Bahan -->
                 <section id="order" class="order mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Pemesanan Bahan</div>
                     <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
@@ -214,6 +217,7 @@
                                         <th class="text-center">Tanggal Pesan</th>
                                         <th class="text-center">Tanggal Acara</th>
                                         <th class="text-center">Deadline</th>
+                                        <th class="text-center">Note</th>
                                         <th class="text-center w-[320px]">Action</th>
                                     </tr>
                                 </thead>
@@ -229,6 +233,9 @@
                                         <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                         <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->event_date)->format('d/m/Y') }}</td>
                                         <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                        <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('note_design', '{{ $o->note_design }}')">
+                                            {{ Str::limit($o->note_design, 15) }}
+                                        </td>
                                         <td class="px-3 py-3 text-center">
                                             <form action="{{ route('admin.souvenir.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                                 <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -257,6 +264,7 @@
                     </div>
                 </section>
 
+                <!-- Proses Produksi -->
                 <section id="proses" class="proses mb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Proses Produksi</div>
                     <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
@@ -330,9 +338,9 @@
                             </table>
                         </div>
                     </div>
-
                 </section>
 
+                <!-- Menunggu Ambil/Kirim-->
                 <section id="ready" class="ready pb-20">
                     <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Ambil / Kirim</div>
                     <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
@@ -493,6 +501,8 @@
             title.innerText = 'Nama Lengkap';
         } else if (type === 'address') {
             title.innerText = 'Alamat Lengkap';
+        } else if (type === 'note_design') {
+            title.innerText = 'Catatan';
         }
 
         modalContent.innerText = content;

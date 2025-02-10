@@ -193,11 +193,11 @@
           </div>
 
           <div class="flex items-center flex-col mt-5">
-            <label class="ml-2" for="note">Note</label>
-            <textarea id="note" rows="5" name="note" value="{{ old('note') }}" required
+            <label class="ml-2" for="note_design">Note</label>
+            <textarea id="note_design" rows="5" name="note_design" value="{{ old('note_design') }}" required
               placeholder="Tuliskan catatan tambahan disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
-            @error('note')
+            @error('note_design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>

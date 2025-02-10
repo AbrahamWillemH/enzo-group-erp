@@ -10,17 +10,15 @@
 
 <body class="bg-[#fcfffa] font-mont">
   <!-- Navigation Bar -->
-  <div class="fixed w-full flex justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
-    <div class="flex text-left text-lg sm:text-xl font-bold items-center">
-      <h1>Enzo Group</h1>
-    </div>
+  <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
+    <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
     <div class="font-medium">
       <a href="{{route('admin.packaging.detail', ['id' => $packaging->id])}}" class="flex flex-col justify-center items-center group">
         Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
     </div>
-  </div>
+  </nav>
 
   <!-- Main Content -->
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
