@@ -127,41 +127,65 @@
               </a>
 
             </div>
-
-
           </div>
-
         </div>
 
         <div class="grid grid-cols-6 px-5 py-2 gap-3 h-full">
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Pending</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$pendingCount}}</div>
+          <!-- Pending -->
+          <div onclick="showModal('Pending');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Pending</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$pendingCount}}</div>
           </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Fix</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$fixCount}}</div>
+      
+          <!-- Fix -->
+          <div onclick="showModal('Fix');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Fix</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$fixCount}}</div>
           </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Order</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$orderCount}}</div>
+      
+          <!-- Order -->
+          <div onclick="showModal('Order');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Order</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$orderCount}}</div>
           </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Proses</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$productionCount}}</div>
+      
+          <!-- Proses -->
+          <div onclick="showModal('Proses');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Proses</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$productionCount}}</div>
           </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Ready</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$readyCount}}</div>
+      
+          <!-- Ready -->
+          <div onclick="showModal('Ready');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-green-400 to-lime-200 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Ready</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$readyCount}}</div>
           </div>
-          <div style="letter-spacing: 3px" class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform color duration-300">
-            <div class="flex-none h-[30%] flex items-center justify-center">Done</div>
-            <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$doneCount}}</div>
+      
+          <!-- Done -->
+          <div onclick="showModal('Done');"
+              class="h-[9rem] font-sans w-100 bg-gradient-to-tr from-teal-200 to-green-300 flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-5 hover:bg-green-main/30 transition transform duration-300 cursor-pointer">
+              <div class="flex-none h-[30%] flex items-center justify-center">Done</div>
+              <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4">{{$doneCount}}</div>
           </div>
         </div>
-
+      
+        <!-- Modal -->
+        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 hidden">
+          <div class="bg-white rounded-lg shadow-lg p-6 w-96 max-h-[70vh] flex flex-col">
+              <h2 id="statusTitle" class="text-xl font-bold mb-4"></h2>
+              <div class="overflow-y-auto max-h-[40vh]">
+                  <ul id="customerList" class="list-disc pl-5 space-y-2"></ul>
+              </div>
+              <button onclick="closeModal()"
+                  class="mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition">Tutup</button>
+          </div>
+        </div>
       </div>
-
     </div>
 
     <!-- deadline -->
@@ -194,6 +218,44 @@
 
   </div>
   @endsection
-<!-- </body>
+</body>
+<script>
+  // Sample data for customers
+  const customerData = {
+      'Pending': ['Customer A', 'Customer B', 'Customer C', 'Customer D', 'Customer E', 'Customer F', 'Customer G', 'Customer H', 'Customer I', 'Customer J', 'Customer K'],
+      'Fix': ['Customer L', 'Customer M'],
+      'Order': ['Customer N', 'Customer O', 'Customer P', 'Customer Q'],
+      'Proses': ['Customer R', 'Customer S'],
+      'Ready': ['Customer T', 'Customer U', 'Customer V', 'Customer W'],
+      'Done': []
+  };
 
-</html> -->
+  function showModal(status) {
+      const modal = document.getElementById('modal');
+      const statusTitle = document.getElementById('statusTitle');
+      const customerList = document.getElementById('customerList');
+
+      statusTitle.textContent = status;
+      customerList.innerHTML = '';
+
+      if (customerData[status] && customerData[status].length > 0) {
+          customerData[status].forEach(customer => {
+              const li = document.createElement('li');
+              li.textContent = customer;
+              customerList.appendChild(li);
+          });
+      } else {
+          const li = document.createElement('li');
+          li.textContent = 'Tidak ada data';
+          customerList.appendChild(li);
+      }
+
+      modal.classList.remove('hidden');
+  }
+
+  function closeModal() {
+      const modal = document.getElementById('modal');
+      modal.classList.add('hidden');
+  }
+</script>
+</html> 
