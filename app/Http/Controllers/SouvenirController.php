@@ -7,6 +7,7 @@ use App\Models\Souvenir;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Nullable;
 use Storage;
 use Validator;
 
@@ -59,6 +60,7 @@ class SouvenirController extends Controller
             'thankscard' => 'required|string|max:255',
             'color_motif' => 'required|string|max:255',
             'motif_backup' => 'required|string|max:255',
+            'size' => 'required|string|max:255'
         ]);
 
         $a = $request->event_date;
@@ -121,7 +123,8 @@ class SouvenirController extends Controller
             'design_status' => 'nullable|string|max:255',
             'desain_thankscard_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
             'desain_emboss_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
-            'subprocess' => 'nullable|enum'
+            'subprocess' => 'nullable|enum',
+            'size' =>'nullable|string|max:255'
         ]);
 
         $order = Souvenir::findOrFail($id);

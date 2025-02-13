@@ -51,7 +51,7 @@ class PackagingController extends Controller
             'quantity' => 'required|integer',
             'deadline_date' => 'nullable|date',
             'address' => 'required|string|max:1000',
-            'finishing' => 'required|string|max:255',
+            'finishing' => 'required|array',
             'model' => 'required|string|max:255',
             'package_type' => 'required|string|max:255',
             'note_design' => 'required|string|max:255',
@@ -70,6 +70,7 @@ class PackagingController extends Controller
 
         // Proses simpan data jika validasi berhasil
         $validated = $validator->validated();
+        $validated['finishing'] = implode(', ', $request->input('finishing'));
         $user = auth()->user();
         $order = new Packaging($validated);
         $order->user_id = $user->id;
@@ -96,7 +97,7 @@ class PackagingController extends Controller
             'deadline_date' => 'nullable|date',
             'progress' => 'required|string',
             'address' => 'required|string|max:1000',
-            'finishing' => 'required|string|max:255',
+            'finishing' => 'required|array',
             'model' => 'required|string',
             'package_type' => 'required|string',
             'size' => 'required|string',
@@ -136,6 +137,8 @@ class PackagingController extends Controller
             $validated['desain_path'] = $filePath;
             $validated['design_status'] = 'Pending';
         }
+
+        $validated['finishing'] = implode(', ', $request->input('finishing'));
 
         $order->update($validated);
 

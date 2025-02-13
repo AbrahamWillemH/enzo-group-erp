@@ -147,7 +147,7 @@
             <div id="dropdownMenu" class="absolute w-full bg-white border border-[#e0e0e0] rounded-xl shadow-lg mt-1 hidden top-14">
                 <div class="flex flex-col p-2 max-h-40 overflow-y-auto space-y-1">
                     @php
-                        $selectedFinishing = explode(',', old('finishing', $packaging->finishing)); 
+                        $selectedFinishing = explode(', ', old('finishing', $packaging->finishing)); 
                     @endphp
                     @foreach(['Laminasi Doff', 'Laminasi Glossy', 'Tanpa Laminasi', 'Foil', 'Emboss', 'Attire', 'Sekat', 'Brosur', 'Lainnya'] as $option)
                         <label class="flex items-center space-x-2">
@@ -175,6 +175,19 @@
             @enderror
           </div>
 
+          <div class="flex items-center flex-col">
+            <label class="ml-2" for="source">Source</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source"required>
+              <option value="Shopee" {{ old('source', $packaging->source) == 'Shopee' ? 'selected' : '' }}>Shopee</option>
+              <option value="Deonkraft" {{ old('source', $packaging->source) == 'Deonkraft' ? 'selected' : '' }}>Deonkraft</option>
+              <option value="Enzo Wedding" {{ old('source', $packaging->source) == 'Enzo Wedding' ? 'selected' : '' }}>Enzo Wedding</option>
+              <option value="Grizelle" {{ old('source', $packaging->source) == 'Grizelle' ? 'selected' : '' }}>Grizelle</option>
+            </select>
+            @error('kemas')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+          
           <div class="flex items-center flex-col">
             <label class="ml-2" for="note_design">Note</label>
             <textarea id="note_design" rows="7" name="note_design"
