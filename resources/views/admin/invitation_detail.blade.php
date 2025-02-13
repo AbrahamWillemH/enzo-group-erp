@@ -279,6 +279,206 @@
                 </div>
             </section>
 
+            <section id="spk" class="info_tambahan pb-16">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
+                    SPK
+                </div>
+                <div class="bg-blue-600 py-5 px-2 w-full h-full">
+                    <section class="flex flex-col items-center">
+                        <table class="w-[95%]">
+                            <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
+                                <tr>
+                                    <th colspan="5">SPK PRODUKSI UNDANGAN</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                <tr class="h-[35px]">
+                                    <td class="border border-green-main w-[100px] px-2">Nama</td>
+                                    <td class="border border-green-main w-[210px] px-2">Bejo</td>
+                                    <td class="border border-green-main w-[140px] px-2">Tgl Order</td>
+                                    <td class="border border-green-main w-[140px] px-2">25-2-2025</td>
+                                    <td class="border border-green-main p-2 w-[450px]" rowspan="6"><img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-full h-full object-cover rounded-md"></td>
+                                </tr>
+                                <tr class="h-[35px]">
+                                    <td class="border border-green-main px-2">Jenis</td>
+                                    <td class="border border-green-main px-2">Undangan</td>
+                                    <td class="border border-green-main px-2">Tgl DP2</td>
+                                    <td class="border border-green-main px-2">25-2-2025</td>
+                                </tr>
+                                <tr class="h-[35px]">
+                                    <td class="border border-green-main px-2">Uk Jadi</td>
+                                    <td class="border border-green-main px-2">10x20</td>
+                                    <td class="border border-green-main px-2">Tgl Fix Desain</td>
+                                    <td class="border border-green-main px-2">25-2-2025</td>
+                                </tr>
+                                <tr class="h-[35px]">
+                                    <td class="border border-green-main px-2">Jumlah</td>
+                                    <td class="border border-green-main px-2">100</td>
+                                    <td class="border border-green-main px-2">Deadline</td>
+                                    <td class="border border-green-main px-2">25-2-2025</td>
+                                </tr>
+                                <tr class="h-[35px]">
+                                    <td class="border border-green-main px-2">Alamat</td>
+                                    <td class="border border-green-main px-2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, consectetur.</td>
+                                    <td class="border border-green-main px-2">Percetakan</td>
+                                    <td class="border border-green-main px-2">
+                                        <input type="text" class="w-full h-full rounded-sm px-2" placeholder="Percetakan">
+                                    </td>
+                                </tr>
+                                <tr class="">
+                                    <td class="border border-green-main h-[60px] px-2">Request</td>
+                                    <td class="border border-green-main px-2 py-1" colspan="3">
+                                        <!-- <input type="text" class="w-full h-[60px] rounded-sm px-2" placeholder="ambil dari db"> -->
+                                        <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2"></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="border w-[95%] mt-5">
+                            <thead class="border">
+                                <tr>
+                                    <th colspan="4">Rincian Request</th>
+                                </tr>
+                            </thead>
+                            <tbody class="border">
+                                <tr class="border">
+                                    <td class="border w-[100px]">Foil</td>
+                                    <td class="border w-[280px]">: lorem</td>
+                                    <td class="border w-[140px]">Tussel</td>
+                                    <td class="border w-[120px]">: lorem</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Kertas Foil</td>
+                                    <td class="border">: Lorem, ipsum.</td>
+                                    <td class="border">Pita</td>
+                                    <td class="border">: lorem</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Laminasi</td>
+                                    <td class="border">: Lorem, ipsum.</td>
+                                    <td class="border">Tali Rami</td>
+                                    <td class="border">: lorem</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Kartu</td>
+                                    <td class="border">: Lorem, ipsum.</td>
+                                    <td class="border">Waxseal</td>
+                                    <td class="border">: lorem</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Label Nama</td>
+                                    <td class="border">: Lorem ipsum</td>
+                                    <td class="border">Kalkir</td>
+                                    <td class="border">: Lorem, ipsum dolor.</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Plastik</td>
+                                    <td class="border">: Lorem ipsum</td>
+                                    <td class="border">Kain Goni</td>
+                                    <td class="border">: Lorem, ipsum dolor.</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border">Gulungan</td>
+                                    <td class="border">: Lorem ipsum</td>
+                                    <td class="border">Ornamen</td>
+                                    <td class="border">: Lorem, ipsum dolor.</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border font-bold text-sm text-center" colspan="4">NOTE TAMBAHAN</td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border" colspan="4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, doloremque!</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="border w-[95%] mt-5">
+                            <thead class="border">
+                                <tr class="border">
+                                    <th colspan="5">Rincian Bahan</th>
+                                </tr>
+                                <tr class="border">
+                                    <th class="border w-[350px]">Nama Bahan</th>
+                                    <th class="border w-[130px]">Kebutuhan</th>
+                                    <th class="border w-[130px]">Stok</th>
+                                    <th class="border w-[130px]">Jumlah Beli</th>
+                                    <th class="border w-[350px]">Supplier</th>
+                                </tr>
+                            </thead>
+                            <tbody class="border">
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                                <tr class="border">
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                    <td class="border"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </section>
+
             <!-- <section id="purchase" class="purchase pb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     PURCHASE ORDER

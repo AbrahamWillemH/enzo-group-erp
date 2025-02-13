@@ -15,47 +15,51 @@
             </div>
 
         </div>
-        <div class="bg-blue-600">
-            <section>
-                <table class="border w-[95%]">
-                    <thead class="border">
+        <div class="bg-blue-600 py-5 px-2 w-full h-full">
+            <section class="flex flex-col items-center">
+                <table class="border w-[95%] bg-red-10">
+                    <thead class="border h-[50px]">
                         <tr>
                             <th colspan="5">SPK PRODUKSI UNDANGAN</th>
                         </tr>
                     </thead>
                     <tbody class="border">
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border w-[100px]">Nama</td>
-                            <td class="border w-[280px]">: Agus</td>
+                            <td class="border w-[220px] px-2">
+                                <input type="text" class="w-full rounded-sm px-2" placeholder="ambil dari db">
+                            </td>
                             <td class="border w-[140px]">Tgl Order</td>
-                            <td class="border w-[120px]">: 25-2-2025</td>
+                            <td class="border w-[150px] px-1">
+                                <input type="date" class="w-[150px] rounded-sm px-2">
+                            </td>
                             <td class="border" rowspan="6"><img src="{{ asset('img/undanganA.jpeg') }}" alt=""></td>
                         </tr>
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border">Jenis</td>
                             <td class="border">: Undangan</td>
                             <td class="border">Tgl DP2</td>
                             <td class="border">: 25-2-2025</td>
                         </tr>
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border">Uk Jadi</td>
                             <td class="border">: 10x20</td>
                             <td class="border">Tgl Fix Desain</td>
                             <td class="border">: 25-2-2025</td>
                         </tr>
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border">Jumlah</td>
                             <td class="border">: 100</td>
                             <td class="border">Deadline</td>
                             <td class="border">: 25-2-2025</td>
                         </tr>
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border">Alamat</td>
                             <td class="border">: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, consectetur.</td>
                             <td class="border">Percetakan</td>
                             <td class="border">: Hasbona</td>
                         </tr>
-                        <tr class="border">
+                        <tr class="border h-[35px]">
                             <td class="border">Request</td>
                             <td class="border" colspan="3">: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, quisquam aliquam ipsa dicta repellendus laboriosam maxime eius! Ab, eaque blanditiis.</td>
                         </tr>
