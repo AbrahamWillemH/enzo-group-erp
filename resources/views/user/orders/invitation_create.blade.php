@@ -13,7 +13,7 @@
   <!-- Navigation Bar -->
   <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
-    
+
     <div class="flex items-center space-x-4 sm:space-x-6">
       <!-- Dropdown Menu -->
       <div class="group relative">
@@ -30,7 +30,7 @@
           <a href="/orders/packaging/create" class="block px-4 py-2 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
-      
+
       <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
