@@ -30,6 +30,14 @@ Route::get('/tesdetail', function(){
     return view('frontend.detailundangan');
 });
 
+Route::get('/tesspk', function(){
+    return view('frontend.spk');
+});
+
+Route::get('/tesspkcreate', function(){
+    return view('frontend.spkcreate');
+});
+
 Route::get('/tesdetailpackaging', function(){
     return view('frontend.detailpackaging');
 });
