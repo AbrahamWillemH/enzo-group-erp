@@ -90,6 +90,9 @@ class PackagingController extends Controller
 
     public function update(Request $request, $id)
     {
+        $finishing = json_decode($request->finishing);
+        $request->merge(['finishing' => $finishing]);
+
         $validated = $request->validate([
             'user_name' => 'required|string|max:255',
             'phone_number' => 'required|string|max:20',
@@ -97,7 +100,7 @@ class PackagingController extends Controller
             'deadline_date' => 'nullable|date',
             'progress' => 'required|string',
             'address' => 'required|string|max:1000',
-            'finishing' => 'required|array',
+            'finishing' => 'required|array|min:1',
             'model' => 'required|string',
             'package_type' => 'required|string',
             'size' => 'required|string',
@@ -138,7 +141,7 @@ class PackagingController extends Controller
             $validated['design_status'] = 'Pending';
         }
 
-        $validated['finishing'] = implode(', ', $request->input('finishing'));
+        $validated['finishing'] = implode(', ', $finishing);
 
         $order->update($validated);
 

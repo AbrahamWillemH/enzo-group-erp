@@ -132,7 +132,9 @@
 
           <div class="flex flex-col items-center relative w-80">
             <label class="ml-2" for="finishing">Finishing</label>
-        
+
+            <input type="hidden" id="finishing_validation" name="finishing_validation" required>
+      
             <!-- Custom Dropdown Button -->
             <button id="dropdownButton" type="button" class="w-full text-left form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 flex justify-between items-center">
                 <span id="selectedOptions">
@@ -363,32 +365,63 @@
   </div>
 
   <script>
-    const dropdownButton = document.getElementById("dropdownButton");
-    const dropdownMenu = document.getElementById("dropdownMenu");
-    const dropdownIcon = document.getElementById("dropdownIcon");
-    const checkboxes = document.querySelectorAll(".checkbox-finishing");
-    const selectedOptions = document.getElementById("selectedOptions");
+  const dropdownButton = document.getElementById("dropdownButton");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  const dropdownIcon = document.getElementById("dropdownIcon");
+  const checkboxes = document.querySelectorAll(".checkbox-finishing");
+  const selectedOptions = document.getElementById("selectedOptions");
 
-    dropdownButton.addEventListener("click", () => {
-        dropdownMenu.classList.toggle("hidden");
-        dropdownIcon.classList.toggle("rotate-180");
-    });
+  dropdownButton.addEventListener("click", () => {
+      dropdownMenu.classList.toggle("hidden");
+      dropdownIcon.classList.toggle("rotate-180");
+  });
 
-    document.addEventListener("click", (event) => {
-        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.add("hidden");
-            dropdownIcon.classList.remove("rotate-180");
-        }
-    });
+  document.addEventListener("click", (event) => {
+      if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+          dropdownMenu.classList.add("hidden");
+          dropdownIcon.classList.remove("rotate-180");
+      }
+  });
 
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener("change", () => {
-            let selected = Array.from(checkboxes)
-                .filter(checkbox => checkbox.checked)
-                .map(checkbox => checkbox.value);
-            selectedOptions.textContent = selected.length ? selected.join(", ") : "Pilih Finishing";
-        });
-    });
+  // Create a hidden input to store all selected values
+  const form = document.querySelector('form');
+  const hiddenInput = document.createElement('input');
+  hiddenInput.type = 'hidden';
+  hiddenInput.name = 'finishing';
+  form.appendChild(hiddenInput);
+
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", () => {
+          let selected = Array.from(checkboxes)
+              .filter(checkbox => checkbox.checked)
+              .map(checkbox => checkbox.value);
+          
+          selectedOptions.textContent = selected.length ? selected.join(", ") : "Pilih Finishing";
+          
+          // Update hidden input value with selected options
+          hiddenInput.value = JSON.stringify(selected);
+      });
+  });
+
+    // Form validation
+    form.addEventListener("submit", (event) => {
+      const selected = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+      
+      if (selected.length === 0) {
+          event.preventDefault();
+          finishingError.classList.remove("hidden");
+          dropdownButton.classList.add("border-red-500");
+          dropdownButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+  });
+
+  // Initialize the hidden input with any pre-selected values
+  window.addEventListener('load', () => {
+      let selected = Array.from(checkboxes)
+          .filter(checkbox => checkbox.checked)
+          .map(checkbox => checkbox.value);
+      hiddenInput.value = JSON.stringify(selected);
+  });
   </script>
 
 </body>
