@@ -85,11 +85,11 @@
                                     <td class="w-[35%] px-2 py-2">
                                         @if (!is_null($souvenir->desain_emboss_path))
                                             @if ($souvenir->design_status == 'DECL')
-                                            <img src="{{ asset('storage/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-red-600">
+                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-red-600">
                                             @elseif($souvenir->design_status == 'ACC')
-                                            <img src="{{ asset('storage/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-green-600">
+                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-green-600">
                                             @else
-                                            <img src="{{ asset('storage/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
+                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
                                             @endif
                                         @else
                                             <p class="text-center">Belum Terdapat Desain</p>
@@ -241,7 +241,7 @@
                         <span class="relative z-10">EDIT</span>
                     </a>
                 </div>
-                
+
             </section>
 
             <!-- <section id="purchase" class="purchase pb-16">
@@ -406,9 +406,9 @@
                 <div class="add_data mt-10 grid justify-items-center">
                     <a href="#"
                         class="relative bg-green-main/80 text-brown-enzo font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">
-                        
+
                         <span class="absolute inset-0 bg-green-main transition-transform -translate-y-full group-hover:translate-y-0 transition-duration duration-500"></span>
-                        
+
                         <span class="relative z-10">TAMBAH DATA</span>
                     </a>
                 </div>

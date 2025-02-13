@@ -195,11 +195,11 @@
                                 <td class="w-[35%] px-2 py-2">
                                     @if (!is_null($invitation->desain_path))
                                         @if ($invitation->design_status == 'DECL')
-                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-red-600">
+                                        <img src="{{ asset('storage/app/public/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-red-600">
                                         @elseif($invitation->design_status == 'ACC')
-                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-green-600">
+                                        <img src="{{ asset('storage/app/public/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full border-8 border-green-600">
                                         @else
-                                        <img src="{{ asset('storage/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                        <img src="{{ asset('storage/app/public/' . $invitation->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
                                         @endif
                                     @else
                                         <p class="text-center">Belum Terdapat Desain</p>

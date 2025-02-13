@@ -30,18 +30,18 @@
                                         <!-- Slide 1: Desain Emboss -->
                                         @if(!is_null($order->desain_emboss_path))
                                             <div id="slide-1" class="absolute inset-0 w-full h-full transition-transform duration-500 ease-in-out">
-                                                <img src="{{ asset('storage/' . $order->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
+                                                <img src="{{ asset('storage/app/public/' . $order->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
                                             </div>
                                         @else
                                             <div id="slide-1" class="absolute inset-0 w-full h-full flex justify-center items-center">
                                                 <p>Belum Terdapat Desain</p>
                                             </div>
                                         @endif
-                        
+
                                         <!-- Slide 2: Desain Thankscard -->
                                         @if(!is_null($order->desain_thankscard_path))
                                             <div id="slide-2" class="absolute inset-0 w-full h-full transition-transform duration-500 ease-in-out transform translate-x-full">
-                                                <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full">
+                                                <img src="{{ asset('storage/app/public/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full">
                                             </div>
                                         @else
                                             <div id="slide-2" class="absolute inset-0 w-full h-full flex justify-center items-center transform translate-x-full">
@@ -49,7 +49,7 @@
                                             </div>
                                         @endif
                                     </div>
-                        
+
                                     <!-- Navigation Buttons -->
                                     <button id="prev" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/50 rounded-full p-2 hover:bg-white/75">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 lg:size-6">
@@ -64,12 +64,12 @@
                                 </div>
                             @else
                                 @if(!is_null($order->desain_path))
-                                    <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
+                                    <img src="{{ asset('storage/app/public/' . $order->desain_path) }}" alt="Gambar Desain" class="object-cover w-full h-full rounded-md bg-gray-200">
                                 @else
                                     <p class="flex justify-center items-center bg-gray-200 rounded-md">Belum Terdapat Desain</p>
                                 @endif
                             @endif
-                        
+
                             <div class="grid grid-rows-2 place-items-center">
                                 @if ($order->desain_path || $order->desain_thankscard_path)
                                     @if ($order->design_status == 'Pending')
