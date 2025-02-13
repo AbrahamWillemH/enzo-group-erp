@@ -85,6 +85,7 @@
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Tanggal Pesan</th>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Tanggal Acara</th>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Deadline</th>
+                        <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Tanggal Selesai</th>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Action</th>
                     </tr>
                 </thead>
