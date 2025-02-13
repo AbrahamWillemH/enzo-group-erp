@@ -91,43 +91,43 @@
 
           <!-- jumlah data tiap proses -->
           <div class="grid grid-cols-6 px-5 py-4 gap-3 h-full">
-            <!-- Pending -->
-            <div onclick="showModal('Pending');"
+            <!-- Tunggu Bayar/Desain -->
+            <div onclick="showModal('Tunggu Bayar/Desain');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tunggu Bayar/Desain</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$pendingCount}}</div>
             </div>
         
-            <!-- Fix -->
-            <div onclick="showModal('Fix');"
+            <!-- Tentukan Deadline -->
+            <div onclick="showModal('Tentukan Deadline');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tentukan Deadline</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$fixCount}}</div>
             </div>
         
-            <!-- Order -->
-            <div onclick="showModal('Order');"
+            <!-- Pemesanan Bahan -->
+            <div onclick="showModal('Pemesanan Bahan');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Pemesanan Bahan</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$orderCount}}</div>
             </div>
         
-            <!-- Proses -->
-            <div onclick="showModal('Proses');"
+            <!-- Proses Produksi -->
+            <div onclick="showModal('Proses Produksi');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Proses Produksi</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$productionCount}}</div>
             </div>
         
-            <!-- Ready -->
-            <div onclick="showModal('Ready');"
+            <!-- Tunggu Ambil/Kirim -->
+            <div onclick="showModal('Tunggu Ambil/Kirim');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tunggu Ambil/Kirim</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$readyCount}}</div>
             </div>
         
-            <!-- Done -->
-            <div onclick="showModal('Done');"
+            <!-- Pesanan Selesai -->
+            <div onclick="showModal('Pesanan Selesai');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Pesanan Selesai</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$doneCount}}</div>
