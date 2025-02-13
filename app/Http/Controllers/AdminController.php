@@ -73,6 +73,55 @@ class AdminController extends Controller
                 }
             });
 
-        return view('admin.dashboard', compact('orderDeadline', 'pendingCount', 'fixCount', 'orderCount', 'productionCount', 'readyCount', 'doneCount'));
+        $statuses = ['Pending', 'DP 1', 'DP 2', 'Lunas'];
+        $paymentCounts = [];
+        foreach ($statuses as $status) {
+            $paymentCounts[$status] = $orders->where('payment_status', $status)->count();
+        }
+
+        $design_statuses = ['', 'Pending', 'ACC'];
+        $designCounts = [];
+        foreach ($design_statuses as $d) {
+            $designCounts[$d] = $orders->where('design_status', $d)->count();
+        }
+
+        $notProcessedCounts = $pendingCount + $fixCount + $orderCount;
+        $processedCounts = $productionCount + $readyCount + $doneCount;
+
+        $currentYear = Carbon::now()->year;
+
+        $monthlyCreatedAtCounts = [];
+        foreach (range(1, 12) as $month) {
+            $monthlyCreatedAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
+                return  Carbon::parse($order->created_at)->year == $currentYear &&
+                        Carbon::parse($order->created_at)->month == $month;
+            })->count();
+        }
+
+        $monthlyDoneAtCounts = [];
+        foreach (range(1, 12) as $month) {
+            $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
+                return  Carbon::parse($order->done_at)->year == $currentYear &&
+                        Carbon::parse($order->done_at)->month == $month;
+            })->count();
+        }
+
+
+
+        return view('admin.dashboard',
+        compact(
+            'orderDeadline',
+            'pendingCount',
+            'fixCount',
+            'orderCount',
+            'productionCount',
+            'readyCount',
+            'doneCount',
+            'paymentCounts',
+            'designCounts',
+            'notProcessedCounts',
+            'processedCounts',
+            'monthlyCreatedAtCounts',
+            'monthlyDoneAtCounts'));
     }
 }

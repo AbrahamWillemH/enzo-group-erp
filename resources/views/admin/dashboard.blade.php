@@ -194,9 +194,17 @@
   document.addEventListener("DOMContentLoaded", function () {
     // chart 3 grid
     const payCtx = document.getElementById('payChart').getContext('2d');
-    const desainCtx = document.getElementById('desainChart').getContext('2d');
-    const ppicCtx = document.getElementById('ppicChart').getContext('2d');
+    var paymentData = @json($paymentCounts);
 
+    const desainCtx = document.getElementById('desainChart').getContext('2d');
+    var desainData = @json($designCounts);
+
+    const ppicCtx = document.getElementById('ppicChart').getContext('2d');
+    var notProcessedData = @json($notProcessedCounts);
+    var processedData = @json($processedCounts);
+
+    var monthlyCreatedAtData = @json(array_values($monthlyCreatedAtCounts));
+    var monthlyDoneAtData = @json(array_values($monthlyDoneAtCounts));
     // pembayaran
     new Chart(payCtx, {
       type: 'bar',
@@ -204,7 +212,7 @@
         labels: ['Pembayaran'],
         datasets: [{
           label: 'Belum Bayar',
-          data: [10],
+          data: [paymentData['Pending'] || 0],
           backgroundColor: 'rgba(74, 222, 128, 1)' ,
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -213,7 +221,7 @@
         },
         {
           label: 'DP1',
-          data: [20],
+          data: [paymentData['DP 1'] || 0],
           backgroundColor: 'rgba(34, 197, 94, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -222,7 +230,7 @@
         },
         {
           label: 'DP2',
-          data: [40],
+          data: [paymentData['DP 2'] || 0],
           backgroundColor: 'rgba(22, 163, 74, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -231,7 +239,7 @@
         },
         {
           label: 'Lunas',
-          data: [50],
+          data: [paymentData['Lunas'] || 0],
           backgroundColor: 'rgba(21, 128, 61, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -294,7 +302,7 @@
         labels: ['Desain'],
         datasets: [{
           label: 'Belum',
-          data: [10],
+          data: [desainData[''] || 0],
           backgroundColor: 'rgba(74, 222, 128, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -302,17 +310,8 @@
           barPercentage: 0.8 // Menggunakan seluruh space yang tersedia
         },
         {
-          label: 'Proses',
-          data: [25],
-          backgroundColor: 'rgba(34, 197, 94, 1)',
-          borderRadius: 2, // Membuat sudut batang tumpul
-          borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
-          categoryPercentage: 0.4, // Memperkecil jarak antar batang
-          barPercentage: 0.8 // Menggunakan seluruh space yang tersedia
-        },
-        {
           label: 'Menunggu',
-          data: [10],
+          data: [desainData['Pending'] || 0],
           backgroundColor: 'rgba(22, 163, 74, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -321,7 +320,7 @@
         },
         {
           label: 'Fix',
-          data: [32],
+          data: [desainData['ACC'] || 0],
           backgroundColor: 'rgba(21, 128, 61, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -384,7 +383,7 @@
         labels: ['PPIC'],
         datasets: [{
           label: 'Belum Proses',
-          data: [10],
+          data: [notProcessedData],
           backgroundColor: 'rgba(34, 197, 94, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -393,7 +392,7 @@
         },
         {
           label: 'Sudah Proses',
-          data: [20],
+          data: [processedData],
           backgroundColor: 'rgba(21, 128, 61, 1)',
           borderRadius: 2, // Membuat sudut batang tumpul
           borderSkipped: false, // Agar semua sisi mendapatkan borderRadius
@@ -467,7 +466,7 @@
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Okt', 'Nov', 'Des'],
         datasets: [{
           label: 'Masuk',
-          data: [10, 20, 8, 12, 18, 25, 30, 20, 10, 27, 12, 35],
+          data: monthlyCreatedAtData,
           backgroundColor: gradientOrder1,
           borderColor: 'rgba(34, 197, 94, 1)',
           borderWidth: 1,
@@ -476,7 +475,7 @@
         },
         {
           label: 'Selesai',
-          data: [8, 12, 18, 25, 10, 20, 35, 23, 28, 15, 22, 30],
+          data: monthlyDoneAtData,
           backgroundColor: gradientOrder2,
           borderColor: 'rgba(194, 156, 91, 1)',
           borderWidth: 1,
