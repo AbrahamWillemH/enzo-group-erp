@@ -67,24 +67,22 @@
             </div>
             <!-- chart -->
             <div class="w-full h-full grid grid-rows-[55%_45%]">
-              <div class="w-full h-full grid grid-cols-3 px-2 pb-2 pt-1">
-                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 w-[210px] h-[220px] p-1 border border-brown-main">
+              <div class="w-full h-full grid grid-cols-3 px-2 pb-2 pt-8 gap-4">
+                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 h-[195px] p-1 border border-brown-main mr-4">
                   <h2 class="text-sm text-center mb-1 font-medium text-green-main">Pembayaran</h2>
                   <canvas id="payChart" class="h-full w-full"></canvas>
                 </div>
-                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 w-[210px] h-[220px] p-1 border border-brown-main">
+                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 h-[195px] p-1 border border-brown-main mr-4">
                   <h2 class="text-sm text-center mb-1 font-medium text-green-main">Desain</h2>
                   <canvas id="desainChart" class="h-full w-full"></canvas>
                 </div>
-                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 w-[210px] h-[220px] p-1 border border-brown-main">
+                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 h-[195px] p-1 border border-brown-main mr-4">
                   <h2 class="text-sm text-center mb-1 font-medium text-green-main">PPIC</h2>
                   <canvas id="ppicChart" class="h-full w-full"></canvas>
                 </div>
-              </div>
-              <div class="w-full h-full flex justify-center items-center">
-                <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 w-[650px] h-[180px] p-1 border border-brown-main">
-                  <h2 class="text-sm text-center mb-1 font-semibold text-green-main">Total Orderan</h2>
-                  <canvas id="totalOrderChart" class="h-full w-full"></canvas>
+                <div class="col-span-3 bg-green-white rounded-lg shadow-md shadow-gray-600 h-[180px] p-1 border border-brown-main mr-4 mt-6">
+                    <h2 class="text-sm text-center mb-1 font-semibold text-green-main">Total Orderan</h2>
+                    <canvas id="totalOrderChart" class="h-full w-full"></canvas>
                 </div>
               </div>
             </div>
@@ -98,35 +96,35 @@
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tunggu Bayar/Desain</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$pendingCount}}</div>
             </div>
-        
+
             <!-- Tentukan Deadline -->
             <div onclick="showModal('Tentukan Deadline');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tentukan Deadline</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$fixCount}}</div>
             </div>
-        
+
             <!-- Pemesanan Bahan -->
             <div onclick="showModal('Pemesanan Bahan');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Pemesanan Bahan</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$orderCount}}</div>
             </div>
-        
+
             <!-- Proses Produksi -->
             <div onclick="showModal('Proses Produksi');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Proses Produksi</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$productionCount}}</div>
             </div>
-        
+
             <!-- Tunggu Ambil/Kirim -->
             <div onclick="showModal('Tunggu Ambil/Kirim');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
                 <div class="flex-none h-[30%] flex items-center justify-center text-cream p-1 text-sm">Tunggu Ambil/Kirim</div>
                 <div class="flex-grow flex items-center justify-center font-bold text-5xl pb-4 text-cream">{{$readyCount}}</div>
             </div>
-        
+
             <!-- Pesanan Selesai -->
             <div onclick="showModal('Pesanan Selesai');"
                 class="h-[9rem] font-sans w-100 bg-green-shadow flex flex-col justify-center rounded-xl shadow-md hover:-translate-y-3 hover:bg-green-main transition transform duration-300 cursor-pointer">
@@ -147,7 +145,7 @@
           </div>
 
         </div>
-      </div>      
+      </div>
     </div>
   </div>
   @endsection
@@ -536,7 +534,7 @@
     });
 
   });
-  
+
 
 </script>
-</html> 
+</html>
