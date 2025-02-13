@@ -67,7 +67,7 @@
             </div>
             <!-- chart -->
             <div class="w-full h-full grid grid-rows-[55%_45%]">
-              <div class="w-full h-full grid grid-cols-3 px-2 pb-2 pt-8 gap-4">
+              <div class="w-full h-full grid grid-cols-3 px-2 py-8 gap-4">
                 <div class="bg-green-white rounded-lg shadow-md shadow-gray-600 h-[195px] p-1 border border-brown-main mr-4">
                   <h2 class="text-sm text-center mb-1 font-medium text-green-main">Pembayaran</h2>
                   <canvas id="payChart" class="h-full w-full"></canvas>
