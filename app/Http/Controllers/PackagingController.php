@@ -177,4 +177,51 @@ class PackagingController extends Controller
 
         return $this->index($request);
     }
+
+    public function getDeadlinesPackagings()
+    {
+        // $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+        // $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
+
+        // $orders = $invitations->concat($souvenirs)->concat($packagings);
+
+        // Format data untuk kalender
+        $events = $packagings->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'start' => $order->deadline_date,
+            ];
+        });
+
+        return response()->json($events);
+    }
+
+    public function calendar(){
+        return view('admin.calendar_packaging');
+    }
+
+    public function reminder()
+    {
+        $reminderDays = 30;
+        $today = Carbon::today()->toDateString();
+
+        $packagings = Packaging::where('progress', '!=', 'Selesai Beneran')
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'packaging';
+                return $item;
+            });
+
+        // Gabungkan semua data
+        $orders = $packagings;
+
+        $sortedOrders = $orders->sortBy('deadline_date');
+
+        // Kirim data ke view
+        return view('admin.reminder_packaging', ['orders' => $sortedOrders]);
+    }
+
 }

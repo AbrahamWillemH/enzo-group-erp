@@ -124,7 +124,9 @@ Route::get('/dashboard', [UserController::class, 'dashboardCheck'])->name('login
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // dashboard and tests
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/invitation', [AdminController::class, 'indexInvitation'])->name('admin.dashboard.invitation');
+    Route::get('/admin/dashboard/souvenir', [AdminController::class, 'indexSouvenir'])->name('admin.dashboard.souvenir');
+    Route::get('/admin/dashboard/packaging', [AdminController::class, 'indexPackaging'])->name('admin.dashboard.packaging');
     Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
@@ -160,12 +162,18 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
 
     //reminder
-    Route::get('/admin/reminder', [OrderController::class, 'reminder'])->name('admin.reminder');
+    Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');
+    Route::get('/admin/reminder/souvenir', [SouvenirController::class, 'reminder'])->name('admin.reminder.souvenir');
+    Route::get('/admin/reminder/packaging', [PackagingController::class, 'reminder'])->name('admin.reminder.packaging');
     Route::get('/admin/reminder/{id}', [OrderController::class, 'reminderDetail'])->name('admin.reminder.detail');
 
     // calendar
-    Route::get('/admin/calendar', [OrderController::class, 'calendar'])->name('admin.calendar');
-    Route::get('/api/deadlines', [OrderController::class, 'getDeadlines']);
+    Route::get('/admin/calendar/invitation', [InvitationController::class, 'calendar'])->name('admin.calendar.invitation');
+    Route::get('/admin/calendar/souvenir', [SouvenirController::class, 'calendar'])->name('admin.calendar.souvenir');
+    Route::get('/admin/calendar/packaging', [PackagingController::class, 'calendar'])->name('admin.calendar.packaging');
+    Route::get('/api/deadlines/invitations', [InvitationController::class, 'getDeadlinesInvitations']);
+    Route::get('/api/deadlines/souvenirs', [SouvenirController::class, 'getDeadlinesSouvenirs']);
+    Route::get('/api/deadlines/packagings', [PackagingController::class, 'getDeadlinesPackagings']);
 });
 
 // User routes

@@ -18,58 +18,24 @@
             <div class="absolute bg-white shadow-lg rounded-md z-40 top-full left-0 w-[140px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
                 <div class="block py-2">
                     <label class="flex items-center text-base text-gray-700 hover:bg-green-main/10 hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="Invitation" checked>
+                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="invitation" checked>
                         Invitation
                     </label>
                 </div>
                 <div class="block py-2">
                     <label class="flex items-center text-base text-gray-700 hover:bg-green-main/10 hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="Packaging" checked>
+                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="packaging" checked>
                         Packaging
                     </label>
                 </div>
                 <div class="block py-2">
                     <label class="flex items-center text-base text-gray-700 hover:bg-green-main/10 hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="Souvenir" checked>
+                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 border-green-main accent-green-main" value="souvenir" checked>
                         Souvenir
                     </label>
                 </div>
             </div>
         </div>
-        {{-- <div class="relative group z-20">
-            <button class="text-brown-enzo font-semibold flex flex-col justify-center items-center w-[120px] mr-5" style="letter-spacing: 1px">
-                Filter
-                <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
-            </button>
-
-            <!-- Dropdown Filter -->
-            <div class="absolute bg-green-light shadow-lg rounded-md z-30 top-full left-0 w-[120px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-500">
-                <div class="block py-2">
-                    <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="Pending" checked>
-                        Pending
-                    </label>
-                </div>
-                <div class="block py-2">
-                    <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="DP 1" checked>
-                        DP 1
-                    </label>
-                </div>
-                <div class="block py-2">
-                    <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="DP 2" checked>
-                        DP 2
-                    </label>
-                </div>
-                <div class="block py-2">
-                    <label class="flex items-center text-base text-gray-700 hover:bg-cream hover:rounded-md cursor-pointer">
-                        <input type="checkbox" class="filter-checkbox ml-4 mr-2 accent-green-main" value="Lunas" checked>
-                        Lunas
-                    </label>
-                </div>
-            </div>
-        </div> --}}
     </header>
 
     <!-- Tabel -->
@@ -91,7 +57,7 @@
                 </thead>
                 <tbody class="bg-green-main/10 overflow-y-auto">
                     @foreach ($filteredOrders as $o)
-                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15" data-progress="{{ $o->payment_status }}">
+                    <tr class="h-16 border-t-[1.5px] border-black/30 hover:bg-green-main/15" data-progress="{{ $o->type }}">
                         <td class="px-4 py-3 text-center">{{ $o->id }}</td>
                         <td class="px-4 py-3">{{ $o->user_name }}</td>
                         <td class="px-4 py-3">{{ $o->phone_number }}</td>
@@ -104,7 +70,8 @@
                         @else
                         <td class="px-4 py-3 text-center">Tidak ada</td>
                         @endif
-                        <td class="px-4 py-3 text-center"><strong>{{ $o->deadline_date ? \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</strong></td>
+                        <td class="px-4 py-3 text-center">{{ $o->deadline_date ? \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
+                        <td class="px-4 py-3 text-center">{{ $o->done_at ? \Carbon\Carbon::parse($o->done_at)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
                         <td class="px-3 py-3 text-center space-y-2">
                             <a href="{{ route('admin.reminder.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
                             <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)">

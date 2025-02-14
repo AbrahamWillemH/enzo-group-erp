@@ -50,7 +50,7 @@ class UserController extends Controller
 
     public function dashboardCheck() {
         if (auth()->user()->isAdmin()) {
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.dashboard.invitation');
         } else {
             return redirect()->route('user.dashboard');
         }

@@ -13,7 +13,7 @@
   <!-- Navigation Bar -->
   <nav class="fixed w-full flex flex-wrap justify-between items-center px-4 sm:px-6 py-4 bg-green-main text-brown-enzo shadow-md z-50">
     <a href="{{route('loginRedirect')}}" class="text-xl font-bold">Enzo Group</a>
-    
+
     <div class="flex items-center space-x-4 sm:space-x-6">
       <!-- Dropdown Menu -->
       <div class="group relative">
@@ -30,10 +30,18 @@
           <a href="/orders/packaging/create" class="block px-4 py-2 hover:bg-cream rounded-md">Packaging</a>
         </div>
       </div>
-      
-      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
+
+      @if(auth()->user()->role === 'user')
+      <a href="{{ url('/user/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">
+        Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
+    @elseif(auth()->user()->role === 'admin')
+      <a href="{{ url('/admin/dashboard/invitation') }}" class="flex flex-col justify-center items-center group font-semibold">
+        Kembali
+        <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
+      </a>
+    @endif    
     </div>
   </nav>
 
@@ -132,8 +140,8 @@
             <label class="ml-2" for="design">Desain Emboss / Label / Sablon</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="design" name="design" required>
-              <option value="Desain pribadi/template">Desain pribadi/template</option>
-              <option value="Desain custom Enzo">Desain custom enzo</option>
+              <option value="Desain pribadi/template">Desain Template</option>
+              <option value="Desain custom Enzo">Desain Custom</option>
             </select>
             @error('design')
             <small class="text-danger">{{ $message }}</small>
@@ -144,8 +152,8 @@
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="thankscard" name="thankscard" required>
-              <option value="Desain pribadi/template">Desain pribadi/template</option>
-              <option value="Desain custom Enzo">Desain custom enzo</option>
+              <option value="Desain pribadi/template">Desain Template</option>
+              <option value="Desain custom Enzo">Desain Custom</option>
             </select>
             @error('thankscard')
             <small class="text-danger">{{ $message }}</small>
