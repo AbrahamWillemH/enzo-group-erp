@@ -28,13 +28,33 @@
           </div>
         </li>
         <li>
-          <a href="{{route('admin.dashboard')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
+          <button id="dropdown-dashboard" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 mr-2">
               <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
               <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
             </svg>
             <span>Dashboard</span>
-          </a>
+            <svg class="w-3 h-3 ml-[32px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+              </svg>
+          </button>
+          <ul class="hidden bg-white/10 mt-4" id="dropdown-dashboard-menu">
+            <li>
+              <a href="{{route('admin.dashboard.invitation')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.dashboard.souvenir')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.dashboard.packaging')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <!-- button -->
@@ -211,6 +231,8 @@
   const menu_calendar = document.getElementById('dropdown-calendar-menu')
   const button_reminder = document.getElementById('dropdown-reminder')
   const menu_reminder = document.getElementById('dropdown-reminder-menu')
+  const button_dashboard = document.getElementById('dropdown-dashboard')
+  const menu_dashboard = document.getElementById('dropdown-dashboard-menu')
 
   button.addEventListener('click', () => {
     // Toggle dropdown visibility
@@ -236,19 +258,36 @@
   });
 
   button_calendar.addEventListener('click', () => {
-    // Toggle dropdown visibility
-    menu_calendar.classList.toggle('hidden');
-  });
+      // Toggle dropdown visibility
+      menu_calendar.classList.toggle('hidden');
+    });
+
+    window.addEventListener('click', (event) => {
+      if (!button_calendar.contains(event.target) && !menu_calendar.contains(event.target)) {
+        menu_calendar.classList.add('hidden');
+      }
+    });
+
+  button_reminder.addEventListener('click', () => {
+      // Toggle dropdown visibility
+      menu_reminder.classList.toggle('hidden');
+    });
+
+    window.addEventListener('click', (event) => {
+      if (!button_reminder.contains(event.target) && !menu_reminder.contains(event.target)) {
+        menu_reminder.classList.add('hidden');
+      }
+    });
 
   window.addEventListener('click', (event) => {
-    if (!button_reminder.contains(event.target) && !menu_reminder.contains(event.target)) {
-      menu_reminder.classList.add('hidden');
+    if (!button_dashboard.contains(event.target) && !menu_dashboard.contains(event.target)) {
+      menu_dashboard.classList.add('hidden');
     }
   });
 
-  button_reminder.addEventListener('click', () => {
+  button_dashboard.addEventListener('click', () => {
     // Toggle dropdown visibility
-    menu_reminder.classList.toggle('hidden');
+    menu_dashboard.classList.toggle('hidden');
   });
 </script>
 

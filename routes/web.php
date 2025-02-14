@@ -124,7 +124,9 @@ Route::get('/dashboard', [UserController::class, 'dashboardCheck'])->name('login
 // Admin routes
 Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // dashboard and tests
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/invitation', [AdminController::class, 'indexInvitation'])->name('admin.dashboard.invitation');
+    Route::get('/admin/dashboard/souvenir', [AdminController::class, 'indexSouvenir'])->name('admin.dashboard.souvenir');
+    Route::get('/admin/dashboard/packaging', [AdminController::class, 'indexPackaging'])->name('admin.dashboard.packaging');
     Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
