@@ -231,7 +231,7 @@ class SouvenirController extends Controller
         $reminderDays = 30;
         $today = Carbon::today()->toDateString();
 
-        $souvenirs = Souvenir::where('progress', '!=', 'Selesai')
+        $souvenirs = Souvenir::where('progress', '!=', 'Selesai Beneran')
             ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
             ->get()
             ->map(function ($item) {

@@ -207,7 +207,7 @@ class PackagingController extends Controller
         $reminderDays = 30;
         $today = Carbon::today()->toDateString();
 
-        $packagings = Packaging::where('progress', '!=', 'Selesai')
+        $packagings = Packaging::where('progress', '!=', 'Selesai Beneran')
             ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
             ->get()
             ->map(function ($item) {

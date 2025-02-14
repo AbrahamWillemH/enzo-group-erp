@@ -281,7 +281,7 @@ class InvitationController extends Controller
         $today = Carbon::today()->toDateString();
 
         // Ambil data dari masing-masing tabel dengan filter berdasarkan deadline
-        $invitations = Invitation::where('progress', '!=', 'Selesai')
+        $invitations = Invitation::where('progress', '!=', 'Selesai Beneran')
         ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
         ->get()
         ->map(function ($item) {
