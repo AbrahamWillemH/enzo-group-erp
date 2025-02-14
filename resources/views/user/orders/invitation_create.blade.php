@@ -31,9 +31,17 @@
         </div>
       </div>
 
-      <a href="{{ url('/' . auth()->user()->role . '/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">Kembali
+      @if(auth()->user()->role === 'user')
+      <a href="{{ url('/user/dashboard') }}" class="flex flex-col justify-center items-center group font-semibold">
+        Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
+    @elseif(auth()->user()->role === 'admin')
+      <a href="{{ url('/admin/dashboard/invitation') }}" class="flex flex-col justify-center items-center group font-semibold">
+        Kembali
+        <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
+      </a>
+    @endif    
     </div>
   </nav>
 
