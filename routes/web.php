@@ -160,7 +160,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
 
     //reminder
-    Route::get('/admin/reminder', [OrderController::class, 'reminder'])->name('admin.reminder');
+    Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');
+    Route::get('/admin/reminder/souvenir', [SouvenirController::class, 'reminder'])->name('admin.reminder.souvenir');
+    Route::get('/admin/reminder/packaging', [PackagingController::class, 'reminder'])->name('admin.reminder.packaging');
     Route::get('/admin/reminder/{id}', [OrderController::class, 'reminderDetail'])->name('admin.reminder.detail');
 
     // calendar

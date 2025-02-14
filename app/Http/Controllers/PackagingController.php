@@ -201,4 +201,27 @@ class PackagingController extends Controller
     public function calendar(){
         return view('admin.calendar_packaging');
     }
+
+    public function reminder()
+    {
+        $reminderDays = 30;
+        $today = Carbon::today()->toDateString();
+
+        $packagings = Packaging::where('progress', '!=', 'Selesai')
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'packaging';
+                return $item;
+            });
+
+        // Gabungkan semua data
+        $orders = $packagings;
+
+        $sortedOrders = $orders->sortBy('deadline_date');
+
+        // Kirim data ke view
+        return view('admin.reminder_packaging', ['orders' => $sortedOrders]);
+    }
+
 }

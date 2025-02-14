@@ -95,13 +95,33 @@
           </ul>
         </li>
         <li>
-          <a href="{{route('admin.reminder')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <button id="dropdown-reminder" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 mr-2">
               <path d="M5.85 3.5a.75.75 0 0 0-1.117-1 9.719 9.719 0 0 0-2.348 4.876.75.75 0 0 0 1.479.248A8.219 8.219 0 0 1 5.85 3.5ZM19.267 2.5a.75.75 0 1 0-1.118 1 8.22 8.22 0 0 1 1.987 4.124.75.75 0 0 0 1.48-.248A9.72 9.72 0 0 0 19.266 2.5Z" />
               <path fill-rule="evenodd" d="M12 2.25A6.75 6.75 0 0 0 5.25 9v.75a8.217 8.217 0 0 1-2.119 5.52.75.75 0 0 0 .298 1.206c1.544.57 3.16.99 4.831 1.243a3.75 3.75 0 1 0 7.48 0 24.583 24.583 0 0 0 4.83-1.244.75.75 0 0 0 .298-1.205 8.217 8.217 0 0 1-2.118-5.52V9A6.75 6.75 0 0 0 12 2.25ZM9.75 18c0-.034 0-.067.002-.1a25.05 25.05 0 0 0 4.496 0l.002.1a2.25 2.25 0 1 1-4.5 0Z" clip-rule="evenodd" />
             </svg>
             <span>Reminder</span>
-          </a>
+            <svg class="w-3 h-3 ml-[42px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+          </svg>
+          </button>
+          <ul class="hidden bg-white/10 mt-4" id="dropdown-reminder-menu">
+            <li>
+              <a href="{{route('admin.reminder.invitation')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.reminder.souvenir')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.reminder.packaging')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <button id="dropdown-calendar" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
@@ -110,7 +130,7 @@
               <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
             </svg>
             <span>Calendar</span>
-            <svg class="w-3 h-3 ml-[48px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <svg class="w-3 h-3 ml-[46px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
             </svg>
           </button>
@@ -189,6 +209,8 @@
   const menu2 = document.getElementById('dropdown-menu-2');
   const button_calendar = document.getElementById('dropdown-calendar')
   const menu_calendar = document.getElementById('dropdown-calendar-menu')
+  const button_reminder = document.getElementById('dropdown-reminder')
+  const menu_reminder = document.getElementById('dropdown-reminder-menu')
 
   button.addEventListener('click', () => {
     // Toggle dropdown visibility
@@ -219,9 +241,14 @@
   });
 
   window.addEventListener('click', (event) => {
-    if (!button_calendar.contains(event.target) && !menu_calendar.contains(event.target)) {
-      menu_calendar.classList.add('hidden');
+    if (!button_reminder.contains(event.target) && !menu_reminder.contains(event.target)) {
+      menu_reminder.classList.add('hidden');
     }
+  });
+
+  button_reminder.addEventListener('click', () => {
+    // Toggle dropdown visibility
+    menu_reminder.classList.toggle('hidden');
   });
 </script>
 

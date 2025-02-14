@@ -274,4 +274,52 @@ class InvitationController extends Controller
     public function calendar(){
         return view('admin.calendar_invitation');
     }
+
+    public function reminder()
+    {
+        $reminderDays = 30;
+        $today = Carbon::today()->toDateString();
+
+        // Ambil data dari masing-masing tabel dengan filter berdasarkan deadline
+        $invitations = Invitation::where('progress', '!=', 'Selesai')
+        ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        ->get()
+        ->map(function ($item) {
+            $item->type = 'invitation';
+            return $item;
+        });
+
+        // $souvenirs = Souvenir::where('progress', '!=', 'Selesai')
+        //     ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'souvenir';
+        //         return $item;
+        //     });
+
+
+        // $seminarkits = SeminarKit::whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'seminarkit';
+        //         return $item;
+        //     });
+
+        // $packagings = Packaging::where('progress', '!=', 'Selesai')
+        //     ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+        //     ->get()
+        //     ->map(function ($item) {
+        //         $item->type = 'packaging';
+        //         return $item;
+        //     });
+
+        // Gabungkan semua data
+        $orders = $invitations;
+
+        $sortedOrders = $invitations->sortBy('deadline_date');
+
+        // Kirim data ke view
+        return view('admin.reminder_invitation', ['orders' => $sortedOrders]);
+    }
+
 }

@@ -225,4 +225,27 @@ class SouvenirController extends Controller
     public function calendar(){
         return view('admin.calendar_souvenir');
     }
+
+    public function reminder()
+    {
+        $reminderDays = 30;
+        $today = Carbon::today()->toDateString();
+
+        $souvenirs = Souvenir::where('progress', '!=', 'Selesai')
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'souvenir';
+                return $item;
+            });
+
+        // Gabungkan semua data
+        $orders = $souvenirs;
+
+        $sortedOrders = $orders->sortBy('deadline_date');
+
+        // Kirim data ke view
+        return view('admin.reminder_souvenir', ['orders' => $sortedOrders]);
+    }
+
 }
