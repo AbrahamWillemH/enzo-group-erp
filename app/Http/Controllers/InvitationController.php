@@ -255,4 +255,23 @@ class InvitationController extends Controller
 
         return redirect()->back()->with('success', 'Purchase invitation created successfully.');
     }
+
+    public function getDeadlinesInvitations()
+    {
+        $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+
+        $events = $invitations->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'start' => $order->deadline_date,
+            ];
+        });
+
+        return response()->json($events);
+    }
+
+    public function calendar(){
+        return view('admin.calendar_invitation');
+    }
 }

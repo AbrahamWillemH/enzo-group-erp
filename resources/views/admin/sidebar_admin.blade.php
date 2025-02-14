@@ -75,14 +75,6 @@
           </ul>
         </li>
         <li>
-          <!-- button -->
-          {{-- <button type="button" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main focus:bg-cream focus:text-green-main" id="dropdown-button2">
-            <span>Purchase</span>
-            <svg class="w-3 h-3 ml-[65px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-            </svg>
-          </button> --}}
-          <!-- dropdown -->
           <ul class="hidden bg-white/10 mt-4" id="dropdown-menu2">
             <li>
               <a href="" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
@@ -102,15 +94,6 @@
 
           </ul>
         </li>
-        {{-- <li>
-          <a href="" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 mr-2">
-              <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
-              <path fill-rule="evenodd" d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087Zm6.163 3.75A.75.75 0 0 1 10 12h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
-            </svg>
-            <span>Inventory</span>
-          </a>
-        </li> --}}
         <li>
           <a href="{{route('admin.reminder')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 mr-2">
@@ -121,13 +104,33 @@
           </a>
         </li>
         <li>
-          <a href="{{route('admin.calendar')}}" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
+          <button id="dropdown-calendar" style="letter-spacing: 3px" class="font-sans flex items-center py-3 px-4 w-5/6 rounded-r-2xl text-cream hover:bg-cream hover:text-green-main">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5 mr-2">
               <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
               <path fill-rule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clip-rule="evenodd" />
             </svg>
             <span>Calendar</span>
-          </a>
+            <svg class="w-3 h-3 ml-[48px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+          </button>
+          <ul class="hidden bg-white/10 mt-4" id="dropdown-calendar-menu">
+            <li>
+              <a href="{{route('admin.calendar.invitation')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Invitation
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.calendar.souvenir')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Souvenir
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+            <li>
+              <a href="{{route('admin.calendar.packaging')}}" style="letter-spacing: 3px" class="font-sans flex py-3 px-4 w-4/5 text-cream flex-col group">Packaging
+              <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[70%] transition-all duration-500"></div>
+              </a>
+            </li>
+          </ul>
         </li>
         <li>
           <!-- button -->
@@ -184,6 +187,8 @@
   const menu = document.getElementById('dropdown-menu');
   const button2 = document.getElementById('dropdown-button-2');
   const menu2 = document.getElementById('dropdown-menu-2');
+  const button_calendar = document.getElementById('dropdown-calendar')
+  const menu_calendar = document.getElementById('dropdown-calendar-menu')
 
   button.addEventListener('click', () => {
     // Toggle dropdown visibility
@@ -205,6 +210,17 @@
   window.addEventListener('click', (event) => {
     if (!button2.contains(event.target) && !menu2.contains(event.target)) {
       menu2.classList.add('hidden');
+    }
+  });
+
+  button_calendar.addEventListener('click', () => {
+    // Toggle dropdown visibility
+    menu_calendar.classList.toggle('hidden');
+  });
+
+  window.addEventListener('click', (event) => {
+    if (!button_calendar.contains(event.target) && !menu_calendar.contains(event.target)) {
+      menu_calendar.classList.add('hidden');
     }
   });
 </script>

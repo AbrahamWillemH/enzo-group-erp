@@ -8,7 +8,7 @@
       const calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             locale: 'id',
-            events: '/api/deadlines',
+            events: '/api/deadlines/packagings',
             headerToolbar: {
                 left: 'prev today next',
                 center: 'title',

@@ -164,8 +164,12 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/reminder/{id}', [OrderController::class, 'reminderDetail'])->name('admin.reminder.detail');
 
     // calendar
-    Route::get('/admin/calendar', [OrderController::class, 'calendar'])->name('admin.calendar');
-    Route::get('/api/deadlines', [OrderController::class, 'getDeadlines']);
+    Route::get('/admin/calendar/invitation', [InvitationController::class, 'calendar'])->name('admin.calendar.invitation');
+    Route::get('/admin/calendar/souvenir', [SouvenirController::class, 'calendar'])->name('admin.calendar.souvenir');
+    Route::get('/admin/calendar/packaging', [PackagingController::class, 'calendar'])->name('admin.calendar.packaging');
+    Route::get('/api/deadlines/invitations', [InvitationController::class, 'getDeadlinesInvitations']);
+    Route::get('/api/deadlines/souvenirs', [SouvenirController::class, 'getDeadlinesSouvenirs']);
+    Route::get('/api/deadlines/packagings', [PackagingController::class, 'getDeadlinesPackagings']);
 });
 
 // User routes

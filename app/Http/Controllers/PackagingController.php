@@ -177,4 +177,28 @@ class PackagingController extends Controller
 
         return $this->index($request);
     }
+
+    public function getDeadlinesPackagings()
+    {
+        // $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+        // $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
+
+        // $orders = $invitations->concat($souvenirs)->concat($packagings);
+
+        // Format data untuk kalender
+        $events = $packagings->map(function ($order) {
+            return [
+                'id' => $order->id,
+                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'start' => $order->deadline_date,
+            ];
+        });
+
+        return response()->json($events);
+    }
+
+    public function calendar(){
+        return view('admin.calendar_packaging');
+    }
 }
