@@ -154,12 +154,12 @@
 <script>
   // Sample data for customers
   const customerData = {
-      'Tunggu Bayar/Desain': ['Customer A', 'Customer B', 'Customer C', 'Customer D', 'Customer E', 'Customer F', 'Customer G', 'Customer H', 'Customer I', 'Customer J', 'Customer K'],
-      'Tentukan Deadline': ['Customer L', 'Customer M'],
-      'Pemesanan Bahan': ['Customer N', 'Customer O', 'Customer P', 'Customer Q'],
-      'Proses Produksi': ['Customer R', 'Customer S'],
-      'Tunggu Ambil/Kirim': ['Customer T', 'Customer U', 'Customer V', 'Customer W'],
-      'Pesanan Selesai': []
+    'Tunggu Bayar/Desain': @json($pendingNames),
+    'Tentukan Deadline': @json($fixNames),
+    'Pemesanan Bahan': @json($orderNames),
+    'Proses Produksi': @json($prodNames),
+    'Tunggu Ambil/Kirim': @json($readyNames),
+    'Pesanan Selesai': @json($doneNames)
   };
 
   function showModal(status) {

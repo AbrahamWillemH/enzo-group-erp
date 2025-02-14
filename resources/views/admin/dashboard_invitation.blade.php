@@ -154,36 +154,37 @@
 <script>
   // Sample data for customers
   const customerData = {
-      'Tunggu Bayar/Desain': ['Customer A', 'Customer B', 'Customer C', 'Customer D', 'Customer E', 'Customer F', 'Customer G', 'Customer H', 'Customer I', 'Customer J', 'Customer K'],
-      'Tentukan Deadline': ['Customer L', 'Customer M'],
-      'Pemesanan Bahan': ['Customer N', 'Customer O', 'Customer P', 'Customer Q'],
-      'Proses Produksi': ['Customer R', 'Customer S'],
-      'Tunggu Ambil/Kirim': ['Customer T', 'Customer U', 'Customer V', 'Customer W'],
-      'Pesanan Selesai': []
+    'Tunggu Bayar/Desain': @json($pendingNames),
+    'Tentukan Deadline': @json($fixNames),
+    'Pemesanan Bahan': @json($orderNames),
+    'Proses Produksi': @json($prodNames),
+    'Tunggu Ambil/Kirim': @json($readyNames),
+    'Pesanan Selesai': @json($doneNames)
   };
 
   function showModal(status) {
-      const modal = document.getElementById('modal');
-      const statusTitle = document.getElementById('statusTitle');
-      const customerList = document.getElementById('customerList');
+    const modal = document.getElementById('modal');
+    const statusTitle = document.getElementById('statusTitle');
+    const customerList = document.getElementById('customerList');
 
-      statusTitle.textContent = status;
-      customerList.innerHTML = '';
+    statusTitle.textContent = status;
+    customerList.innerHTML = '';
 
-      if (customerData[status] && customerData[status].length > 0) {
-          customerData[status].forEach(customer => {
-              const li = document.createElement('li');
-              li.textContent = customer;
-              customerList.appendChild(li);
-          });
-      } else {
-          const li = document.createElement('li');
-          li.textContent = 'Tidak ada data';
-          customerList.appendChild(li);
-      }
+    if (customerData[status] && customerData[status].length > 0) {
+        customerData[status].forEach(customer => {
+            const li = document.createElement('li');
+            li.textContent = customer;
+            customerList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement('li');
+        li.textContent = 'Tidak ada data';
+        customerList.appendChild(li);
+    }
 
-      modal.classList.remove('hidden');
-  }
+    modal.classList.remove('hidden');
+}
+
 
   function closeModal() {
       const modal = document.getElementById('modal');
