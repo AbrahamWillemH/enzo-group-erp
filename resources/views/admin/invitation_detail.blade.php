@@ -645,115 +645,115 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    // Tangkap elemen tombol dan tbody
-    const addButton = document.getElementById('addDataButton');
-    const tableBody = document.getElementById('table-body');
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tangkap elemen tombol dan tbody
+        const addButton = document.getElementById('addDataButton');
+        const tableBody = document.getElementById('table-body');
 
-    // Fungsi untuk menambahkan baris baru
-    addButton.addEventListener('click', (e) => {
-        e.preventDefault(); // Mencegah reload halaman
+        // Fungsi untuk menambahkan baris baru
+        addButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah reload halaman
 
-        // Buat elemen <tr> baru di dalam tbody
-        const newRow = document.createElement('tr');
-        newRow.className = "h-[35px]";
+            // Buat elemen <tr> baru di dalam tbody
+            const newRow = document.createElement('tr');
+            newRow.className = "h-[35px]";
 
-        // Tambahkan elemen <td> untuk form input
-        newRow.innerHTML = `
-            <td class="border border-green-main px-2">
-                <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
-            </td>
-            <td class="border border-green-main px-2 text-center">
-                <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
-            </td>
-            <td class="border border-green-main px-2 text-center">
-                <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
-            </td>
-            <td class="border border-green-main px-2 text-center">
-                <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
-            </td>
-            <td class="border border-green-main px-2">
-                <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
-            </td>
-        </form>
-        </tr>
-        `;
+            // Tambahkan elemen <td> untuk form input
+            newRow.innerHTML = `
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                </td>
+            </form>
+            </tr>
+            `;
 
-        // Tambahkan baris ke dalam tbody
-        tableBody.appendChild(newRow);
+            // Tambahkan baris ke dalam tbody
+            tableBody.appendChild(newRow);
+        });
     });
-});
 
-// EDIT PURCHASE
-{{--document.querySelectorAll('[id^="editPurchase_"]').forEach(button => {
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        console.log("Button clicked");
-        const id = button.id.split('_')[1];
-        console.log("Row ID:", id);
-        const row = button.closest('tr');
-        if (row) {
-            if (button.textContent.trim() === 'Edit') {
-                console.log("Switching to edit mode");
-                row.querySelectorAll('td:not(:last-child)').forEach(cell => {
-                    if (!cell.querySelector('input')) {
-                        const value = cell.textContent.trim();
-                        const input = document.createElement('input');
-                        input.type = 'text';
-                        input.value = value;
-                        input.classList.add('border', 'p-2', 'rounded');
-                        cell.textContent = '';
-                        cell.appendChild(input);
-                    }
-                });
-                button.textContent = 'Save';
-                button.classList.add('bg-green-500');
-            } else {
-                console.log("Saving data...");
-                const formData = new FormData();
-                row.querySelectorAll('td:not(:last-child)').forEach(cell => {
-                    const input = cell.querySelector('input');
-                    if (input) {
-                        const columnName = cell.dataset.column;
-                        formData.append(columnName, input.value);
-                    }
-                });
+    // EDIT PURCHASE
+    {{--document.querySelectorAll('[id^="editPurchase_"]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Button clicked");
+            const id = button.id.split('_')[1];
+            console.log("Row ID:", id);
+            const row = button.closest('tr');
+            if (row) {
+                if (button.textContent.trim() === 'Edit') {
+                    console.log("Switching to edit mode");
+                    row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                        if (!cell.querySelector('input')) {
+                            const value = cell.textContent.trim();
+                            const input = document.createElement('input');
+                            input.type = 'text';
+                            input.value = value;
+                            input.classList.add('border', 'p-2', 'rounded');
+                            cell.textContent = '';
+                            cell.appendChild(input);
+                        }
+                    });
+                    button.textContent = 'Save';
+                    button.classList.add('bg-green-500');
+                } else {
+                    console.log("Saving data...");
+                    const formData = new FormData();
+                    row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                        const input = cell.querySelector('input');
+                        if (input) {
+                            const columnName = cell.dataset.column;
+                            formData.append(columnName, input.value);
+                        }
+                    });
 
-                fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                    },
-                    body: formData,
-                })
-                .then(response => {
-                    console.log("Response received:", response);
-                    return response.json();
-                })
-                .then(data => {
-                    console.log("Data received:", data);
-                    if (data.success) {
-                        alert('Data berhasil disimpan.');
-                        row.querySelectorAll('td:not(:last-child)').forEach(cell => {
-                            const input = cell.querySelector('input');
-                            if (input) {
-                                cell.textContent = input.value;
-                            }
-                        });
-                        button.textContent = 'Edit';
-                        button.classList.remove('bg-green-500');
-                    } else {
-                        alert('Gagal menyimpan data.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan.');
-                });
+                    fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: formData,
+                    })
+                    .then(response => {
+                        console.log("Response received:", response);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Data received:", data);
+                        if (data.success) {
+                            alert('Data berhasil disimpan.');
+                            row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                                const input = cell.querySelector('input');
+                                if (input) {
+                                    cell.textContent = input.value;
+                                }
+                            });
+                            button.textContent = 'Edit';
+                            button.classList.remove('bg-green-500');
+                        } else {
+                            alert('Gagal menyimpan data.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan.');
+                    });
+                }
             }
-        }
-    });
-});--}}
+        });
+    });--}}
 
 
 
