@@ -4,12 +4,15 @@
 <div class="ml-[20%]">
 
     <div class="bg-green-light h-full relative">
-        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[88%_12%] px-4 py-5 bg-green-shadow">
+        <div class="z-30 fixed top-0 left-[20%] right-0 grid grid-cols-[76%_24%] px-4 py-5 bg-green-shadow">
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN PACKAGING</h1>
             </div>
-            <div class="font-medium">
-                <a href="/admin/orders/packaging" class="text-brown-enzo flex flex-col justify-center items-center group">Kembali
+            <div class="font-medium flex flex-row">
+                <a href="#spk" class="text-brown-enzo flex flex-col justify-center items-center group w-full">SPK
+                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+                </a>
+                <a href="/admin/orders/packaging" class="text-brown-enzo flex flex-col justify-center items-center group w-full">Kembali
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
             </div>
@@ -119,7 +122,7 @@
             </section>
 
 
-            <section id="info_tambahan" class="info_tambahan pb-16">
+            <section id="info_tambahan" class="info_tambahan mb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">INFORMASI TAMBAHAN</div>
                 <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
@@ -195,6 +198,193 @@
                     </a>
                 </div>
             </section>
+
+            <section id="spk" class="info_tambahan pb-20">
+                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
+                    SPK
+                </div>
+                <div class="flex flex-col items-center mt-[3.25rem]">
+                    <table class="w-[95%] rounded-t-lg overflow-hidden">
+                        <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
+                            <tr>
+                                <th colspan="5">SPK PRODUKSI HARDBOX</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main w-[100px] px-2 font-semibold">Nama</td>
+                                <td class="border border-green-main w-[210px] px-2">Bejo</td>
+                                <td class="border border-green-main w-[140px] px-2 font-semibold">Tgl Order</td>
+                                <td class="border border-green-main w-[140px] px-2">25-2-2025</td>
+                                <td class="border border-green-main p-2 w-[450px]" rowspan="7">
+                                    <img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-full object-cover rounded-md">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Jenis</td>
+                                <td class="border border-green-main px-2">Undangan</td>
+                                <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
+                                <td class="border border-green-main px-2">25-2-2025</td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
+                                <td class="border border-green-main px-2">10x20</td>
+                                <td class="border border-green-main px-2 font-semibold">Tgl Fix Desain</td>
+                                <td class="border border-green-main px-2">25-2-2025</td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Jumlah</td>
+                                <td class="border border-green-main px-2">100</td>
+                                <td class="border border-green-main px-2 font-semibold">Deadline</td>
+                                <td class="border border-green-main px-2">25-2-2025</td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Packing</td>
+                                <td class="border border-green-main px-2">Packing</td>
+                                <td class="border border-green-main px-2 font-semibold">Percetakan</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Alamat</td>
+                                <td class="border border-green-main px-2" colspan="3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, eos.</td>
+                            </tr>
+                            <tr class="h-[60px]">
+                                <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
+                                <td class="border border-green-main px-2 py-1" colspan="3">
+                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="w-[95%] mt-8 rounded-t-lg overflow-hidden">
+                        <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
+                            <tr>
+                                <th colspan="4">Rincian Request</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 w-[150px] font-semibold">Foil</td>
+                                <td class="border border-green-main px-2 w-[200px]">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil">
+                                </td>
+                                <td class="border border-green-main px-2 w-[150px] font-semibold">Tali</td>
+                                <td class="border border-green-main px-2 w-[200px]">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Kertas Foil</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kertas Foil">
+                                </td>
+                                <td class="border border-green-main px-2 font-semibold">Warna Tali</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Warna Tali"> 
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Laminasi</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Laminasi">
+                                </td>
+                                <td class="border border-green-main px-2 font-semibold">Brosur</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Brosur">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Pita</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita">
+                                </td>
+                                <td class="border border-green-main px-2 font-semibold">Ornamen</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Attire/Thankscard</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Attire/Thankscard">
+                                </td>
+                                <td class="border border-green-main px-2 font-semibold">Lain-lain</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Embos</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Embos">
+                                </td>
+                                <td class="border border-green-main px-2 font-semibold">Sekat</td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Sekat">
+                                </td>
+                            </tr>
+                            <tr class="h-[40px] bg-green-main/80 text-brown-enzo">
+                                <td class="border border-green-main font-bold text-sm text-center" colspan="4">NOTE TAMBAHAN</td>
+                            </tr>
+                            <tr class="h-[40px]">
+                                <td class="border border-green-main p-2" colspan="4">
+                                    <textarea name="" id="" class="w-full h-[50px] rounded-sm px-2 border border-green-main" placeholder="Note Tambahan"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="w-[95%] mt-8 rounded-t-lg overflow-hidden">
+                        <thead class="border border-green-main h-[80px] bg-green-main/80 text-brown-enzo">
+                            <tr>
+                                <th colspan="6" class="border-b border-brown-enzo">Rincian Bahan</th>
+                            </tr>
+                            <tr>
+                                <th class="w-[350px] h-[40px]">Nama Bahan</th>
+                                <th class="w-[350px] h-[40px]">Ukuran</th>
+                                <th class="w-[130px] h-[40px]">Kebutuhan</th>
+                                <th class="w-[130px] h-[40px]">Stok</th>
+                                <th class="w-[130px] h-[40px]">Jumlah Beli</th>
+                                <th class="w-[350px] h-[40px]">Supplier</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                                </td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ukuran">
+                                </td>
+                                <td class="border border-green-main px-2 text-center">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                </td>
+                                <td class="border border-green-main px-2 text-center">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                </td>
+                                <td class="border border-green-main px-2 text-center">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                </td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="h-[35px] mt-8 flex gap-5">
+                        <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Cetak</button>
+                        <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
+                        <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
+                    </div>
+
+                    
+                </div>
+            </section>
+
             <!-- <section id="purchase" class="purchase pb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     PURCHASE ORDER
@@ -355,4 +545,122 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Tangkap elemen tombol dan tbody
+        const addButton = document.getElementById('addDataButton');
+        const tableBody = document.getElementById('table-body');
+
+        // Fungsi untuk menambahkan baris baru
+        addButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah reload halaman
+
+            // Buat elemen <tr> baru di dalam tbody
+            const newRow = document.createElement('tr');
+            newRow.className = "h-[35px]";
+
+            // Tambahkan elemen <td> untuk form input
+            newRow.innerHTML = `
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                </td>
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ukuran">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2 text-center">
+                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                </td>
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                </td>
+            </form>
+            </tr>
+            `;
+
+            // Tambahkan baris ke dalam tbody
+            tableBody.appendChild(newRow);
+        });
+    });
+
+    // EDIT PURCHASE
+    {{--document.querySelectorAll('[id^="editPurchase_"]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("Button clicked");
+            const id = button.id.split('_')[1];
+            console.log("Row ID:", id);
+            const row = button.closest('tr');
+            if (row) {
+                if (button.textContent.trim() === 'Edit') {
+                    console.log("Switching to edit mode");
+                    row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                        if (!cell.querySelector('input')) {
+                            const value = cell.textContent.trim();
+                            const input = document.createElement('input');
+                            input.type = 'text';
+                            input.value = value;
+                            input.classList.add('border', 'p-2', 'rounded');
+                            cell.textContent = '';
+                            cell.appendChild(input);
+                        }
+                    });
+                    button.textContent = 'Save';
+                    button.classList.add('bg-green-500');
+                } else {
+                    console.log("Saving data...");
+                    const formData = new FormData();
+                    row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                        const input = cell.querySelector('input');
+                        if (input) {
+                            const columnName = cell.dataset.column;
+                            formData.append(columnName, input.value);
+                        }
+                    });
+
+                    fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                        },
+                        body: formData,
+                    })
+                    .then(response => {
+                        console.log("Response received:", response);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Data received:", data);
+                        if (data.success) {
+                            alert('Data berhasil disimpan.');
+                            row.querySelectorAll('td:not(:last-child)').forEach(cell => {
+                                const input = cell.querySelector('input');
+                                if (input) {
+                                    cell.textContent = input.value;
+                                }
+                            });
+                            button.textContent = 'Edit';
+                            button.classList.remove('bg-green-500');
+                        } else {
+                            alert('Gagal menyimpan data.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Terjadi kesalahan.');
+                    });
+                }
+            }
+        });
+    });--}}
+
+
+
+</script>
 @endsection

@@ -427,10 +427,11 @@
                     <table class="w-[95%] mt-8 rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[80px] bg-green-main/80 text-brown-enzo">
                             <tr>
-                                <th colspan="5" class="border-b border-brown-enzo">Rincian Bahan</th>
+                                <th colspan="6" class="border-b border-brown-enzo">Rincian Bahan</th>
                             </tr>
                             <tr>
-                                <th class="w-[350px] h-[40px]">Nama Bahan</th>
+                                <th class="w-[350px] h-[40px]">Peruntukan</th>
+                                <th class="w-[350px] h-[40px]">Nama dan Ukuran</th>
                                 <th class="w-[130px] h-[40px]">Kebutuhan</th>
                                 <th class="w-[130px] h-[40px]">Stok</th>
                                 <th class="w-[130px] h-[40px]">Jumlah Beli</th>
@@ -440,7 +441,10 @@
                         <tbody id="table-body">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan">
+                                </td>
+                                <td class="border border-green-main px-2">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
                                     <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
@@ -661,7 +665,10 @@
             // Tambahkan elemen <td> untuk form input
             newRow.innerHTML = `
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan">
+                </td>
+                <td class="border border-green-main px-2">
+                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran">
                 </td>
                 <td class="border border-green-main px-2 text-center">
                     <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">

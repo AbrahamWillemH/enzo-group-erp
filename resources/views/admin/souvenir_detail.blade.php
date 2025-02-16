@@ -173,7 +173,7 @@
             </section>
 
 
-            <section id="info_tambahan" class="info_tambahan pb-16">
+            <section id="info_tambahan" class="info_tambahan mb-16">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">INFORMASI TAMBAHAN</div>
                 <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
@@ -350,7 +350,7 @@
                                 <td class="border border-green-main px-2">
                                     <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Zipper">
                                 </td>
-                                <td class="border border-green-main px-2 font-semibold">paid_off_date</td>
+                                <td class="border border-green-main px-2 font-semibold">Pita</td>
                                 <td class="border border-green-main px-2">
                                     <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita">
                                 </td>
