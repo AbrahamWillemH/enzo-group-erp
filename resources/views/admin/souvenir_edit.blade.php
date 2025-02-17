@@ -89,8 +89,8 @@
             </div>
 
             <div class="flex items-center flex-col ">
-              <label class="ml-2" for="size">Ukuran Jadi</label>
-              <input type="text" id="size" name="size" value="{{ $souvenir->size }}" required
+              <label class="ml-2" for="size_fix">Ukuran Jadi</label>
+              <input type="text" id="size_fix" name="size_fix" value="{{ $souvenir->size_fix }}" required
                 placeholder="Ukuran Jadi"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('pack')
