@@ -205,7 +205,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Fix Desain</td>
-                                <td class="px-4 py-2"></td>
+                                <td class="px-4 py-2">{{ $souvenir->fix_design_date ? \Carbon\Carbon::parse($souvenir->fix_design_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
@@ -337,7 +337,7 @@
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Uk Kertas</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kertas"> 
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kertas">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
@@ -427,7 +427,7 @@
                         <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
 
-                    
+
                 </div>
             </section>
 

@@ -154,7 +154,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Tanggal Fix Desain</td>
-                                <td class="px-4 py-2"></td>
+                                <td class="px-4 py-2">{{ $packaging->fix_design_date ? \Carbon\Carbon::parse($packaging->fix_design_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
@@ -289,7 +289,7 @@
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Warna Tali</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Warna Tali" value="{{ $packaging_spk->warna_tali ?? '' }}"> 
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Warna Tali" value="{{ $packaging_spk->warna_tali ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">

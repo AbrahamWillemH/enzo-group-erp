@@ -34,4 +34,6 @@ class InvitationSPK extends Model
         'jumlah_beli',
         'supplier'
     ];
+
+    public $timestamps = false;
 }

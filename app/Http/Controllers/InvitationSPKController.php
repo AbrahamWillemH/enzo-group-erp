@@ -45,11 +45,17 @@ class InvitationSPKController extends Controller
         }
 
         $validated = $validator->validated();
+
+        // Menetapkan invitation_id dari request
+        $validated['invitation_id'] = $request->id;
+
+        // Menyimpan data ke dalam model
         $order = new InvitationSPK($validated);
         $order->save();
 
         return redirect()->back()->with('success', 'Data saved successfully');
     }
+
 
     public function edit($id)
     {
