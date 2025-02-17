@@ -173,6 +173,8 @@ class SouvenirController extends Controller
     }
 
     public function souvenirDetails($id){
+        $souvenir_spk = DB::table('spk_souvenir')->find($id);
+        
         $souvenir = DB::table('souvenir')->find($id);
         $purchase = DB::table('purchase_souvenir')
         ->where('souvenir_id', $id)
@@ -181,7 +183,7 @@ class SouvenirController extends Controller
             $item->date = Carbon::parse($item->date)->format('d/m/Y');
             return $item;
         });
-        return view('admin.souvenir_detail', compact('souvenir', 'purchase'));
+        return view('admin.souvenir_detail', compact('souvenir', 'purchase', 'souvenir_spk'));
     }
 
     public function updatePaymentSubprocess(Request $request)

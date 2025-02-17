@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PurchaseInvitation;
-use Carbon\Carbon;
-use DB;
-use App\Models\Invitation;
-use App\Models\Souvenir;
-use Illuminate\Http\Request;
 use Storage;
 use Validator;
+use Carbon\Carbon;
+use App\Models\Souvenir;
+use App\Models\Invitation;
+use Illuminate\Http\Request;
+use App\Models\InvitationSPK;
+use App\Models\PurchaseInvitation;
+use Illuminate\Support\Facades\DB;
 
 class InvitationController extends Controller
 {
@@ -193,6 +194,8 @@ class InvitationController extends Controller
     }
 
     public function invitationDetails($id){
+        $invitation_spk = DB::table('spk_invitation')->find($id);
+
         $invitation = DB::table('invitation')->find($id);
         $purchase = DB::table('purchase_invitation')
         ->where('invitation_id', $id)
@@ -202,7 +205,7 @@ class InvitationController extends Controller
             return $item;
         });
 
-        return view('admin.invitation_detail', compact('purchase', 'invitation'));
+        return view('admin.invitation_detail', compact('purchase', 'invitation', 'invitation_spk')); 
     }
 
     public function updatePaymentSubprocess(Request $request)

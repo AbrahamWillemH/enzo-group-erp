@@ -203,6 +203,8 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     SPK
                 </div>
+                <form id="spkForm" action="{{ route('admin.packaging.spk.store', ['id' => $packaging->id]) }}" method="POST">
+                    @csrf
                 <div class="flex flex-col items-center mt-[3.25rem]">
                     <table class="w-[95%] rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
@@ -213,34 +215,38 @@
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main w-[100px] px-2 font-semibold">Nama</td>
-                                <td class="border border-green-main w-[210px] px-2">Bejo</td>
+                                <td class="border border-green-main w-[210px] px-2">{{ $packaging->user_name }}</td>
                                 <td class="border border-green-main w-[140px] px-2 font-semibold">Tgl Order</td>
-                                <td class="border border-green-main w-[140px] px-2">25-2-2025</td>
+                                <td class="border border-green-main w-[140px] px-2">{{ $packaging->created_at ? \Carbon\Carbon::parse($packaging->created_at)->format('d-m-Y') : '-' }}</td>
                                 <td class="border border-green-main p-2 w-[450px]" rowspan="7">
-                                    <img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-full object-cover rounded-md">
+                                    @if (!is_null($packaging->desain_path))
+                                    <img src="{{ asset('storage/app/public/' . $packaging->desain_path) }}" alt="Desain Undangan" class="w-full object-cover rounded-md">
+                                    @else
+                                    <p class="text-center">Belum Terdapat Desain</p>
+                                    @endif
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
-                                <td class="border border-green-main px-2">Undangan</td>
+                                <td class="border border-green-main px-2">{{ ucfirst($packaging->type) }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2">{{ $packaging->dp2_date ? \Carbon\Carbon::parse($packaging->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
-                                <td class="border border-green-main px-2">10x20</td>
+                                <td class="border border-green-main px-2"></td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl Fix Desain</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2"></td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
-                                <td class="border border-green-main px-2">100</td>
+                                <td class="border border-green-main px-2">{{ $packaging->quantity }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Deadline</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2">{{ $packaging->deadline_date ? \Carbon\Carbon::parse($packaging->deadline_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Packing</td>
-                                <td class="border border-green-main px-2">Packing</td>
+                                <td class="border border-green-main px-2">{{ $packaging->kemas }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
                                 <td class="border border-green-main px-2">
                                     <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan">
@@ -248,12 +254,12 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Alamat</td>
-                                <td class="border border-green-main px-2" colspan="3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, eos.</td>
+                                <td class="border border-green-main px-2" colspan="3">{{ $packaging->address }}</td>
                             </tr>
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request"></textarea>
+                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $packaging->note_cs }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -269,61 +275,61 @@
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Foil</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil" value="{{ $packaging_spk->foil ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Tali</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali" value="{{ $packaging_spk->tali ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kertas Foil</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kertas Foil">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kertas Foil" value="{{ $packaging_spk->kertas_foil ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Warna Tali</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Warna Tali"> 
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Warna Tali" value="{{ $packaging_spk->warna_tali ?? '' }}"> 
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Laminasi</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Laminasi">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Laminasi" value="{{ $packaging_spk->laminasi ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Brosur</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Brosur">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Brosur" value="{{ $packaging_spk->brosur ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Pita</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita" value="{{ $packaging_spk->pita ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Ornamen</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen" value="{{ $packaging_spk->ornamen ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Attire/Thankscard</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Attire/Thankscard">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Attire/Thankscard" value="{{ $packaging_spk->attire_thankscard ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Lain-lain</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain" value="{{ $packaging_spk->lain_lain ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Embos</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Embos">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Embos" value="{{ $packaging_spk->embos ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Sekat</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Sekat">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Sekat" value="{{ $packaging_spk->sekat ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[40px] bg-green-main/80 text-brown-enzo">
@@ -331,7 +337,7 @@
                             </tr>
                             <tr class="h-[40px]">
                                 <td class="border border-green-main p-2" colspan="4">
-                                    <textarea name="" id="" class="w-full h-[50px] rounded-sm px-2 border border-green-main" placeholder="Note Tambahan"></textarea>
+                                    <textarea name="note_tambahan" id="note_tambahan" class="w-full h-[50px] rounded-sm px-2 border border-green-main" placeholder="Note Tambahan">{{ $packaging_spk->note_tambahan ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -354,22 +360,22 @@
                         <tbody id="table-body">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan" value="{{ $packaging_spk->nama_bahan ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ukuran">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ukuran" value="{{ $packaging_spk->ukuran ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0" value="{{ $packaging_spk->kebutuhan ?? '0' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0" value="{{ $packaging_spk->stok ?? '0' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0" value="{{ $packaging_spk->jumlah_beli ?? '0' }}">
                                 </td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $packaging_spk->supplier ?? '' }}">
                                 </td>
                             </tr>
                         </tbody>
@@ -380,8 +386,7 @@
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
                         <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
-
-                    
+                </form>
                 </div>
             </section>
 

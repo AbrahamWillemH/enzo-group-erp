@@ -149,6 +149,8 @@ class PackagingController extends Controller
     }
 
     public function packagingDetails($id){
+        $packaging_spk = DB::table('spk_packaging')->find($id);
+
         $packaging = DB::table('packaging')->find($id);
         $purchase = DB::table('purchase_packaging')
         ->where('packaging_id', $id)
@@ -157,7 +159,7 @@ class PackagingController extends Controller
             $item->date = Carbon::parse($item->date)->format('d/m/Y');
             return $item;
         });
-        return view('admin.packaging_detail', compact('packaging', 'purchase'));
+        return view('admin.packaging_detail', compact('packaging', 'purchase', 'packaging_spk'));
     }
 
     public function updatePaymentSubprocess(Request $request)

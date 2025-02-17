@@ -163,7 +163,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
-                                <td class="px-4 py-2">{{ $souvenir->size }}</td>
+                                <td class="px-4 py-2"></td>
                             </tr>
 
                         </tbody>
@@ -261,35 +261,40 @@
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main w-[100px] px-2 font-semibold">Nama</td>
-                                <td class="border border-green-main w-[210px] px-2">Bejo</td>
+                                <td class="border border-green-main w-[210px] px-2">{{ $souvenir->user_name }}</td>
                                 <td class="border border-green-main w-[140px] px-2 font-semibold">Tgl Order</td>
-                                <td class="border border-green-main w-[140px] px-2">25-2-2025</td>
+                                <td class="border border-green-main w-[140px] px-2">{{ $souvenir->created_at ? \Carbon\Carbon::parse($souvenir->created_at)->format('d-m-Y') : '-' }}</td>
                                 <td class="border border-green-main p-2 w-[450px]" rowspan="7">
-                                    <img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-[75%] ml-[12.5%] object-cover rounded-md">
-                                    <img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-[75%] ml-[12.5%] object-cover rounded-md mt-2">
+                                    @if (!is_null($souvenir->desain_emboss_path))
+                                    <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="w-[75%] ml-[12.5%] object-cover rounded-md">
+                                    @elseif (!is_null($souvenir->desain_thankscard_path))
+                                    <img src="{{ asset('storage/' . $souvenir->desain_thankscard_path) }}" alt="Desain Thankscard" class="w-[75%] ml-[12.5%] object-cover rounded-md mt-2">
+                                    @else
+                                    <p class="text-center">Belum Terdapat Desain</p>
+                                    @endif
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
-                                <td class="border border-green-main px-2">Undangan</td>
+                                <td class="border border-green-main px-2">{{ ucfirst($souvenir->type) }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
-                                <td class="border border-green-main px-2">10x20</td>
+                                <td class="border border-green-main px-2"></td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl Fix Desain</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2"></td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
-                                <td class="border border-green-main px-2">100</td>
+                                <td class="border border-green-main px-2">{{ $souvenir->quantity }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Deadline</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kemas</td>
-                                <td class="border border-green-main px-2">Kemas</td>
+                                <td class="border border-green-main px-2"></td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
                                 <td class="border border-green-main px-2">
                                     <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan">
@@ -297,12 +302,12 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Alamat</td>
-                                <td class="border border-green-main px-2" colspan="3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae, eos.</td>
+                                <td class="border border-green-main px-2" colspan="3">{{ $souvenir->address }}</td>
                             </tr>
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request"></textarea>
+                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->note_cs ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>

@@ -1,18 +1,20 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\InvitationController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PackagingController;
-use App\Http\Controllers\SeminarKitController;
-use App\Http\Controllers\SouvenirController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Middleware\AdminMiddleware;
 use App\Models\User;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SouvenirController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\PackagingController;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\SeminarKitController;
+use App\Http\Controllers\PackagingSPKController;
+use App\Http\Controllers\InvitationSPKController;
 
 Route::get('/', function(){
     return view('welcome');
@@ -140,6 +142,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
     Route::post('/admin/orders/invitation', [InvitationController::class, 'updatePaymentSubprocess'])->name('admin.invitation.update_payment_subprocess');
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
+    Route::post('/admin/orders/invitation/{id}/spk/store', [InvitationSPKController::class, 'store'])->name('admin.invitation.spk.store');
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
     // purchase invitation
@@ -150,6 +153,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
     Route::post('/admin/orders/packaging', [PackagingController::class, 'updatePaymentSubprocess'])->name('admin.packaging.update_payment_subprocess');
     Route::get('/admin/orders/packaging/{id}', [PackagingController::class, 'packagingDetails'])->name('admin.packaging.detail');
+    Route::post('/admin/orders/packaging/{id}/spk/store', [PackagingSPKController::class, 'store'])->name('admin.packaging.spk.store');
     Route::get('/admin/orders/packaging/{id}/edit', [PackagingController::class, 'edit'])->name('admin.packaging.edit');
     Route::post('/admin/orders/packaging/{id}/update', [PackagingController::class, 'update'])->name('admin.packaging.update');
 
