@@ -163,7 +163,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
-                                <td class="px-4 py-2"></td>
+                                <td class="px-4 py-2">{{$souvenir->size_fix}}</td>
                             </tr>
 
                         </tbody>
