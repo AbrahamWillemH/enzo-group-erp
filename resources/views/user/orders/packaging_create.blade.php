@@ -134,9 +134,9 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="package_type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="package_type" name="package_type" required>
-              <option value="">Pilih Tipe</option>
-            </select>
+            <textarea id="package_type" rows="1" name="package_type" value="{{ old('package_type') }}" required
+              placeholder="Tipe Packaging"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('package_type')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -249,43 +249,43 @@
   </div>
   <script>
      function updatePackageTypes() {
-            const modelSelect = document.getElementById('model');
-            const packageTypeSelect = document.getElementById('package_type');
-            const selectedModel = modelSelect.value;
+            // const modelSelect = document.getElementById('model');
+            // const packageTypeSelect = document.getElementById('package_type');
+            // const selectedModel = modelSelect.value;
 
-            packageTypeSelect.innerHTML = '<option value="">Pilih Tipe</option>';
+            // packageTypeSelect.innerHTML = '<option value="">Pilih Tipe</option>';
 
-            const packageTypes = {
-                'Hardbox': [
-                    'Hardbox Pita',
-                    'Hardbox Magnet',
-                    'Hardbox Tutup Lepas',
-                    'Hardbox Sliding',
-                    'Hardbox Magnet 2 Pintu'
-                ],
-                'Softbox': [
-                    'Folding Box',
-                    'Toplock',
-                    'Tutup Lepas',
-                    'Earlock',
-                    'Snack Box',
-                    'Sliding Luar Papperbag',
-                    'Lainnya'
-                ],
-                'Corrugatedbox': [
-                    'Sleeve Box',
-                    'Lainnya'
-                ]
-            };
+            // const packageTypes = {
+            //     'Hardbox': [
+            //         'Hardbox Pita',
+            //         'Hardbox Magnet',
+            //         'Hardbox Tutup Lepas',
+            //         'Hardbox Sliding',
+            //         'Hardbox Magnet 2 Pintu'
+            //     ],
+            //     'Softbox': [
+            //         'Folding Box',
+            //         'Toplock',
+            //         'Tutup Lepas',
+            //         'Earlock',
+            //         'Snack Box',
+            //         'Sliding Luar Papperbag',
+            //         'Lainnya'
+            //     ],
+            //     'Corrugatedbox': [
+            //         'Sleeve Box',
+            //         'Lainnya'
+            //     ]
+            // };
 
-            if (selectedModel && packageTypes[selectedModel]) {
-                packageTypes[selectedModel].forEach(type => {
-                    const option = document.createElement('option');
-                    option.value = type;
-                    option.textContent = type;
-                    packageTypeSelect.appendChild(option);
-                });
-            }
+            // if (selectedModel && packageTypes[selectedModel]) {
+            //     packageTypes[selectedModel].forEach(type => {
+            //         const option = document.createElement('option');
+            //         option.value = type;
+            //         option.textContent = type;
+            //         packageTypeSelect.appendChild(option);
+            //     });
+            // }
         }
 
         document.addEventListener('DOMContentLoaded', updatePackageTypes);

@@ -296,16 +296,16 @@
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main w-[100px] px-2 font-semibold">Nama</td>
-                                <td class="border border-green-main w-[210px] px-2">Bejo</td>
+                                <td class="border border-green-main w-[210px] px-2">{{ $invitation->bride_name }}</td>
                                 <td class="border border-green-main w-[140px] px-2 font-semibold">Tgl Order</td>
-                                <td class="border border-green-main w-[140px] px-2">25-2-2025</td>
+                                <td class="border border-green-main w-[140px] px-2">{{ $invitation->created_at ? \Carbon\Carbon::parse($invitation->created_at)->format('d-m-Y') : '-' }}</td>
                                 <td class="border border-green-main p-2 w-[450px]" rowspan="6"><img src="{{ asset('img/undanganA.jpeg') }}" alt="" class="w-full h-full object-cover rounded-md"></td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
                                 <td class="border border-green-main px-2">Undangan</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
-                                <td class="border border-green-main px-2">25-2-2025</td>
+                                <td class="border border-green-main px-2">{{ $invitation->dp2_date ? \Carbon\Carbon::parse($invitation->dp2_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
