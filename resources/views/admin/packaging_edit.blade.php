@@ -118,13 +118,9 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="package_type">Tipe</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="package_type" name="package_type" required>
-                <option value="SB Diecut" {{ old('package_type', $packaging->package_type) == 'SB Diecut' ? 'selected' : '' }}>SB Diecut</option>
-                <option value="CB Diecut" {{ old('package_type', $packaging->package_type) == 'CB Diecut' ? 'selected' : '' }}>CB Diecut</option>
-                <option value="HB Tutup Lepas" {{ old('package_type', $packaging->package_type) == 'HB Tutup Lepas' ? 'selected' : '' }}>HB Tutup Lepas</option>
-                <option value="HB Pita" {{ old('package_type', $packaging->package_type) == 'HB Pita' ? 'selected' : '' }}>HB Pita</option>
-                <option value="HB Magnet" {{ old('package_type', $packaging->package_type) == 'HB Magnet' ? 'selected' : '' }}>HB Magnet</option>
-            </select>
+            <textarea id="package_type" rows="1" name="package_type" required
+              placeholder="Tipe Packaging"
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->package_type }}</textarea>
             @error('package_type')
             <small class="text-danger">{{ $message }}</small>
             @enderror
