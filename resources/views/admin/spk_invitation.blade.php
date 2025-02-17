@@ -38,7 +38,7 @@
         }
 
         th {
-            font-weight: 600;
+            font-weight: 700;
             text-align: center;
             height: 35px;
         }
@@ -180,6 +180,12 @@
                     <tr>
                         <td><b>Lain-lain</b></td>
                         <td colspan="3"><span class="text-value">Lorem ipsum dolor sit amet.</span></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: center"><b>NOTE TAMBAHAN</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><span class="text-value">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span></td>
                     </tr>
                 </tbody>
             </table>

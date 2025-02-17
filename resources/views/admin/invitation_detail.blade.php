@@ -404,13 +404,19 @@
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
-                                <td class="border border-green-main px-2 font-semibold">Gulungan</td>
+                                <td class="border border-green-main px-2 font-semibold">Gunungan</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Gulungan">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Gunungan">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Ornamen</td>
                                 <td class="border border-green-main px-2">
                                     <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen">
+                                </td>
+                            </tr>
+                            <tr class="h-[35px]">
+                                <td class="border border-green-main px-2 font-semibold">Lain-lain</td>
+                                <td class="border border-green-main px-2" colspan="3">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain">
                                 </td>
                             </tr>
                             <tr class="h-[40px] bg-green-main/80 text-brown-enzo">

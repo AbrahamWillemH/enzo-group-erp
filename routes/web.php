@@ -12,6 +12,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\PdfController;
 
 Route::get('/', function(){
     return view('welcome');
@@ -26,6 +27,12 @@ Route::get('/pkg', function(){
 // Route::get('/inventorytest', function(){
 //     return view('frontend.inventorytest');
 // });
+
+Route::get('/generate-pdf', [PdfController::class, 'generate']);
+Route::get('/cetak', function(){
+    return view('admin.spk_packaging');
+});
+
 Route::get('/tesdetail', function(){
     return view('frontend.detailundangan');
 });
