@@ -24,11 +24,19 @@ class SouvenirSPKController extends Controller
             'pita' => 'nullable|string|max:255',
             'model_pita' => 'nullable|string|max:255',
             'note_tambahan' => 'nullable|string|max:255',
-            'nama_bahan' => 'nullable|string|max:255',
-            'kebutuhan' => 'nullable|integer',
-            'stok' => 'nullable|integer',
-            'jumlah_beli' => 'nullable|integer',
-            'supplier' => 'nullable|string|max:255'
+
+            // JSON VALIDATOR
+            'nama_bahan' => 'nullable|array',
+            'nama_bahan.*' => 'nullable|string|max:255',
+            'kebutuhan' => 'nullable|array',
+            'kebutuhan.*' => 'nullable|integer',
+            'stok' => 'nullable|array',
+            'stok.*' => 'nullable|integer',
+            'jumlah_beli' => 'nullable|array',
+            'jumlah_beli.*' => 'nullable|integer',
+            'supplier' => 'nullable|array',
+            'supplier.*' => 'nullable|string|max:255',
+
         ]);
 
         if ($validator->fails()) {
@@ -38,6 +46,12 @@ class SouvenirSPKController extends Controller
         }
 
         $validated = $validator->validated();
+
+        $validated['nama_bahan'] = json_encode($request->nama_bahan ?? []);
+        $validated['kebutuhan'] = json_encode($request->kebutuhan ?? []);
+        $validated['stok'] = json_encode($request->stok ?? []);
+        $validated['jumlah_beli'] = json_encode($request->jumlah_beli ?? []);
+        $validated['supplier'] = json_encode($request->supplier ?? []);
 
         // Ambil data berdasarkan ID dan update
         $order = SouvenirSPK::where('souvenir_id', $id)->firstOrFail();

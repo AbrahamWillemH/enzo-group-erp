@@ -26,6 +26,7 @@ class InvitationSPK extends Model
         'kalkir',
         'kain_goni',
         'ornamen',
+        'lain_lain',
         'note_tambahan',
         'peruntukan',
         'nama_ukuran',
@@ -33,7 +34,6 @@ class InvitationSPK extends Model
         'stok',
         'jumlah_beli',
         'supplier',
-        'lain_lain'
     ];
 
     public $timestamps = false;

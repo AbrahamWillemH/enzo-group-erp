@@ -181,6 +181,13 @@ class SouvenirController extends Controller
         ->where('souvenir_id', $id)
         ->first();
 
+        // DECODE FROM JSON TO ARRAY
+        $souvenir_spk->nama_bahan = json_decode($souvenir_spk->nama_bahan, true);
+        $souvenir_spk->kebutuhan = json_decode($souvenir_spk->kebutuhan, true);
+        $souvenir_spk->stok = json_decode($souvenir_spk->stok, true);
+        $souvenir_spk->jumlah_beli = json_decode($souvenir_spk->jumlah_beli, true);
+        $souvenir_spk->supplier = json_decode($souvenir_spk->supplier, true);
+
 
         $souvenir = DB::table('souvenir')->find($id);
         return view('admin.souvenir_detail', compact('souvenir', 'souvenir_spk'));

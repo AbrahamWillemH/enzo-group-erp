@@ -455,26 +455,30 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
-                            <tr class="h-[35px]">
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="peruntukan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="{{ $invitation_spk->peruntukan ?? ''}}">
-                                </td>
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="nama_ukuran" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="{{ $invitation_spk->nama_ukuran ?? ''}}">
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="kebutuhan" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->kebutuhan ?? '0'}}" >
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="stok" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->stok ?? '0'}}">
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="jumlah_beli" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->jumlah_beli ?? '0'}}">
-                                </td>
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="supplier" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $invitation_spk->supplier ?? ''}}">
-                                </td>
-                            </tr>
+                            @if (isset($invitation_spk->peruntukan) && is_array($invitation_spk->peruntukan))
+                                @foreach ($invitation_spk->peruntukan as $index => $peruntukan)
+                                    <tr class="h-[35px]">
+                                        <td class="border border-green-main px-2">
+                                            <input type="text" name="peruntukan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="{{ $peruntukan }}">
+                                        </td>
+                                        <td class="border border-green-main px-2">
+                                            <input type="text" name="nama_ukuran[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="{{ $invitation_spk->nama_ukuran[$index] ?? '' }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="kebutuhan[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->kebutuhan[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="stok[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->stok[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="jumlah_beli[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->jumlah_beli[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2">
+                                            <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $invitation_spk->supplier[$index] ?? '' }}">
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
 
@@ -507,24 +511,23 @@
             // Tambahkan elemen <td> untuk form input
             newRow.innerHTML = `
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan">
+                    <input type="text" name="peruntukan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="">
                 </td>
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran">
+                    <input type="text" name="nama_ukuran[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="0">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="kebutuhan[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="stok[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="jumlah_beli[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                    <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="">
                 </td>
-            </form>
             </tr>
             `;
 

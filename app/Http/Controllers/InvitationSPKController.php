@@ -29,12 +29,21 @@ class InvitationSPKController extends Controller
             'kain_goni' => 'nullable|string|max:255',
             'ornamen' => 'nullable|string|max:255',
             'note_tambahan' => 'nullable|string|max:255',
-            'peruntukan' => 'nullable|string|max:255',
-            'nama_ukuran' => 'nullable|integer',
-            'kebutuhan' => 'nullable|integer',
-            'stok' => 'nullable|integer',
-            'jumlah_beli' => 'nullable|integer',
-            'supplier' => 'nullable|string|max:255',
+
+            // FOR JSON TYPES.
+            'peruntukan' => 'nullable|array',
+            'peruntukan.*' => 'nullable|string|max:255',
+            'nama_ukuran' => 'nullable|array',
+            'nama_ukuran.*' => 'nullable|string|max:255',
+            'kebutuhan' => 'nullable|array',
+            'kebutuhan.*' => 'nullable|integer',
+            'stok' => 'nullable|array',
+            'stok.*' => 'nullable|integer',
+            'jumlah_beli' => 'nullable|array',
+            'jumlah_beli.*' => 'nullable|integer',
+            'supplier' => 'nullable|array',
+            'supplier.*' => 'nullable|string|max:255',
+
             'lain_lain'=> 'nullable|string|max:255'
         ]);
 
@@ -46,18 +55,27 @@ class InvitationSPKController extends Controller
 
         $validated = $validator->validated();
 
-        // Ambil data berdasarkan ID dan update
+        // Ubah array menjadi JSON
+        $validated['peruntukan'] = json_encode($request->peruntukan ?? []);
+        $validated['nama_ukuran'] = json_encode($request->nama_ukuran ?? []);
+        $validated['kebutuhan'] = json_encode($request->kebutuhan ?? []);
+        $validated['stok'] = json_encode($request->stok ?? []);
+        $validated['jumlah_beli'] = json_encode($request->jumlah_beli ?? []);
+        $validated['supplier'] = json_encode($request->supplier ?? []);
+
+        // Simpan ke database
         $order = InvitationSPK::where('invitation_id', $id)->firstOrFail();
         $order->update($validated);
+
 
         return redirect()->route('admin.invitation.detail', $id);
     }
 
 
 
-    public function edit($id)
-    {
-        $invitation_spk = InvitationSPK::findOrFail($id);
-        return view('admin.invitation_detail', compact('invitation_spk'));
-    }
+    // public function edit($id)
+    // {
+    //     $invitation_spk = InvitationSPK::findOrFail($id);
+    //     return view('admin.invitation_detail', compact('invitation_spk'));
+    // }
 }

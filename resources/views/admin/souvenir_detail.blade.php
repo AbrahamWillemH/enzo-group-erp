@@ -403,23 +403,27 @@
                             </tr>
                         </thead>
                         <tbody id="table-body">
-                            <tr class="h-[35px]">
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="nama_bahan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan" value="{{ $souvenir_spk->nama_bahan ?? '' }}">
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="kebutuhan" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->kebutuhan ?? '0' }}">
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="stok" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->stok ?? '0' }}">
-                                </td>
-                                <td class="border border-green-main px-2 text-center">
-                                    <input type="number" name="jumlah_beli" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->jumlah_beli ?? '0' }}"">
-                                </td>
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="supplier" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $souvenir_spk->supplier ?? '' }}">
-                                </td>
-                            </tr>
+                            @if (isset($souvenir_spk->nama_bahan) && is_array($souvenir_spk->nama_bahan))
+                                @foreach ($souvenir_spk->nama_bahan as $index => $nama_bahan)
+                                    <tr class="h-[35px]">
+                                        <td class="border border-green-main px-2">
+                                            <input type="text" name="nama_bahan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan" value="{{ $nama_bahan }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="kebutuhan[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->kebutuhan[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="stok[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->stok[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <input type="number" name="jumlah_beli[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->jumlah_beli[$index] ?? 0 }}">
+                                        </td>
+                                        <td class="border border-green-main px-2">
+                                            <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $souvenir_spk->supplier[$index] ?? '' }}">
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
 
@@ -452,21 +456,20 @@
             // Tambahkan elemen <td> untuk form input
             newRow.innerHTML = `
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                    <input type="text" name="nama_bahan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan" value="">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="kebutuhan[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="stok[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2 text-center">
-                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                    <input type="number" name="jumlah_beli[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
                 </td>
                 <td class="border border-green-main px-2">
-                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                    <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="">
                 </td>
-            </form>
             </tr>
             `;
 

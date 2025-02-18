@@ -201,6 +201,13 @@ class InvitationController extends Controller
         ->where('invitation_id', $id)
         ->first();
 
+        // DECODE FROM JSON TO ARRAY
+        $invitation_spk->peruntukan = json_decode($invitation_spk->peruntukan, true);
+        $invitation_spk->nama_ukuran = json_decode($invitation_spk->nama_ukuran, true);
+        $invitation_spk->kebutuhan = json_decode($invitation_spk->kebutuhan, true);
+        $invitation_spk->stok = json_decode($invitation_spk->stok, true);
+        $invitation_spk->jumlah_beli = json_decode($invitation_spk->jumlah_beli, true);
+        $invitation_spk->supplier = json_decode($invitation_spk->supplier, true);
 
         $invitation = DB::table('invitation')->find($id);
 

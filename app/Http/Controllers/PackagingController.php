@@ -65,7 +65,6 @@ class PackagingController extends Controller
 
 
         if ($validator->fails()) {
-            dd($validator->errors());
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput();
@@ -160,6 +159,13 @@ class PackagingController extends Controller
         $packaging_spk = DB::table('spk_packaging')
         ->where('packaging_id', $id)
         ->first();
+
+        $packaging_spk->nama_bahan = json_decode($packaging_spk->nama_bahan, true);
+        $packaging_spk->ukuran = json_decode($packaging_spk->ukuran, true);
+        $packaging_spk->kebutuhan = json_decode($packaging_spk->kebutuhan, true);
+        $packaging_spk->stok = json_decode($packaging_spk->stok, true);
+        $packaging_spk->jumlah_beli = json_decode($packaging_spk->jumlah_beli, true);
+        $packaging_spk->supplier = json_decode($packaging_spk->supplier, true);
 
 
         $packaging = DB::table('packaging')->find($id);
