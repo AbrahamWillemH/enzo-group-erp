@@ -77,7 +77,9 @@
                                             {{ $o->id }}
                                         </div>
                                     </td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px] hover:cursor-pointer" onclick="showModal('user_name', '{{ $o->user_name }}')">
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" 
+                                        onclick="showModal('user_name', '{{ $o->user_name }}')">
                                         {{ Str::limit($o->user_name, 25) }}
                                     </td>
                                     <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('address', '{{ $o->address }}')">
@@ -154,7 +156,9 @@
                                 @if ($o->progress == 'Fix')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px] hover:cursor-pointer" onclick="showModal('user_name', '{{ $o->user_name }}')">
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" 
+                                        onclick="showModal('user_name', '{{ $o->user_name }}')">
                                         {{ Str::limit($o->user_name, 25) }}
                                     </td>
                                     <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('address', '{{ $o->address }}')">
@@ -216,7 +220,9 @@
                                 @if ($o->progress == 'Pemesanan Bahan')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                    </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
@@ -273,7 +279,9 @@
                                 @if ($o->progress == 'Proses Produksi')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                    </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
@@ -351,7 +359,9 @@
                                 @if ($o->progress == 'Selesai')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-[149px]">{{$o->user_name}}</td>
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                    </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
