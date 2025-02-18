@@ -297,7 +297,7 @@
                                 <td class="border border-green-main px-2">{{ $souvenir->pack ?? '-' }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" name="percetakan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan" value="{{ $souvenir_spk->percetakan ?? '' }}">
+                                    <input type="text" name="percetakan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan" value="{{ $souvenir_spk->percetakan ?? '' }}" readonly>
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
@@ -307,7 +307,7 @@
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="note_design" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->note_design ?? '' }}</textarea>
+                                    <textarea name="note_design" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request" readonly>{{ $souvenir->note_design ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
