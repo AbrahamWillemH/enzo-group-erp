@@ -325,7 +325,7 @@
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Motif</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" name="motif" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Motif" value="{{ $souvenir_spk->motif ?? '' }}">
+                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Motif" value="{{ $souvenir->color_motif ?? '' }}" readonly>
                                 </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Jenis Kertas</td>
                                 <td class="border border-green-main px-2 w-[200px]">
