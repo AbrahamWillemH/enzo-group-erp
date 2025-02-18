@@ -201,6 +201,7 @@ class InvitationController extends Controller
         ->where('invitation_id', $id)
         ->first();
 
+
         $invitation = DB::table('invitation')->find($id);
 
         // dd($invitation_spk);

@@ -360,7 +360,7 @@
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Foil</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" name="foil" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil" value="{{ $invitation_spk->foil }}">
+                                    <input type="text" name="foil" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil" value="{{ $invitation_spk->foil ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Tussel</td>
                                 <td class="border border-green-main px-2 w-[200px]">
