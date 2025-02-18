@@ -247,27 +247,27 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
-                                <td class="px-4 py-2">{{$invitation->price_per_pcs}}</td>
+                                <td class="px-4 py-2">{{$invitation->price_per_pcs ?? '-'}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Printilan</td>
-                                <td class="px-4 py-2">{{$invitation->printout}}</td>
+                                <td class="w-[35%] px-4 py-2">Percetakan</td>
+                                <td class="px-4 py-2">{{$invitation->printout ?? '-'}}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ekspedisi</td>
-                                <td class="px-4 py-2">{{$invitation->expedition}}</td>
+                                <td class="px-4 py-2">{{$invitation->expedition ?? '-'}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
-                                <td class="px-4 py-2">{{$invitation->design_status}}</td>
+                                <td class="px-4 py-2">{{$invitation->design_status ?? '-'}}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
-                                <td class="px-4 py-2">{{$invitation->note_design}}</td>
+                                <td class="px-4 py-2">{{$invitation->note_design ?? '-'}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Admin</td>
-                                <td class="px-4 py-2">{{$invitation->note_cs}}</td>
+                                <td class="px-4 py-2">{{$invitation->note_cs ?? '-'}}</td>
                             </tr>
                         </tbody>
 
@@ -338,7 +338,7 @@
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="request" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $invitation->request ?? '' }}</textarea>
+                                    <textarea name="note_design" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $invitation->note_design ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>

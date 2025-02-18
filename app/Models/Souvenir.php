@@ -46,10 +46,7 @@ class Souvenir extends Model
         'subprocess',
         'size',
         'done_at',
-        'size_fix',
-        'fix_design_date',
-        'percetakan',
-        'request'
+        'fix_design_date'
     ];
 
     /**

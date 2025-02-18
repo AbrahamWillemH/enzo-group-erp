@@ -45,10 +45,7 @@ class Packaging extends Model
         'kemas',
         'source',
         'done_at',
-        'size_fix',
-        'fix_design_date',
-        'percetakan',
-        'request'
+        'fix_design_date'
     ];
 
     public static function generatePackagingId()

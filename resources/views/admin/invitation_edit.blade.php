@@ -425,9 +425,9 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label for="printout">Printilan</label>
+              <label for="printout">Percetakan</label>
               <input type="text" id="printout" name="printout" value="{{ $invitation->printout }}"
-                placeholder="Printilan"
+                placeholder="Percetakan"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('printout')
               <small class="text-danger">{{ $message }}</small>

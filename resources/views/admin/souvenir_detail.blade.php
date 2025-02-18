@@ -212,7 +212,7 @@
                                 <td class="px-4 py-2">{{$souvenir->price_per_pcs}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Printilan</td>
+                                <td class="w-[35%] px-4 py-2">Percetakan</td>
                                 <td class="px-4 py-2">{{$souvenir->printout}}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
@@ -307,7 +307,7 @@
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="request" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->request ?? '' }}</textarea>
+                                    <textarea name="note_design" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->note_design ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
