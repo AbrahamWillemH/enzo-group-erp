@@ -154,7 +154,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
     Route::post('/admin/orders/packaging', [PackagingController::class, 'updatePaymentSubprocess'])->name('admin.packaging.update_payment_subprocess');
     Route::get('/admin/orders/packaging/{id}', [PackagingController::class, 'packagingDetails'])->name('admin.packaging.detail');
-    Route::post('/admin/orders/packaging/{id}/spk/store', [PackagingSPKController::class, 'store'])->name('admin.packaging.spk.store');
+    Route::post('/admin/orders/packaging/{id}', [PackagingSPKController::class, 'store'])->name('admin.packaging.spk.store');
     Route::get('/admin/orders/packaging/{id}/edit', [PackagingController::class, 'edit'])->name('admin.packaging.edit');
     Route::post('/admin/orders/packaging/{id}/update', [PackagingController::class, 'update'])->name('admin.packaging.update');
 
@@ -162,7 +162,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
     Route::post('/admin/orders/souvenir', [SouvenirController::class, 'updatePaymentSubprocess'])->name('admin.souvenir.update_payment_subprocess');
     Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
-    Route::post('/admin/orders/souvenir/{id}/spk/store', [SouvenirSPKController::class, 'store'])->name('admin.souvenir.spk.store');
+    Route::post('/admin/orders/souvenir/{id}', [SouvenirSPKController::class, 'store'])->name('admin.souvenir.spk.store');
     Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
     Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');
 

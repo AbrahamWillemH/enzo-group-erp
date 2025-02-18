@@ -20,6 +20,8 @@
 
         </div>
         <div class="">
+            <form id="spkForm" action="{{ route('admin.souvenir.spk.store', ['id' => $souvenir->id]) }}" method="POST">
+                @csrf
             <section id="data_pemesan" class="data_pemesan mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
                 <div class="data mt-[7.25rem] mb-5 px-3 gap-0 flex justify-center capitalize">
@@ -321,14 +323,10 @@
                                 <th colspan="4">Rincian Request</th>
                             </tr>
                         </thead>
-                        <form id="spkForm" action="{{ route('admin.souvenir.spk.store', ['id' => $souvenir->id]) }}" method="POST">
-                            @csrf
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Motif</td>
-                                <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Motif" value="{{ $souvenir->color_motif ?? '' }}" readonly>
-                                </td>
+                                <td class="border border-green-main px-2 w-[200px]">{{ $souvenir->color_motif}} </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Jenis Kertas</td>
                                 <td class="border border-green-main px-2 w-[200px]">
                                     <input type="text" name="jenis_kertas" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Jenis Kertas" value="{{ $souvenir_spk->jenis_kertas ?? '' }}">
@@ -428,181 +426,11 @@
                     <div class="h-[35px] mt-8 flex gap-5">
                         <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Cetak</button>
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
-                        <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
+                        <button type="submit" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
                 </form>
                 </div>
             </section>
-
-            <!-- <section id="purchase" class="purchase pb-16">
-                <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
-                    PURCHASE ORDER
-                </div>
-
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[3.25rem] mb-5">
-                    <table class="w-full text-sm text-left rtl:text-right">
-                        <thead class="text-xs text-brown-enzo uppercase bg-green-main/80">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 sticky left-0 bg-green-main">
-                                    Tanggal
-                                </th>
-                                <th scope="col" class="px-6 py-3 sticky left-[120px] bg-green-main">
-                                    No Invoice
-                                </th>
-                                <th scope="col" class="px-6 py-3 sticky left-[232px] bg-green-main">
-                                    Kode Order
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Nama Suplier
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Produk
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Motif
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Jml/Motif
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Termin
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Qty
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Satuan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Harga/Unit
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Total Harga
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Admin (PIC)
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Catatan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Status
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Sudah Pesan
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Sudah Bayar
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="table-body">
-                            @foreach($purchase as $p)
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300 text-center">
-                                <td scope="row" class="px-6 py-4 text-gray-900 sticky left-0 bg-green-shadow/0 backdrop-blur-xl">
-                                    {{ $p->date ? \Carbon\Carbon::parse($p->date)->format('d/m/Y') : '-' }}
-                                </td>
-                                <td class="px-6 py-4 sticky left-[120px] bg-green-shadow/0 backdrop-blur-xl">
-                                    {{$p->invoice}}
-                                </td>
-                                <td class="px-6 py-4 sticky left-[232px] bg-green-shadow/0 backdrop-blur-xl">
-                                    {{$p->order_code}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->supplier}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->product}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->motif}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->quantity_per_motif}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $p->termin ? \Carbon\Carbon::parse($p->termin)->format('d/m/Y') : '-' }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->purchase_amount}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->unit}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->price_per_pcs}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->total_price}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->pic}}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{$p->note}}
-                                </td>
-                                @if($p->status == 'High Priority')
-                                <td class="px-6 py-4 bg-red-600">
-                                    {{$p->status}}
-                                </td>
-                                @elseif ($p->status == 'Medium Priority')
-                                <td class="px-6 py-4 bg-red-400">
-                                    {{$p->status}}
-                                </td>
-                                @else
-                                <td class="px-6 py-4 bg-red-200">
-                                    {{$p->status}}
-                                </td>
-                                @endif
-                                <td class="px-6 py-4">
-                                    @if ($p->bought == 1)
-                                    <div>
-                                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded pointer-events-none" checked>
-                                    </div>
-                                    @else
-                                    <div>
-                                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded pointer-events-none">
-                                    </div>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4">
-                                    @if ($p->paid == 1)
-                                    <div>
-                                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded pointer-events-none" checked>
-                                    </div>
-                                    @else
-                                    <div>
-                                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded pointer-events-none">
-                                    </div>
-                                    @endif
-                                </td>
-                                <td class="px-6 py-4 flex flex-col gap-4">
-                                    <button type="submit" class="bg-brown-enzo rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
-                                        Edit
-                                    </button>
-                                    <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white"">
-                                        Delete
-                                    </button>
-                                </td>
-                                @endforeach
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="add_data mt-10 grid justify-items-center">
-                    <a href="#"
-                        class="relative bg-green-main/80 text-brown-enzo font-medium w-[9rem] h-[2rem] flex justify-center items-center rounded-lg overflow-hidden group">
-
-                        <span class="absolute inset-0 bg-green-main transition-transform -translate-y-full group-hover:translate-y-0 transition-duration duration-500"></span>
-
-                        <span class="relative z-10">TAMBAH DATA</span>
-                    </a>
-                </div>
-            </section> -->
         </div>
     </div>
 </div>
