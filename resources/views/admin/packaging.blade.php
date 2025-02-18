@@ -219,6 +219,7 @@
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                        {{ $o->user_name }}
                                     </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
@@ -276,6 +277,7 @@
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                        {{ $o->user_name }}
                                     </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
@@ -351,6 +353,7 @@
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
                                     <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
+                                        {{ $o->user_name }}
                                     </td>
                                     <td class="px-3 py-3 text-center">{{$o->type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
