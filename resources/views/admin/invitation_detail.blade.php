@@ -266,7 +266,7 @@
                                         <option value="DECL" {{ old('design_status', $invitation->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
                                     </select>
                                 </td>
-                            </tr>   
+                            </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$invitation->note_design ?? '-'}}</td>
@@ -337,15 +337,11 @@
                                 <td class="border border-green-main px-2 font-semibold">Alamat</td>
                                 <td class="border border-green-main px-2">{{ $invitation->address }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
-                                <td class="border border-green-main px-2">
-                                    <input type="text" name="percetakan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan" value="{{ $invitation->percetakan ?? '' }}" readonly>
-                                </td>
+                                <td class="border border-green-main px-2">{{ $invitation->printout }}</td>
                             </tr>
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
-                                <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="note_design" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request" readonly>{{ $invitation->note_design ?? '' }}</textarea>
-                                </td>
+                                <td class="border border-green-main px-2 py-1" colspan="3">{{ $invitation->note_design }}</td>
                             </tr>
                         </tbody>
                     </table>
