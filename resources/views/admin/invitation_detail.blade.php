@@ -286,8 +286,6 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     SPK
                 </div>
-                <form id="spkForm" action="{{ route('admin.invitation.spk.store', ['id' => $invitation->id]) }}" method="POST">
-                    @csrf
                 <div class="flex flex-col items-center mt-[3.25rem]">
                     <table class="w-[95%] rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
@@ -317,9 +315,9 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
-                                <td class="border border-green-main px-2"></td>
+                                <td class="border border-green-main px-2">{{ $invitation->size_fix ?? '-' }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl Fix Desain</td>
-                                <td class="border border-green-main px-2"></td>
+                                <td class="border border-green-main px-2">{{ $invitation->fix_design_date ? \Carbon\Carbon::parse($invitation->fix_design_date)->format('d/m/Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
@@ -332,13 +330,13 @@
                                 <td class="border border-green-main px-2">{{ $invitation->address }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan">
+                                    <input type="text" name="percetakan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan" value="{{ $invitation->percetakan ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request" value="{{ $invitation->note_cs ?? ''}}"></textarea>
+                                    <textarea name="request" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $invitation->request ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -350,81 +348,83 @@
                                 <th colspan="4">Rincian Request</th>
                             </tr>
                         </thead>
+                        <form id="spkForm" action="{{ route('admin.invitation.spk.store', ['id' => $invitation->id]) }}" method="POST">
+                            @csrf
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Foil</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil" value="{{ $invitation_spk->foil ?? '' }}">
+                                    <input type="text" name="foil" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Foil" value="{{ $invitation_spk->foil ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Tussel</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tussel" value="{{ $invitation_spk->tussel ?? ''}}">
+                                    <input type="text" name="tussel" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tussel" value="{{ $invitation_spk->tussel ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kertas Foil</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kertas Foil" value="{{ $invitation_spk->kertas_foil ?? ''}}">
+                                    <input type="text" name="kertas_foil" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kertas Foil" value="{{ $invitation_spk->kertas_foil ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Pita</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita" value="{{ $invitation_spk->pita ?? ''}}">
+                                    <input type="text" name="pita" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita" value="{{ $invitation_spk->pita ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Laminasi</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Laminasi" value="{{ $invitation_spk->laminasi ?? ''}}">
+                                    <input type="text" name="laminasi" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Laminasi" value="{{ $invitation_spk->laminasi ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Tali Rami</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali Rami" value="{{ $invitation_spk->tali_rami ?? ''}}">
+                                    <input type="text" name="tali_rami" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali Rami" value="{{ $invitation_spk->tali_rami ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kartu</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kartu" value="{{ $invitation_spk->kartu ?? ''}}">
+                                    <input type="text" name="kartu" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kartu" value="{{ $invitation_spk->kartu ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Waxseal</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Waxseal" value="{{ $invitation_spk->waxseal ?? ''}}">
+                                    <input type="text" name="waxseal" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Waxseal" value="{{ $invitation_spk->waxseal ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Label Nama</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Label Nama" value="{{ $invitation_spk->label_nama ?? ''}}">
+                                    <input type="text" name="label_nama" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Label Nama" value="{{ $invitation_spk->label_nama ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Kalkir</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kalkir" value="{{ $invitation_spk->kalkir ?? ''}}">
+                                    <input type="text" name="kalkir" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kalkir" value="{{ $invitation_spk->kalkir ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Plastik</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Plastik" value="{{ $invitation_spk->plastik ?? ''}}">
+                                    <input type="text" name="plastik" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Plastik" value="{{ $invitation_spk->plastik ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Kain Goni</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kain Goni" value="{{ $invitation_spk->kain_goni ?? ''}}">
+                                    <input type="text" name="kain_goni" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kain Goni" value="{{ $invitation_spk->kain_goni ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Gunungan</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Gunungan" value="{{ $invitation_spk->gunungan ?? ''}}">
+                                    <input type="text" name="gunungan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Gunungan" value="{{ $invitation_spk->gunungan ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Ornamen</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen" value="{{ $invitation_spk->ornamen ?? ''}}">
+                                    <input type="text" name="ornamen" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Ornamen" value="{{ $invitation_spk->ornamen ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Lain-lain</td>
                                 <td class="border border-green-main px-2" colspan="3">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain" value="{{ $invitation_spk->lain_lain ?? ''}}">
+                                    <input type="text" name="lain_lain" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain" value="{{ $invitation_spk->lain_lain ?? ''}}">
                                 </td>
                             </tr>
                             <tr class="h-[40px] bg-green-main/80 text-brown-enzo">
@@ -455,22 +455,22 @@
                         <tbody id="table-body">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="{{ $invitation_spk->peruntukan ?? ''}}">
+                                    <input type="text" name="peruntukan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="{{ $invitation_spk->peruntukan ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="{{ $invitation_spk->nama_ukuran ?? ''}}">
+                                    <input type="text" name="nama_ukuran" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="{{ $invitation_spk->nama_ukuran ?? ''}}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->kebutuhan ?? '0'}}" >
+                                    <input type="number" name="kebutuhan" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->kebutuhan ?? '0'}}" >
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->stok ?? '0'}}">
+                                    <input type="number" name="stok" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->stok ?? '0'}}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->jumlah_beli ?? '0'}}">
+                                    <input type="number" name="jumlah_beli" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $invitation_spk->jumlah_beli ?? '0'}}">
                                 </td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $invitation_spk->supplier ?? ''}}">
+                                    <input type="text" name="supplier" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $invitation_spk->supplier ?? ''}}">
                                 </td>
                             </tr>
                         </tbody>

@@ -11,23 +11,30 @@ class PackagingSPK extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'souvenir_id',
-        'motif',
-        'ukuran_kain',
-        'tali',
-        'zipper',
-        'kepala_zipper',
-        'lain_lain',
-        'jenis_kertas',
-        'ukuran_kertas',
-        'ukuran_mika',
+        'packaging_id',
+        'foil',
+        'kertas_foil',
+        'laminasi',
         'pita',
-        'model_pita',
+        'attire_thankscard',
+        'embos',
+        'tali',
+        'warna_tali',
+        'brosur',
+        'ornamen',
+        'lain_lain',
+        'sekat',
         'note_tambahan',
         'nama_bahan',
+        'ukuran',
         'kebutuhan',
         'stok',
         'jumlah_beli',
         'supplier'
     ];
+
+    public function packaging()
+    {
+        return $this->belongsTo(Packaging::class);
+    }
 }

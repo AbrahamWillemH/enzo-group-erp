@@ -13,6 +13,7 @@ use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\PackagingController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\SeminarKitController;
+use App\Http\Controllers\SouvenirSPKController;
 use App\Http\Controllers\PackagingSPKController;
 use App\Http\Controllers\InvitationSPKController;
 
@@ -161,6 +162,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
     Route::post('/admin/orders/souvenir', [SouvenirController::class, 'updatePaymentSubprocess'])->name('admin.souvenir.update_payment_subprocess');
     Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
+    Route::post('/admin/orders/souvenir/{id}/spk/store', [SouvenirSPKController::class, 'store'])->name('admin.souvenir.spk.store');
     Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
     Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');
 

@@ -30,4 +30,9 @@ class SouvenirSPK extends Model
         'jumlah_beli',
         'supplier'
     ];
+
+    public function souvenir()
+    {
+        return $this->belongsTo(Souvenir::class);
+    }
 }

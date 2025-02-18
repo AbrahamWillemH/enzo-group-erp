@@ -55,7 +55,13 @@ class Invitation extends Model
         'paid_off_date',
         'payment_status',
         'desain_path',
-        'subprocess'
+        'subprocess',
+        'source',
+        'done_at',
+        'size_fix',
+        'fix_design_date',
+        'percetakan',
+        'request'
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX
@@ -102,5 +108,10 @@ class Invitation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function spk()
+    {
+        return $this->hasOne(InvitationSPK::class);
     }
 }

@@ -43,7 +43,12 @@ class Packaging extends Model
         'desain_path',
         'subprocess',
         'kemas',
-        'source'
+        'source',
+        'done_at',
+        'size_fix',
+        'fix_design_date',
+        'percetakan',
+        'request'
     ];
 
     public static function generatePackagingId()
@@ -87,5 +92,10 @@ class Packaging extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function spk()
+    {
+        return $this->hasOne(PackagingSPK::class);
     }
 }

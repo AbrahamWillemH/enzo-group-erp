@@ -163,7 +163,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
-                                <td class="px-4 py-2">{{$souvenir->size_fix}}</td>
+                                <td class="px-4 py-2">{{$souvenir->size}}</td>
                             </tr>
 
                         </tbody>
@@ -282,9 +282,9 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Jadi</td>
-                                <td class="border border-green-main px-2"></td>
+                                <td class="border border-green-main px-2">{{ $souvenir->size ?? '-' }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl Fix Desain</td>
-                                <td class="border border-green-main px-2"></td>
+                                <td class="border border-green-main px-2">{{ $souvenir->fix_design_date ? \Carbon\Carbon::parse($souvenir->fix_design_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
@@ -294,10 +294,10 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kemas</td>
-                                <td class="border border-green-main px-2"></td>
+                                <td class="border border-green-main px-2">{{ $souvenir->pack ?? '-' }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Percetakan</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan">
+                                    <input type="text" name="percetakan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Percetakan" value="{{ $souvenir_spk->percetakan ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
@@ -307,7 +307,7 @@
                             <tr class="h-[60px]">
                                 <td class="border border-green-main h-[60px] px-2 font-semibold">Request</td>
                                 <td class="border border-green-main px-2 py-1" colspan="3">
-                                    <textarea name="" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->note_cs ?? '' }}</textarea>
+                                    <textarea name="request" id="" class="w-full h-[60px] rounded-sm px-2 border border-green-main" placeholder="Request">{{ $souvenir->request ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -319,61 +319,63 @@
                                 <th colspan="4">Rincian Request</th>
                             </tr>
                         </thead>
+                        <form id="spkForm" action="{{ route('admin.souvenir.spk.store', ['id' => $souvenir->id]) }}" method="POST">
+                            @csrf
                         <tbody class="">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Motif</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Motif">
+                                    <input type="text" name="motif" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Motif" value="{{ $souvenir_spk->motif ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 w-[150px] font-semibold">Jenis Kertas</td>
                                 <td class="border border-green-main px-2 w-[200px]">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Jenis Kertas">
+                                    <input type="text" name="jenis_kertas" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Jenis Kertas" value="{{ $souvenir_spk->jenis_kertas ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Uk Kain</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kain">
+                                    <input type="text" name="ukuran_kain" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kain" value="{{ $souvenir_spk->ukuran_kain ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Uk Kertas</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kertas">
+                                    <input type="text" name="ukuran_kertas" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Kertas" value="{{ $souvenir_spk->ukuran_kertas ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Tali</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali">
+                                    <input type="text" name="tali" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Tali" value="{{ $souvenir_spk->tali ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Uk Mika</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Mika">
+                                    <input type="text" name="ukuran_mika" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Uk Mika" value="{{ $souvenir_spk->ukuran_mika ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Zipper</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Zipper">
+                                    <input type="text" name="zipper" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Zipper" value="{{ $souvenir_spk->zipper ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Pita</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita">
+                                    <input type="text" name="pita" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Pita" value="{{ $souvenir_spk->pita ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kepala Zipper</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kepala Zipper">
+                                    <input type="text" name="kepala_zipper" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Kepala Zipper" value="{{ $souvenir_spk->kepala_zipper ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 font-semibold">Model Pita</td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Model Pita">
+                                    <input type="text" name="model_pita" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Model Pita" value="{{ $souvenir_spk->model_pita ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Lain-lain</td>
                                 <td class="border border-green-main px-2" colspan="3">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain">
+                                    <input type="text" name="lain_lain" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Lain-lain" value="{{ $souvenir_spk->lain_lain ?? '' }}">
                                 </td>
                             </tr>
                             <tr class="h-[40px] bg-green-main/80 text-brown-enzo">
@@ -381,7 +383,7 @@
                             </tr>
                             <tr class="h-[40px]">
                                 <td class="border border-green-main p-2" colspan="4">
-                                    <textarea name="" id="" class="w-full h-[50px] rounded-sm px-2 border border-green-main" placeholder="Note Tambahan"></textarea>
+                                    <textarea name="note_tambahan" id="" class="w-full h-[50px] rounded-sm px-2 border border-green-main" placeholder="Note Tambahan">{{ $souvenir_spk->note_tambahan ?? '' }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -403,19 +405,19 @@
                         <tbody id="table-body">
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan">
+                                    <input type="text" name="nama_bahan" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama Bahan" value="{{ $souvenir_spk->nama_bahan ?? '' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" name="kebutuhan" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->kebutuhan ?? '0' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" name="stok" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->stok ?? '0' }}">
                                 </td>
                                 <td class="border border-green-main px-2 text-center">
-                                    <input type="number" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
+                                    <input type="number" name="jumlah_beli" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="{{ $souvenir_spk->jumlah_beli ?? '0' }}"">
                                 </td>
                                 <td class="border border-green-main px-2">
-                                    <input type="text" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier">
+                                    <input type="text" name="supplier" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $souvenir_spk->supplier ?? '' }}">
                                 </td>
                             </tr>
                         </tbody>
@@ -426,8 +428,7 @@
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
                         <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
-
-
+                </form>
                 </div>
             </section>
 

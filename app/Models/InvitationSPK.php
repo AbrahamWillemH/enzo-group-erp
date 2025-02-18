@@ -18,7 +18,7 @@ class InvitationSPK extends Model
         'kartu',
         'label_nama',
         'plastik',
-        'gulungan',
+        'gunungan',
         'tussel',
         'pita',
         'tali_rami',
@@ -32,8 +32,14 @@ class InvitationSPK extends Model
         'kebutuhan',
         'stok',
         'jumlah_beli',
-        'supplier'
+        'supplier',
+        'lain_lain'
     ];
 
     public $timestamps = false;
+
+    public function invitation()
+    {
+        return $this->belongsTo(Invitation::class);
+    }
 }

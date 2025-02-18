@@ -44,7 +44,12 @@ class Souvenir extends Model
         'desain_emboss_path',
         'desain_thankscard_path',
         'subprocess',
-        'size'
+        'size',
+        'done_at',
+        'size_fix',
+        'fix_design_date',
+        'percetakan',
+        'request'
     ];
 
     /**
@@ -88,6 +93,11 @@ class Souvenir extends Model
 
         // Gabungkan tanggal dengan nomor urut
         return $date . $orderNumber;
+    }
+
+    public function spk()
+    {
+        return $this->hasOne(SouvenirSPK::class);
     }
 
 }
