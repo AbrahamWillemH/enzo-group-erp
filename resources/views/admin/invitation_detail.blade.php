@@ -514,7 +514,7 @@
                     <input type="text" name="peruntukan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="">
                 </td>
                 <td class="border border-green-main px-2">
-                    <input type="text" name="nama_ukuran[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="0">
+                    <input type="text" name="nama_ukuran[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Nama dan Ukuran" value="">
                 </td>
                 <td class="border border-green-main px-2 text-center">
                     <input type="number" name="kebutuhan[]" class="w-[60px] h-full rounded-sm border border-green-main text-center" value="0">
