@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class InvitationSPKController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'foil' => 'nullable|string|max:255',
@@ -46,15 +46,13 @@ class InvitationSPKController extends Controller
 
         $validated = $validator->validated();
 
-        // Menetapkan invitation_id dari request
-        $validated['invitation_id'] = $request->id;
+        // Ambil data berdasarkan ID dan update
+        $order = InvitationSPK::where('invitation_id', $id)->firstOrFail();
+        $order->update($validated);
 
-        // Menyimpan data ke dalam model
-        $order = new InvitationSPK($validated);
-        $order->save();
-
-        return redirect()->back()->with('success', 'Data saved successfully');
+        return redirect()->route('admin.invitation.detail', $id);
     }
+
 
 
     public function edit($id)

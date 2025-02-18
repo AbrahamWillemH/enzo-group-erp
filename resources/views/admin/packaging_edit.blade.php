@@ -130,7 +130,7 @@
             <label class="ml-2" for="finishing">Finishing</label>
 
             <input type="hidden" id="finishing_validation" name="finishing_validation" required>
-      
+
             <!-- Custom Dropdown Button -->
             <button id="dropdownButton" type="button" class="w-full text-left form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 flex justify-between items-center">
                 <span id="selectedOptions">
@@ -140,12 +140,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
             </button>
-        
+
             <!-- Dropdown List -->
             <div id="dropdownMenu" class="absolute w-full bg-white border border-[#e0e0e0] rounded-xl shadow-lg mt-1 hidden top-14">
                 <div class="flex flex-col p-2 max-h-40 overflow-y-auto space-y-1">
                     @php
-                        $selectedFinishing = explode(', ', old('finishing', $packaging->finishing)); 
+                        $selectedFinishing = explode(', ', old('finishing', $packaging->finishing));
                     @endphp
                     @foreach(['Laminasi Doff', 'Laminasi Glossy', 'Tanpa Laminasi', 'Foil', 'Emboss', 'Attire', 'Sekat', 'Brosur', 'Lainnya'] as $option)
                         <label class="flex items-center space-x-2">
@@ -156,12 +156,12 @@
                     @endforeach
                 </div>
             </div>
-        
+
             @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-        
+
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="size">Ukuran</label>
@@ -185,7 +185,7 @@
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>
-          
+
           <div class="flex items-center flex-col">
             <label class="ml-2" for="note_design">Note</label>
             <textarea id="note_design" rows="7" name="note_design"
@@ -278,7 +278,7 @@
 
             <div class="flex items-center flex-col ">
               <label for="fix_desain_date">Tanggal Fix Desain</label>
-              <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $packaging->fix_desain_date }}"
+              <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $packaging->fix_design_date }}"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('fix_desain_date')
               <small class="text-danger">{{ $message }}</small>
@@ -391,9 +391,9 @@
           let selected = Array.from(checkboxes)
               .filter(checkbox => checkbox.checked)
               .map(checkbox => checkbox.value);
-          
+
           selectedOptions.textContent = selected.length ? selected.join(", ") : "Pilih Finishing";
-          
+
           // Update hidden input value with selected options
           hiddenInput.value = JSON.stringify(selected);
       });
@@ -402,7 +402,7 @@
     // Form validation
     form.addEventListener("submit", (event) => {
       const selected = Array.from(checkboxes).filter(checkbox => checkbox.checked);
-      
+
       if (selected.length === 0) {
           event.preventDefault();
           finishingError.classList.remove("hidden");

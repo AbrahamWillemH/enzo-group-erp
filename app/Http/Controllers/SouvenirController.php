@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invitation;
 use App\Models\Souvenir;
+use App\Models\SouvenirSPK;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -86,8 +87,11 @@ class SouvenirController extends Controller
         $order->user_id = $user->id;
         $order->type = 'souvenir';
         $order->id = Souvenir::generateSouvenirId();
+        $spk = new SouvenirSPK();
+        $spk->souvenir_id = $order->id;
 
         $order->save();
+        $spk->save();
 
         return redirect()->back()->with('success', 'Data saved successfully');
     }
@@ -174,7 +178,7 @@ class SouvenirController extends Controller
 
     public function souvenirDetails($id){
         $souvenir_spk = DB::table('spk_souvenir')->find($id);
-        
+
         $souvenir = DB::table('souvenir')->find($id);
         $purchase = DB::table('purchase_souvenir')
         ->where('souvenir_id', $id)

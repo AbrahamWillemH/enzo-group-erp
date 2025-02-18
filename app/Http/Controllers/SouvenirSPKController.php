@@ -8,23 +8,25 @@ use Illuminate\Support\Facades\Validator;
 
 class SouvenirSPKController extends Controller
 {
-    
-    public function store(Request $request)
+
+    public function store(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'motif' => 'nullable|string|max:255',
-            'ukuran_kain' => 'nullable|string|max:255',
-            'tali' => 'nullable|string|max:255',
-            'zipper' => 'nullable|string|max:255',
-            'kepala_zipper' => 'nullable|string|max:255',
-            'lain_lain' => 'nullable|string|max:255',
-            'jenis_kertas'=> 'nullable|string|max:255',
-            'ukuran_kertas' => 'nullable|string|max:255',
-            'ukuran_mika' => 'nullable|string|max:255',
+            'foil' => 'nullable|string|max:255',
+            'kertas_foil' => 'nullable|string|max:255',
+            'laminasi' => 'nullable|string|max:255',
             'pita' => 'nullable|string|max:255',
-            'model_pita' => 'nullable|string|max:255',
+            'attire_thankscard' => 'nullable|string|max:255',
+            'embos' => 'nullable|string|max:255',
+            'tali' => 'nullable|string|max:255',
+            'warna_tali' => 'nullable|string|max:255',
+            'brosur' => 'nullable|string|max:255',
+            'ornamen' => 'nullable|string|max:255',
+            'lain_lain'=> 'nullable|string|max:255',
+            'sekat' => 'nullable|string|max:255',
             'note_tambahan' => 'nullable|string|max:255',
             'nama_bahan' => 'nullable|string|max:255',
+            'ukuran' => 'nullable|string|max:255',
             'kebutuhan' => 'nullable|integer',
             'stok' => 'nullable|integer',
             'jumlah_beli' => 'nullable|integer',
@@ -38,10 +40,12 @@ class SouvenirSPKController extends Controller
         }
 
         $validated = $validator->validated();
-        $order = new SouvenirSPK($validated);
-        $order->save();
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        // Ambil data berdasarkan ID dan update
+        $order = SouvenirSPK::where('souvenir_id', $id)->firstOrFail();
+        $order->update($validated);
+
+        return redirect()->route('admin.souvenir.detail', $id);
     }
 
     public function edit($id)

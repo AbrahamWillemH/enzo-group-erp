@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Packaging;
+use App\Models\PackagingSPK;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -78,8 +79,11 @@ class PackagingController extends Controller
         $order->user_id = $user->id;
         $order->type = 'packaging';
         $order->id = Packaging::generatePackagingId();
+        $spk = new PackagingSPK();
+        $spk->packaging_id = $order->id;
 
         $order->save();
+        $spk->save();
 
         return redirect()->back()->with('success', 'Data saved successfully');
     }

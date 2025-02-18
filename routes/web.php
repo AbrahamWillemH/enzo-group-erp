@@ -143,7 +143,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
     Route::post('/admin/orders/invitation', [InvitationController::class, 'updatePaymentSubprocess'])->name('admin.invitation.update_payment_subprocess');
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
-    Route::post('/admin/orders/invitation/{id}/spk/store', [InvitationSPKController::class, 'store'])->name('admin.invitation.spk.store');
+    Route::post('/admin/orders/invitation/{id}', [InvitationSPKController::class, 'store'])->name('admin.invitation.spk.store');
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
     // purchase invitation

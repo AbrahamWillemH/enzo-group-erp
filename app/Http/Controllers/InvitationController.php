@@ -98,8 +98,11 @@ class InvitationController extends Controller
         $order->user_id = $user->id;
         $order->type = 'invitation';
         $order->id = Invitation::generateInvitationId();
+        $spk = new InvitationSPK();
+        $spk->invitation_id = $order->id;
 
         $order->save();
+        $spk->save();
 
         return redirect()->back()->with('success', 'Data saved successfully');
     }
@@ -194,18 +197,15 @@ class InvitationController extends Controller
     }
 
     public function invitationDetails($id){
-        $invitation_spk = DB::table('spk_invitation')->find($id);
+        $invitation_spk = DB::table('spk_invitation')
+        ->where('invitation_id', $id)
+        ->first();
 
         $invitation = DB::table('invitation')->find($id);
-        $purchase = DB::table('purchase_invitation')
-        ->where('invitation_id', $id)
-        ->get()
-        ->map(function ($item) {
-            $item->date = Carbon::parse($item->date)->format('d/m/Y');
-            return $item;
-        });
 
-        return view('admin.invitation_detail', compact('purchase', 'invitation', 'invitation_spk')); 
+        // dd($invitation_spk);
+
+        return view('admin.invitation_detail', compact( 'invitation', 'invitation_spk'));
     }
 
     public function updatePaymentSubprocess(Request $request)

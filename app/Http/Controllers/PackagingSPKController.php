@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class PackagingSPKController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'foil' => 'nullable|string|max:255',
@@ -39,10 +39,12 @@ class PackagingSPKController extends Controller
         }
 
         $validated = $validator->validated();
-        $order = new PackagingSPK($validated);
-        $order->save();
 
-        return redirect()->back()->with('success', 'Data saved successfully');
+        // Ambil data berdasarkan ID dan update
+        $order = PackagingSPK::where('packaging_id', $id)->firstOrFail();
+        $order->update($validated);
+
+        return redirect()->route('admin.packaging.detail', $id);
     }
 
     public function edit($id)
