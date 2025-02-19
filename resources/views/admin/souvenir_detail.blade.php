@@ -284,7 +284,7 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
-                                <td class="border border-green-main px-2">{{ ucfirst($souvenir->type) }}</td>
+                                <td class="border border-green-main px-2">{{ ucfirst($souvenir->product_name) }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
                                 <td class="border border-green-main px-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
