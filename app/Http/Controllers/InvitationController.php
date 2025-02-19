@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvitationChange;
 use Storage;
 use Validator;
 use Carbon\Carbon;
@@ -113,6 +114,7 @@ class InvitationController extends Controller
         return view('admin.invitation_edit', compact('invitation'));
     }
 
+
     public function update(Request $request, $id)
     {
         // Validasi input
@@ -145,38 +147,59 @@ class InvitationController extends Controller
             'progress' => 'required|string',
             'design_status' => 'required|string',
             'printout' => 'nullable|string',
-            'price_per_pcs' => 'nullable|int',
+            'price_per_pcs' => 'nullable|integer',
             'expedition' => 'nullable|string',
             'dp2_date' => 'nullable|date',
             'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
-            'subprocess' => 'nullable|enum'
+            'subprocess' => 'nullable'
         ]);
 
         $order = Invitation::findOrFail($id);
+        $changes = [];
+
+        foreach ($validated as $column => $newValue) {
+            $oldValue = $order->$column;
+
+            if ($oldValue != $newValue) {
+                $changes[] = [
+                    'invitation_id' => $order->id,
+                    'column_name' => $column,
+                    'old_value' => $oldValue,
+                    'new_value' => $newValue,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ];
+            }
+        }
+
+        if (!empty($changes)) {
+            InvitationChange::insert($changes);
+        }
 
         if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
-            if ($order->desain_path) {
-                // dd(Storage::path( $order->desain_path));
-                if (Storage::exists($order->desain_path)) {
-                    try {
-                        Storage::delete($order->desain_path);
-                    } catch (\Exception $e) {
-                        dd($e->getMessage());
-                    }
+            if ($order->desain_path && Storage::exists($order->desain_path)) {
+                try {
+                    Storage::delete($order->desain_path);
+                } catch (\Exception $e) {
+                    dd($e->getMessage());
                 }
             }
+
             $file = $request->file('desain_path');
             $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('invitations', $fileName, 'public');
 
             $validated['desain_path'] = $filePath;
-            $validated['design_status'] = 'Pending';
+            if(@isset($validated['desain_path'])){
+                $validated['design_status'] = 'Pending';
+            }
         }
 
         $order->update($validated);
 
         return redirect()->back()->with('success', 'Data updated successfully');
     }
+
 
     public function approveOrder($id)
     {
@@ -197,24 +220,51 @@ class InvitationController extends Controller
     }
 
     public function invitationDetails($id){
+        // Ambil data dari spk_invitation
         $invitation_spk = DB::table('spk_invitation')
-        ->where('invitation_id', $id)
-        ->first();
+            ->where('invitation_id', $id)
+            ->first();
 
-        // DECODE FROM JSON TO ARRAY
-        $invitation_spk->peruntukan = json_decode($invitation_spk->peruntukan, true);
-        $invitation_spk->nama_ukuran = json_decode($invitation_spk->nama_ukuran, true);
-        $invitation_spk->kebutuhan = json_decode($invitation_spk->kebutuhan, true);
-        $invitation_spk->stok = json_decode($invitation_spk->stok, true);
-        $invitation_spk->jumlah_beli = json_decode($invitation_spk->jumlah_beli, true);
-        $invitation_spk->supplier = json_decode($invitation_spk->supplier, true);
+        // Decode JSON ke array jika data ditemukan
+        if ($invitation_spk) {
+            $invitation_spk->peruntukan = json_decode($invitation_spk->peruntukan, true);
+            $invitation_spk->nama_ukuran = json_decode($invitation_spk->nama_ukuran, true);
+            $invitation_spk->kebutuhan = json_decode($invitation_spk->kebutuhan, true);
+            $invitation_spk->stok = json_decode($invitation_spk->stok, true);
+            $invitation_spk->jumlah_beli = json_decode($invitation_spk->jumlah_beli, true);
+            $invitation_spk->supplier = json_decode($invitation_spk->supplier, true);
+        }
 
+        // Ambil data dari invitation
         $invitation = DB::table('invitation')->find($id);
 
-        // dd($invitation_spk);
+        // Ambil semua perubahan dari invitation_changes
+        $invitation_changes = DB::table('invitation_changes')
+            ->where('invitation_id', $id)
+            ->get();
 
-        return view('admin.invitation_detail', compact( 'invitation', 'invitation_spk'));
+        $changes = [];
+
+        foreach ($invitation_changes as $change) {
+            if (isset($change->column_name, $change->old_value, $change->new_value)) {
+                // Bandingkan dengan data terbaru di invitation
+                $current_value = $invitation->{$change->column_name} ?? null;
+
+                if ($current_value !== $change->old_value) {
+                    $changes[$change->column_name] = [
+                        'old' => $change->old_value,
+                        'new' => $current_value,
+                        'changed_at' => $change->created_at
+                    ];
+                }
+            }
+        }
+
+        return view('admin.invitation_detail', compact('invitation', 'invitation_spk', 'changes'));
     }
+
+
+
 
     public function updatePaymentSubprocess(Request $request)
     {

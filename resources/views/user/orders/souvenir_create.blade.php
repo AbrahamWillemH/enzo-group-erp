@@ -41,7 +41,7 @@
         Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
-    @endif    
+    @endif
     </div>
   </nav>
 
@@ -140,8 +140,8 @@
             <label class="ml-2" for="design">Desain Emboss / Label / Sablon</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="design" name="design" required>
-              <option value="Desain pribadi/template">Desain Template</option>
-              <option value="Desain custom Enzo">Desain Custom</option>
+              <option value="Desain Template">Desain Template</option>
+              <option value="Desain Custom">Desain Custom</option>
             </select>
             @error('design')
             <small class="text-danger">{{ $message }}</small>
@@ -152,8 +152,8 @@
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
               id="thankscard" name="thankscard" required>
-              <option value="Desain pribadi/template">Desain Template</option>
-              <option value="Desain custom Enzo">Desain Custom</option>
+              <option value="Desain Template">Desain Template</option>
+              <option value="Desain Custom">Desain Custom</option>
             </select>
             @error('thankscard')
             <small class="text-danger">{{ $message }}</small>

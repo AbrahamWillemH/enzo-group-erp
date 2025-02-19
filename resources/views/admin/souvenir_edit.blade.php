@@ -114,8 +114,8 @@
                 <label class="ml-2" for="design">Desain Emboss / Label Nama / Sablon</label>
                 <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
                   id="design" name="design" required>
-                  <option value="Desain Pribadi/Template" {{ old('design', $souvenir->design) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Template</option>
-                  <option value="Desain Custom Enzo" {{ old('design', $souvenir->design) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom</option>
+                  <option value="Desain Template" {{ old('design', $souvenir->design) == 'Desain Template' ? 'selected' : '' }}>Desain Template</option>
+                  <option value="Desain Custom" {{ old('design', $souvenir->design) == 'Desain Custom' ? 'selected' : '' }}>Desain Custom</option>
                 </select>
                 <input type="file" id="desain_emboss_path" name="desain_emboss_path"
                     accept=".jpg,.jpeg,.png,.pdf"
@@ -132,8 +132,8 @@
                 <label class="ml-2" for="thankscard">Desain Thankscard</label>
                 <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
                   id="thankscard" name="thankscard" required>
-                  <option value="Desain Pribadi/Template" {{ old('thankscard', $souvenir->thankscard) == 'Desain Pribadi/Template' ? 'selected' : '' }}>Desain Template</option>
-                  <option value="Desain Custom Enzo" {{ old('thankscard', $souvenir->thankscard) == 'Desain Custom Enzo' ? 'selected' : '' }}>Desain Custom</option>
+                  <option value="Desain Template" {{ old('thankscard', $souvenir->thankscard) == 'Desain Template' ? 'selected' : '' }}>Desain Template</option>
+                  <option value="Desain Custom" {{ old('thankscard', $souvenir->thankscard) == 'Desain Custom' ? 'selected' : '' }}>Desain Custom</option>
                 </select>
                 <input type="file" id="desain_thankscard_path" name="desain_thankscard_path"
                     accept=".jpg,.jpeg,.png,.pdf"

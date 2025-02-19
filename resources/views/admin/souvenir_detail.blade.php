@@ -70,8 +70,18 @@
                             </tr>
 
                         </tbody>
-
                     </table>
+                    <div class="flex flex-col gap-4">
+                        @foreach ($changes as $column => $change)
+                        <div class="alert alert-warning">
+                            <strong>Perubahan pada {{ ucfirst(str_replace('_', ' ', $column)) }}:</strong>
+                            <br>
+                            <del class="text-red-500">{{ $change['old'] }}</del>
+                            <span class="text-green-600 font-bold">{{ $change['new'] }}</span>
+                            <small class="text-gray-500">({{ $change['changed_at'] }})</small>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </section>
 

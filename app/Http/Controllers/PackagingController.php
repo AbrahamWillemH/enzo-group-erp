@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Packaging;
+use App\Models\PackagingChange;
 use App\Models\PackagingSPK;
 use Carbon\Carbon;
 use DB;
@@ -121,28 +122,44 @@ class PackagingController extends Controller
             'note_cs' => 'nullable|string',
             'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
             'subprocess' => 'nullable|enum',
-            'kemas'=>'required|string|max:255',
-            'source'=>'required|string|max:255',
-            'percetakan'=>'nullable|string|max:255',
-            'request'=>'nullable|string|max:255'
+            'kemas' => 'required|string|max:255',
+            'source' => 'required|string|max:255',
+            'percetakan' => 'nullable|string|max:255',
+            'request' => 'nullable|string|max:255'
         ]);
 
         $order = Packaging::findOrFail($id);
 
+        // Simpan perubahan ke dalam PackagingChange
+        foreach ($validated as $column => $newValue) {
+            $oldValue = $order->$column;
+
+            if ($oldValue != $newValue) {
+                PackagingChange::create([
+                    'packaging_id' => $order->id,
+                    'column_name' => $column,
+                    'old_value' => is_array($oldValue) ? implode(', ', $oldValue) : $oldValue,
+                    'new_value' => is_array($newValue) ? implode(', ', $newValue) : $newValue,
+                ]);
+            }
+        }
+
+        // Handle file desain_path
         if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
-            if ($order->desain_path) {
-                // dd(Storage::path( $order->desain_path));
-                if (Storage::exists($order->desain_path)) {
-                    try {
-                        Storage::delete($order->desain_path);
-                    } catch (\Exception $e) {
-                        dd($e->getMessage());
-                    }
-                }
+            if ($order->desain_path && Storage::exists($order->desain_path)) {
+                Storage::delete($order->desain_path);
             }
             $file = $request->file('desain_path');
             $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
             $filePath = $file->storeAs('packaging', $fileName, 'public');
+
+            // Simpan perubahan desain_path
+            PackagingChange::create([
+                'packaging_id' => $order->id,
+                'column_name' => 'desain_path',
+                'old_value' => $order->desain_path,
+                'new_value' => $filePath,
+            ]);
 
             $validated['desain_path'] = $filePath;
             $validated['design_status'] = 'Pending';
@@ -150,10 +167,12 @@ class PackagingController extends Controller
 
         $validated['finishing'] = implode(', ', $finishing);
 
+        // Update data
         $order->update($validated);
 
         return redirect()->back()->with('success', 'Data updated successfully');
     }
+
 
     public function packagingDetails($id){
         $packaging_spk = DB::table('spk_packaging')
@@ -169,7 +188,28 @@ class PackagingController extends Controller
 
 
         $packaging = DB::table('packaging')->find($id);
-        return view('admin.packaging_detail', compact('packaging', 'packaging_spk'));
+
+        $packaging_changes = DB::table('packaging_changes')
+        ->where('packaging_id', $id)
+        ->get();
+
+        $changes = [];
+
+        foreach ($packaging_changes as $change) {
+            if (isset($change->column_name, $change->old_value, $change->new_value)) {
+                // Bandingkan dengan data terbaru di packaging
+                $current_value = $packaging->{$change->column_name} ?? null;
+
+                if ($current_value !== $change->old_value) {
+                    $changes[$change->column_name] = [
+                        'old' => $change->old_value,
+                        'new' => $current_value,
+                        'changed_at' => $change->created_at
+                    ];
+                }
+            }
+        }
+        return view('admin.packaging_detail', compact('packaging', 'packaging_spk', 'changes'));
     }
 
     public function updatePaymentSubprocess(Request $request)
