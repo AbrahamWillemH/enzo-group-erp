@@ -233,7 +233,7 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
-                                <td class="border border-green-main px-2">{{ ucfirst($packaging->type) }}</td>
+                                <td class="border border-green-main px-2">{{ ucfirst($packaging->package_type) }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
                                 <td class="border border-green-main px-2">{{ $packaging->dp2_date ? \Carbon\Carbon::parse($packaging->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
