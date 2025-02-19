@@ -385,4 +385,56 @@ class AdminController extends Controller
             'readyNames',
             'doneNames'));
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth'); // Pastikan hanya user yang login dapat mengakses
+        $this->middleware(function ($request, $next) {
+            if (Auth::user()->role !== 'admin') {
+                return response()->json(['message' => 'Unauthorized'], 403);
+            }
+            return $next($request);
+        });
+    }
+
+    // Fungsi untuk mengubah credential admin
+    public function updateCredential(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
+            'password' => 'nullable|min:8|confirmed',
+        ]);
+
+        $admin = Auth::user();
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+
+        if ($request->filled('password')) {
+            $admin->password = Hash::make($request->password);
+        }
+
+        $admin->save();
+
+        return response()->json(['message' => 'Credential updated successfully.']);
+    }
+
+    // Fungsi untuk menambah akun admin baru
+    public function createAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'admin', // Set default role sebagai admin
+        ]);
+
+        return response()->json(['message' => 'Admin account created successfully.', 'user' => $user]);
+    }
 }
