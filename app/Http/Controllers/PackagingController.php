@@ -8,6 +8,7 @@ use App\Models\PackagingSPK;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Schema;
 use Storage;
 use Validator;
 
@@ -140,6 +141,7 @@ class PackagingController extends Controller
                     'column_name' => $column,
                     'old_value' => is_array($oldValue) ? implode(', ', $oldValue) : $oldValue,
                     'new_value' => is_array($newValue) ? implode(', ', $newValue) : $newValue,
+                    'changer_name' => auth()->user()->name
                 ]);
             }
         }
@@ -179,13 +181,14 @@ class PackagingController extends Controller
         ->where('packaging_id', $id)
         ->first();
 
-        $packaging_spk->nama_bahan = json_decode($packaging_spk->nama_bahan, true);
-        $packaging_spk->ukuran = json_decode($packaging_spk->ukuran, true);
-        $packaging_spk->kebutuhan = json_decode($packaging_spk->kebutuhan, true);
-        $packaging_spk->stok = json_decode($packaging_spk->stok, true);
-        $packaging_spk->jumlah_beli = json_decode($packaging_spk->jumlah_beli, true);
-        $packaging_spk->supplier = json_decode($packaging_spk->supplier, true);
-
+        if ($packaging_spk) {
+            $packaging_spk->nama_bahan = json_decode($packaging_spk->nama_bahan, true);
+            $packaging_spk->ukuran = json_decode($packaging_spk->ukuran, true);
+            $packaging_spk->kebutuhan = json_decode($packaging_spk->kebutuhan, true);
+            $packaging_spk->stok = json_decode($packaging_spk->stok, true);
+            $packaging_spk->jumlah_beli = json_decode($packaging_spk->jumlah_beli, true);
+            $packaging_spk->supplier = json_decode($packaging_spk->supplier, true);
+        }
 
         $packaging = DB::table('packaging')->find($id);
 
@@ -204,7 +207,8 @@ class PackagingController extends Controller
                     $changes[$change->column_name] = [
                         'old' => $change->old_value,
                         'new' => $current_value,
-                        'changed_at' => $change->created_at
+                        'changed_at' => $change->created_at,
+                        'changed_by' => $change->changer_name
                     ];
                 }
             }
@@ -276,4 +280,86 @@ class PackagingController extends Controller
         return view('admin.reminder_packaging', ['orders' => $sortedOrders]);
     }
 
+    public function updateDesignStatus(Request $request, $id)
+    {
+        $request->validate([
+            'design_status' => 'required|in:Pending,ACC,DECL',
+        ]);
+
+        $order = DB::table('packaging')->where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan!');
+        }
+
+        DB::table('packaging')->where('id', $id)->update([
+            'design_status' => $request->design_status,
+            'updated_at' => now(),
+        ]);
+
+        $changes = [];
+
+        foreach ($request->all() as $column => $newValue) {
+            if (!Schema::hasColumn('packaging', $column)) {
+                continue;
+            }
+
+            $oldValue = $order->$column;
+
+            if ($oldValue != $newValue) {
+                $changes[] = [
+                    'packaging_id' => $id,
+                    'column_name' => $column,
+                    'old_value' => $oldValue,
+                    'new_value' => $newValue,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name
+                ];
+            }
+        }
+
+        if (!empty($changes)) {
+            DB::table('packaging_changes')->insert($changes);
+        }
+
+        return redirect()->back()->with('success', 'Status desain berhasil diperbarui!');
+    }
+
+    public function uploadDesign(Request $request, $id)
+    {
+        $request->validate([
+            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        $order = Packaging::find($id);
+
+        if (!$order) {
+            return back()->with('error', 'Order tidak ditemukan.');
+        }
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+
+            if ($order->desain_path && Storage::exists($order->desain_path)) {
+                try {
+                    Storage::delete($order->desain_path);
+                } catch (\Exception $e) {
+                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                }
+            }
+
+            $file = $request->file('desain_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('packaging', $fileName, 'public');
+
+            $order->update([
+                'desain_path' => $filePath,
+                'design_status' => 'Pending'
+            ]);
+
+            return back()->with('success', 'File berhasil diunggah.');
+        }
+
+        return back()->with('error', 'Gagal mengunggah file.');
+    }
 }

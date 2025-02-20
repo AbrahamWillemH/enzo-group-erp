@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvitationChange;
+use Schema;
 use Storage;
 use Validator;
 use Carbon\Carbon;
@@ -167,7 +168,8 @@ class InvitationController extends Controller
                     'old_value' => $oldValue,
                     'new_value' => $newValue,
                     'created_at' => now(),
-                    'updated_at' => now()
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name
                 ];
             }
         }
@@ -254,7 +256,8 @@ class InvitationController extends Controller
                     $changes[$change->column_name] = [
                         'old' => $change->old_value,
                         'new' => $current_value,
-                        'changed_at' => $change->created_at
+                        'changed_at' => $change->created_at,
+                        'changed_by' => $change->changer_name
                     ];
                 }
             }
@@ -350,37 +353,94 @@ class InvitationController extends Controller
             return $item;
         });
 
-        // $souvenirs = Souvenir::where('progress', '!=', 'Selesai')
-        //     ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'souvenir';
-        //         return $item;
-        //     });
-
-
-        // $seminarkits = SeminarKit::whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'seminarkit';
-        //         return $item;
-        //     });
-
-        // $packagings = Packaging::where('progress', '!=', 'Selesai')
-        //     ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
-        //     ->get()
-        //     ->map(function ($item) {
-        //         $item->type = 'packaging';
-        //         return $item;
-        //     });
-
-        // Gabungkan semua data
-        $orders = $invitations;
-
         $sortedOrders = $invitations->sortBy('deadline_date');
 
         // Kirim data ke view
         return view('admin.reminder_invitation', ['orders' => $sortedOrders]);
     }
 
+    public function updateDesignStatus(Request $request, $id)
+    {
+        $request->validate([
+            'design_status' => 'required|in:Pending,ACC,DECL',
+        ]);
+
+        $order = DB::table('invitation')->where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan!');
+        }
+
+        DB::table('invitation')->where('id', $id)->update([
+            'design_status' => $request->design_status,
+            'updated_at' => now(),
+        ]);
+
+        $changes = [];
+
+        foreach ($request->all() as $column => $newValue) {
+            if (!Schema::hasColumn('invitation', $column)) {
+                continue;
+            }
+
+            $oldValue = $order->$column;
+
+            if ($oldValue != $newValue) {
+                $changes[] = [
+                    'invitation_id' => $id,
+                    'column_name' => $column,
+                    'old_value' => $oldValue,
+                    'new_value' => $newValue,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name
+                ];
+            }
+        }
+
+        if (!empty($changes)) {
+            DB::table('invitation_changes')->insert($changes);
+        }
+
+        return redirect()->back()->with('success', 'Status desain berhasil diperbarui!');
+    }
+
+    public function uploadDesign(Request $request, $id)
+    {
+        $request->validate([
+            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Sesuaikan dengan format dan ukuran file
+        ]);
+
+        $order = Invitation::find($id); // Gantilah dengan ID order yang sesuai (bisa dari request)
+
+        if (!$order) {
+            return back()->with('error', 'Order tidak ditemukan.');
+        }
+
+        if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            // Hapus file lama jika ada
+            if ($order->desain_path && Storage::exists($order->desain_path)) {
+                try {
+                    Storage::delete($order->desain_path);
+                } catch (\Exception $e) {
+                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                }
+            }
+
+            // Simpan file baru
+            $file = $request->file('desain_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('invitations', $fileName, 'public');
+
+            // Simpan path ke database
+            $order->update([
+                'desain_path' => $filePath,
+                'design_status' => 'Pending'
+            ]);
+
+            return back()->with('success', 'File berhasil diunggah.');
+        }
+
+        return back()->with('error', 'Gagal mengunggah file.');
+    }
 }

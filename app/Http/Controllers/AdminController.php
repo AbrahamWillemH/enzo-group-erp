@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Invitation;
 use App\Models\Packaging;
 use App\Models\Souvenir;
+use App\Models\User;
+use Auth;
 use Carbon\Carbon;
+use Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -384,5 +387,52 @@ class AdminController extends Controller
             'prodNames',
             'readyNames',
             'doneNames'));
+    }
+
+    public function createNewAdminShow(){
+        return view('admin.master-data.create_admin');
+    }
+
+    public function changeCredentialsShow(){
+        return view('admin.master-data.change_password');
+    }
+
+    public function createNewAdmin(Request $request) {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|min:8',
+        ]);
+
+        $admin = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'admin'
+        ]);
+
+        return redirect()->back()->with('success', 'Admin berhasil dibuat!');
+    }
+
+    public function changeCredentials(Request $request) {
+        $admin = Auth::user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'password' => 'nullable|string|min:8',
+            'new_password' => 'nullable|string|min:8',
+        ]);
+
+        $admin->name = $request->name;
+        $admin->email = $request->email;
+
+        if ($request->filled('password')) {
+            $admin->password = Hash::make($request->new_password);
+        }
+
+        $admin->save();
+
+        return redirect()->back()->with('success', 'Credential admin berhasil diperbarui!');
     }
 }

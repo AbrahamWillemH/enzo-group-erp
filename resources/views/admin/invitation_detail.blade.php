@@ -27,8 +27,6 @@
             </div>
         </header>
         <main class="bg-green-light">
-            <form id="spkForm" action="{{ route('admin.invitation.spk.store', ['id' => $invitation->id]) }}" method="POST">
-                @csrf
             <section id="data_pemesan" class="data_pemesan mb-20">
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DATA PEMESAN</div>
                 <div class="data mt-[7.25rem] mb-5 px-3 gap-0 flex justify-center capitalize">
@@ -87,6 +85,7 @@
                                     <del class="text-red-500">{{ $change['old'] }}</del>
                                     <span class="text-green-600 font-bold">{{ $change['new'] }}</span>
                                     <small class="text-gray-500">({{ $change['changed_at'] }})</small>
+                                    <span class="text-black font-bold"> - {{ $change['changed_by'] }}</span>
                                 </div>
                                 @endforeach
                             </div>
@@ -225,22 +224,22 @@
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2 relative group">
+                                    <!-- Overlay Hover -->
+                                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <button onclick="openModal(event, '{{ $invitation->id }}')"
+                                                class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
+                                            Ubah Desain
+                                        </button>
+                                    </div>
                                     @if (!is_null($invitation->desain_path))
                                         <div class="relative">
-                                            <img src="$invitation->desain_path" 
-                                                alt="Desain" 
-                                                class="object-cover w-full h-full 
-                                                @if ($invitation->design_status == 'DECL') border-8 border-red-600 
-                                                @elseif($invitation->design_status == 'ACC') border-8 border-green-600 
+                                            <img src="$invitation->desain_path"
+                                                alt="Desain"
+                                                class="object-cover w-full h-full
+                                                @if ($invitation->design_status == 'DECL') border-8 border-red-600
+                                                @elseif($invitation->design_status == 'ACC') border-8 border-green-600
                                                 @endif">
-                                            
-                                            <!-- Overlay Hover -->
-                                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <button onclick="openModal(event, '{{ $invitation->id }}')"
-                                                        class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
-                                                    Ubah Desain
-                                                </button>
-                                            </div>
+
                                         </div>
                                     @else
                                         <p class="text-center">Belum Terdapat Desain</p>
@@ -254,9 +253,9 @@
                     <div id="modal-upload" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden">
                         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                             <h2 class="text-xl font-bold mb-4">Ubah Desain </h2>
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{route('invitation.upload.image', ['id' => $invitation->id])}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="file" id="file-upload" name="desain" class="block w-full text-sm text-gray-600">
+                                <input type="file" id="file-upload" name="desain_path" class="block w-full text-sm text-gray-600">
                                 <div class="flex justify-end mt-4">
                                     <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal()">Batal</button>
                                     <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2" onclick="validateUpload(event)">Upload</button>
@@ -311,10 +310,9 @@
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
                                 <td class="px-4 py-2">
-                                    <form action="" method="POST">
+                                    <form action="{{route('admin.invitation.design', ['id' => $invitation->id])}}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="" value="">
-                                        <select class="w-1/2 px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-green-shadow/20 focus:outline-none transition" onchange="this.form.submit()">
+                                        <select name="design_status" class="w-1/2 px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-green-shadow/20 focus:outline-none transition" onchange="this.form.submit()">
                                             <option value="Pending" {{ old('design_status', $invitation->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
                                             <option value="ACC" {{ old('design_status', $invitation->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
                                             <option value="DECL" {{ old('design_status', $invitation->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
@@ -349,6 +347,8 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">
                     SPK
                 </div>
+                <form id="spkForm" action="{{ route('admin.invitation.spk.store', ['id' => $invitation->id]) }}" method="POST">
+                    @csrf
                 <div class="flex flex-col items-center mt-[3.25rem]">
                     <table class="w-[95%] rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[50px] bg-green-main/80 text-brown-enzo">
@@ -372,7 +372,7 @@
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Jenis</td>
-                                <td class="border border-green-main px-2">{{ ucfirst($invitation->type) }}</td>
+                                <td class="border border-green-main px-2">{{ $invitation->product_name }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Tgl DP2</td>
                                 <td class="border border-green-main px-2">{{ $invitation->dp2_date ? \Carbon\Carbon::parse($invitation->dp2_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
@@ -538,7 +538,7 @@
                     </table>
 
                     <div class="h-[35px] mt-8 flex gap-5">
-                        <button type="button" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Cetak</button>
+                        <a href="{{ route('pdf.generate', ['type' => 'invitation', 'id' => $invitation_spk->id, 'parent_id' => $invitation->id]) }}" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg text-center">Cetak</a>
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
                         <button type="submit" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
@@ -663,7 +663,7 @@
     });--}}
 
     function openModal(event, id) {
-        event.preventDefault(); 
+        event.preventDefault();
         document.getElementById('modal-upload').classList.remove('hidden');
     }
 
@@ -674,7 +674,7 @@
     function validateUpload(event) {
         let fileInput = document.getElementById('file-upload');
         if (!fileInput.files.length) {
-            event.preventDefault(); 
+            event.preventDefault();
             alert("Silakan pilih file terlebih dahulu sebelum mengupload!");
         }
     }
@@ -686,7 +686,7 @@
     function closeHistoryModal() {
         document.getElementById('modal-history').classList.add('hidden');
     }
-   
+
 
 </script>
 @endsection

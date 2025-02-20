@@ -31,9 +31,14 @@ Route::get('/pkg', function(){
 //     return view('frontend.inventorytest');
 // });
 
-Route::get('/generate-pdf', [PdfController::class, 'generate']);
-Route::get('/cetak', function(){
+Route::get('/cetak_packaging', function(){
     return view('admin.spk_packaging');
+});
+Route::get('/cetak_souvenir', function(){
+    return view('admin.spk_souvenir');
+});
+Route::get('/cetak_invitation', function(){
+    return view('admin.spk_invitation');
 });
 
 Route::get('/addadmin', function(){
@@ -154,9 +159,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/invitation/{id}', [InvitationSPKController::class, 'store'])->name('admin.invitation.spk.store');
     Route::get('/admin/orders/invitation/{id}/edit', [InvitationController::class, 'edit'])->name('admin.invitation.edit');
     Route::post('/admin/orders/invitation/{id}/update', [InvitationController::class, 'update'])->name('admin.invitation.update');
-    // purchase invitation
-    // Route::post('/admin/orders/invitation/{id}/purchase/store', [InvitationController::class, 'purchaseInvitationStore'])->name('admin.invitation.purchase.store');
-    // Route::post('/admin/orders/invitation/{id}/purchase/delete', [InvitationController::class, 'purchaseInvitationDelete'])->name('admin.invitation.purchase.delete');
+    Route::post('/admin/orders/invitation/{id}/design-update', [InvitationController::class, 'updateDesignStatus'])->name('admin.invitation.design');
+    Route::post('/admin/orders/invitation/{id}/upload-design', [InvitationController::class, 'uploadDesign'])->name('invitation.upload.image');
 
     //packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
@@ -165,6 +169,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/packaging/{id}', [PackagingSPKController::class, 'store'])->name('admin.packaging.spk.store');
     Route::get('/admin/orders/packaging/{id}/edit', [PackagingController::class, 'edit'])->name('admin.packaging.edit');
     Route::post('/admin/orders/packaging/{id}/update', [PackagingController::class, 'update'])->name('admin.packaging.update');
+    Route::post('/admin/orders/packaging/{id}/design-update', [PackagingController::class, 'updateDesignStatus'])->name('admin.packaging.design');
+    Route::post('/admin/orders/packaging/{id}/upload-design', [PackagingController::class, 'uploadDesign'])->name('packaging.upload.image');
 
     //souvenir
     Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
@@ -173,6 +179,8 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/souvenir/{id}', [SouvenirSPKController::class, 'store'])->name('admin.souvenir.spk.store');
     Route::get('/admin/orders/souvenir/{id}/edit', [SouvenirController::class, 'edit'])->name('admin.souvenir.edit');
     Route::post('/admin/orders/souvenir/{id}/update', [SouvenirController::class, 'update'])->name('admin.souvenir.update');
+    Route::post('/admin/orders/souvenir/{id}/design-update', [SouvenirController::class, 'updateDesignStatus'])->name('admin.souvenir.design');
+    Route::post('/admin/orders/souvenir/{type}/{id}/upload-design', [SouvenirController::class, 'uploadDesign'])->name('souvenir.upload.image');
 
     // pesanan selesai
     Route::get('/admin/orders/done', [OrderController::class, 'finishedOrders'])->name('admin.done.view');
@@ -195,6 +203,15 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/api/deadlines/invitations', [InvitationController::class, 'getDeadlinesInvitations']);
     Route::get('/api/deadlines/souvenirs', [SouvenirController::class, 'getDeadlinesSouvenirs']);
     Route::get('/api/deadlines/packagings', [PackagingController::class, 'getDeadlinesPackagings']);
+
+    // master-data
+    Route::get('/admin/create-admin', [AdminController::class, 'createNewAdminShow'])->name('admin.create.admin.show');
+    Route::get('/admin/change-credentials', [AdminController::class, 'changeCredentialsShow'])->name('admin.change.credentials.show');
+    Route::post('/admin/create-admin', [AdminController::class, 'createNewAdmin'])->name('admin.create.admin');
+    Route::post('/admin/change-credentials', [AdminController::class, 'changeCredentials'])->name('admin.change.credentials');
+
+    // generate pdf
+    Route::get('/pdf/generate/{type}/{id}/{parent_id}', [PdfController::class, 'generate'])->name('pdf.generate');
 });
 
 // User routes

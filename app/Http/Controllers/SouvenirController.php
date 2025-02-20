@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Types\Nullable;
+use Schema;
 use Storage;
 use Validator;
 
@@ -144,6 +145,7 @@ class SouvenirController extends Controller
                     'column_name' => $column,
                     'old_value' => $oldValue,
                     'new_value' => $newValue,
+                    'changer_name' => auth()->user()->name
                 ]);
             }
         }
@@ -203,11 +205,13 @@ class SouvenirController extends Controller
         ->first();
 
         // DECODE FROM JSON TO ARRAY
-        $souvenir_spk->nama_bahan = json_decode($souvenir_spk->nama_bahan, true);
-        $souvenir_spk->kebutuhan = json_decode($souvenir_spk->kebutuhan, true);
-        $souvenir_spk->stok = json_decode($souvenir_spk->stok, true);
-        $souvenir_spk->jumlah_beli = json_decode($souvenir_spk->jumlah_beli, true);
-        $souvenir_spk->supplier = json_decode($souvenir_spk->supplier, true);
+        if($souvenir_spk){
+            $souvenir_spk->nama_bahan = json_decode($souvenir_spk->nama_bahan, true);
+            $souvenir_spk->kebutuhan = json_decode($souvenir_spk->kebutuhan, true);
+            $souvenir_spk->stok = json_decode($souvenir_spk->stok, true);
+            $souvenir_spk->jumlah_beli = json_decode($souvenir_spk->jumlah_beli, true);
+            $souvenir_spk->supplier = json_decode($souvenir_spk->supplier, true);
+        }
 
         $souvenir = DB::table('souvenir')->find($id);
 
@@ -226,7 +230,8 @@ class SouvenirController extends Controller
                     $changes[$change->column_name] = [
                         'old' => $change->old_value,
                         'new' => $current_value,
-                        'changed_at' => $change->created_at
+                        'changed_at' => $change->created_at,
+                        'changed_by' => $change->changer_name
                     ];
                 }
             }
@@ -254,11 +259,11 @@ class SouvenirController extends Controller
 
     public function getDeadlinesSouvenirs()
     {
-        // $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+        // $souvenir = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
         $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
         // $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
 
-        // $orders = $invitations->concat($souvenirs)->concat($packagings);
+        // $orders = $souvenir->concat($souvenirs)->concat($packagings);
 
         // Format data untuk kalender
         $events = $souvenirs->map(function ($order) {
@@ -298,4 +303,118 @@ class SouvenirController extends Controller
         return view('admin.reminder_souvenir', ['orders' => $sortedOrders]);
     }
 
+    public function updateDesignStatus(Request $request, $id)
+    {
+        $request->validate([
+            'design_status' => 'required|in:Pending,ACC,DECL',
+        ]);
+
+        $order = DB::table('souvenir')->where('id', $id)->first();
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Data tidak ditemukan!');
+        }
+
+        DB::table('souvenir')->where('id', $id)->update([
+            'design_status' => $request->design_status,
+            'updated_at' => now(),
+        ]);
+
+        $changes = [];
+
+        foreach ($request->all() as $column => $newValue) {
+            if (!Schema::hasColumn('souvenir', $column)) {
+                continue;
+            }
+
+            $oldValue = $order->$column;
+
+            if ($oldValue != $newValue) {
+                $changes[] = [
+                    'souvenir_id' => $id,
+                    'column_name' => $column,
+                    'old_value' => $oldValue,
+                    'new_value' => $newValue,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name
+                ];
+            }
+        }
+
+        if (!empty($changes)) {
+            DB::table('souvenir_changes')->insert($changes);
+        }
+
+        return redirect()->back()->with('success', 'Status desain berhasil diperbarui!');
+    }
+
+    public function uploadDesign(Request $request, $type, $id)
+    {
+        if($type == 'thankscard'){
+            $request->validate([
+                'desain_thankscard_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            ]);
+        } else {
+            $request->validate([
+                'desain_emboss_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            ]);
+        }
+
+        $order = Souvenir::find($id);
+
+        if (!$order) {
+            return back()->with('error', 'Order tidak ditemukan.');
+        }
+
+        if ($request->hasFile('desain_emboss_path') && $request->file('desain_emboss_path')->isValid()) {
+            // Hapus file lama jika ada
+            if ($order->desain_emboss_path && Storage::exists($order->desain_emboss_path)) {
+                try {
+                    Storage::delete($order->desain_emboss_path);
+                } catch (\Exception $e) {
+                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                }
+            }
+
+            // Simpan file baru
+            $file = $request->file('desain_emboss_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('souvenir', $fileName, 'public');
+
+            // Simpan path ke database
+            $order->update([
+                'desain_emboss_path' => $filePath,
+                'design_status' => 'Pending'
+            ]);
+
+            return back()->with('success', 'File berhasil diunggah.');
+        }
+
+        if ($request->hasFile('desain_thankscard_path') && $request->file('desain_thankscard_path')->isValid()) {
+            // Hapus file lama jika ada
+            if ($order->desain_thankscard_path && Storage::exists($order->desain_thankscard_path)) {
+                try {
+                    Storage::delete($order->desain_thankscard_path);
+                } catch (\Exception $e) {
+                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                }
+            }
+
+            // Simpan file baru
+            $file = $request->file('desain_thankscard_path');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('souvenir', $fileName, 'public');
+
+            // Simpan path ke database
+            $order->update([
+                'desain_thankscard_path' => $filePath,
+                'design_status' => 'Pending'
+            ]);
+
+            return back()->with('success', 'File berhasil diunggah.');
+        }
+
+        return back()->with('error', 'Gagal mengunggah file.');
+    }
 }
