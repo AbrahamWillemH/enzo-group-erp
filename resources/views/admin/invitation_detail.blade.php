@@ -11,7 +11,13 @@
             <div class="flex text-left text-xl font-bold items-center text-brown-enzo">
                 <h1>DETAIL PEMESANAN UNDANGAN</h1>
             </div>
-            <div class="font-medium flex flex-row">
+            <!-- Navbar -->
+            <div class="font-medium flex flex-row gap-4">
+                <!-- Tombol History -->
+                <button onclick="openHistoryModal()" class="text-brown-enzo flex flex-col justify-center items-center group w-full">
+                    History
+                    <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
+                </button>
                 <a href="#spk" class="text-brown-enzo flex flex-col justify-center items-center group w-full">SPK
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
@@ -19,7 +25,6 @@
                     <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-[90%] transition-all duration-500"></div>
                 </a>
             </div>
-
         </header>
         <main class="bg-green-light">
             <form id="spkForm" action="{{ route('admin.invitation.spk.store', ['id' => $invitation->id]) }}" method="POST">
@@ -69,17 +74,28 @@
                         </tbody>
 
                     </table>
-                    <div class="flex flex-col gap-4">
-                        @foreach ($changes as $column => $change)
-                        <div class="alert alert-warning">
-                            <strong>Perubahan pada {{ ucfirst(str_replace('_', ' ', $column)) }}:</strong>
-                            <br>
-                            <del class="text-red-500">{{ $change['old'] }}</del>
-                            <span class="text-green-600 font-bold">{{ $change['new'] }}</span>
-                            <small class="text-gray-500">({{ $change['changed_at'] }})</small>
+
+                    <!-- Modal History -->
+                    <div id="modal-history" class="fixed inset-y-0 left-1/5 w-4/5 bg-black/50 flex items-center justify-center hidden">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-[500px]">
+                            <h2 class="text-xl font-bold mb-4">Riwayat Perubahan</h2>
+                            <div class="flex flex-col gap-4 max-h-[300px] overflow-y-auto">
+                                @foreach ($changes as $column => $change)
+                                <div class="alert alert-warning border border-yellow-400 p-3 rounded-lg">
+                                    <strong>Perubahan pada {{ ucfirst(str_replace('_', ' ', $column)) }}:</strong>
+                                    <br>
+                                    <del class="text-red-500">{{ $change['old'] }}</del>
+                                    <span class="text-green-600 font-bold">{{ $change['new'] }}</span>
+                                    <small class="text-gray-500">({{ $change['changed_at'] }})</small>
+                                </div>
+                                @endforeach
+                            </div>
+                            <div class="flex justify-end mt-4">
+                                <button onclick="closeHistoryModal()" class="px-4 py-2 bg-gray-300 rounded-md">Tutup</button>
+                            </div>
                         </div>
-                        @endforeach
                     </div>
+
                 </div>
             </section>
 
@@ -663,6 +679,14 @@
         }
     }
 
+    function openHistoryModal() {
+        document.getElementById('modal-history').classList.remove('hidden');
+    }
+
+    function closeHistoryModal() {
+        document.getElementById('modal-history').classList.add('hidden');
+    }
+   
 
 </script>
 @endsection
