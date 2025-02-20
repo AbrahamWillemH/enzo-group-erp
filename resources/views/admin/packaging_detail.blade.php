@@ -80,23 +80,47 @@
                         </thead>
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-2 py-2">
+                                <td class="w-[35%] px-2 py-2 relative group">
                                     @if (!is_null($packaging->desain_path))
-                                        @if ($packaging->design_status == 'DECL')
-                                        <img src="{{ asset('storage/app/public/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full border-8 border-red-600">
-                                        @elseif($packaging->design_status == 'ACC')
-                                        <img src="{{ asset('storage/app/public/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full border-8 border-green-600">
-                                        @else
-                                        <img src="{{ asset('storage/app/public/' . $packaging->desain_path) }}" alt="Desain Packaging" class="object-cover w-full h-full">
-                                        @endif
+                                        <div class="relative">
+                                            <img src="$packaging->desain_path" 
+                                                alt="Desain" 
+                                                class="object-cover w-full h-full 
+                                                @if ($packaging->design_status == 'DECL') border-8 border-red-600 
+                                                @elseif($packaging->design_status == 'ACC') border-8 border-green-600 
+                                                @endif">
+                                            
+                                            <!-- Overlay Hover -->
+                                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                <button onclick="openModal(event, '{{ $packaging->id }}')"
+                                                        class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
+                                                    Ubah Desain
+                                                </button>
+                                            </div>
+                                        </div>
                                     @else
                                         <p class="text-center">Belum Terdapat Desain</p>
                                     @endif
                                 </td>
                             </tr>
-
                         </tbody>
                     </table>
+
+                    <!-- Modal Upload -->
+                    <div id="modal-upload" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                            <h2 class="text-xl font-bold mb-4">Ubah Desain </h2>
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="file" id="file-upload" name="desain" class="block w-full text-sm text-gray-600">
+                                <div class="flex justify-end mt-4">
+                                    <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal()">Batal</button>
+                                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2" onclick="validateUpload(event)">Upload</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                     <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
                         <thead>
                             <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
@@ -530,6 +554,22 @@
         });
     });--}}
 
+    function openModal(event, id) {
+        event.preventDefault(); 
+        document.getElementById('modal-upload').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('modal-upload').classList.add('hidden');
+    }
+
+    function validateUpload(event) {
+        let fileInput = document.getElementById('file-upload');
+        if (!fileInput.files.length) {
+            event.preventDefault(); 
+            alert("Silakan pilih file terlebih dahulu sebelum mengupload!");
+        }
+    }
 
 
 </script>

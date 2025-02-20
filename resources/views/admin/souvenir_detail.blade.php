@@ -600,13 +600,11 @@
     });--}}
 
     function openModal(event, designType) {
-        event.preventDefault(); // Mencegah submit otomatis
+        event.preventDefault();
 
-        // Ganti judul modal sesuai desain yang sedang diedit
         let modalTitle = document.getElementById('modal-title');
         modalTitle.textContent = designType === 'emboss' ? "Ubah Desain Emboss / Label Nama / Sablon" : "Ubah Desain Thankscard";
 
-        // Tampilkan modal
         document.getElementById('modal-upload').classList.remove('hidden');
     }
 
@@ -618,8 +616,8 @@
         let fileInput = document.getElementById('file-upload');
 
         if (!fileInput.files.length) {
-            event.preventDefault(); // Mencegah form submit
-            alert("Silakan pilih file terlebih dahulu sebelum mengupload!"); // Tampilkan peringatan
+            event.preventDefault(); 
+            alert("Silakan pilih file terlebih dahulu sebelum mengupload!"); 
         }
     }
 
