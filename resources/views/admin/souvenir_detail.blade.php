@@ -123,7 +123,7 @@
                                         </div>
                                         @if (!is_null($souvenir->desain_emboss_path))
                                             <div class="relative">
-                                                <img src="$souvenir->desain_emboss_path"
+                                                <img src="{{ asset('storage/app/public' . $souvenir->desain_emboss_path)}}"
                                                     alt="Desain Emboss"
                                                     class="object-cover w-full h-full
                                                     @if ($souvenir->design_status == 'DECL') border-8 border-red-600
@@ -158,7 +158,7 @@
                                         </div>
                                         @if (!is_null($souvenir->desain_thankscard_path))
                                             <div class="relative">
-                                                <img src="$souvenir->desain_thankscard_path"
+                                                <img src="{{ asset('storage/app/public' . $invitation->desain_thankscard_path)}}"
                                                     alt="Desain Thankscard"
                                                     class="object-cover w-full h-full
                                                     @if ($souvenir->design_status == 'DECL') border-8 border-red-600
@@ -592,7 +592,7 @@
                         }
                     });
 
-                    fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
+                    fetch("{{route('admin.souvenir.purchase.store', ['id' => $souvenir->id])}}", {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,

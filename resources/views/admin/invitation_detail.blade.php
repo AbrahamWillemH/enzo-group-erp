@@ -233,7 +233,7 @@
                                     </div>
                                     @if (!is_null($invitation->desain_path))
                                         <div class="relative">
-                                            <img src="$invitation->desain_path"
+                                            <img src="{{ asset('storage/app/public' . $invitation->desain_path)}}"
                                                 alt="Desain"
                                                 class="object-cover w-full h-full
                                                 @if ($invitation->design_status == 'DECL') border-8 border-red-600
@@ -364,7 +364,7 @@
                                 <td class="border border-green-main w-[140px] px-2">{{ $invitation->created_at ? \Carbon\Carbon::parse($invitation->created_at)->format('d-m-Y') : '-' }}</td>
                                 <td class="border border-green-main p-2 w-[450px]" rowspan="6">
                                     @if (!is_null($invitation->desain_path))
-                                    <img src="{{ asset('storage/app/public/' . $invitation->desain_path) }}" alt="Desain Undangan" class="w-full h-full object-cover rounded-md">
+                                    <img src="{{ asset('storage/app/public' . $invitation->desain_path)}}" alt="Desain Undangan" class="w-full h-full object-cover rounded-md">
                                     @else
                                     <p class="text-center">Belum Terdapat Desain</p>
                                     @endif
