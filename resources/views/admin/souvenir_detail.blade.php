@@ -89,55 +89,91 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-20">DETAIL</div>
                 <div class="flex justify-center items-center mt-[3.25rem] mb-5 px-4">
                     <div class="data w-[90%] gap-5 flex justify-center items-center capitalize">
+                        <!-- Table Desain Emboss -->
                         <table class="table-auto rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500 w-[80%] h-[350px]">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
-                                    <th class="">DESAIN EMBOSS / LABEL NAMA / SABLON</th>
+                                    <th>DESAIN EMBOSS / LABEL NAMA / SABLON</th>
                                 </tr>
                             </thead>
-                            <tbody class="">
+                            <tbody>
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                    <td class="w-[35%] px-2 py-2">
+                                    <td class="w-[35%] px-2 py-2 relative group">
                                         @if (!is_null($souvenir->desain_emboss_path))
-                                            @if ($souvenir->design_status == 'DECL')
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-red-600">
-                                            @elseif($souvenir->design_status == 'ACC')
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full border-8 border-green-600">
-                                            @else
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover w-full h-full">
-                                            @endif
-                                        @else
-                                            <p class="text-center">Belum Terdapat Desain</p>
-                                        @endif
-                                </tr>
-
-                            </tbody>
-                        </table>
-                        <table class="table-auto rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500 w-[80%] h-[350px]">
-                            <thead>
-                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
-                                    <th class="">DESAIN THANKSCARD</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                    <td class="w-[35%] px-2 py-2">
-                                        @if (!is_null($souvenir->desain_thankscard_path))
-                                            @if ($souvenir->design_status == 'DECL')
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full border-8 border-red-600">
-                                            @elseif($souvenir->design_status == 'ACC')
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full border-8 border-green-600">
-                                            @else
-                                            <img src="{{ asset('storage/app/public/' . $souvenir->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover w-full h-full">
-                                            @endif
+                                            <div class="relative">
+                                                <img src="$souvenir->desain_emboss_path" 
+                                                    alt="Desain Emboss" 
+                                                    class="object-cover w-full h-full 
+                                                    @if ($souvenir->design_status == 'DECL') border-8 border-red-600 
+                                                    @elseif($souvenir->design_status == 'ACC') border-8 border-green-600 
+                                                    @endif">
+                                                
+                                                <!-- Overlay Hover -->
+                                                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <button onclick="openModal(event, 'emboss')"
+                                                            class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
+                                                        Ubah Desain
+                                                    </button>
+                                                </div>
+                                            </div>
                                         @else
                                             <p class="text-center">Belum Terdapat Desain</p>
                                         @endif
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
+
+                        <!-- Table Desain Thankscard -->
+                        <table class="table-auto rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500 w-[80%] h-[350px]">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th>DESAIN THANKSCARD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-2 py-2 relative group">
+                                        @if (!is_null($souvenir->desain_thankscard_path))
+                                            <div class="relative">
+                                                <img src="$souvenir->desain_thankscard_path" 
+                                                    alt="Desain Thankscard" 
+                                                    class="object-cover w-full h-full 
+                                                    @if ($souvenir->design_status == 'DECL') border-8 border-red-600 
+                                                    @elseif($souvenir->design_status == 'ACC') border-8 border-green-600 
+                                                    @endif">
+                                                
+                                                <!-- Overlay Hover -->
+                                                <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                                    <button onclick="openModal(event, 'thankscard')"
+                                                            class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
+                                                        Ubah Desain
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <p class="text-center">Belum Terdapat Desain</p>
+                                        @endif
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!-- Modal Upload -->
+                        <div id="modal-upload" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden">
+                            <div class="bg-white p-6 rounded-lg shadow-lg w-100">
+                                <h2 id="modal-title" class="text-xl font-bold mb-4">Ubah Desain</h2>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" id="file-upload" name="desain" class="block w-full text-sm text-gray-600">
+                                    <div class="flex justify-end mt-4">
+                                        <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal()">Batal</button>
+                                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2" onclick="validateUpload(event)">Upload</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -234,11 +270,15 @@
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
                                 <td class="px-4 py-2">
-                                    <select class="w-1/2 px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-green-shadow/20 focus:outline-none transition">
-                                        <option value="Pending" {{ old('design_status', $souvenir->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
-                                        <option value="ACC" {{ old('design_status', $souvenir->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
-                                        <option value="DECL" {{ old('design_status', $souvenir->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
-                                    </select>
+                                    <form action="" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="" value="">
+                                        <select class="w-1/2 px-2 py-1 border border-gray-300 rounded-md bg-white text-gray-700 focus:ring-2 focus:ring-green-shadow/20 focus:outline-none transition" onchange="this.form.submit()">
+                                            <option value="Pending" {{ old('design_status', $souvenir->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
+                                            <option value="ACC" {{ old('design_status', $souvenir->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
+                                            <option value="DECL" {{ old('design_status', $souvenir->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
+                                        </select>
+                                    </form>
                                 </td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
@@ -559,7 +599,29 @@
         });
     });--}}
 
+    function openModal(event, designType) {
+        event.preventDefault(); // Mencegah submit otomatis
 
+        // Ganti judul modal sesuai desain yang sedang diedit
+        let modalTitle = document.getElementById('modal-title');
+        modalTitle.textContent = designType === 'emboss' ? "Ubah Desain Emboss / Label Nama / Sablon" : "Ubah Desain Thankscard";
+
+        // Tampilkan modal
+        document.getElementById('modal-upload').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('modal-upload').classList.add('hidden');
+    }
+
+    function validateUpload(event) {
+        let fileInput = document.getElementById('file-upload');
+
+        if (!fileInput.files.length) {
+            event.preventDefault(); // Mencegah form submit
+            alert("Silakan pilih file terlebih dahulu sebelum mengupload!"); // Tampilkan peringatan
+        }
+    }
 
 </script>
 @endsection
