@@ -104,7 +104,7 @@
                                     </div>
                                     @if (!is_null($packaging->desain_path))
                                         <div class="relative">
-                                            <img src="{{ asset('storage/app/public' . $packaging->desain_path)}}"
+                                            <img src="{{ asset('storage/app/public/' . $packaging->desain_path)}}"
                                                 alt="Desain"
                                                 class="object-cover w-full h-full
                                                 @if ($packaging->design_status == 'DECL') border-8 border-red-600
@@ -533,7 +533,7 @@
                         }
                     });
 
-                    fetch("{{route('admin.invitation.purchase.store', ['id' => $invitation->id])}}", {
+                    fetch("{{route('admin.packaging.purchase.store', ['id' => $packaging->id])}}", {
                         method: 'POST',
                         headers: {
                             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
