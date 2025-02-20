@@ -36,6 +36,14 @@ Route::get('/cetak', function(){
     return view('admin.spk_packaging');
 });
 
+Route::get('/addadmin', function(){
+    return view('frontend.create_admin');
+});
+
+Route::get('/editadmin', function(){
+    return view('frontend.change_password');
+});
+
 Route::get('/tesdetail', function(){
     return view('frontend.detailundangan');
 });
