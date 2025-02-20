@@ -152,7 +152,9 @@ class InvitationController extends Controller
             'expedition' => 'nullable|string',
             'dp2_date' => 'nullable|date',
             'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
-            'subprocess' => 'nullable'
+            'subprocess' => 'nullable',
+            'note_design' => 'nullable|string',
+            'note_cs' => 'nullable|string'
         ]);
 
         $order = Invitation::findOrFail($id);

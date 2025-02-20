@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invitation_changes', function (Blueprint $table) {
-            $table->string('changer_name');
+            $table->string('changer_name')->nullable();
         });
         Schema::table('souvenir_changes', function (Blueprint $table) {
-            $table->string('changer_name');
+            $table->string('changer_name')->nullable();
         });
         Schema::table('packaging_changes', function (Blueprint $table) {
-            $table->string('changer_name');
+            $table->string('changer_name')->nullable();
         });
     }
 

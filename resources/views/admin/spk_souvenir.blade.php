@@ -92,8 +92,8 @@
                         <td style="width: 140px"><b>Tgl Order</b></td>
                         <td style="width: 140px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d-m-Y H:i') }}</span></td>
                         <td rowspan="7">
-                            <img src="{{ asset('storage/app/public/' . $parent->desain_emboss_path) }}" alt="" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%;">
-                            <img src="{{ asset('storage/app/public/' . $parent->desain_thankscard_path) }}" alt="" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%; margin-top: 0.5rem;">
+                            <img src="{{ public_path('storage/' . $parent->desain_emboss_path)}}" alt="" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%;">
+                            <img src="{{ public_path('storage/' . $parent->desain_thankscard_path)}}" alt="" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%; margin-top: 0.5rem;">
                         </td>
                     </tr>
                     <tr>

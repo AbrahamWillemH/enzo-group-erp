@@ -130,7 +130,9 @@ class SouvenirController extends Controller
             'desain_thankscard_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
             'desain_emboss_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
             'subprocess' => 'nullable|enum',
-            'size' => 'nullable|string|max:255'
+            'size' => 'nullable|string|max:255',
+            'note_design' => 'nullable|string',
+            'note_cs' => 'nullable|string'
         ]);
 
         $order = Souvenir::findOrFail($id);

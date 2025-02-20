@@ -92,7 +92,7 @@
                         <td style="width: 140px"><b>Tgl Order</b></td>
                         <td style="width: 140px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d-m-Y H:i') }}</span></td>
                         <td rowspan="7">
-                            <img src="{{ asset('storage/app/public/' . $parent->desain_path) }}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
+                            <img src="{{ asset('storage/app/public/' . $parent->desain_path)}}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
                         </td>
                     </tr>
                     <tr>
