@@ -309,6 +309,10 @@
                                 </td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
+                                <td class="px-4 py-2">{{$souvenir->size_fix}}</td>
+                            </tr>
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$souvenir->note_design}}</td>
                             </tr>
@@ -377,7 +381,7 @@
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
                                 <td class="border border-green-main px-2">{{ $souvenir->quantity }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Deadline</td>
-                                <td class="border border-green-main px-2">{{ $souvenir->dp2_date ? \Carbon\Carbon::parse($souvenir->dp2_date)->format('d-m-Y') : '-' }}</td>
+                                <td class="border border-green-main px-2">{{ $souvenir->deadline_date ? \Carbon\Carbon::parse($souvenir->deadline_date)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Kemas</td>

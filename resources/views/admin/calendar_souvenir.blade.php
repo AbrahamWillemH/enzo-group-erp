@@ -17,7 +17,7 @@
             eventClick: function(info) {
 
                 const eventId = info.event.id;
-                window.location.href = "{{ route('admin.reminder.detail', ['id' => '__ID__']) }}".replace('__ID__', eventId);
+                window.location.href = "{{ route('admin.souvenir.detail', ['id' => '__ID__']) }}".replace('__ID__', eventId);
             }
         });
 

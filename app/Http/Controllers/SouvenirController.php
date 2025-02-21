@@ -122,7 +122,10 @@ class SouvenirController extends Controller
             'deadline_date' => 'nullable|date',
             'progress' => 'required|string|max:255',
             'payment_status' => 'required|string|max:255',
+            'dp1_date' => 'nullable|date',
             'dp2_date' => 'nullable|date',
+            'paid_off_date' => 'nullable|date',
+            'fix_design_date' => 'nullable|date',
             'price_per_pcs' => 'nullable|integer',
             'expedition' => 'nullable|string|max:255',
             'printout' => 'nullable|string|max:255',
@@ -132,7 +135,8 @@ class SouvenirController extends Controller
             'subprocess' => 'nullable|enum',
             'size' => 'nullable|string|max:255',
             'note_design' => 'nullable|string',
-            'note_cs' => 'nullable|string'
+            'note_cs' => 'nullable|string',
+            'size_fix' => 'nullable|string'
         ]);
 
         $order = Souvenir::findOrFail($id);
@@ -224,14 +228,15 @@ class SouvenirController extends Controller
         $changes = [];
 
         foreach ($souvenir_changes as $change) {
-            if (isset($change->column_name, $change->old_value, $change->new_value)) {
+            if (isset($change->column_name)) {
                 // Bandingkan dengan data terbaru di souvenir
                 $current_value = $souvenir->{$change->column_name} ?? null;
 
-                if ($current_value !== $change->old_value) {
+                // Memasukkan perubahan termasuk jika old_value null atau berbeda dari current_value
+                if ($current_value !== $change->old_value || is_null($change->old_value)) {
                     $changes[$change->column_name] = [
-                        'old' => $change->old_value,
-                        'new' => $current_value,
+                        'old' => $change->old_value ?? '(kosong)',
+                        'new' => $current_value ?? '(kosong)',
                         'changed_at' => $change->created_at,
                         'changed_by' => $change->changer_name
                     ];

@@ -397,10 +397,19 @@
             </div>
 
             <div class="flex items-center flex-col ">
-              <label for="fix_desain_date">Tanggal Fix Desain</label>
-              <input type="date" id="fix_desain_date" name="fix_desain_date" value="{{ $invitation->fix_design_date }}"
+              <label for="fix_design_date">Tanggal Fix Desain</label>
+              <input type="date" id="fix_design_date" name="fix_design_date" value="{{ $invitation->fix_design_date }}"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('fix_desain_date')
+              @error('fix_design_date')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col ">
+              <label for="deadline_date">Tanggal Deadline</label>
+              <input type="date" id="deadline_date" name="deadline_date" value="{{ $invitation->deadline_date }}"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              @error('deadline_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -456,6 +465,16 @@
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
+
+            <div class="flex items-center flex-col">
+                <label for="size_fix">Ukuran Jadi</label>
+                <input type="text" id="size_fix" name="size_fix" value="{{ $invitation->size_fix }}"
+                  placeholder="Ukuran Jadi"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('size_fix')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
 
             <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>

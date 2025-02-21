@@ -118,6 +118,7 @@ class PackagingController extends Controller
             'dp1_date' => 'nullable|date',
             'dp2_date' => 'nullable|date',
             'paid_off_date' => 'nullable|date',
+            'fix_design_date' => 'nullable|date',
             'expedition' => 'nullable|string',
             'design_status' => 'nullable|string',
             'note_cs' => 'nullable|string',
@@ -126,7 +127,8 @@ class PackagingController extends Controller
             'kemas' => 'required|string|max:255',
             'source' => 'required|string|max:255',
             'percetakan' => 'nullable|string|max:255',
-            'request' => 'nullable|string|max:255'
+            'request' => 'nullable|string|max:255',
+            'size_fix' => 'nullable|string'
         ]);
 
         $order = Packaging::findOrFail($id);
@@ -199,20 +201,22 @@ class PackagingController extends Controller
         $changes = [];
 
         foreach ($packaging_changes as $change) {
-            if (isset($change->column_name, $change->old_value, $change->new_value)) {
+            if (isset($change->column_name)) {
                 // Bandingkan dengan data terbaru di packaging
                 $current_value = $packaging->{$change->column_name} ?? null;
 
-                if ($current_value !== $change->old_value) {
+                // Memasukkan perubahan termasuk jika old_value null atau berbeda dari current_value
+                if ($current_value !== $change->old_value || is_null($change->old_value)) {
                     $changes[$change->column_name] = [
-                        'old' => $change->old_value,
-                        'new' => $current_value,
+                        'old' => $change->old_value ?? '(kosong)',
+                        'new' => $current_value ?? '(kosong)',
                         'changed_at' => $change->created_at,
                         'changed_by' => $change->changer_name
                     ];
                 }
             }
         }
+
         return view('admin.packaging_detail', compact('packaging', 'packaging_spk', 'changes'));
     }
 

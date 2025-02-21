@@ -150,11 +150,15 @@ class InvitationController extends Controller
             'printout' => 'nullable|string',
             'price_per_pcs' => 'nullable|integer',
             'expedition' => 'nullable|string',
+            'dp1_date' => 'nullable|date',
             'dp2_date' => 'nullable|date',
+            'paid_off_date' => 'nullable|date',
+            'fix_design_date' => 'nullable|date',
             'desain_path' => 'nullable|mimes:jpg,jpeg,png,pdf',
             'subprocess' => 'nullable',
             'note_design' => 'nullable|string',
-            'note_cs' => 'nullable|string'
+            'note_cs' => 'nullable|string',
+            'size_fix' => 'nullable|string'
         ]);
 
         $order = Invitation::findOrFail($id);
@@ -250,14 +254,15 @@ class InvitationController extends Controller
         $changes = [];
 
         foreach ($invitation_changes as $change) {
-            if (isset($change->column_name, $change->old_value, $change->new_value)) {
+            if (isset($change->column_name)) {
                 // Bandingkan dengan data terbaru di invitation
                 $current_value = $invitation->{$change->column_name} ?? null;
 
-                if ($current_value !== $change->old_value) {
+                // Memasukkan perubahan termasuk jika old_value null atau berbeda dari current_value
+                if ($current_value !== $change->old_value || is_null($change->old_value)) {
                     $changes[$change->column_name] = [
-                        'old' => $change->old_value,
-                        'new' => $current_value,
+                        'old' => $change->old_value ?? '(kosong)',
+                        'new' => $current_value ?? '(kosong)',
                         'changed_at' => $change->created_at,
                         'changed_by' => $change->changer_name
                     ];

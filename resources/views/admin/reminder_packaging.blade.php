@@ -68,7 +68,7 @@
                         <td class="px-4 py-3 text-center">{{ $o->payment_status }}</td>
                         <td class="px-4 py-3 text-center">{{ $o->progress }}</td>
                         <td class="px-3 py-3 text-center">
-                            <a href="{{ route('admin.reminder.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
+                            <a href="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
                         </td>
                     </tr>
                     @endforeach

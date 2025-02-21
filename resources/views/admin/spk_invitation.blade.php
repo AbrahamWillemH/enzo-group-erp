@@ -6,7 +6,7 @@
     <title>SPK Produksi Undangan (Cust)</title>
     <style>
         @page {
-            size: A4 landscape;
+            size: A4 portrait;
             margin: 30px 40px 30px 40px;
         }
 
