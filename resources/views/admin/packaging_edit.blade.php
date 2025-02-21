@@ -338,6 +338,16 @@
             </div>
 
             <div class="flex items-center flex-col">
+                <label for="size_fix">Ukuran Jadi</label>
+                <input type="text" id="size_fix" name="size_fix" value="{{ $packaging->size_fix }}"
+                  placeholder="Ukuran Jadi"
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                @error('size_fix')
+                <small class="text-danger">{{ $message }}</small>
+                @enderror
+              </div>
+
+            <div class="flex items-center flex-col">
               <label for="note_cs">Note Admin</label>
               <textarea id="note_cs" rows="6" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"

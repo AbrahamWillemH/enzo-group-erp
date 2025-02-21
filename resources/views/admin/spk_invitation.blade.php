@@ -6,8 +6,8 @@
     <title>SPK Produksi Undangan (Cust)</title>
     <style>
         @page {
-            size: A4 portrait;
-            margin: 30px 40px 30px 40px;
+            size: F4 portrait;
+            margin: 10px 40px 10px 40px;
         }
 
         body {
@@ -33,18 +33,20 @@
 
         th, td {
             border: 1px solid #000000;
-            padding: 8px;
+            padding: 2px;
             text-align: left;
         }
 
         th {
             font-weight: 700;
             text-align: center;
-            height: 35px;
+            height: 10px;
+            font-size: 11px;
         }
 
         td {
-            height: 30px;
+            height: 8px;
+            font-size: 11px;
         }
 
         .hidden-input {
@@ -87,19 +89,19 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="width: 100px"><b>Nama</b></td>
-                        <td style="width: 210px"><span class="text-value">{{$parent->user_name}}</span></td>
-                        <td style="width: 140px"><b>Tgl Order</b></td>
-                        <td style="width: 140px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d-m-Y H:i') }}</span></td>
+                        <td style="width: 80px"><b>Nama</b></td>
+                        <td style="width: 140px"><span class="text-value">{{$parent->user_name}}</span></td>
+                        <td style="width: 80px"><b>Tgl Order</b></td>
+                        <td style="width: 80px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span></td>
                         <td rowspan="6">
-                            <img src="{{ asset('storage/app/public/' . $parent->desain_path)}}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
+                            <img src="{{ public_path('storage/app/public/' . $parent->desain_path)}}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
                         </td>
                     </tr>
                     <tr>
                         <td><b>Jenis</b></td>
                         <td><span class="text-value">{{$parent->product_name}}</span></td>
                         <td><b>Tgl DP2</b></td>
-                        <td><span class="text-value">{{ $parent->dp2_date ? \Carbon\Carbon::parse($parent->dp2_date)->format('d-m-Y') : '-' }}</span></td>
+                        <td><span class="text-value">{{ $parent->dp2_date ? \Carbon\Carbon::parse($parent->dp2_date)->format('d/m/Y') : '-' }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Uk Jadi</b></td>
@@ -111,7 +113,7 @@
                         <td><b>Jumlah</b></td>
                         <td><span class="text-value">{{$parent->quantity}}</span></td>
                         <td><b>Deadline</b></td>
-                        <td><span class="text-value">{{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->format('d-m-Y') : '-' }}</span></td>
+                        <td><span class="text-value">{{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->format('d/m/Y') : '-' }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Alamat</b></td>
@@ -131,29 +133,25 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="4"><b>Rincian Request</b></th>
+                        <th colspan="8"><b>Rincian Request</b></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td style="width: 150px"><b>Foil</b></td>
-                        <td style="width: 200px"><span class="text-value">{{$details->foil}}</span></td>
-                        <td style="width: 150px"><b>Tussel</b></td>
-                        <td style="width: 200px"><span class="text-value">{{$details->tussel}}</span></td>
-                    </tr>
-                    <tr>
-                        <td><b>Kertas Foil</b></td>
-                        <td><span class="text-value">{{$details->kertas_foil}}</span></td>
-                        <td><b>Pita</b></td>
-                        <td><span class="text-value">{{$details->pita}}</span></td>
+                    <tr style="height: auto;">
+                        <td style="width: 40px"><b>Foil</b></td>
+                        <td style="width: 70px"><span class="text-value">{{$details->foil}}</span></td>
+                        <td style="width: 40px"><b>Tussel</b></td>
+                        <td style="width: 70px"><span class="text-value">{{$details->tussel}}</span></td>
+                        <td style="width: 40px"><b>Ker. Foil</b></td>
+                        <td style="width: 70px"><span class="text-value">{{$details->kertas_foil}}</span></td>
+                        <td style="width: 40px"><b>Pita</b></td>
+                        <td style="width: 70px"><span class="text-value">{{$details->pita}}</span></td>
                     </tr>
                     <tr>
                         <td><b>Laminasi</b></td>
                         <td><span class="text-value">{{$details->laminasi}}</span></td>
                         <td><b>Tali Rami</b></td>
                         <td><span class="text-value">{{$details->tali_rami}}</span></td>
-                    </tr>
-                    <tr>
                         <td><b>Kartu</b></td>
                         <td><span class="text-value">{{$details->kartu}}</span></td>
                         <td><b>Waxseal</b></td>
@@ -164,8 +162,6 @@
                         <td><span class="text-value">{{$details->label_nama}}</span></td>
                         <td><b>Kalkir</b></td>
                         <td><span class="text-value">{{$details->kalkir}}</span></td>
-                    </tr>
-                    <tr>
                         <td><b>Plastik</b></td>
                         <td><span class="text-value">{{$details->plastik}}</span></td>
                         <td><b>Kain Goni</b></td>
@@ -176,16 +172,10 @@
                         <td><span class="text-value">{{$details->gunungan}}</span></td>
                         <td><b>Ornamen</b></td>
                         <td><span class="text-value">{{$details->ornamen}}</span></td>
-                    </tr>
-                    <tr>
                         <td><b>Lain-lain</b></td>
-                        <td colspan="3"><span class="text-value">{{$details->lain_lain}}</span></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: center"><b>NOTE TAMBAHAN</b></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4"><span class="text-value">{{$details->note_tambahan}}</span></td>
+                        <td><span class="text-value">{{$details->lain_lain}}</span></td>
+                        <td><b>Note</b></td>
+                        <td><span class="text-value">{{$details->note_tambahan}}</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -196,12 +186,12 @@
                         <th colspan="6"><b>Rincian Bahan</b></th>
                     </tr>
                     <tr>
-                        <th style="width: 200px"><b>Peruntukan</b></th>
-                        <th style="width: 200px"><b>Nama dan Ukuran</b></th>
-                        <th style="width: 100px"><b>Kebutuhan</b></th>
-                        <th style="width: 100px"><b>Stok</b></th>
-                        <th style="width: 100px"><b>Jumlah Beli</b></th>
-                        <th style="width: 200px"><b>Supplier</b></th>
+                        <th style="width: 100px"><b>Peruntukan</b></th>
+                        <th style="width: 100px"><b>Nama dan Ukuran</b></th>
+                        <th style="width: 70px"><b>Kebutuhan</b></th>
+                        <th style="width: 70px"><b>Stok</b></th>
+                        <th style="width: 70px"><b>Jumlah Beli</b></th>
+                        <th style="width: 100px"><b>Supplier</b></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -223,18 +213,18 @@
             <table style="width:80%" class="table-acc">
                 <thead>
                     <th style="width: 60px"><b>ACC CS</b></th>
-                    <th style="width: 40px"><b>ACC DESAIN</b></th>
+                    <th style="width: 60px"><b>ACC DESAIN</b></th>
                     <th style="width: 60px"><b>ACC PPIC</b></th>
-                    <th style="width: 40px"><b>ACC GUDANG</b></th>
-                    <th style="width: 40px"><b>ACC DIREKTUR</b></th>
+                    <th style="width: 60px"><b>ACC GUDANG</b></th>
+                    <th style="width: 60px"><b>ACC DIREKTUR</b></th>
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="height: 70px"></td>
-                        <td style="height: 70px"></td>
-                        <td style="height: 70px"></td>
-                        <td style="height: 70px"></td>
-                        <td style="height: 70px"></td>
+                        <td style="height: 40px"></td>
+                        <td style="height: 40px"></td>
+                        <td style="height: 40px"></td>
+                        <td style="height: 40px"></td>
+                        <td style="height: 40px"></td>
                     </tr>
                     <tr>
                         <td style="height: 20px"></td>
