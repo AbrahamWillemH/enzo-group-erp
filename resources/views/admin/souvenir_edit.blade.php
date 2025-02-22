@@ -89,7 +89,7 @@
             </div>
 
             <div class="flex items-center flex-col ">
-              <label class="ml-2" for="size">Ukuran Jadi</label>
+              <label class="ml-2" for="size">Ukuran</label>
               <input type="text" id="size" name="size" value="{{ $souvenir->size }}" required
                 placeholder="Ukuran Jadi"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -316,16 +316,6 @@
               <option value="DECL" {{ old('design_status', $souvenir->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
             </select>
             @error('design_status')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
-          </div>
-
-          <div class="flex items-center flex-col">
-            <label for="size_fix">Ukuran Jadi</label>
-            <input type="text" id="size_fix" name="size_fix" value="{{ $souvenir->size_fix }}"
-              placeholder="Ukuran Jadi"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('size_fix')
             <small class="text-danger">{{ $message }}</small>
             @enderror
           </div>

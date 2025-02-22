@@ -63,7 +63,8 @@ class SouvenirController extends Controller
             'thankscard' => 'required|string|max:255',
             'color_motif' => 'required|string|max:255',
             'motif_backup' => 'required|string|max:255',
-            'size' => 'required|string|max:255'
+            'size' => 'required|string|max:255',
+            'note_design' => 'nullable|string'
         ]);
 
         $a = $request->event_date;

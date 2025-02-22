@@ -309,10 +309,6 @@
                                 </td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
-                                <td class="px-4 py-2">{{$souvenir->size_fix}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$souvenir->note_design}}</td>
                             </tr>

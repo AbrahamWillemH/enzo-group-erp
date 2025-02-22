@@ -74,7 +74,8 @@ class InvitationController extends Controller
             'akad_pemberkatan_location' => 'required|string',
             'reception_date' => 'required|date',
             'reception_time' => 'required',
-            'reception_location' => 'required|string'
+            'reception_location' => 'required|string',
+            'note_design' => 'nullable|string'
         ]);
 
         $a = $request->reception_date;
