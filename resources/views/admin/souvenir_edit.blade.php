@@ -38,7 +38,7 @@
 
       <!-- Orders Info -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
-        <div class="flex flex-col gap-5">
+        <div class="flex flex-col gap-5 ">
             <div class="flex items-center flex-col">
                 <label class="ml-2" for="user_name">Nama Pemesan</label>
                 <input type="text" id="user_name" name="user_name" value="{{ $souvenir->user_name }}" required
@@ -49,7 +49,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col ">
+            <div class="flex items-center flex-col mt-1">
                 <label class="ml-2" for="phone_number">Nomor HP</label>
                 <input type="text" id="phone_number" name="phone_number" value="{{ $souvenir->phone_number }}" required
                   placeholder="08XX-XXXX-XXXX"
@@ -59,7 +59,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col ">
+            <div class="flex items-center flex-col mt-1">
                 <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
                 <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ $souvenir->bridegroom_name }}" required
                   placeholder="Nama Mempelai"
@@ -69,7 +69,7 @@
                 @enderror
             </div>
 
-            <div class="flex items-center flex-col ">
+            <div class="flex items-center flex-col mt-1">
                 <label class="ml-2" for="event_date">Tanggal Acara</label>
                 <input type="date" id="event_date" name="event_date" value="{{ $souvenir->event_date }}" required
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -94,6 +94,19 @@
                 placeholder="Ukuran Jadi"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('pack')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label class="ml-2" for="source">Source</label>
+              <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source"required>
+                <option value="Shopee" {{ old('source', $souvenir->source) == 'Shopee' ? 'selected' : '' }}>Shopee</option>
+                <option value="Deonkraft" {{ old('source', $souvenir->source) == 'Deonkraft' ? 'selected' : '' }}>Deonkraft</option>
+                <option value="Enzo Wedding" {{ old('source', $souvenir->source) == 'Enzo Wedding' ? 'selected' : '' }}>Enzo Wedding</option>
+                <option value="Grizelle" {{ old('source', $souvenir->source) == 'Grizelle' ? 'selected' : '' }}>Grizelle</option>
+              </select>
+              @error('kemas')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>

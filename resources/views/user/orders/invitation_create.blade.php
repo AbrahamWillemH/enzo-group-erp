@@ -97,7 +97,7 @@
 
           <div class="flex items-center flex-col">
             <label for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="5" name="address" value="{{ old('address') }}" required
+            <textarea id="address" rows="7" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('address')
@@ -137,8 +137,21 @@
           </div>
 
           <div class="flex items-center flex-col">
+            <label class="ml-2" for="source">Source</label>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source" required>
+              <option value="Shopee">Shopee</option>
+              <option value="Deonkraft">Deonkraft</option>
+              <option value="Enzo Wedding">Enzo Wedding</option>
+              <option value="Grizelle">Grizelle</option>
+            </select>
+            @error('source')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col">
             <label for="note_design">Note</label>
-            <textarea id="note_design" rows="5" name="note_design" value="{{ old('note_design') }}" required
+            <textarea id="note_design" rows="4" name="note_design" value="{{ old('note_design') }}" required
               placeholder="Tulis catatan tambahan disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('note_design')

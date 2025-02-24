@@ -94,7 +94,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="address">Alamat Lengkap</label>
-            <textarea id="address" rows="4" name="address" required
+            <textarea id="address" rows="5" name="address" required
               placeholder="Alamat Lengkap"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->address }}</textarea>
             @error('address')
@@ -188,7 +188,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="note_design">Note</label>
-            <textarea id="note_design" rows="7" name="note_design"
+            <textarea id="note_design" rows="5" name="note_design"
               placeholder="Tuliskan note desain disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $packaging->note_design }}</textarea>
             @error('note_design')
