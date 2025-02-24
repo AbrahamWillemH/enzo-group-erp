@@ -292,12 +292,14 @@
 
           <div class="flex items-center flex-col  mb-3">
             <label for="price_per_pcs">Harga /Pcs</label>
-            <input type="text" id="price_per_pcs" name="price_per_pcs" value="{{ $souvenir->price_per_pcs }}"
-              placeholder="Harga /Pcs"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-            @error('price_per_pcs')
-            <small class="text-danger">{{ $message }}</small>
-            @enderror
+            <div class="relative w-80">
+                <span class="absolute left-2 top-[13px] transform -translate-y-1/2 text-gray-600">Rp</span>
+                <input type="text" id="price_per_pcs" name="price_per_pcs"
+                    value="{{ number_format($souvenir->price_per_pcs, 0, ',', '.') }}"
+                    placeholder="Harga /Pcs"
+                    class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-8 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                <input type="hidden" id="price_per_pcs_hidden" name="price_per_pcs" value="{{ $souvenir->price_per_pcs }}">
+              </div>
           </div>
 
           <div class="flex items-center flex-col ">
@@ -355,6 +357,27 @@
 
     </form>
   </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const priceInput = document.getElementById("price_per_pcs");
+        const hiddenInput = document.getElementById("price_per_pcs_hidden");
+
+        function formatRupiah(value) {
+            return value.replace(/\D/g, "") // Hapus karakter non-digit
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambahkan titik setiap ribuan
+        }
+
+        priceInput.addEventListener("input", function() {
+            let rawValue = this.value.replace(/\D/g, ""); // Simpan angka asli tanpa titik
+            hiddenInput.value = rawValue; // Simpan angka asli di input hidden
+            this.value = formatRupiah(rawValue); // Format tampilan pengguna
+        });
+
+        // Pastikan nilai input diformat saat halaman dimuat
+        priceInput.value = formatRupiah(priceInput.value);
+    });
+</script>
 </body>
 
 </html>

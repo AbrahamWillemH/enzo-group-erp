@@ -45,6 +45,7 @@ class Souvenir extends Model
         'desain_thankscard_path',
         'subprocess',
         'size',
+        'source',
         'done_at',
         'fix_design_date'
     ];

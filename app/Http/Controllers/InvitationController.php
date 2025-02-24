@@ -75,6 +75,7 @@ class InvitationController extends Controller
             'reception_date' => 'required|date',
             'reception_time' => 'required',
             'reception_location' => 'required|string',
+            'source'=>'required|string|max:255',
             'note_design' => 'nullable|string'
         ]);
 
@@ -159,6 +160,7 @@ class InvitationController extends Controller
             'subprocess' => 'nullable',
             'note_design' => 'nullable|string',
             'note_cs' => 'nullable|string',
+            'source'=>'required|string|max:255',
             'size_fix' => 'nullable|string'
         ]);
 
@@ -330,7 +332,9 @@ class InvitationController extends Controller
 
     public function getDeadlinesInvitations()
     {
-        $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')
+            ->where('progress', '!=', 'Selesai Beneran')
+            ->get();
 
         $events = $invitations->map(function ($order) {
             return [
@@ -381,6 +385,7 @@ class InvitationController extends Controller
 
         DB::table('invitation')->where('id', $id)->update([
             'design_status' => $request->design_status,
+            'fix_design_date' => now(),
             'updated_at' => now(),
         ]);
 
