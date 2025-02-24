@@ -152,12 +152,12 @@
                   </svg>
                   <p class="text-sm lg:text-2xl">Panduan Pesan</p>
                 </button>
-                <a href="" class="bg-green-main/40 w-[180px] h-[40px] lg:w-full lg:h-full rounded-lg p-3 flex flex-row gap-2 justify-center items-center tracking-wider hover:bg-green-main/70 hover:text-white hover:scale-105 transition transform duration-300">
+                <button type="button" id="button-contact" class="bg-green-main/40 w-[180px] h-[40px] lg:w-full lg:h-full rounded-lg p-3 flex flex-row gap-2 justify-center items-center tracking-wider hover:bg-green-main/70 hover:text-white hover:scale-105 transition transform duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4 lg:size-8">
                     <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
                   </svg>
                   <p class="text-sm lg:text-2xl">Hubungi Kami</p>
-                </a>
+                </button>
               </div>
             </div>
 
@@ -283,6 +283,36 @@
                   <div class="opacity-0 ml-0.5 lg:ml-1 h-8 w-8"></div>
                 </div>
             </div>
+
+            <div id="page-contact" class="hidden">
+                <div tabindex="-1" aria-hidden="true" class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-screen bg-black/50 px-2 lg:px-0">
+                  <div class="opacity-0 mr-0.5 lg:mr-1 h-8 w-8"></div>
+
+                  <div class="relative p-3 lg:p-1 w-full max-w-md max-h-full">
+                      <!-- Modal content -->
+                      <div class="relative bg-white/70 backdrop-blur-lg rounded-lg shadow-sm">
+                              <!-- Modal header -->
+                              <div class="flex items-center justify-between p-4 border-b rounded-t border-gray-900">
+                                  <h3 class="text-lg font-semibold text-gray-900">
+                                      Hubungi Kami
+                                  </h3>
+                                  <button type="button" id="close-contact" class="text-gray-900 bg-transparent hover:bg-gray-200 rounded-lg text-sm h-8 w-8 ms-auto inline-flex justify-center items-center">
+                                      <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                      </svg>
+                                      <span class="sr-only">Close</span>
+                                  </button>
+                              </div>
+                              <!-- Modal body -->
+                              <div class="p-4 md:p-5 border-b border-gray-900 text-sm lg:text-base grid grid-rows-3 gap-2 h-[15rem] place-items-center">
+                                <a href="https://wa.me/62895377696312" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Enzo Wedding</h1></a>
+                                <a href="https://wa.me/62882005607949" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Grizelle Souvenir</h1></a>
+                                <a href="https://wa.me/6281321080145" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Deonkraft</h1></a>
+                              </div>
+                          </div>
+                  </div>
+                </div>
+            </div>
             
 
           </div>
@@ -320,6 +350,20 @@
   document.querySelectorAll('.button-close').forEach(button => {
       button.addEventListener('click', () => pages.forEach(id => document.getElementById(id).classList.add('hidden')));
   });
+
+  const buttonContact = document.getElementById('button-contact');
+  const pageContact = document.getElementById('page-contact');
+  const closeContact = document.getElementById('close-contact');
+
+  buttonContact.addEventListener('click', () => {
+    // Toggle dropdown visibility
+    pageContact.classList.remove('hidden');
+
+    closeContact.addEventListener('click', () =>{
+      pageContact.classList.add('hidden');
+    })
+  });
+
   </script>
   @endsection
 <!-- </body>
