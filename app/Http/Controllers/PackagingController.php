@@ -240,13 +240,10 @@ class PackagingController extends Controller
 
     public function getDeadlinesPackagings()
     {
-        // $invitations = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
-        // $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
-        $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')
+            ->where('progress', '!=', 'Selesai Beneran')
+            ->get();
 
-        // $orders = $invitations->concat($souvenirs)->concat($packagings);
-
-        // Format data untuk kalender
         $events = $packagings->map(function ($order) {
             return [
                 'id' => $order->id,
@@ -298,6 +295,7 @@ class PackagingController extends Controller
 
         DB::table('packaging')->where('id', $id)->update([
             'design_status' => $request->design_status,
+            'fix_design_date' => now(),
             'updated_at' => now(),
         ]);
 

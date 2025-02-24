@@ -231,7 +231,7 @@
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Harga /pcs</td>
-                                <td class="px-4 py-2">{{ $order->price_per_pcs }}</td>
+                                <td class="px-4 py-2">Rp{{ number_format($order->price_per_pcs, 0, ',', '.') }}</td>
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Percetakan</td>
@@ -248,6 +248,10 @@
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{ $order->note_design }}</td>
+                            </tr>
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="w-[35%] px-4 py-2">Source</td>
+                                <td class="px-4 py-2">{{ $order->source }}</td>
                             </tr>
                         </tbody>
 

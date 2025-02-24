@@ -64,6 +64,7 @@ class SouvenirController extends Controller
             'color_motif' => 'required|string|max:255',
             'motif_backup' => 'required|string|max:255',
             'size' => 'required|string|max:255',
+            'source'=>'required|string|max:255',
             'note_design' => 'nullable|string'
         ]);
 
@@ -137,6 +138,7 @@ class SouvenirController extends Controller
             'size' => 'nullable|string|max:255',
             'note_design' => 'nullable|string',
             'note_cs' => 'nullable|string',
+            'source'=>'required|string|max:255',
             'size_fix' => 'nullable|string'
         ]);
 
@@ -267,13 +269,10 @@ class SouvenirController extends Controller
 
     public function getDeadlinesSouvenirs()
     {
-        // $souvenir = Invitation::select('id', 'user_name', 'type', 'deadline_date')->get();
-        $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')->get();
-        // $packagings = Packaging::select('id', 'user_name', 'type', 'deadline_date')->get();
+        $souvenirs = Souvenir::select('id', 'user_name', 'type', 'deadline_date')
+            ->where('progress', '!=', 'Selesai Beneran')
+            ->get();
 
-        // $orders = $souvenir->concat($souvenirs)->concat($packagings);
-
-        // Format data untuk kalender
         $events = $souvenirs->map(function ($order) {
             return [
                 'id' => $order->id,
@@ -325,6 +324,7 @@ class SouvenirController extends Controller
 
         DB::table('souvenir')->where('id', $id)->update([
             'design_status' => $request->design_status,
+            'fix_design_date' => now(),
             'updated_at' => now(),
         ]);
 

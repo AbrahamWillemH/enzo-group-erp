@@ -33,10 +33,6 @@ class OrderController extends Controller
             return $item;
         });
 
-        // $seminarkits = SeminarKit::all()->map(function ($item) {
-        //     $item->setAttribute('type', 'seminar_kit');
-        //     return $item;
-        // });
 
         $packagings = Packaging::all()->map(function ($item) {
             $item->setAttribute('type', 'packaging');
@@ -45,7 +41,6 @@ class OrderController extends Controller
 
         $orders = $invitations
         ->concat($souvenirs)
-        // ->concat($seminarkits)
         ->concat($packagings);
 
         return $orders;
@@ -57,11 +52,16 @@ class OrderController extends Controller
         $modelClass = match($order->type) {
             'invitation' => Invitation::class,
             'souvenir' => Souvenir::class,
-            'seminar_kit' => SeminarKit::class,
             'packaging' => Packaging::class,
         };
 
-        $modelClass::where('id', $id)->update(['progress' => $progress]);
+        $updateData = ['progress' => $progress];
+
+        if ($progress === 'Selesai Beneran') {
+            $updateData['done_at'] = now();
+        }
+
+        $modelClass::where('id', $id)->update($updateData);
     }
 
     public function updateProgress(Request $request, $id)
