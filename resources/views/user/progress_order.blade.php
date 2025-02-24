@@ -22,7 +22,7 @@
                         <h1 class="text-xs">{{ $order->user_name }}</h1>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-[40%_60%] gap-2">
-                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] gap-1 h-[250px] lg:h-auto">
+                        <div class="p-2 overflow-hidden grid grid-rows-[80%_20%] h-[250px] lg:h-auto">
                             @if ($order->type == 'souvenir')
                                 <div class="relative">
                                     <!-- Slideshow Container -->
@@ -70,7 +70,8 @@
                                 @endif
                             @endif
 
-                            <div class="grid grid-rows-2 place-items-center">
+                            <!-- button setuju tidak -->
+                            {{--<div class="grid grid-rows-2 place-items-center">
                                 @if ($order->desain_path || $order->desain_thankscard_path)
                                     @if ($order->design_status == 'Pending')
                                         <p class="text-xs lg:text-sm">Setuju dengan desain?</p>
@@ -86,7 +87,8 @@
                                         </div>
                                     @endif
                                 @endif
-                            </div>
+                            </div>--}}
+                            
                         </div>
                         <div class="grid grid-rows-[75%_25%] p-1 h-[240px] lg:h-auto">
                             <div class="grid grid-cols-2 h-[160px] lg:h-auto">
