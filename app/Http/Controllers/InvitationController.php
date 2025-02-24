@@ -76,7 +76,8 @@ class InvitationController extends Controller
             'reception_time' => 'required',
             'reception_location' => 'required|string',
             'source'=>'required|string|max:255',
-            'note_design' => 'nullable|string'
+            'note_design' => 'nullable|string',
+            'time_zone' => 'required|string|max:5'
         ]);
 
         $a = $request->reception_date;
@@ -161,7 +162,8 @@ class InvitationController extends Controller
             'note_design' => 'nullable|string',
             'note_cs' => 'nullable|string',
             'source'=>'required|string|max:255',
-            'size_fix' => 'nullable|string'
+            'size_fix' => 'nullable|string',
+            'time_zone' => 'required|string|max:5'
         ]);
 
         $order = Invitation::findOrFail($id);

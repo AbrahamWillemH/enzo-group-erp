@@ -47,7 +47,8 @@ class Souvenir extends Model
         'size',
         'source',
         'done_at',
-        'fix_design_date'
+        'fix_design_date',
+        'time_zone'
     ];
 
     /**

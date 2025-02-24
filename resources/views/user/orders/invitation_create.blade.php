@@ -5,8 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invitation Form</title>
-  @vite('resources/css/app.css')
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @vite('resources/css/app.css')
 </head>
 
 <body class="bg-[#fcfffa] font-mont">
@@ -41,7 +43,7 @@
         Kembali
         <div class="bg-brown-enzo h-[2px] w-0 group-hover:w-full transition-all duration-500"></div>
       </a>
-    @endif    
+    @endif
     </div>
   </nav>
 
@@ -298,13 +300,41 @@
               @enderror
             </div>
 
-            <div class="flex items-center flex-col">
-              <label for="akad_pemberkatan_time">Waktu Acara</label>
-              <input type="time" id="akad_pemberkatan_time" name="akad_pemberkatan_time" value="{{ old('akad_pemberkatan_location') }}"
-                required class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('akad_pemberkatan_time')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
+            <div class="flex flex-col items-center">
+                <label for="akad_pemberkatan_time">Waktu Acara</label>
+                <div class="flex items-center space-x-2">
+                    <!-- Input Waktu -->
+                    <div class="relative w-60">
+                        <input type="text" id="timePicker" name="akad_pemberkatan_time"
+                            value="{{ old('akad_pemberkatan_time') }}" required
+                            placeholder="Pilih Waktu Acara"
+                            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"
+                        >
+                        <!-- SVG Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-clock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                            viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                        </svg>
+                    </div>
+
+                    <!-- Dropdown Timezone -->
+                    <select name="time_zone" id="time_zone"
+                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                        <option value="WIB" {{ old('time_zone') == 'WIB' ? 'selected' : '' }}>WIB</option>
+                        <option value="WITA" {{ old('time_zone') == 'WITA' ? 'selected' : '' }}>WITA</option>
+                        <option value="WIT" {{ old('time_zone') == 'WIT' ? 'selected' : '' }}>WIT</option>
+                    </select>
+                </div>
+
+                <!-- Error Handling -->
+                @error('akad_pemberkatan_time')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+                @error('time_zone')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
 
             <div class="flex items-center flex-col">
@@ -335,14 +365,43 @@
               @enderror
             </div>
 
-            <div class="flex items-center flex-col">
-              <label for="reception_time">Waktu Acara</label>
-              <input type="time" id="reception_time" name="reception_time" value="{{ old('reception_time') }}" required
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
-              @error('reception_time')
-              <small class="text-danger">{{ $message }}</small>
-              @enderror
+            <div class="flex flex-col items-center">
+                <label for="reception_time">Waktu Acara</label>
+                <div class="flex items-center space-x-2">
+                    <!-- Input Waktu -->
+                    <div class="relative w-60">
+                        <input type="text" id="timePicker" name="reception_time"
+                            value="{{ old('reception_time') }}" required
+                            placeholder="Pilih Waktu Acara"
+                            class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"
+                        >
+                        <!-- SVG Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-clock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                            viewBox="0 0 16 16">
+                            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                        </svg>
+                    </div>
+
+                    <!-- Dropdown Timezone -->
+                    <select name="time_zone" id="time_zone"
+                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                        <option value="WIB" {{ old('time_zone') == 'WIB' ? 'selected' : '' }}>WIB</option>
+                        <option value="WITA" {{ old('time_zone') == 'WITA' ? 'selected' : '' }}>WITA</option>
+                        <option value="WIT" {{ old('time_zone') == 'WIT' ? 'selected' : '' }}>WIT</option>
+                    </select>
+                </div>
+
+                <!-- Error Handling -->
+                @error('reception_time')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+                @error('time_zone')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
             </div>
+
 
             <div class="flex items-center flex-col">
               <label for="reception_location">Lokasi Acara</label>
@@ -375,6 +434,15 @@
         });
     </script>
 @endif
+
+<script>
+    flatpickr("#timePicker", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true
+    });
+</script>
 </body>
 
 </html>

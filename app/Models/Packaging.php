@@ -45,7 +45,8 @@ class Packaging extends Model
         'kemas',
         'source',
         'done_at',
-        'fix_design_date'
+        'fix_design_date',
+        'time_zone'
     ];
 
     public static function generatePackagingId()
