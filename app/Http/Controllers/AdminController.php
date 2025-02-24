@@ -109,12 +109,11 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->done_at)->year == $currentYear &&
+                return  !is_null($order->done_at) &&
+                        Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
-
-
 
         return view('admin.dashboard_invitation',
         compact(
@@ -234,12 +233,11 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->done_at)->year == $currentYear &&
+                return  !is_null($order->done_at) &&
+                        Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
-
-
 
         return view('admin.dashboard_souvenir',
         compact(
@@ -359,12 +357,11 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->done_at)->year == $currentYear &&
+                return  !is_null($order->done_at) &&
+                        Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
-
-
 
         return view('admin.dashboard_packaging',
         compact(
