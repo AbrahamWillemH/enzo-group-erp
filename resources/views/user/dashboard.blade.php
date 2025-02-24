@@ -308,52 +308,6 @@
                                 <a href="https://wa.me/62895377696312" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Enzo Wedding</h1></a>
                                 <a href="https://wa.me/62882005607949" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Grizelle Souvenir</h1></a>
                                 <a href="https://wa.me/6281321080145" target="_blank" class="w-[80%] h-full bg-green-main/30 hover:bg-brown-enzo hover:text-white transition transform duration-300 rounded-lg flex justify-center items-center"><h1 class="font-bold">Deonkraft</h1></a>
-                                {{--<ol class="ms-3.5 mb-3 list-none space-y-6 border-s border-gray-200 relative">
-                                  <li class="ms-8">
-                                    <span class="absolute flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-900 rounded-full -start-[20px]">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
-                                        <path fill-rule="evenodd" d="M12 1.5a.75.75 0 0 1 .75.75V4.5a.75.75 0 0 1-1.5 0V2.25A.75.75 0 0 1 12 1.5ZM5.636 4.136a.75.75 0 0 1 1.06 0l1.592 1.591a.75.75 0 0 1-1.061 1.06l-1.591-1.59a.75.75 0 0 1 0-1.061Zm12.728 0a.75.75 0 0 1 0 1.06l-1.591 1.592a.75.75 0 0 1-1.06-1.061l1.59-1.591a.75.75 0 0 1 1.061 0Zm-6.816 4.496a.75.75 0 0 1 .82.311l5.228 7.917a.75.75 0 0 1-.777 1.148l-2.097-.43 1.045 3.9a.75.75 0 0 1-1.45.388l-1.044-3.899-1.601 1.42a.75.75 0 0 1-1.247-.606l.569-9.47a.75.75 0 0 1 .554-.68ZM3 10.5a.75.75 0 0 1 .75-.75H6a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 10.5Zm14.25 0a.75.75 0 0 1 .75-.75h2.25a.75.75 0 0 1 0 1.5H18a.75.75 0 0 1-.75-.75Zm-8.962 3.712a.75.75 0 0 1 0 1.061l-1.591 1.591a.75.75 0 1 1-1.061-1.06l1.591-1.592a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
-                                      </svg>
-                                    </span>
-                                    <h3 class="flex items-start text-gray-900">Klik 'Dashboard', klik jenis item yang hendak dipesan.</h3>
-                                  </li>
-                                  <li class="ms-8">
-                                    <span class="absolute flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-900 rounded-full -start-[20px]">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
-                                        <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
-                                      </svg>
-                                    </span>
-                                    <h3 class="flex items-start text-gray-900">Isi form dengan data yang lengkap dan benar.</h3>
-                                  </li>
-                                  <li class="ms-8">
-                                    <span class="absolute flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-900 rounded-full -start-[20px]">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
-                                        <path fill-rule="evenodd" d="M9 1.5H5.625c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0 0 16.5 9h-1.875a1.875 1.875 0 0 1-1.875-1.875V5.25A3.75 3.75 0 0 0 9 1.5Zm6.61 10.936a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 14.47a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd" />
-                                        <path d="M12.971 1.816A5.23 5.23 0 0 1 14.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 0 1 3.434 1.279 9.768 9.768 0 0 0-6.963-6.963Z" />
-                                      </svg>
-
-                                    </span>
-                                    <h3 class="flex items-start text-gray-900">Pastikan data yang diisi sudah benar, lalu klik 'Buat Pesanan'.</h3>
-                                  </li>
-                                  <li class="ms-8">
-                                    <span class="absolute flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-900 rounded-full -start-[20px]">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
-                                        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-                                        <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 0 1 0-1.113ZM17.25 12a5.25 5.25 0 1 1-10.5 0 5.25 5.25 0 0 1 10.5 0Z" clip-rule="evenodd" />
-                                      </svg>
-                                    </span>
-                                    <h3 class="flex items-start text-gray-900">Lihat detail pesanan Anda pada menu 'Pesanan Saya'.</h3>
-                                  </li>
-                                  <li class="ms-8">
-                                    <span class="absolute flex items-center justify-center w-[2.5rem] h-[2.5rem] bg-gray-900 rounded-full -start-[20px]">
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 text-white">
-                                        <path d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 0 0-1.032-.211 50.89 50.89 0 0 0-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 0 0 2.433 3.984L7.28 21.53A.75.75 0 0 1 6 21v-4.03a48.527 48.527 0 0 1-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979Z" />
-                                        <path d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 0 0 1.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0 0 15.75 7.5Z" />
-                                      </svg>
-                                    </span>
-                                    <h3 class="flex items-start text-gray-900">Jika terdapat kesalahan data, harap hubungi Admin.</h3>
-                                  </li>
-                                </ol>--}}
                               </div>
                           </div>
                   </div>
@@ -409,7 +363,7 @@
       pageContact.classList.add('hidden');
     })
   });
-  
+
   </script>
   @endsection
 <!-- </body>
