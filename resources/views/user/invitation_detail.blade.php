@@ -187,7 +187,7 @@
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2">
                                     @if(!is_null($order->desain_path))
-                                        <img src="{{ asset('storage/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
+                                        <img src="{{ asset('storage/app/public/' . $order->desain_path) }}" alt="Desain Undangan" class="object-cover w-full h-full">
                                     @else
                                         <p class="text-center">Belum Terdapat Desain</p>
                                     @endif

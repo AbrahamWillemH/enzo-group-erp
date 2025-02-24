@@ -80,7 +80,7 @@
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2">
                                         @if(!is_null($order->desain_emboss_path))
-                                            <img src="{{ asset('storage/' . $order->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover max-w-full max-h-full">
+                                            <img src="{{ asset('storage/app/public/' . $order->desain_emboss_path) }}" alt="Desain Emboss" class="object-cover max-w-full max-h-full">
                                         @else
                                             <p class="text-center">Belum Terdapat Desain</p>
                                         @endif
@@ -99,7 +99,7 @@
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2">
                                         @if(!is_null($order->desain_thankscard_path))
-                                            <img src="{{ asset('storage/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover max-w-full max-h-full">
+                                            <img src="{{ asset('storage/app/public/' . $order->desain_thankscard_path) }}" alt="Desain Thankscard" class="object-cover max-w-full max-h-full">
                                         @else
                                             <p class="text-center">Belum Terdapat Desain</p>
                                         @endif
@@ -200,7 +200,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">ACC Client</td>
-                                <td class="px-4 py-2">{{$order->acc_client}}</td>
+                                <td class="px-4 py-2">{{$order->design_status}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
