@@ -144,7 +144,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menentukan Deadline</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-fix">
-                        <table class="w-[1200px] 2xl:w-[1300px] border capitalize shadow-inner z-10">
+                        <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -155,7 +155,7 @@
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
-                                    <th class="text-center w-[320px]">Action</th>
+                                    <th class="text-center w-[420px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -180,6 +180,13 @@
                                         <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Delete
                                             </button>
                                         </form>
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -209,7 +216,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Pemesanan Bahan</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-order">
-                        <table class="w-[1200px] 2xl:w-[1300px] border capitalize shadow-inner z-10">
+                        <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -219,7 +226,7 @@
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
-                                    <th class="text-center w-[320px]">Action</th>
+                                    <th class="text-center w-[420px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -240,6 +247,13 @@
                                         <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Delete
                                             </button>
                                         </form>
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
@@ -268,7 +282,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Proses Produksi</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-proses">
-                        <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
+                        <table class="w-[1400px] 2xl:w-[1500px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -279,7 +293,7 @@
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Detail Proses</th>
-                                    <th class="text-center w-[320px]">Action</th>
+                                    <th class="text-center w-[420px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -324,6 +338,13 @@
                                                 Detail
                                             </button>
                                         </form>
+                                        <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Delete
+                                            </button>
+                                        </form>
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
                                             <button type="submit" class="bg-decline rounded-lg px-[0.3rem] py-2 hover:scale-110 transition duration-300 inline-block text-white" onclick="return confirmPreviousProgress();">
@@ -350,7 +371,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Ambil / Kirim</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]" id="page-ready">
-                        <table class="w-[1100px] 2xl:w-[1200px] border capitalize shadow-inner z-10">
+                        <table class="w-[1200px] 2xl:w-[1300px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -360,7 +381,7 @@
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Deadline</th>
-                                    <th class="text-center w-[320px]">Action</th>
+                                    <th class="text-center w-[420px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -381,6 +402,13 @@
                                         <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Delete
                                             </button>
                                         </form>
                                         <form action="{{ route('orders.previousProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
