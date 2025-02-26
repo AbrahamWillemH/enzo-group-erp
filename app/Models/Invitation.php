@@ -61,7 +61,9 @@ class Invitation extends Model
         'size_fix',
         'fix_design_date',
         'time_zone',
-        'turut_mengundang'
+        'turut_mengundang',
+        'akad_pemberkatan_time_done',
+        'reception_time_done'
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX

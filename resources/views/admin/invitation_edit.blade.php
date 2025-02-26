@@ -328,11 +328,11 @@
             </div>
 
             <div class="flex flex-col items-center">
-              <label for="akad_pemberkatan_time_finish">Waktu Selesai</label>
+              <label for="akad_pemberkatan_time_done">Waktu Selesai</label>
               <div class="flex items-center space-x-2">
                   <!-- Input Waktu -->
                   <div class="relative w-70">
-                      <input type="text" id="timePicker" name="akad_pemberkatan_time_finish"
+                      <input type="text" id="timePicker" name="akad_pemberkatan_time_done"
                           value="" required
                           placeholder="Pilih Waktu Selesai"
                           class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"
@@ -430,11 +430,11 @@
             </div>
 
             <div class="flex flex-col items-center">
-              <label for="reception_time_finish">Waktu Selesai</label>
+              <label for="reception_time_done">Waktu Selesai</label>
               <div class="flex items-center space-x-2">
                   <!-- Input Waktu -->
                   <div class="relative w-70">
-                      <input type="text" id="timePicker" name="reception_time_finish"
+                      <input type="text" id="timePicker" name="reception_time_done"
                           value="{{ $invitation->reception_time }}" required
                           placeholder="Pilih Waktu Selesai"
                           class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"

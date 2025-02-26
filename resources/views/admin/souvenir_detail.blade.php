@@ -504,6 +504,9 @@
                                         <td class="border border-green-main px-2">
                                             <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $souvenir_spk->supplier[$index] ?? '' }}">
                                         </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <button type="button" name="deleteSPK" class="bg-red-500 text-white h-full rounded-sm px-2 border border-green-main">X</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -513,7 +516,6 @@
                     <div class="h-[35px] mt-8 flex gap-5">
                         <a href="{{route('pdf.generate', ['type' => 'souvenir', 'id' => $souvenir_spk->id, 'parent_id' => $souvenir->id, ])}}" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg text-center">Cetak</a>
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah</button>
-                        <button id="delDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Hapus</button>
                         <button type="submit" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
                 </form>
@@ -555,6 +557,9 @@
                 <td class="border border-green-main px-2">
                     <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="">
                 </td>
+                <td class="border border-green-main px-2 text-center">
+                    <button type="button" name="deleteSPK" class="bg-red-500 text-white h-full rounded-sm px-2 border border-green-main">X</button>
+                </td>
             </tr>
             `;
 
@@ -562,12 +567,11 @@
             tableBody.appendChild(newRow);
         });
 
-        removeButton.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah reload halaman
-
-            // Pastikan tbody memiliki setidaknya satu baris sebelum menghapus
-            if (tableBody.rows.length > 1) { 
-                tableBody.removeChild(tableBody.lastElementChild);
+        tableBody.addEventListener("click", (event) => {
+            if (event.target.matches('button[name="deleteSPK"]')) {
+                event.preventDefault(); // Mencegah aksi default
+                const row = event.target.closest("tr"); // Temukan baris <tr> terdekat
+                if (row) row.remove(); // Hapus baris
             }
         });
     });

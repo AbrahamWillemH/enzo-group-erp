@@ -197,7 +197,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Waktu Selesai</td>
-                                <td class="px-4 py-2">{{$invitation->time_zone}}</td>
+                                <td class="px-4 py-2">{{$invitation->akad_pemberkatan_time_done}} {{$invitation->time_zone}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
@@ -222,7 +222,7 @@
                             </tr>
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Waktu Selesai</td>
-                                <td class="px-4 py-2">{{$invitation->time_zone}}</td>
+                                <td class="px-4 py-2">{{$invitation->reception_time_done}} {{$invitation->time_zone}}</td>
                             </tr>
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Lokasi Acara</td>
@@ -528,7 +528,7 @@
                     <table class="w-[95%] mt-8 rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[80px] bg-green-main/80 text-brown-enzo">
                             <tr>
-                                <th colspan="6" class="border-b border-brown-enzo">Rincian Bahan</th>
+                                <th colspan="7" class="border-b border-brown-enzo">Rincian Bahan</th>
                             </tr>
                             <tr>
                                 <th class="w-[350px] h-[40px]">Peruntukan</th>
@@ -537,6 +537,7 @@
                                 <th class="w-[130px] h-[40px]">Stok</th>
                                 <th class="w-[130px] h-[40px]">Jumlah Beli</th>
                                 <th class="w-[350px] h-[40px]">Supplier</th>
+                                <th class="w-[350px] h-[40px]">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="table-body">
@@ -561,6 +562,9 @@
                                         <td class="border border-green-main px-2">
                                             <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="{{ $invitation_spk->supplier[$index] ?? '' }}">
                                         </td>
+                                        <td class="border border-green-main px-2 text-center">
+                                            <button type="button" name="deleteSPK" class="bg-red-500 text-white h-full rounded-sm px-2 border border-green-main">X</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @endif
@@ -570,7 +574,6 @@
                     <div class="h-[35px] mt-8 flex gap-5">
                         <a href="{{ route('pdf.generate', ['type' => 'invitation', 'id' => $invitation_spk->id, 'parent_id' => $invitation->id]) }}" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg text-center">Cetak</a>
                         <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah</button>
-                        <button id="delDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Hapus</button>
                         <button type="submit" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
                 </form>
@@ -582,20 +585,18 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Tangkap elemen tombol dan tbody
         const addButton = document.getElementById('addDataButton');
-        const removeButton = document.getElementById('delDataButton');
         const tableBody = document.getElementById('table-body');
 
         // Fungsi untuk menambahkan baris baru
         addButton.addEventListener('click', (e) => {
             e.preventDefault(); // Mencegah reload halaman
 
-            // Buat elemen <tr> baru di dalam tbody
+            // Buat elemen <tr> baru
             const newRow = document.createElement('tr');
             newRow.className = "h-[35px]";
 
-            // Tambahkan elemen <td> untuk form input
+            // Isi row baru
             newRow.innerHTML = `
                 <td class="border border-green-main px-2">
                     <input type="text" name="peruntukan[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Peruntukan" value="">
@@ -615,19 +616,21 @@
                 <td class="border border-green-main px-2">
                     <input type="text" name="supplier[]" class="w-full h-full rounded-sm px-2 border border-green-main" placeholder="Supplier" value="">
                 </td>
-            </tr>
+                <td class="border border-green-main px-2 text-center">
+                    <button type="button" name="deleteSPK" class="bg-red-500 text-white h-full rounded-sm px-2 border border-green-main">X</button>
+                </td>
             `;
 
             // Tambahkan baris ke dalam tbody
             tableBody.appendChild(newRow);
         });
 
-        removeButton.addEventListener('click', (e) => {
-            e.preventDefault(); // Mencegah reload halaman
-
-            // Pastikan tbody memiliki setidaknya satu baris sebelum menghapus
-            if (tableBody.rows.length > 1) {
-                tableBody.removeChild(tableBody.lastElementChild);
+        // Event delegation untuk tombol "X"
+        tableBody.addEventListener("click", (event) => {
+            if (event.target.matches('button[name="deleteSPK"]')) {
+                event.preventDefault(); // Mencegah aksi default
+                const row = event.target.closest("tr"); // Temukan baris <tr> terdekat
+                if (row) row.remove(); // Hapus baris
             }
         });
     });
