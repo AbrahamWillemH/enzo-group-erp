@@ -264,7 +264,7 @@
               <label for="turut_mengundang">Turut Mengundang</label>
               <textarea type="text" id="turut_mengundang" rows="5" name="turut_mengundang"required
                 placeholder="Turut Mengundang"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->turut_mengundang}}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-[50%] rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->turut_mengundang}}</textarea>
               @error('turut_mengundang')
               <small class="text-danger">{{ $message }}</small>
               @enderror

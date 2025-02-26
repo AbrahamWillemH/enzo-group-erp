@@ -272,7 +272,7 @@
                     </table>
 
                     <!-- Modal Upload -->
-                    <div id="modal-upload" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden">
+                    <div id="modal-upload" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden z-[80]">
                         <div class="bg-white p-6 rounded-lg shadow-lg w-96">
                             <h2 class="text-xl font-bold mb-4">Ubah Desain </h2>
                             <form action="{{route('invitation.upload.image', ['id' => $invitation->id])}}" method="POST" enctype="multipart/form-data">
