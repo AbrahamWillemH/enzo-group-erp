@@ -337,6 +337,43 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col items-center">
+              <label for="akad_pemberkatan_time_finish">Waktu Selesai</label>
+              <div class="flex items-center space-x-2">
+                  <!-- Input Waktu -->
+                  <div class="relative w-60">
+                      <input type="text" id="timePicker" name="akad_pemberkatan_time_finish"
+                          value="" required
+                          placeholder="Pilih Waktu Selesai"
+                          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"
+                      >
+                      <!-- SVG Icon -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-clock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                          viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                      </svg>
+                  </div>
+
+                  <!-- Dropdown Timezone -->
+                  <select name="time_zone" id="time_zone"
+                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                      <option value="WIB" {{ old('time_zone') == 'WIB' ? 'selected' : '' }}>WIB</option>
+                      <option value="WITA" {{ old('time_zone') == 'WITA' ? 'selected' : '' }}>WITA</option>
+                      <option value="WIT" {{ old('time_zone') == 'WIT' ? 'selected' : '' }}>WIT</option>
+                  </select>
+              </div>
+
+                <!-- Error Handling -->
+                @error('akad_pemberkatan_time')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+                @error('time_zone')
+                    <small class="text-danger">{{ $message }}</small>
+                @enderror
+            </div>
+
             <div class="flex items-center flex-col">
               <label for="akad_pemberkatan_location">Lokasi Acara</label>
               <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" value="{{ old('akad_pemberkatan_location') }}" required
@@ -402,6 +439,42 @@
                 @enderror
             </div>
 
+            <div class="flex flex-col items-center">
+              <label for="reception_time_finish">Waktu Selesai</label>
+              <div class="flex items-center space-x-2">
+                  <!-- Input Waktu -->
+                  <div class="relative w-60">
+                      <input type="text" id="timePicker" name="reception_time_finish"
+                          value="" required
+                          placeholder="Pilih Waktu Selesai"
+                          class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-10 py-2"
+                      >
+                      <!-- SVG Icon -->
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-clock absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                          viewBox="0 0 16 16">
+                          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
+                          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0"/>
+                      </svg>
+                  </div>
+
+                  <!-- Dropdown Timezone -->
+                  <select name="time_zone" id="time_zone"
+                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                      <option value="WIB" {{ old('time_zone') == 'WIB' ? 'selected' : '' }}>WIB</option>
+                      <option value="WITA" {{ old('time_zone') == 'WITA' ? 'selected' : '' }}>WITA</option>
+                      <option value="WIT" {{ old('time_zone') == 'WIT' ? 'selected' : '' }}>WIT</option>
+                  </select>
+              </div>
+
+              <!-- Error Handling -->
+              @error('reception_time')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+              @error('time_zone')
+                  <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
 
             <div class="flex items-center flex-col">
               <label for="reception_location">Lokasi Acara</label>
