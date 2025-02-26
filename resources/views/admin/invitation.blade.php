@@ -111,7 +111,7 @@
                                         <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            <button onclick="return confirmDeletion();" type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Delete
                                             </button>
                                         </form>
@@ -191,7 +191,7 @@
                                         <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            <button onclick="return confirmDeletion();" type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Delete
                                             </button>
                                         </form>
@@ -258,7 +258,7 @@
                                         <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            <button onclick="return confirmDeletion();" type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Delete
                                             </button>
                                         </form>
@@ -347,7 +347,7 @@
                                         <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            <button onclick="return confirmDeletion();" type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Delete
                                             </button>
                                         </form>
@@ -413,7 +413,7 @@
                                         <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                             @csrf
                                             @method('POST')
-                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                            <button onclick="return confirmDeletion();" type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Delete
                                             </button>
                                         </form>
@@ -456,6 +456,9 @@
     }
     function confirmNextProgress() {
         return confirm('Are you sure you want to go to the next progress?');
+    }
+    function confirmDeletion() {
+        return confirm('Are you sure to delete this order?');
     }
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('input[name="deadline_date_input"]').forEach((textInput) => {

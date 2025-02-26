@@ -471,6 +471,9 @@
     function confirmNextProgress() {
         return confirm('Are you sure you want to go to the next progress?');
     }
+    function confirmDeletion() {
+        return confirm('Are you sure to delete this order?');
+    }
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('input[name="deadline_date_input"]').forEach((textInput) => {
             const id = textInput.id.split('_')[1]; // Ambil ID unik dari input
