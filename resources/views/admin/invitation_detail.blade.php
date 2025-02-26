@@ -170,7 +170,7 @@
                         </thead>
                         <tbody class="">
                             <tr class="bg-green-shadow/30 h-[60px] max-h-[120px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="px-4 py-2">{{$invitation->turut_mengundang}}</td>
+                                <td class="px-4 py-2">{{$invitation->turut_mengundang ?? "-"}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -626,7 +626,7 @@
             e.preventDefault(); // Mencegah reload halaman
 
             // Pastikan tbody memiliki setidaknya satu baris sebelum menghapus
-            if (tableBody.rows.length > 1) { 
+            if (tableBody.rows.length > 1) {
                 tableBody.removeChild(tableBody.lastElementChild);
             }
         });

@@ -189,6 +189,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     // update progress
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
+    Route::post('/admin/orders/{id}/{order}/deadline-change', [OrderController::class, 'deadlineChange'])->name('orders.deadline.change');
 
     //reminder
     Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');

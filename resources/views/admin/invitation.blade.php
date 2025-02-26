@@ -77,8 +77,8 @@
                                             {{ $o->id }}
                                         </div>
                                     </td>
-                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
-                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" 
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}"
                                         onclick="showModal('user_name', '{{ $o->user_name }}')">
                                         {{ Str::limit($o->user_name, 25) }}
                                     </td>
@@ -163,8 +163,8 @@
                                 @if ($o->progress == 'Fix')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
-                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" 
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer
+                                        {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}"
                                         onclick="showModal('user_name', '{{ $o->user_name }}')">
                                         {{ Str::limit($o->user_name, 25) }}
                                     </td>
@@ -175,7 +175,13 @@
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
-                                    <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19"></td>
+                                    <td>
+                                        <form action="{{route('orders.deadline.change', ['id' => $o->id, 'order' => $o->type])}}" method="POST">
+                                            @csrf
+                                            <input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19" value="{{$o->deadline_date}}" onchange="this.form.submit()">
+                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                        </form>
+                                    </td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
@@ -197,7 +203,7 @@
                                         </form>
                                         <form action="{{ route('orders.updateProgress', ['id' => $o->id]) }}" method="POST" class="inline-block">
                                             @csrf
-                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}" value="{{$o->deadline_date}}">
                                             <button type="submit" id="submitButton_{{$o->id}}" class="bg-slate-600 rounded-lg px-[3rem] py-2 transition duration-300 inline-block text-white cursor-not-allowed" disabled onclick="copyDeadline({{$o->id}});">
                                                 Next
                                             </button>
@@ -234,7 +240,7 @@
                                 @if ($o->progress == 'Pemesanan Bahan')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
@@ -301,7 +307,7 @@
                                 @if ($o->progress == 'Proses Produksi')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
@@ -389,7 +395,7 @@
                                 @if ($o->progress == 'Selesai')
                                 <tr class="h-20 hover:bg-green-main/15">
                                     <td class="px-3 py-3 text-center bg-green-main/0 backdrop-blur-xl sticky left-0">{{$o->id}}</td>
-                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer 
+                                    <td class="px-3 py-3 text-center backdrop-blur-xl sticky left-[149px] hover:cursor-pointer
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
@@ -451,23 +457,33 @@
     function confirmNextProgress() {
         return confirm('Are you sure you want to go to the next progress?');
     }
-    document.querySelectorAll('input[type="date"][id^="deadline_"]').forEach((textInput) => {
-        const id = textInput.id.split('_')[1]; // Ambil ID unik
-        const submitButton = document.getElementById(`submitButton_${id}`);
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('input[name="deadline_date_input"]').forEach((textInput) => {
+            const id = textInput.id.split('_')[1]; // Ambil ID unik dari input
+            const submitButton = document.getElementById(`submitButton_${id}`);
 
-        // Event listener untuk setiap elemen input
-        textInput.addEventListener('input', () => {
-            if (textInput.value.trim() !== '') {
-                // Aktifkan tombol jika ada teks
-                submitButton.disabled = false;
-                submitButton.classList.remove('bg-slate-600', 'cursor-not-allowed');
-                submitButton.classList.add('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-            } else {
-                // Nonaktifkan tombol jika kosong
-                submitButton.disabled = true;
-                submitButton.classList.remove('bg-accept', 'hover:bg-accept', 'hover:scale-110', 'cursor-pointer');
-                submitButton.classList.add('bg-slate-600', 'cursor-not-allowed');
-            }
+            if (!submitButton) return; // Jika tidak ada tombol, hentikan eksekusi
+
+            // Fungsi untuk mengecek apakah input memiliki value atau tidak
+            const checkDeadlineInput = () => {
+                if (textInput.value.trim() !== "") {
+                    // Aktifkan tombol jika ada nilai
+                    submitButton.disabled = false;
+                    submitButton.classList.remove("bg-slate-600", "cursor-not-allowed");
+                    submitButton.classList.add("bg-accept", "hover:bg-accept", "hover:scale-110", "cursor-pointer");
+                } else {
+                    // Nonaktifkan tombol jika kosong
+                    submitButton.disabled = true;
+                    submitButton.classList.remove("bg-accept", "hover:bg-accept", "hover:scale-110", "cursor-pointer");
+                    submitButton.classList.add("bg-slate-600", "cursor-not-allowed");
+                }
+            };
+
+            // Cek saat halaman dimuat
+            checkDeadlineInput();
+
+            // Event listener saat input diubah
+            textInput.addEventListener("change", checkDeadlineInput);
         });
     });
 

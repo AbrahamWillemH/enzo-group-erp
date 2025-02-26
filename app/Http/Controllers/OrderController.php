@@ -64,6 +64,28 @@ class OrderController extends Controller
         $modelClass::where('id', $id)->update($updateData);
     }
 
+    public function deadlineChange(Request $request, $id, $order)
+    {
+        $modelClass = match ($order) {
+            'invitation' => Invitation::class,
+            'souvenir' => Souvenir::class,
+            'packaging' => Packaging::class,
+            default => null,
+        };
+
+        if (!$modelClass) {
+            return; // Hindari error jika tipe tidak valid
+        }
+
+        $deadlineDate = $request->deadline_date_input;
+
+        $updateData = ['deadline_date' => $deadlineDate];
+
+        $modelClass::where('id', $id)->update($updateData);
+
+        return redirect()->back()->with('Success');
+    }
+
     public function updateProgress(Request $request, $id)
     {
         if (auth()->user()->role !== 'admin') {
@@ -340,9 +362,9 @@ class OrderController extends Controller
 
         if ($order) {
             $order->delete();
-            return redirect()->route('admin.done.view');
+            return redirect()->back()->with('Success delete data');
         } else {
-            return redirect()->route('admin.done.view');
+            return redirect()->back()->with('Success delete data');
         }
     }
 }
