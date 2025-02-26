@@ -41,7 +41,7 @@
     <!-- Tabel -->
     <main class="pt-20 bg-green-light h-screen">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-[95%] mx-auto mt-[1.5rem] mb-5 max-h-[530px]">
-            <table class="w-full text-sm text-center capitalize z-10">
+            <table class="w-[1250px] 2xl:w-[1350px] text-sm text-center capitalize z-10">
                 <thead class="text-brown-enzo z-20">
                     <tr>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">ID</th>
@@ -52,7 +52,7 @@
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Tanggal Acara</th>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Deadline</th>
                         <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Tanggal Selesai</th>
-                        <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main">Action</th>
+                        <th scope="col" class="text-center px-4 py-6 sticky top-0 bg-green-main w-[150px]">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-green-main/10 overflow-y-auto">
@@ -74,7 +74,7 @@
                         <td class="px-4 py-3 text-center">{{ $o->done_at ? \Carbon\Carbon::parse($o->done_at)->format('d/m/Y') : 'Tanggal tidak tersedia' }}</td>
                         <td class="px-3 py-3 text-center space-y-2">
                             <a href="{{ route('admin.reminder.detail', ['id' => $o->id]) }}" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">Detail</a>
-                            <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)">
+                            <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
                                 @csrf
                                 @method('POST')
                                 <button type="submit"
