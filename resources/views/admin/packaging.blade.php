@@ -86,7 +86,7 @@
                                         {{ Str::limit($o->address, 15) }}
                                     </td>
 
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
@@ -170,7 +170,7 @@
                                     <td class="px-3 py-3 text-center hover:cursor-pointer" onclick="showModal('address', '{{ $o->address }}')">
                                         {{ Str::limit($o->address, 15) }}
                                     </td>
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td><input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm" placeholder="2025-01-19"></td>
@@ -235,7 +235,7 @@
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
@@ -300,7 +300,7 @@
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
@@ -383,7 +383,7 @@
                                         {{ stripos($o->user_name, 'shopee') !== false ? 'bg-brown-enzo text-white' : 'bg-green-main/0' }}" >
                                         {{ $o->user_name }}
                                     </td>
-                                    <td class="px-3 py-3 text-center">{{$o->type}}</td>
+                                    <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
