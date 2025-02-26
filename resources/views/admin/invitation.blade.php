@@ -50,7 +50,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Pembayaran dan Desain</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-[6.75rem] mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]">
-                        <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
+                        <table class="w-[1400px] 2xl:w-[1500px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -62,7 +62,7 @@
                                     <th class="text-center">Tanggal Acara</th>
                                     <th class="text-center">Desain</th>
                                     <th class="text-center">Status Bayar</th>
-                                    <th class="text-center w-[250px]">Action</th>
+                                    <th class="text-center w-[350px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -106,6 +106,13 @@
                                         <form action="{{ route('admin.invitation.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
                                                 Detail
+                                            </button>
+                                        </form>
+                                        <form action="{{ route('admin.order.delete', ['id' => $o->id]) }}" method="POST" onsubmit="return confirmDelete(event)" class="inline-block">
+                                            @csrf
+                                            @method('POST')
+                                            <button type="submit" class="bg-red-500 rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
+                                                Delete
                                             </button>
                                         </form>
                                         @if (($o->payment_status == 'DP 2' || $o->payment_status == 'Lunas') && ($o->design_status == 'ACC'))
