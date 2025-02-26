@@ -24,8 +24,8 @@
 
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center min-h-screen justify-start py-24 text-green-main font-sans" style="letter-spacing: 3px">
     <h2 class="text-lg sm:text-xl md:text-2xl tracking-widest font-medium">EDIT INVITATION : {{$invitation->user_name}}</h2>
-    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 my-3">
-    <hr class="border-b-4 border-brown-enzo w-1/3 sm:w-1/4 mb-5">
+    <hr class="border-b-4 border-brown-enzo w-3/4 sm:w-1/2 my-3">
+    <hr class="border-b-4 border-brown-enzo w-1/2 sm:w-1/3 mb-5">
     <br>
 
     @if(session('success'))
@@ -45,7 +45,7 @@
             <label for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ $invitation->user_name }}" required
               placeholder="Nama Pemesan"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('user_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -55,7 +55,7 @@
             <label for="phone_number">Nomor HP</label>
             <input type="text" id="phone_number" name="phone_number" value="{{ $invitation->phone_number }}" required
               placeholder="08XX-XXXX-XXXX"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('phone_number')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -65,7 +65,7 @@
             <label for="instagram">Instagram</label>
             <input type="text" id="instagram" name="instagram" value="{{ $invitation->instagram }}" required
               placeholder="Akun Instagram"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('instagram')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -75,7 +75,7 @@
             <label for="address">Alamat Lengkap</label>
             <textarea id="address" rows="7" name="address" required
               placeholder="Alamat Lengkap"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->address }}</textarea>
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->address }}</textarea>
             @error('address')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -87,7 +87,7 @@
           <div class="flex items-center flex-col">
             <label for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ $invitation->quantity }}" required placeholder="Jumlah"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('quantity')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -97,7 +97,7 @@
             <label for="product_name">Tipe Produk</label>
             <input product_name="text" id="product_name" name="product_name" value="{{ $invitation->product_name }}" required
               placeholder="Tipe Produk"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('product_name')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -106,7 +106,7 @@
           <div class="flex items-center flex-col">
             <label for="finishing">Finishing</label>
             <input type="text" id="finishing" name="finishing" value="{{ $invitation->finishing }}" required placeholder="Finishing"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
             @error('finishing')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -114,7 +114,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="source">Source</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source"required>
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source"required>
               <option value="Shopee" {{ old('source', $invitation->source) == 'Shopee' ? 'selected' : '' }}>Shopee</option>
               <option value="Deonkraft" {{ old('source', $invitation->source) == 'Deonkraft' ? 'selected' : '' }}>Deonkraft</option>
               <option value="Enzo Wedding" {{ old('source', $invitation->source) == 'Enzo Wedding' ? 'selected' : '' }}>Enzo Wedding</option>
@@ -129,7 +129,7 @@
             <label for="note_design">Note</label>
             <textarea id="note_design" rows="4" name="note_design"
               placeholder="Tulis catatan tambahan disini"
-              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->note_design }}</textarea>
+              class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->note_design }}</textarea>
             @error('note_design')
             <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -149,7 +149,7 @@
               <label for="groom_name">Nama Lengkap</label>
               <input type="text" id="groom_name" name="groom_name" value="{{ $invitation->groom_name }}" required
                 placeholder="Nama Lengkap"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('groom_name')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -159,7 +159,7 @@
               <label for="groom_nickname">Nama Panggilan</label>
               <input type="text" id="groom_nickname" name="groom_nickname" value="{{ $invitation->groom_nickname }}" required
                 placeholder="Nama Panggilan"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('groom_nickname')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -169,7 +169,7 @@
               <label for="groom_father">Nama Ayah</label>
               <input type="text" id="groom_father" name="groom_father" value="{{ $invitation->groom_father }}" required
                 placeholder="Nama Lengkap Ayah"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('groom_father')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -179,7 +179,7 @@
               <label for="groom_mother">Nama Ibu</label>
               <input type="text" id="groom_mother" name="groom_mother" value="{{ $invitation->groom_mother }}" required
                 placeholder="Nama Lengkap Ibu"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('groom_mother')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -189,7 +189,7 @@
               <label for="groom_parents_address">Alamat Orang Tua</label>
               <textarea id="groom_parents_address" rows="5" name="groom_parents_address" required
                 placeholder="Alamat Orang Tua"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->groom_parents_address }}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->groom_parents_address }}</textarea>
               @error('groom_parents_address')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -208,7 +208,7 @@
               <label for="bride_name">Nama Lengkap</label>
               <input type="text" id="bride_name" name="bride_name" value="{{ $invitation->bride_name }}" required
                 placeholder="Nama Lengkap"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('bride_name')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -218,7 +218,7 @@
               <label for="bride_nickname">Nama Panggilan</label>
               <input type="text" id="bride_nickname" name="bride_nickname" value="{{ $invitation->bride_nickname }}" required
                 placeholder="Nama Panggilan"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('bride_nickname')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -228,7 +228,7 @@
               <label for="bride_father">Nama Ayah</label>
               <input type="text" id="bride_father" name="bride_father" value="{{ $invitation->bride_father }}" required
                 placeholder="Nama Lengkap Ayah"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('bride_father')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -238,7 +238,7 @@
               <label for="bride_mother">Nama Ibu</label>
               <input type="text" id="bride_mother" name="bride_mother" value="{{ $invitation->bride_mother }}" required
                 placeholder="Nama Lengkap Ibu"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('bride_mother')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -248,8 +248,24 @@
               <label for="bride_parents_address">Alamat Orang Tua</label>
               <textarea id="bride_parents_address" rows="5" name="bride_parents_address" required
                 placeholder="Alamat Orang Tua"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->bride_parents_address }}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->bride_parents_address }}</textarea>
               @error('bride_parents_address')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
+        <div>
+          <div class="flex flex-col">
+            <div class="flex items-center flex-col">
+              <label for="turut_mengundang">Turut Mengundang</label>
+              <textarea type="text" id="turut_mengundang" rows="5" name="turut_mengundang"required
+                placeholder="Turut Mengundang"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->turut_mengundang}}</textarea>
+              @error('turut_mengundang')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>
@@ -268,7 +284,7 @@
             <div class="flex items-center flex-col">
               <label for="akad_pemberkatan_date">Tanggal Acara</label>
               <input type="date" id="akad_pemberkatan_date" name="akad_pemberkatan_date" value="{{ $invitation->akad_pemberkatan_date }}" required
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('akad_pemberkatan_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -278,7 +294,7 @@
                 <label for="akad_pemberkatan_time">Waktu Acara</label>
                 <div class="flex items-center space-x-2">
                     <!-- Input Waktu -->
-                    <div class="relative w-60">
+                    <div class="relative w-70">
                         <input type="text" id="timePicker" name="akad_pemberkatan_time"
                             value="{{ $invitation->akad_pemberkatan_time }}" required
                             placeholder="Pilih Waktu Acara"
@@ -295,7 +311,7 @@
 
                     <!-- Dropdown Timezone -->
                     <select name="time_zone" id="time_zone"
-                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-30">
                         <option value="WIB" {{ $invitation->time_zone == 'WIB' ? 'selected' : '' }}>WIB</option>
                         <option value="WITA" {{ $invitation->time_zone == 'WITA' ? 'selected' : '' }}>WITA</option>
                         <option value="WIT" {{ $invitation->time_zone == 'WIT' ? 'selected' : '' }}>WIT</option>
@@ -315,7 +331,7 @@
               <label for="akad_pemberkatan_time_finish">Waktu Selesai</label>
               <div class="flex items-center space-x-2">
                   <!-- Input Waktu -->
-                  <div class="relative w-60">
+                  <div class="relative w-70">
                       <input type="text" id="timePicker" name="akad_pemberkatan_time_finish"
                           value="" required
                           placeholder="Pilih Waktu Selesai"
@@ -332,7 +348,7 @@
 
                   <!-- Dropdown Timezone -->
                   <select name="time_zone" id="time_zone"
-                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-30">
                       <option value="WIB" {{ $invitation->time_zone == 'WIB' ? 'selected' : '' }}>WIB</option>
                       <option value="WITA" {{ $invitation->time_zone == 'WITA' ? 'selected' : '' }}>WITA</option>
                       <option value="WIT" {{ $invitation->time_zone == 'WIT' ? 'selected' : '' }}>WIT</option>
@@ -352,7 +368,7 @@
               <label for="akad_pemberkatan_location">Lokasi Acara</label>
               <textarea id="akad_pemberkatan_location" rows="5" name="akad_pemberkatan_location" required
                 placeholder="Lokasi Akad Pemberkatan"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->akad_pemberkatan_location }}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->akad_pemberkatan_location }}</textarea>
               @error('akad_pemberkatan_location')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -370,7 +386,7 @@
             <div class="flex items-center flex-col">
               <label for="reception_date">Tanggal Acara</label>
               <input type="date" id="reception_date" name="reception_date" value="{{ $invitation->reception_date }}" required
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('reception_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -380,7 +396,7 @@
                 <label for="reception_time">Waktu Acara</label>
                 <div class="flex items-center space-x-2">
                     <!-- Input Waktu -->
-                    <div class="relative w-60">
+                    <div class="relative w-70">
                         <input type="text" id="timePicker" name="reception_time"
                             value="{{ $invitation->reception_time }}" required
                             placeholder="Pilih Waktu Acara"
@@ -397,7 +413,7 @@
 
                     <!-- Dropdown Timezone -->
                     <select name="time_zone" id="time_zone"
-                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                        class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-30">
                         <option value="WIB" {{ $invitation->time_zone == 'WIB' ? 'selected' : '' }}>WIB</option>
                         <option value="WITA" {{ $invitation->time_zone == 'WITA' ? 'selected' : '' }}>WITA</option>
                         <option value="WIT" {{ $invitation->time_zone == 'WIT' ? 'selected' : '' }}>WIT</option>
@@ -417,7 +433,7 @@
               <label for="reception_time_finish">Waktu Selesai</label>
               <div class="flex items-center space-x-2">
                   <!-- Input Waktu -->
-                  <div class="relative w-60">
+                  <div class="relative w-70">
                       <input type="text" id="timePicker" name="reception_time_finish"
                           value="{{ $invitation->reception_time }}" required
                           placeholder="Pilih Waktu Selesai"
@@ -434,7 +450,7 @@
 
                   <!-- Dropdown Timezone -->
                   <select name="time_zone" id="time_zone"
-                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-20">
+                      class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl px-3 py-2 w-30">
                       <option value="WIB" {{ $invitation->time_zone == 'WIB' ? 'selected' : '' }}>WIB</option>
                       <option value="WITA" {{ $invitation->time_zone == 'WITA' ? 'selected' : '' }}>WITA</option>
                       <option value="WIT" {{ $invitation->time_zone == 'WIT' ? 'selected' : '' }}>WIT</option>
@@ -454,7 +470,7 @@
               <label for="reception_location">Lokasi Acara</label>
               <textarea id="reception_location" rows="5" name="reception_location" required
                 placeholder="Lokasi Resepsi"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->reception_location }}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{ $invitation->reception_location }}</textarea>
               @error('reception_location')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -478,7 +494,7 @@
               <label for="desain_path">Desain</label>
               <input type="file" id="desain_path" name="desain_path"
                 accept=".jpg,.jpeg,.png,.pdf"
-                class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45"
+                class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45"
                 value="{{$invitation->desain_path}}">
               @error('desain_path')
               <small class="text-danger">{{ $message }}</small>
@@ -488,7 +504,7 @@
             <div class="flex items-center flex-col">
                 <label for="progress">Progress</label>
                 <select id="progress" name="progress"
-                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
+                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
                   <option value="Pending" {{ old('progress', $invitation->progress) == 'Pending' ? 'selected' : '' }}>Menunggu Pembayaran dan Desain</option>
                   <option value="Fix" {{ old('progress', $invitation->progress) == 'Fix' ? 'selected' : '' }}>Menentukan Deadline</option>
                   <option value="Pemesanan Bahan" {{ old('progress', $invitation->progress) == 'Pemesanan Bahan' ? 'selected' : '' }}>Pemesanan Bahan</option>
@@ -503,7 +519,7 @@
             <div class="flex items-center flex-col">
                 <label for="payment_status">Status Bayar</label>
                 <select id="payment_status" name="payment_status"
-                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
+                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
                   <option value="Pending" {{ old('payment_status', $invitation->payment_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
                   <option value="DP 1" {{ old('payment_status', $invitation->payment_status) == 'DP 1' ? 'selected' : '' }}>DP 1</option>
                   <option value="DP 2" {{ old('payment_status', $invitation->payment_status) == 'DP 2' ? 'selected' : '' }}>DP 2</option>
@@ -517,7 +533,7 @@
             <div class="flex items-center flex-col">
               <label for="dp1_date">Tanggal Pembayaran DP1</label>
               <input type="date" id="dp1_date" name="dp1_date" value="{{ $invitation->dp1_date }}"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('dp1_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -526,7 +542,7 @@
             <div class="flex items-center flex-col">
               <label for="dp2_date">Tanggal Pembayaran DP2</label>
               <input type="date" id="dp2_date" name="dp2_date" value="{{ $invitation->dp2_date }}"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('dp2_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -535,7 +551,7 @@
             <div class="flex items-center flex-col">
               <label for="paid_off_date">Tanggal Pelunasan</label>
               <input type="date" id="paid_off_date" name="paid_off_date" value="{{ $invitation->paid_off_date }}"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('paid_off_date')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -570,12 +586,12 @@
           <div class="flex flex-col gap-5">
             <div class="flex items-center flex-col">
               <label for="price_per_pcs">Harga /Pcs</label>
-              <div class="relative w-80">
+              <div class="relative w-full">
                 <span class="absolute left-2 top-[13px] transform -translate-y-1/2 text-gray-600">Rp</span>
                 <input type="text" id="price_per_pcs" name="price_per_pcs"
                     value="{{ number_format($invitation->price_per_pcs, 0, ',', '.') }}"
                     placeholder="Harga /Pcs"
-                    class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-8 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                    class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-8 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
                 <input type="hidden" id="price_per_pcs_hidden" name="price_per_pcs" value="{{ $invitation->price_per_pcs }}">
               </div>
             @error('price_per_pcs')
@@ -587,7 +603,7 @@
               <label for="printout">Percetakan</label>
               <input type="text" id="printout" name="printout" value="{{ $invitation->printout }}"
                 placeholder="Percetakan"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('printout')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -597,7 +613,7 @@
               <label for="expedition">Ekspedisi</label>
               <input type="text" id="expedition" name="expedition" value="{{ $invitation->expedition }}"
                 placeholder="Ekspedisi"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
               @error('expedition')
               <small class="text-danger">{{ $message }}</small>
               @enderror
@@ -606,7 +622,7 @@
             <div class="flex items-center flex-col">
                 <label for="design_status">Acc Client</label>
                 <select id="design_status" name="design_status"
-                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
+                  class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" required>
                   <option value="Pending" {{ old('design_status', $invitation->design_status) == 'Pending' ? 'selected' : '' }}>Pending</option>
                   <option value="ACC" {{ old('design_status', $invitation->design_status) == 'ACC' ? 'selected' : '' }}>ACC</option>
                   <option value="DECL" {{ old('design_status', $invitation->design_status) == 'DECL' ? 'selected' : '' }}>DECL</option>
@@ -620,7 +636,7 @@
                 <label for="size_fix">Ukuran Jadi</label>
                 <input type="text" id="size_fix" name="size_fix" value="{{ $invitation->size_fix }}"
                   placeholder="Ukuran Jadi"
-                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                  class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
                 @error('size_fix')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
@@ -630,7 +646,7 @@
               <label for="note_cs">Note Admin</label>
               <textarea id="note_cs" rows="6" name="note_cs"
                 placeholder="Tulis catatan tambahan disini"
-                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$invitation->note_cs}}</textarea>
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$invitation->note_cs}}</textarea>
               @error('note_cs')
               <small class="text-danger">{{ $message }}</small>
               @enderror

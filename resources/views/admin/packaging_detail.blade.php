@@ -96,7 +96,7 @@
                             <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-2 py-2 relative group">
                                     <!-- Overlay Hover -->
-                                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
                                         <button onclick="openModal(event, '{{ $packaging->id }}')"
                                                 class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
                                             Ubah Desain
@@ -236,15 +236,15 @@
                                 <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
                                 <td class="px-4 py-2">{{$packaging->size_fix}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Pelanggan</td>
                                 <td class="px-4 py-2">{{$packaging->note_design}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Note Admin</td>
                                 <td class="px-4 py-2">{{$packaging->note_cs}}</td>
                             </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                 <td class="w-[35%] px-4 py-2">Source</td>
                                 <td class="px-4 py-2">{{$packaging->source}}</td>
                             </tr>
