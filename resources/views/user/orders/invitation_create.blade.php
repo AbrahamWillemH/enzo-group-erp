@@ -283,6 +283,22 @@
         </div>
       </div>
 
+      <div class="grid grid-cols-1 gap-8 sm:gap-12 lg:gap-52 justify-center w-full max-w-5xl mx-auto px-4">
+        <div>
+          <div class="flex flex-col">
+            <div class="flex items-center flex-col">
+              <label for="turut_mengundang">Turut Mengundang</label>
+              <textarea type="text" id="turut_mengundang" rows="5" name="turut_mengundang" value="{{ old('turut_mengundang') }}" required
+                placeholder="Turut Mengundang"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
+              @error('turut_mengundang')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-52 justify-center w-full max-w-5xl mx-auto px-4">
         <!-- Akad & Pemberkatan -->
         <div>

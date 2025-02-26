@@ -161,6 +161,20 @@
 
                     </table>
                 </div>
+                <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
+                    <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg  hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                        <thead>
+                            <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                <th class="" colspan="2">TURUT MENGUNDANG</th>
+                            </tr>
+                        </thead>
+                        <tbody class="">
+                            <tr class="bg-green-shadow/30 h-[60px] max-h-[120px] hover:bg-green-shadow/40 transition-all duration-300">
+                                <td class="px-4 py-2">{{$invitation->turut_mengundang}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
 
             <section id="data_acara" class="data_acara mb-20">
