@@ -555,7 +555,8 @@
 
                     <div class="h-[35px] mt-8 flex gap-5">
                         <a href="{{ route('pdf.generate', ['type' => 'invitation', 'id' => $invitation_spk->id, 'parent_id' => $invitation->id]) }}" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg text-center">Cetak</a>
-                        <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah Data</button>
+                        <button id="addDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Tambah</button>
+                        <button id="delDataButton" type="button" class="bg-green-main border-2 border-transparent hover:bg-transparent hover:border-green-main hover:text-green-main rounded-md w-[150px] h-full transition transform duration-300 text-white font-medium text-lg">Hapus</button>
                         <button type="submit" class="bg-brown-enzo border-2 border-transparent hover:bg-transparent hover:border-brown-enzo hover:text-brown-enzo rounded-md w-[120px] h-full transition transform duration-300 text-white font-medium text-lg">Simpan</button>
                     </div>
                 </form>
@@ -569,6 +570,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         // Tangkap elemen tombol dan tbody
         const addButton = document.getElementById('addDataButton');
+        const removeButton = document.getElementById('delDataButton');
         const tableBody = document.getElementById('table-body');
 
         // Fungsi untuk menambahkan baris baru
@@ -604,6 +606,15 @@
 
             // Tambahkan baris ke dalam tbody
             tableBody.appendChild(newRow);
+        });
+
+        removeButton.addEventListener('click', (e) => {
+            e.preventDefault(); // Mencegah reload halaman
+
+            // Pastikan tbody memiliki setidaknya satu baris sebelum menghapus
+            if (tableBody.rows.length > 1) { 
+                tableBody.removeChild(tableBody.lastElementChild);
+            }
         });
     });
 
