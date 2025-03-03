@@ -115,7 +115,7 @@
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2 relative group">
                                         <!-- Overlay Hover -->
-                                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                                             <button onclick="openModal(event, 'emboss')"
                                                     class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
                                                 Ubah Desain
@@ -150,7 +150,7 @@
                                 <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
                                     <td class="w-[35%] px-2 py-2 relative group">
                                         <!-- Overlay Hover -->
-                                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-50">
+                                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                                             <button onclick="openModalThankscard()"
                                                     class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
                                                 Ubah Desain
@@ -188,7 +188,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div id="modal-upload-thankscard" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden">
+                        <div id="modal-upload-thankscard" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden z-[80]">
                             <div class="bg-white p-6 rounded-lg shadow-lg w-100">
                                 <h2 id="modal-title" class="text-xl font-bold mb-4">Ubah Desain Thankscard</h2>
                                 <form action="{{route('souvenir.upload.image', ['type' => 'thankscard', 'id' => $souvenir->id])}}" method="POST" enctype="multipart/form-data">
@@ -205,46 +205,94 @@
                     </div>
                 </div>
 
-                <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center capitalize">
-                    <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
-                        <thead>
-                            <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
-                                <th class="" colspan="2">SPESIFIKASI</th>
-                            </tr>
-                        </thead>
-                        <tbody class="">
-                        <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Nama Mempelai</td>
-                                <td class="px-4 py-2">{{$souvenir->bridegroom_name}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
-                                <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : '-' }}</td>
-                            </tr>
+                <div class="data mt-[3.25rem] mb-5 px-4 gap-5 flex justify-center">
+                    <div class="w-[90%] gap-5 flex capitalize">
+                        <!-- Table Gambar dari Cust -->
+                        <table class="table-auto rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500 w-[80%] h-[350px]">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th>GAMBAR DARI CUST</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-2 py-2 relative group">
+                                        <!-- Overlay Hover -->
+                                        <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                                            <button onclick="openModalFromCust()"
+                                                    class="px-4 py-2 bg-white text-green-600 font-semibold rounded-lg shadow-md hover:bg-green-100 transition">
+                                                Ubah Desain
+                                            </button>
+                                        </div>
+                                        @if (!is_null($souvenir->desain_thankscard_path))
+                                            <div class="relative">
+                                                <img src="{{ asset('storage/app/public/' . $souvenir->desain_thankscard_path)}}"
+                                                    alt="Gambar Dari Cust"
+                                                    class="object-cover w-full h-full
+                                                    @if ($souvenir->design_status == 'DECL') border-8 border-red-600
+                                                    @elseif($souvenir->design_status == 'ACC') border-8 border-green-600
+                                                    @endif">
+                                            </div>
+                                        @else
+                                            <p class="text-center">Belum Terdapat Desain</p>
+                                        @endif
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table-auto w-[80%] rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500">
+                            <thead>
+                                <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
+                                    <th class="" colspan="2">SPESIFIKASI</th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
                             <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Jenis Souvenir</td>
-                                <td class="px-4 py-2">{{$souvenir->product_name}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Kemas</td>
-                                <td class="px-4 py-2">{{$souvenir->pack}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Warna Motif</td>
-                                <td class="px-4 py-2">{{$souvenir->color_motif}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Motif Cadangan</td>
-                                <td class="px-4 py-2">{{$souvenir->motif_backup}}</td>
-                            </tr>
-                            <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
-                                <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
-                                <td class="px-4 py-2">{{$souvenir->size}}</td>
-                            </tr>
+                                    <td class="w-[35%] px-4 py-2">Nama Mempelai</td>
+                                    <td class="px-4 py-2">{{$souvenir->bridegroom_name}}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Tanggal Acara</td>
+                                    <td class="px-4 py-2">{{ $souvenir->event_date ? \Carbon\Carbon::parse($souvenir->event_date)->format('d/m/Y') : '-' }}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Jenis Souvenir</td>
+                                    <td class="px-4 py-2">{{$souvenir->product_name}}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Kemas</td>
+                                    <td class="px-4 py-2">{{$souvenir->pack}}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Warna Motif</td>
+                                    <td class="px-4 py-2">{{$souvenir->color_motif}}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/30 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Motif Cadangan</td>
+                                    <td class="px-4 py-2">{{$souvenir->motif_backup}}</td>
+                                </tr>
+                                <tr class="bg-green-shadow/20 h-[60px] hover:bg-green-shadow/40 transition-all duration-300">
+                                    <td class="w-[35%] px-4 py-2">Ukuran Jadi</td>
+                                    <td class="px-4 py-2">{{$souvenir->size}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        </tbody>
-
-                    </table>
+                        <!-- Modal Upload Gambar Cust -->
+                        <div id="modal-upload-from-cust" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden z-[80]">
+                            <div class="bg-white p-6 rounded-lg shadow-lg w-100">
+                                <h2 id="modal-title" class="text-xl font-bold mb-4">Ubah Gambar dari Cust</h2>
+                                <form action="{{route('souvenir.upload.image', ['type' => 'emboss', 'id' => $souvenir->id])}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" id="file-upload" name="desain_emboss_path" class="block w-full text-sm text-gray-600">
+                                    <div class="flex justify-end mt-4">
+                                        <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModalFromCust()">Batal</button>
+                                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2">Upload</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -665,6 +713,14 @@
     }
     function closeModalThankscard() {
         document.getElementById('modal-upload-thankscard').classList.add('hidden');
+    }
+
+    function openModalFromCust() {
+        event.preventDefault();
+        document.getElementById('modal-upload-from-cust').classList.remove('hidden');
+    }
+    function closeModalFromCust() {
+        document.getElementById('modal-upload-from-cust').classList.add('hidden');
     }
 
 

@@ -113,7 +113,7 @@
 
             <div class="flex items-center flex-col">
                 <label class="ml-2" for="address">Alamat Lengkap</label>
-                <textarea id="address" rows="5" name="address"
+                <textarea id="address" rows="6" name="address"
                   placeholder="Alamat Lengkap"
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->address}}</textarea>
                 @error('address')
@@ -154,6 +154,17 @@
                 @error('thankscard')
                 <small class="text-danger">{{ $message }}</small>
                 @enderror
+            </div>
+
+            <div class="flex items-center flex-col">
+              <label class="ml-2" for="">Gambar dari Cust</label>
+              <input type="file" id="" name=""
+                accept=".jpg,.jpeg,.png,.pdf"
+                class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 "
+                value="">
+              @error('')
+              <small class="text-danger">{{ $message }}</small>
+              @enderror
             </div>
 
             <div class="flex items-center flex-col ">
@@ -198,7 +209,7 @@
 
             <div class="flex items-center flex-col ">
                 <label class="ml-2" for="note_design">Note</label>
-                <textarea id="note_design" rows="5" name="note_design"
+                <textarea id="note_design" rows="3" name="note_design"
                   placeholder="Tuliskan note desain disini"
                   class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">{{$souvenir->note_design}}</textarea>
                 @error('note_design')
@@ -292,12 +303,12 @@
 
           <div class="flex items-center flex-col  mb-3">
             <label for="price_per_pcs">Harga /Pcs</label>
-            <div class="relative w-80">
+            <div class="relative w-full">
                 <span class="absolute left-2 top-[13px] transform -translate-y-1/2 text-gray-600">Rp</span>
                 <input type="text" id="price_per_pcs" name="price_per_pcs"
                     value="{{ number_format($souvenir->price_per_pcs, 0, ',', '.') }}"
                     placeholder="Harga /Pcs"
-                    class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-80 rounded-xl px-8 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
+                    class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-8 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
                 <input type="hidden" id="price_per_pcs_hidden" name="price_per_pcs" value="{{ $souvenir->price_per_pcs }}">
               </div>
           </div>

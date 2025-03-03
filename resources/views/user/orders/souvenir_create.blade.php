@@ -64,7 +64,7 @@
       <!-- Orders Info -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 lg:gap-40 justify-center w-full max-w-5xl mx-auto px-4">
         <div class="flex flex-col gap-5">
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="user_name">Nama Pemesan</label>
             <input type="text" id="user_name" name="user_name" value="{{ old('user_name') }}" required
               placeholder="Nama Pemesan"
@@ -74,7 +74,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="phone_number">Nomor HP</label>
             <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required
               placeholder="08XX-XXXX-XXXX"
@@ -84,7 +84,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[60px]">
             <label class="ml-2" for="bridegroom_name">Nama Mempelai</label>
             <input type="text" id="bridegroom_name" name="bridegroom_name" value="{{ old('bridegroom_name') }}" required
               placeholder="Nama Mempelai"
@@ -94,7 +94,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="event_date">Tanggal Acara</label>
             <input type="date" id="event_date" name="event_date" value="{{ old('event_date') }}" required
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5">
@@ -103,7 +103,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="product_name">Jenis Souvenir</label>
             <input type="text" id="product_name" name="product_name" value="{{ old('product_name') }}" required
               placeholder="Jenis Souvenir"
@@ -113,7 +113,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="size">Ukuran Jadi</label>
             <input type="text" id="size" name="size" value="{{ old('size') }}" required
               placeholder="Ukuran Jadi"
@@ -123,7 +123,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="source">Source</label>
             <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1" id="source" name="source" required>
               <option value="Shopee">Shopee</option>
@@ -136,7 +136,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col mb-7">
+          <div class="flex items-center flex-col">
             <label class="ml-2" for="address">Alamat Lengkap</label>
             <textarea id="address" rows="4" name="address" value="{{ old('address') }}" required
               placeholder="Alamat Lengkap"
@@ -149,9 +149,9 @@
 
         <div class="flex flex-col gap-5">
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="design">Desain Emboss / Label / Sablon</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
               id="design" name="design" required>
               <option value="Desain Template">Desain Template</option>
               <option value="Desain Custom">Desain Custom</option>
@@ -161,9 +161,9 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="thankscard">Desain Thankscard</label>
-            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-1 sm:py-1 md:py-1 lg:py-1"
+            <select class="form-control outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"
               id="thankscard" name="thankscard" required>
               <option value="Desain Template">Desain Template</option>
               <option value="Desain Custom">Desain Custom</option>
@@ -173,7 +173,18 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[60px]">
+            <label class="ml-2" for="">Gambar dari Cust</label>
+            <input type="file" id="" name=""
+              accept=".jpg,.jpeg,.png,.pdf"
+              class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-[319.74px] px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 "
+              value="">
+            @error('')
+            <small class="text-danger">{{ $message }}</small>
+            @enderror
+          </div>
+
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="color_motif">Warna / Motif</label>
             <input type="text" id="color_motif" name="color_motif" value="{{ old('color_motif') }}" required
               placeholder="Warna / Motif"
@@ -183,7 +194,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="motif_backup">Motif Cadangan</label>
             <input type="text" id="motif_backup" name="motif_backup" value="{{ old('motif_backup') }}" required
               placeholder="Motif Cadangan"
@@ -193,7 +204,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="quantity">Jumlah</label>
             <input type="number" id="quantity" name="quantity" value="{{ old('quantity') }}" required
               placeholder="Jumlah"
@@ -203,7 +214,7 @@
             @enderror
           </div>
 
-          <div class="flex items-center flex-col">
+          <div class="flex items-center flex-col h-[54px]">
             <label class="ml-2" for="pack">Kemas</label>
             <input type="text" id="pack" name="pack" value="{{ old('pack') }}" required
               placeholder="Kemas"
@@ -215,7 +226,7 @@
 
           <div class="flex items-center flex-col">
             <label class="ml-2" for="note_design">Note</label>
-            <textarea id="note_design" rows="7" name="note_design" value="{{ old('note_design') }}" required
+            <textarea id="note_design" rows="4" name="note_design" value="{{ old('note_design') }}" required
               placeholder="Tuliskan catatan tambahan disini"
               class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5"></textarea>
             @error('note_design')
