@@ -523,7 +523,7 @@
                     <table class="w-[95%] mt-8 rounded-t-lg overflow-hidden">
                         <thead class="border border-green-main h-[80px] bg-green-main/80 text-brown-enzo">
                             <tr>
-                                <th colspan="5" class="border-b border-brown-enzo">Rincian Bahan</th>
+                                <th colspan="6" class="border-b border-brown-enzo">Rincian Bahan</th>
                             </tr>
                             <tr>
                                 <th class="w-[350px] h-[40px]">Nama Bahan</th>
@@ -531,6 +531,7 @@
                                 <th class="w-[130px] h-[40px]">Stok</th>
                                 <th class="w-[130px] h-[40px]">Jumlah Beli</th>
                                 <th class="w-[350px] h-[40px]">Supplier</th>
+                                <th class="w-[350px] h-[40px]">Hapus</th>
                             </tr>
                         </thead>
                         <tbody id="table-body">
