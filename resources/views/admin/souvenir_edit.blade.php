@@ -156,7 +156,7 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label class="ml-2" for="design_from_cust">Gambar dari Cust</label>
+              <label class="ml-2" for="design_from_cust">Gambar Referensi</label>
               <input type="file" id="design_from_cust" name="design_from_cust"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 "
                 value="design_from_cust">

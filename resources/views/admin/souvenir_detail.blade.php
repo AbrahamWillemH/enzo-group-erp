@@ -211,7 +211,7 @@
                         <table class="table-auto rounded-lg overflow-hidden tracking-wider shadow-lg hover:shadow-green-dark hover:shadow-lg transition duration-500 w-[80%] h-[350px]">
                             <thead>
                                 <tr class="h-[60px] bg-green-main/80 text-brown-enzo">
-                                    <th>GAMBAR DARI CUST</th>
+                                    <th>GAMBAR REFERENSI</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -281,7 +281,7 @@
                         <!-- Modal Upload Gambar Cust -->
                         <div id="modal-upload-from-cust" class="fixed inset-y-0 left-[20%] w-[80%] bg-black/50 flex items-center justify-center hidden z-[80]">
                             <div class="bg-white p-6 rounded-lg shadow-lg w-100">
-                                <h2 id="modal-title" class="text-xl font-bold mb-4">Ubah Gambar dari Cust</h2>
+                                <h2 id="modal-title" class="text-xl font-bold mb-4">Ubah Gambar Referensi</h2>
                                 <form action="{{route('souvenir.upload.image', ['type' => 'emboss', 'id' => $souvenir->id])}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="file" id="file-upload" name="desain_emboss_path" class="block w-full text-sm text-gray-600">
