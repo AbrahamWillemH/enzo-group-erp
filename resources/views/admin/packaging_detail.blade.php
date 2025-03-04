@@ -306,7 +306,7 @@
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
                                 <td class="border border-green-main px-2">{{ $packaging->quantity }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Deadline</td>
-                                <td class="border border-green-main px-2">{{ $packaging->deadline_date ? \Carbon\Carbon::parse($packaging->deadline_date)->format('d-m-Y') : '-' }}</td>
+                                <td class="border border-green-main px-2">{{ $packaging->deadline_date ? \Carbon\Carbon::parse($packaging->deadline_date)->subDays(5)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <form action="{{route('admin.packaging.update', ['id' => $packaging->id])}}" method="POST" enctype="multipart/form-data">
                                 @csrf

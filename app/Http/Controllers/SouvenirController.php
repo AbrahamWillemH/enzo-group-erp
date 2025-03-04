@@ -48,57 +48,70 @@ class SouvenirController extends Controller
         return view('user.orders.souvenir_create');
     }
 
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'user_name' => 'required|string|max:255',
-            'phone_number' => 'required|string|max:20',
-            'product_name' => 'required|string|max:255',
-            'quantity' => 'required|integer',
-            'address' => 'required|string|max:1000',
-            'event_date' => 'required|date',
-            'bridegroom_name' => 'required|string|max:255',
-            'pack' => 'required|string|max:255',
-            'design' => 'required|string|max:255',
-            'thankscard' => 'required|string|max:255',
-            'color_motif' => 'required|string|max:255',
-            'motif_backup' => 'required|string|max:255',
-            'size' => 'required|string|max:255',
-            'source'=>'required|string|max:255',
-            'note_design' => 'nullable|string'
-        ]);
+public function store(Request $request)
+{
+    // Validation
+    $validator = Validator::make($request->all(), [
+        'user_name' => 'required|string|max:255',
+        'phone_number' => 'required|string|max:20',
+        'product_name' => 'required|string|max:255',
+        'quantity' => 'required|integer',
+        'address' => 'required|string|max:1000',
+        'event_date' => 'required|date',
+        'bridegroom_name' => 'required|string|max:255',
+        'pack' => 'required|string|max:255',
+        'design' => 'required|string|max:255',
+        'thankscard' => 'required|string|max:255',
+        'color_motif' => 'required|string|max:255',
+        'motif_backup' => 'required|string|max:255',
+        'size' => 'required|string|max:255',
+        'source'=>'required|string|max:255',
+        'note_design' => 'nullable|string',
+        'design_from_cust' => 'nullable|mimes:jpg,jpeg,png,pdf'
+    ]);
 
-        $a = $request->event_date;
-        $souvenirCount = Souvenir::where('event_date', $a)->count();
-        $invitationCount = Invitation::where('reception_date', $a)->count();
-        $eventCount = $souvenirCount + $invitationCount;
-
-        if ($eventCount >= 5){
-            return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($request->event_date)->format('d/m/Y'));
-        }
-
-        if ($validator->fails()) {
-            dd($validator->errors());
-            return redirect()->back()
-                            ->withErrors($validator)
-                            ->withInput();
-        }
-
-        // Proses simpan data jika validasi berhasil
-        $validated = $validator->validated();
-        $user = auth()->user();
-        $order = new Souvenir($validated);
-        $order->user_id = $user->id;
-        $order->type = 'souvenir';
-        $order->id = Souvenir::generateSouvenirId();
-        $spk = new SouvenirSPK();
-        $spk->souvenir_id = $order->id;
-
-        $order->save();
-        $spk->save();
-
-        return redirect()->back()->with('success', 'Data saved successfully');
+    if ($validator->fails()) {
+        return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
     }
+
+    // Check if file exists and is valid
+    $validated = $validator->validated();
+    if ($request->hasFile('design_from_cust') && $request->file('design_from_cust')->isValid()) {
+        $file = $request->file('design_from_cust');
+        $fileName = auth()->user()->name . '-' . time() . '.' . $file->getClientOriginalExtension();
+        $filePath = $file->storeAs('souvenir/cust', $fileName, 'public');
+
+        // Assign file path to validated data
+        $validated['design_from_cust'] = $filePath;
+    }
+
+    // Check for event deadline conflicts
+    $eventDate = $request->event_date;
+    $souvenirCount = Souvenir::where('event_date', $eventDate)->count();
+    $invitationCount = Invitation::where('reception_date', $eventDate)->count();
+    $eventCount = $souvenirCount + $invitationCount;
+
+    if ($eventCount >= 5) {
+        return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($eventDate)->format('d/m/Y'));
+    }
+
+    // Create and save the Souvenir
+    $user = auth()->user();
+    $order = new Souvenir($validated);
+    $order->user_id = $user->id;
+    $order->type = 'souvenir';
+    $order->id = Souvenir::generateSouvenirId();
+
+    $spk = new SouvenirSPK();
+    $spk->souvenir_id = $order->id;
+
+    $order->save();
+    $spk->save();
+
+    return redirect()->back()->with('success', 'Data saved successfully');
+}
 
     public function edit($id){
         $souvenir = Souvenir::findOrFail($id);
@@ -139,7 +152,8 @@ class SouvenirController extends Controller
             'note_design' => 'nullable|string',
             'note_cs' => 'nullable|string',
             'source'=>'required|string|max:255',
-            'size_fix' => 'nullable|string'
+            'size_fix' => 'nullable|string',
+            'design_from_cust' => 'nullable|mimes:jpg,jpeg,png,pdf'
         ]);
 
         $order = Souvenir::findOrFail($id);
@@ -198,6 +212,26 @@ class SouvenirController extends Controller
             ]);
 
             $validated['desain_thankscard_path'] = $filePath;
+            $validated['design_status'] = 'Pending';
+        }
+
+        if ($request->hasFile('design_from_cust') && $request->file('design_from_cust')->isValid()) {
+            if ($order->design_from_cust && Storage::exists($order->design_from_cust)) {
+                Storage::delete($order->design_from_cust);
+            }
+            $file = $request->file('design_from_cust');
+            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $filePath = $file->storeAs('souvenir/cust', $fileName, 'public');
+
+            // Simpan perubahan path desain
+            SouvenirChange::create([
+                'souvenir_id' => $order->id,
+                'column_name' => 'desain_thankscard_path',
+                'old_value' => $order->desain_thankscard_path,
+                'new_value' => $filePath,
+            ]);
+
+            $validated['design_from_cust'] = $filePath;
             $validated['design_status'] = 'Pending';
         }
 

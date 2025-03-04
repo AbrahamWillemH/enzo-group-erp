@@ -58,7 +58,7 @@
     </div>
     @endif
 
-    <form action="{{route ('user.orders.souvenir.store')}}" method="POST" class="flex flex-col gap-5 items-center">
+    <form action="{{route ('user.orders.souvenir.store')}}" method="POST" enctype="multipart/form-data" class="flex flex-col gap-5 items-center">
       @csrf
 
       <!-- Orders Info -->
@@ -174,9 +174,8 @@
           </div>
 
           <div class="flex items-center flex-col h-[60px]">
-            <label class="ml-2" for="">Gambar dari Cust</label>
-            <input type="file" id="" name=""
-              accept=".jpg,.jpeg,.png,.pdf"
+            <label class="ml-2" for="design_from_cust">Gambar dari Cust</label>
+            <input type="file" id="design_from_cust" name="design_from_cust"
               class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] rounded-xl w-[319.74px] px-2 py-0.5 sm:py-0.5 md:py-0.5 lg:py-0.5 "
               value="">
             @error('')

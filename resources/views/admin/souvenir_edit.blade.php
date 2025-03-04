@@ -149,7 +149,6 @@
                   <option value="Desain Custom" {{ old('thankscard', $souvenir->thankscard) == 'Desain Custom' ? 'selected' : '' }}>Desain Custom</option>
                 </select>
                 <input type="file" id="desain_thankscard_path" name="desain_thankscard_path"
-                    accept=".jpg,.jpeg,.png,.pdf"
                     class=" text-[#9ca3af] outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full px-0 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 mt-3">
                 @error('thankscard')
                 <small class="text-danger">{{ $message }}</small>
@@ -157,12 +156,11 @@
             </div>
 
             <div class="flex items-center flex-col">
-              <label class="ml-2" for="">Gambar dari Cust</label>
-              <input type="file" id="" name=""
-                accept=".jpg,.jpeg,.png,.pdf"
+              <label class="ml-2" for="design_from_cust">Gambar dari Cust</label>
+              <input type="file" id="design_from_cust" name="design_from_cust"
                 class="outline-none border border-[#e0e0e0] bg-[#f0f0f0] w-full rounded-xl px-2 py-0.45 sm:py-0.45 md:py-0.45 lg:py-0.45 "
-                value="">
-              @error('')
+                value="design_from_cust">
+              @error('msg')
               <small class="text-danger">{{ $message }}</small>
               @enderror
             </div>

@@ -48,7 +48,8 @@ class Souvenir extends Model
         'source',
         'done_at',
         'fix_design_date',
-        'time_zone'
+        'time_zone',
+        'design_from_cust'
     ];
 
     /**

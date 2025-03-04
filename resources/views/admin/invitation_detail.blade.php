@@ -416,7 +416,7 @@
                                 <td class="border border-green-main px-2 font-semibold">Jumlah</td>
                                 <td class="border border-green-main px-2">{{ $invitation->quantity }}</td>
                                 <td class="border border-green-main px-2 font-semibold">Deadline</td>
-                                <td class="border border-green-main px-2">{{ $invitation->deadline_date ? \Carbon\Carbon::parse($invitation->deadline_date)->format('d-m-Y') : '-' }}</td>
+                                <td class="border border-green-main px-2">{{ $invitation->deadline_date ? \Carbon\Carbon::parse($invitation->deadline_date)->subDays(5)->format('d-m-Y') : '-' }}</td>
                             </tr>
                             <tr class="h-[35px]">
                                 <td class="border border-green-main px-2 font-semibold">Alamat</td>
