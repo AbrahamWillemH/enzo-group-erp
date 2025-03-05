@@ -50,7 +50,7 @@
                 <div class="sticky top-[67px] bg-cream/50 backdrop-blur-md h-10 font-semibold flex justify-center items-center shadow-md tracking-wider z-30">Menunggu Pembayaran dan Desain</div>
                 <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                     <div class="data mt-[6.75rem] mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]">
-                        <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
+                        <table class="w-[1450px] 2xl:w-[1550px] border capitalize shadow-inner z-10">
                             <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                 <tr class="h-20">
                                     <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
@@ -59,9 +59,10 @@
                                     <th class="text-center">Tipe Produk</th>
                                     <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
+                                    <th class="text-center">Deadline Desain</th>
                                     <th class="text-center">Desain</th>
                                     <th class="text-center">Status Bayar</th>
-                                    <th class="text-center w-[350px]">Action</th>
+                                    <th class="text-center w-[300px]">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-green-main/10">
@@ -89,6 +90,13 @@
                                     <td class="px-3 py-3 text-center">{{$o->package_type}}</td>
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
+                                    <td>
+                                        <form action="{{route('orders.deadline.change', ['id' => $o->id, 'order' => $o->type])}}" method="POST">
+                                            @csrf
+                                            <input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19" value="{{$o->deadline_date}}" onchange="this.form.submit()">
+                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                        </form>
+                                    </td>
                                     <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
                                     <td class="px-3 py-3 text-center">
                                     <form action="{{ route('admin.packaging.update_payment_subprocess') }}" method="POST">
