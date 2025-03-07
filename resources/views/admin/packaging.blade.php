@@ -385,6 +385,7 @@
                                     <th class="text-center">Jumlah</th>
                                     <th class="text-center">Tanggal Pesan</th>
                                     <th class="text-center">Deadline</th>
+                                    <th class="text-center">Tanggal Jadi</th>
                                     <th class="text-center w-[420px]">Action</th>
                                 </tr>
                             </thead>
@@ -401,6 +402,20 @@
                                     <td class="px-3 py-3 text-center">{{$o->quantity}}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
+                                    <td>
+                                        <form
+                                            action=""
+                                            method="POST">
+                                            @csrf
+                                            <input type="date" name="finish_date_input"
+                                                id="finish_date_input"
+                                                class="w-full rounded-sm bg-green-light"
+                                                placeholder="2025-01-19" value=""
+                                                onchange="this.form.submit()">
+                                            <input type="hidden" name="finish_date"
+                                                id="hidden_finish">
+                                        </form>
+                                    </td>
                                     <td class="px-3 py-3 text-center">
                                         <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}" method="GET" class="inline-block">
                                             <button type="submit" class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">
