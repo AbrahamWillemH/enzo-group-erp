@@ -23,22 +23,22 @@ class PdfController extends Controller
             $model = InvitationSPK::find($id);
             $parent = Invitation::find($parent_id);
             $view = 'admin.spk_invitation';
-            $file_name = 'SPK - Invitation - ' . $parent_id;
+            $file_name = 'SPK - Invitation - '.$parent_id;
         } elseif ($type === 'souvenir') {
             $model = SouvenirSPK::find($id);
             $parent = Souvenir::find($parent_id);
             $view = 'admin.spk_souvenir';
-            $file_name = 'SPK - Souvenir - ' . $parent_id;
+            $file_name = 'SPK - Souvenir - '.$parent_id;
         } elseif ($type === 'packaging') {
             $model = PackagingSPK::find($id);
             $parent = Packaging::find($parent_id);
             $view = 'admin.spk_packaging';
-            $file_name = 'SPK - Packaging - ' . $parent_id;
+            $file_name = 'SPK - Packaging - '.$parent_id;
         } else {
             return redirect()->back()->with('error', 'Tipe data tidak valid.');
         }
 
-        if (!$model || !$parent) {
+        if (! $model || ! $parent) {
             return redirect()->back()->with('error', 'Data tidak ditemukan.');
         }
 
@@ -66,11 +66,11 @@ class PdfController extends Controller
 
         $data = [
             'details' => $model,
-            'parent' => $parent
+            'parent' => $parent,
         ];
 
         $pdf = Pdf::loadView($view, $data);
 
-        return $pdf->stream($file_name . '.pdf');
+        return $pdf->stream($file_name.'.pdf');
     }
 }

@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invitation', function (Blueprint $table) {
-            $table->enum('design_status',['Pending', 'DECL', 'ACC'])->default('Pending');
+            $table->enum('design_status', ['Pending', 'DECL', 'ACC'])->default('Pending');
             $table->string('note_design')->nullable();
             $table->string('note_cs')->nullable();
         });
         Schema::table('souvenir', function (Blueprint $table) {
-            $table->enum('design_status',['Pending', 'DECL', 'ACC'])->default('Pending');
+            $table->enum('design_status', ['Pending', 'DECL', 'ACC'])->default('Pending');
             $table->string('note_design')->nullable();
             $table->string('note_cs')->nullable();
         });

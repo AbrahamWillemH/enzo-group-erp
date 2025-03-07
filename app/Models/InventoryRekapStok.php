@@ -19,6 +19,6 @@ class InventoryRekapStok extends Model
         'barang_keluar',
         'stok_akhir',
         'harga',
-        'total_harga'
+        'total_harga',
     ];
 }

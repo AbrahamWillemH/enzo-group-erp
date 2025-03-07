@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('spk_invitation', function(Blueprint $table) {
+        Schema::table('spk_invitation', function (Blueprint $table) {
             $table->dropColumn('peruntukan');
             $table->dropColumn('nama_ukuran');
             $table->dropColumn('kebutuhan');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->json('supplier')->nullable();
         });
 
-        Schema::table('spk_packaging', function(Blueprint $table) {
+        Schema::table('spk_packaging', function (Blueprint $table) {
             $table->dropColumn('nama_bahan');
             $table->dropColumn('ukuran');
             $table->dropColumn('kebutuhan');
@@ -41,7 +41,7 @@ return new class extends Migration
             $table->json('supplier')->nullable();
         });
 
-        Schema::table('spk_souvenir', function(Blueprint $table) {
+        Schema::table('spk_souvenir', function (Blueprint $table) {
             $table->dropColumn('nama_bahan');
             $table->dropColumn('kebutuhan');
             $table->dropColumn('stok');
@@ -60,7 +60,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('spk_invitation', function(Blueprint $table) {
+        Schema::table('spk_invitation', function (Blueprint $table) {
             $table->string('peruntukan')->nullable()->change();
             $table->string('nama_ukuran')->nullable()->change();
             $table->integer('kebutuhan')->nullable()->change();
@@ -69,7 +69,7 @@ return new class extends Migration
             $table->string('supplier')->nullable()->change();
         });
 
-        Schema::table('spk_packaging', function(Blueprint $table) {
+        Schema::table('spk_packaging', function (Blueprint $table) {
             $table->string('nama_bahan')->nullable()->change();
             $table->string('ukuran')->nullable()->change();
             $table->integer('kebutuhan')->nullable()->change();
@@ -78,7 +78,7 @@ return new class extends Migration
             $table->string('supplier')->nullable()->change();
         });
 
-        Schema::table('spk_souvenir', function(Blueprint $table) {
+        Schema::table('spk_souvenir', function (Blueprint $table) {
             $table->string('nama_bahan')->nullable()->change();
             $table->integer('kebutuhan')->nullable()->change();
             $table->integer('stok')->nullable()->change();

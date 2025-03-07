@@ -33,10 +33,12 @@ class SeminarKit extends Model
     {
         return $query->where('status', AllOrder::STATUS_WAITING);
     }
+
     public function scopeConfirmed($query)
     {
         return $query->where('status', AllOrder::STATUS_CONFIRMED);
     }
+
     public function scopeDeclined($query)
     {
         return $query->where('status', AllOrder::STATUS_DECLINED);
@@ -47,14 +49,17 @@ class SeminarKit extends Model
     {
         return $query->where('status', AllOrder::PROGRESS_1);
     }
+
     public function scopeProgress_2($query)
     {
         return $query->where('status', AllOrder::PROGRESS_2);
     }
+
     public function scopeProgress_3($query)
     {
         return $query->where('status', AllOrder::PROGRESS_3);
     }
+
     public function scopeProgress_4($query)
     {
         return $query->where('status', AllOrder::PROGRESS_4);
@@ -68,6 +73,7 @@ class SeminarKit extends Model
         $this->status = $status;
         $this->save();
     }
+
     public function updateProgress($progress)
     {
         $this->progress = $progress;

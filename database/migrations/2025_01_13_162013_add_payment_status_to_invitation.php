@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('invitation', function (Blueprint $table) {
             $table->string('payment_status')->default('Pending')->after('quantity');
-            //INI TANYAIN DULU SAMA PAK ENDRA MAU DIBIKIN BOLEH LANGSUNG BIKIN ORDER TANPA DP ATAU HARUS DP DULU BARU BISA
+            // INI TANYAIN DULU SAMA PAK ENDRA MAU DIBIKIN BOLEH LANGSUNG BIKIN ORDER TANPA DP ATAU HARUS DP DULU BARU BISA
             $table->date('dp_date')->after('payment_status')->default(DB::raw('CURRENT_DATE'));
         });
     }

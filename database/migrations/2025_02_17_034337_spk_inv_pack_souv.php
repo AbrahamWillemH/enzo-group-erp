@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spk_invitation', function(Blueprint $table) {
+        Schema::create('spk_invitation', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('invitation_id');  // Foreign key ke tabel invitation
             $table->string('foil')->nullable();
@@ -37,12 +37,12 @@ return new class extends Migration
             $table->string('supplier')->nullable();
 
             $table->foreign('invitation_id')
-            ->references('id')
-            ->on('invitation')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('invitation')
+                ->onDelete('cascade');
         });
 
-        Schema::create('spk_packaging', function(Blueprint $table) {
+        Schema::create('spk_packaging', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('packaging_id');  // Foreign key ke tabel packaging
             $table->string('foil')->nullable();
@@ -66,12 +66,12 @@ return new class extends Migration
             $table->string('supplier')->nullable();
 
             $table->foreign('packaging_id')
-                  ->references('id')
-                  ->on('packaging')
-                  ->onDelete('cascade');
+                ->references('id')
+                ->on('packaging')
+                ->onDelete('cascade');
         });
 
-        Schema::create('spk_souvenir', function(Blueprint $table) {
+        Schema::create('spk_souvenir', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('souvenir_id');  // Foreign key ke tabel souvenir
             $table->string('motif')->nullable();
@@ -93,9 +93,9 @@ return new class extends Migration
             $table->string('supplier')->nullable();
 
             $table->foreign('souvenir_id')
-            ->references('id')
-            ->on('souvenir')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('souvenir')
+                ->onDelete('cascade');
         });
     }
 

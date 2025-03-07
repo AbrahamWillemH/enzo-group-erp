@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -22,7 +20,6 @@ return new class extends Migration
         DB::statement('ALTER TABLE spk_packaging MODIFY id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY');
         DB::statement('ALTER TABLE spk_souvenir MODIFY id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY');
     }
-    
 
     /**
      * Reverse the migrations.

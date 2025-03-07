@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invitation;
 use App\Models\InvitationChange;
+use App\Models\InvitationSPK;
+use App\Models\PurchaseInvitation;
+use App\Models\Souvenir;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Schema;
 use Storage;
 use Validator;
-use Carbon\Carbon;
-use App\Models\Souvenir;
-use App\Models\Invitation;
-use Illuminate\Http\Request;
-use App\Models\InvitationSPK;
-use App\Models\PurchaseInvitation;
-use Illuminate\Support\Facades\DB;
 
 class InvitationController extends Controller
 {
@@ -77,10 +77,10 @@ class InvitationController extends Controller
             'reception_time' => 'required',
             'reception_time_done' => 'required',
             'reception_location' => 'required|string',
-            'source'=>'required|string|max:255',
+            'source' => 'required|string|max:255',
             'note_design' => 'nullable|string',
             'time_zone' => 'required|string|max:5',
-            'turut_mengundang' => 'nullable|string|max:1000'
+            'turut_mengundang' => 'nullable|string|max:1000',
         ]);
 
         $a = $request->reception_date;
@@ -88,15 +88,16 @@ class InvitationController extends Controller
         $invitationCount = Invitation::where('reception_date', $a)->count();
         $eventCount = $souvenirCount + $invitationCount;
 
-        if ($eventCount >= 5){
-            return redirect()->back()->with('error', 'Terlalu banyak deadline pada ' . Carbon::parse($request->reception_date)->format('d/m/Y'));
+        if ($eventCount >= 5) {
+            return redirect()->back()->with('error', 'Terlalu banyak deadline pada '.Carbon::parse($request->reception_date)->format('d/m/Y'));
         }
 
         if ($validator->fails()) {
             dd($validator->errors());
+
             return redirect()->back()
-                            ->withErrors($validator)
-                            ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Proses simpan data jika validasi berhasil
@@ -115,12 +116,13 @@ class InvitationController extends Controller
         return redirect()->back()->with('success', 'Data saved successfully');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $invitation = Invitation::findOrFail($id);
+
         // dd($invitation);
         return view('admin.invitation_edit', compact('invitation'));
     }
-
 
     public function update(Request $request, $id)
     {
@@ -166,10 +168,10 @@ class InvitationController extends Controller
             'subprocess' => 'nullable',
             'note_design' => 'nullable|string',
             'note_cs' => 'nullable|string',
-            'source'=>'required|string|max:255',
+            'source' => 'required|string|max:255',
             'size_fix' => 'nullable|string',
             'time_zone' => 'required|string|max:5',
-            'turut_mengundang' => 'nullable|string|max:1000'
+            'turut_mengundang' => 'nullable|string|max:1000',
         ]);
 
         $order = Invitation::findOrFail($id);
@@ -186,12 +188,12 @@ class InvitationController extends Controller
                     'new_value' => $newValue,
                     'created_at' => now(),
                     'updated_at' => now(),
-                    'changer_name' => auth()->user()->name
+                    'changer_name' => auth()->user()->name,
                 ];
             }
         }
 
-        if (!empty($changes)) {
+        if (! empty($changes)) {
             InvitationChange::insert($changes);
         }
 
@@ -205,40 +207,23 @@ class InvitationController extends Controller
             }
 
             $file = $request->file('desain_path');
-            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $order->user_name.'-'.time().'.'.$file->getClientOriginalExtension();
             $filePath = $file->storeAs('invitations', $fileName, 'public');
 
             $validated['desain_path'] = $filePath;
-            if(@isset($validated['desain_path'])){
+            if (@isset($validated['desain_path'])) {
                 $validated['design_status'] = 'Pending';
             }
+
+
+            $order->update($validated);
+
+            return redirect()->back()->with('success', 'Data updated successfully');
         }
-
-        $order->update($validated);
-
-        return redirect()->back()->with('success', 'Data updated successfully');
     }
 
-
-    public function approveOrder($id)
+    public function invitationDetails($id)
     {
-        $invitation = Invitation::findOrFail($id);
-        $invitation->status = 'Dikonfirmasi';
-        $invitation->save();
-
-        return redirect()->back()->with('success', 'Pesanan telah dikonfirmasi');
-    }
-
-    public function declineOrder($id)
-    {
-        $invitation = Invitation::findOrFail($id);
-        $invitation->status = 'Ditolak';
-        $invitation->save();
-
-        return redirect()->back()->with('error', 'Pesanan telah ditolak');
-    }
-
-    public function invitationDetails($id){
         // Ambil data dari spk_invitation
         $invitation_spk = DB::table('spk_invitation')
             ->where('invitation_id', $id)
@@ -249,10 +234,14 @@ class InvitationController extends Controller
             $invitation_spk->peruntukan = json_decode($invitation_spk->peruntukan, true);
             $invitation_spk->nama_ukuran = json_decode($invitation_spk->nama_ukuran, true);
             $invitation_spk->kebutuhan = json_decode($invitation_spk->kebutuhan, true);
+            $invitation_spk->kebutuhan = json_decode($invitation_spk->kebutuhan, true);
             $invitation_spk->stok = json_decode($invitation_spk->stok, true);
             $invitation_spk->jumlah_beli = json_decode($invitation_spk->jumlah_beli, true);
             $invitation_spk->supplier = json_decode($invitation_spk->supplier, true);
         }
+
+        // Ambil data dari invitation
+        $invitation = DB::table('invitation')->find($id);
 
         // Ambil data dari invitation
         $invitation = DB::table('invitation')->find($id);
@@ -275,7 +264,7 @@ class InvitationController extends Controller
                         'old' => $change->old_value ?? '(kosong)',
                         'new' => $current_value ?? '(kosong)',
                         'changed_at' => $change->created_at,
-                        'changed_by' => $change->changer_name
+                        'changed_by' => $change->changer_name,
                     ];
                 }
             }
@@ -284,28 +273,59 @@ class InvitationController extends Controller
         return view('admin.invitation_detail', compact('invitation', 'invitation_spk', 'changes'));
     }
 
-
-
-
     public function updatePaymentSubprocess(Request $request)
     {
-        // Perbarui status pembayaran di database
+        // Ambil data lama sebelum perubahan
         $order = Invitation::findOrFail($request->order_id);
+        $oldPaymentStatus = $order->payment_status;
+        $oldSubprocess = $order->subprocess;
 
-        if ($request->has('payment_status')) {
+        // Array untuk menyimpan perubahan
+        $changes = [];
+
+        // Periksa dan update payment_status jika dikirimkan
+        if ($request->has('payment_status') && $request->payment_status != $oldPaymentStatus) {
+            $changes[] = [
+                'column_name' => 'payment_status',
+                'old_value' => $oldPaymentStatus ?? '(kosong)',
+                'new_value' => $request->payment_status,
+            ];
             $order->payment_status = $request->payment_status;
         }
 
-        if ($request->has('subprocess')) {
+        // Periksa dan update subprocess jika dikirimkan
+        if ($request->has('subprocess') && $request->subprocess != $oldSubprocess) {
+            $changes[] = [
+                'column_name' => 'subprocess',
+                'old_value' => $oldSubprocess ?? '(kosong)',
+                'new_value' => $request->subprocess,
+            ];
             $order->subprocess = $request->subprocess;
         }
 
-        $order->save();
+        // Simpan perubahan hanya jika ada perubahan
+        if (!empty($changes)) {
+            $order->save();
+
+            // Simpan perubahan ke dalam tabel InvitationChange
+            foreach ($changes as $change) {
+                InvitationChange::create([
+                    'invitation_id' => $request->order_id,
+                    'column_name' => $change['column_name'],
+                    'old_value' => $change['old_value'],
+                    'new_value' => $change['new_value'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name,
+                ]);
+            }
+        }
 
         return $this->index($request);
     }
 
-    public function purchaseInvitationStore(Request $request, $id) {
+    public function purchaseInvitationStore(Request $request, $id)
+    {
         // dd($request);
         $validated = $request->validate([
             'order_code' => 'required|string|max:255|unique:purchase_invitation',
@@ -334,7 +354,6 @@ class InvitationController extends Controller
         $order = new PurchaseInvitation($validated);
         $order->save();
 
-
         return redirect()->back()->with('success', 'Purchase invitation created successfully.');
     }
 
@@ -347,7 +366,7 @@ class InvitationController extends Controller
         $events = $invitations->map(function ($order) {
             return [
                 'id' => $order->id,
-                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'title' => $order->user_name.' - '.ucwords(strtolower($order->type)),
                 'start' => $order->deadline_date,
             ];
         });
@@ -355,7 +374,8 @@ class InvitationController extends Controller
         return response()->json($events);
     }
 
-    public function calendar(){
+    public function calendar()
+    {
         return view('admin.calendar_invitation');
     }
 
@@ -366,12 +386,13 @@ class InvitationController extends Controller
 
         // Ambil data dari masing-masing tabel dengan filter berdasarkan deadline
         $invitations = Invitation::where('progress', '!=', 'Selesai Beneran')
-        ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
-        ->get()
-        ->map(function ($item) {
-            $item->type = 'invitation';
-            return $item;
-        });
+            ->whereRaw('DATEDIFF(deadline_date, ?) <= ?', [$today, $reminderDays])
+            ->get()
+            ->map(function ($item) {
+                $item->type = 'invitation';
+
+                return $item;
+            });
 
         $sortedOrders = $invitations->sortBy('deadline_date');
 
@@ -387,7 +408,7 @@ class InvitationController extends Controller
 
         $order = DB::table('invitation')->where('id', $id)->first();
 
-        if (!$order) {
+        if (! $order) {
             return redirect()->back()->with('error', 'Data tidak ditemukan!');
         }
 
@@ -400,7 +421,7 @@ class InvitationController extends Controller
         $changes = [];
 
         foreach ($request->all() as $column => $newValue) {
-            if (!Schema::hasColumn('invitation', $column)) {
+            if (! Schema::hasColumn('invitation', $column)) {
                 continue;
             }
 
@@ -414,12 +435,12 @@ class InvitationController extends Controller
                     'new_value' => $newValue,
                     'created_at' => now(),
                     'updated_at' => now(),
-                    'changer_name' => auth()->user()->name
+                    'changer_name' => auth()->user()->name,
                 ];
             }
         }
 
-        if (!empty($changes)) {
+        if (! empty($changes)) {
             DB::table('invitation_changes')->insert($changes);
         }
 
@@ -429,14 +450,16 @@ class InvitationController extends Controller
     public function uploadDesign(Request $request, $id)
     {
         $request->validate([
-            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048', // Sesuaikan dengan format dan ukuran file
+            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf', // Sesuaikan dengan format dan ukuran file
         ]);
 
         $order = Invitation::find($id); // Gantilah dengan ID order yang sesuai (bisa dari request)
 
-        if (!$order) {
+        if (! $order) {
             return back()->with('error', 'Order tidak ditemukan.');
         }
+
+        $oldValue = $order->desain_path;
 
         if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
             // Hapus file lama jika ada
@@ -444,19 +467,29 @@ class InvitationController extends Controller
                 try {
                     Storage::delete($order->desain_path);
                 } catch (\Exception $e) {
-                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                    return back()->with('error', 'Gagal menghapus file lama: '.$e->getMessage());
                 }
             }
 
             // Simpan file baru
             $file = $request->file('desain_path');
-            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $order->user_name.'-'.time().'.'.$file->getClientOriginalExtension();
             $filePath = $file->storeAs('invitations', $fileName, 'public');
 
             // Simpan path ke database
             $order->update([
                 'desain_path' => $filePath,
-                'design_status' => 'Pending'
+                'design_status' => 'Pending',
+            ]);
+
+            InvitationChange::create([
+                'invitation_id' => $order->id,
+                'column_name' => 'desain_path',
+                'old_value' => $oldValue ?? '(kosong)', // Jika null, tampilkan "(kosong)"
+                'new_value' => $filePath,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'changer_name' => auth()->user()->name,
             ]);
 
             return back()->with('success', 'File berhasil diunggah.');

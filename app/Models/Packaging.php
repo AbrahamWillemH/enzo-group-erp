@@ -46,7 +46,8 @@ class Packaging extends Model
         'source',
         'done_at',
         'fix_design_date',
-        'time_zone'
+        'time_zone',
+        'design_deadline_date',
     ];
 
     public static function generatePackagingId()
@@ -54,7 +55,7 @@ class Packaging extends Model
         $date = now()->format('Ymd'); // Tanggal dalam format angka saja (contoh: 20250122)
 
         // Ambil ID terakhir dari tiga tabel
-        $lastId = collect(DB::select("
+        $lastId = collect(DB::select('
             SELECT id FROM invitation WHERE DATE(created_at) = :date1
             UNION
             SELECT id FROM souvenir WHERE DATE(created_at) = :date2
@@ -62,7 +63,7 @@ class Packaging extends Model
             SELECT id FROM packaging WHERE DATE(created_at) = :date3
             ORDER BY id DESC
             LIMIT 1
-        ", [
+        ', [
             'date1' => now()->toDateString(),
             'date2' => now()->toDateString(),
             'date3' => now()->toDateString(),
@@ -81,7 +82,7 @@ class Packaging extends Model
         $orderNumber = str_pad($newId, 3, '0', STR_PAD_LEFT);
 
         // Gabungkan tanggal dengan nomor urut
-        return $date . $orderNumber;
+        return $date.$orderNumber;
     }
 
     /**

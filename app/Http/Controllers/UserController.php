@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invitation;
-use App\Models\Order;
 use App\Models\Packaging;
 use App\Models\SeminarKit;
 use App\Models\Souvenir;
@@ -14,9 +13,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
-    public function register (Request $request) {
-        $validated=  $request->validate([
+    public function register(Request $request)
+    {
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
             'password' => 'required|string|min:8',
@@ -25,6 +24,7 @@ class UserController extends Controller
         $user = $this->create($validated);
 
         Auth::login($user);
+
         return redirect()->route('user.dashboard');
     }
 
@@ -48,12 +48,12 @@ class UserController extends Controller
         return view('user.dashboard', compact('invitations', 'souvenirs', 'seminarkits', 'packagings'));
     }
 
-    public function dashboardCheck() {
+    public function dashboardCheck()
+    {
         if (auth()->user()->isAdmin()) {
             return redirect()->route('admin.dashboard.invitation');
         } else {
             return redirect()->route('user.dashboard');
         }
     }
-
 }

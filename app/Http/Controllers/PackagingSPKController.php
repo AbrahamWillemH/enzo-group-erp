@@ -21,7 +21,7 @@ class PackagingSPKController extends Controller
             'warna_tali' => 'nullable|string|max:255',
             'brosur' => 'nullable|string|max:255',
             'ornamen' => 'nullable|string|max:255',
-            'lain_lain'=> 'nullable|string|max:255',
+            'lain_lain' => 'nullable|string|max:255',
             'sekat' => 'nullable|string|max:255',
             'note_tambahan' => 'nullable|string|max:255',
 
@@ -42,8 +42,8 @@ class PackagingSPKController extends Controller
 
         if ($validator->fails()) {
             return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $validated = $validator->validated();
@@ -65,6 +65,7 @@ class PackagingSPKController extends Controller
     public function edit($id)
     {
         $packaging_spk = PackagingSPK::findOrFail($id);
+
         return view('admin.packaging_detail', compact('packaging_spk'));
     }
 }

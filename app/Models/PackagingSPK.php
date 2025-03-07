@@ -30,7 +30,7 @@ class PackagingSPK extends Model
         'kebutuhan',
         'stok',
         'jumlah_beli',
-        'supplier'
+        'supplier',
     ];
 
     public function packaging()

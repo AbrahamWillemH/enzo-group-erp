@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -35,5 +33,4 @@ return new class extends Migration
         // Revert untuk tabel packaging
         DB::statement("ALTER TABLE `packaging` CHANGE `progress` `progress` ENUM('Pemesanan Bahan', 'Proses Produksi', 'Finishing', 'Selesai') DEFAULT 'Pemesanan Bahan'");
     }
-
 };

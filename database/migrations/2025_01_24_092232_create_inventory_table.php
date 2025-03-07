@@ -19,8 +19,8 @@ return new class extends Migration
             $table->float('barang_masuk')->nullable();
             $table->float('barang_keluar')->nullable();
             $table->float('stok_akhir')->nullable();
-            $table->decimal('harga',15,2)->nullable();
-            $table->decimal('total_harga',20,2)->nullable();
+            $table->decimal('harga', 15, 2)->nullable();
+            $table->decimal('total_harga', 20, 2)->nullable();
         });
         Schema::create('barang_masuk', function (Blueprint $table) {
             $table->id();

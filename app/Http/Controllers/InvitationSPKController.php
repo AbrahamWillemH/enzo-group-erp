@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use App\Models\InvitationSPK;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class InvitationSPKController extends Controller
@@ -44,13 +41,13 @@ class InvitationSPKController extends Controller
             'supplier' => 'nullable|array',
             'supplier.*' => 'nullable|string|max:255',
 
-            'lain_lain'=> 'nullable|string|max:255'
+            'lain_lain' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $validated = $validator->validated();
@@ -67,11 +64,8 @@ class InvitationSPKController extends Controller
         $order = InvitationSPK::where('invitation_id', $id)->firstOrFail();
         $order->update($validated);
 
-
         return redirect()->route('admin.invitation.detail', $id);
     }
-
-
 
     // public function edit($id)
     // {

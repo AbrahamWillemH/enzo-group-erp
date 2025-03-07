@@ -63,7 +63,8 @@ class Invitation extends Model
         'time_zone',
         'turut_mengundang',
         'akad_pemberkatan_time_done',
-        'reception_time_done'
+        'reception_time_done',
+        'design_deadline_date',
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX
@@ -72,7 +73,7 @@ class Invitation extends Model
         $date = now()->format('Ymd'); // Tanggal dalam format angka saja (contoh: 20250122)
 
         // Ambil ID terakhir dari tiga tabel
-        $lastId = collect(DB::select("
+        $lastId = collect(DB::select('
             SELECT id FROM invitation WHERE DATE(created_at) = :date1
             UNION
             SELECT id FROM souvenir WHERE DATE(created_at) = :date2
@@ -80,7 +81,7 @@ class Invitation extends Model
             SELECT id FROM packaging WHERE DATE(created_at) = :date3
             ORDER BY id DESC
             LIMIT 1
-        ", [
+        ', [
             'date1' => now()->toDateString(),
             'date2' => now()->toDateString(),
             'date3' => now()->toDateString(),
@@ -99,10 +100,8 @@ class Invitation extends Model
         $orderNumber = str_pad($newId, 3, '0', STR_PAD_LEFT);
 
         // Gabungkan tanggal dengan nomor urut
-        return $date . $orderNumber;
+        return $date.$orderNumber;
     }
-
-
 
     /**
      * Relasi ke pengguna yang melakukan pemesanan.

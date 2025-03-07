@@ -18,68 +18,70 @@ class AdminController extends Controller
         // Menambahkan properti type untuk membedakan jenis data
         $invitations = Invitation::all()->map(function ($item) {
             $item->type = 'invitation';
+
             return $item;
         });
 
         // Menggabungkan semua koleksi menjadi satu
         $orders = $invitations;
 
-            $pendingNames = $orders->filter(function ($order) {
-                return $order->progress == 'Pending';
-            })->pluck('user_name')->toArray();
+        $pendingNames = $orders->filter(function ($order) {
+            return $order->progress == 'Pending';
+        })->pluck('user_name')->toArray();
 
-            $pendingCount = $orders->filter(function ($order) {
-                return $order->progress == 'Pending';
-            })->count();
+        $pendingCount = $orders->filter(function ($order) {
+            return $order->progress == 'Pending';
+        })->count();
 
-            $fixNames = $orders->filter(function ($order) {
-                return $order->progress == 'Fix';
-            })->pluck('user_name')->toArray();
+        $fixNames = $orders->filter(function ($order) {
+            return $order->progress == 'Fix';
+        })->pluck('user_name')->toArray();
 
-            $fixCount = $orders->filter(function ($order) {
-                return $order->progress == 'Fix';
-            })->count();
+        $fixCount = $orders->filter(function ($order) {
+            return $order->progress == 'Fix';
+        })->count();
 
-            $orderNames = $orders->filter(function ($order) {
-                return $order->progress == 'Pemesanan Bahan';
-            })->pluck('user_name')->toArray();
+        $orderNames = $orders->filter(function ($order) {
+            return $order->progress == 'Pemesanan Bahan';
+        })->pluck('user_name')->toArray();
 
-            $orderCount = $orders->filter(function ($order) {
-                return $order->progress == 'Pemesanan Bahan';
-            })->count();
+        $orderCount = $orders->filter(function ($order) {
+            return $order->progress == 'Pemesanan Bahan';
+        })->count();
 
-            $prodNames = $orders->filter(function ($order) {
-                return $order->progress == 'Proses Produksi';
-            })->pluck('user_name')->toArray();
+        $prodNames = $orders->filter(function ($order) {
+            return $order->progress == 'Proses Produksi';
+        })->pluck('user_name')->toArray();
 
-            $productionCount = $orders->filter(function ($order) {
-                return $order->progress == 'Proses Produksi';
-            })->count();
+        $productionCount = $orders->filter(function ($order) {
+            return $order->progress == 'Proses Produksi';
+        })->count();
 
-            $readyNames = $orders->filter(function ($order) {
-                return $order->progress == 'Selesai';
-            })->pluck('user_name')->toArray();
+        $readyNames = $orders->filter(function ($order) {
+            return $order->progress == 'Selesai';
+        })->pluck('user_name')->toArray();
 
-            $readyCount = $orders->filter(function ($order) {
-                return $order->progress == 'Selesai';
-            })->count();
+        $readyCount = $orders->filter(function ($order) {
+            return $order->progress == 'Selesai';
+        })->count();
 
-            $doneNames = $orders->filter(function ($order) {
-                return $order->progress == 'Selesai Beneran';
-            })->pluck('user_name')->toArray();
+        $doneNames = $orders->filter(function ($order) {
+            return $order->progress == 'Selesai Beneran';
+        })->pluck('user_name')->toArray();
 
-            $doneCount = $orders->filter(function ($order) {
-                return $order->progress == 'Selesai Beneran';
-            })->count();
+        $doneCount = $orders->filter(function ($order) {
+            return $order->progress == 'Selesai Beneran';
+        })->count();
 
-            $today = Carbon::today()->toDateString();
-            $orderDeadline = $orders->filter(function ($order) use ($today) {
-                // Menggunakan Carbon untuk menghitung selisih tanggal
-                if ($order->deadline_date) {
-                    $deadline = Carbon::parse($order->deadline_date);
-                    return $deadline->diffInDays($today) <= 21;
-                }
-            });
+        $today = Carbon::today()->toDateString();
+        $orderDeadline = $orders->filter(function ($order) use ($today) {
+            // Menggunakan Carbon untuk menghitung selisih tanggal
+            if ($order->deadline_date) {
+                $deadline = Carbon::parse($order->deadline_date);
+
+                return $deadline->diffInDays($today) <= 21;
+            }
+        });
 
         $statuses = ['Pending', 'DP 1', 'DP 2', 'Lunas'];
         $paymentCounts = [];
@@ -101,7 +103,7 @@ class AdminController extends Controller
         $monthlyCreatedAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyCreatedAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->created_at)->year == $currentYear &&
+                return Carbon::parse($order->created_at)->year == $currentYear &&
                         Carbon::parse($order->created_at)->month == $month;
             })->count();
         }
@@ -109,39 +111,40 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  !is_null($order->done_at) &&
+                return ! is_null($order->done_at) &&
                         Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
 
         return view('admin.dashboard_invitation',
-        compact(
-            'orderDeadline',
-            'pendingCount',
-            'fixCount',
-            'orderCount',
-            'productionCount',
-            'readyCount',
-            'doneCount',
-            'paymentCounts',
-            'designCounts',
-            'notProcessedCounts',
-            'processedCounts',
-            'monthlyCreatedAtCounts',
-            'monthlyDoneAtCounts',
-            'pendingNames',
-            'fixNames',
-            'orderNames',
-            'prodNames',
-            'readyNames',
-            'doneNames'));
+            compact(
+                'orderDeadline',
+                'pendingCount',
+                'fixCount',
+                'orderCount',
+                'productionCount',
+                'readyCount',
+                'doneCount',
+                'paymentCounts',
+                'designCounts',
+                'notProcessedCounts',
+                'processedCounts',
+                'monthlyCreatedAtCounts',
+                'monthlyDoneAtCounts',
+                'pendingNames',
+                'fixNames',
+                'orderNames',
+                'prodNames',
+                'readyNames',
+                'doneNames'));
     }
 
     public function indexSouvenir()
     {
         $souvenirs = Souvenir::all()->map(function ($item) {
             $item->type = 'souvenir';
+
             return $item;
         });
 
@@ -201,6 +204,7 @@ class AdminController extends Controller
             // Menggunakan Carbon untuk menghitung selisih tanggal
             if ($order->deadline_date) {
                 $deadline = Carbon::parse($order->deadline_date);
+
                 return $deadline->diffInDays($today) <= 21;
             }
         });
@@ -225,7 +229,7 @@ class AdminController extends Controller
         $monthlyCreatedAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyCreatedAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->created_at)->year == $currentYear &&
+                return Carbon::parse($order->created_at)->year == $currentYear &&
                         Carbon::parse($order->created_at)->month == $month;
             })->count();
         }
@@ -233,39 +237,40 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  !is_null($order->done_at) &&
+                return ! is_null($order->done_at) &&
                         Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
 
         return view('admin.dashboard_souvenir',
-        compact(
-            'orderDeadline',
-            'pendingCount',
-            'fixCount',
-            'orderCount',
-            'productionCount',
-            'readyCount',
-            'doneCount',
-            'paymentCounts',
-            'designCounts',
-            'notProcessedCounts',
-            'processedCounts',
-            'monthlyCreatedAtCounts',
-            'monthlyDoneAtCounts',
-            'pendingNames',
-            'fixNames',
-            'orderNames',
-            'prodNames',
-            'readyNames',
-            'doneNames'));
+            compact(
+                'orderDeadline',
+                'pendingCount',
+                'fixCount',
+                'orderCount',
+                'productionCount',
+                'readyCount',
+                'doneCount',
+                'paymentCounts',
+                'designCounts',
+                'notProcessedCounts',
+                'processedCounts',
+                'monthlyCreatedAtCounts',
+                'monthlyDoneAtCounts',
+                'pendingNames',
+                'fixNames',
+                'orderNames',
+                'prodNames',
+                'readyNames',
+                'doneNames'));
     }
 
     public function indexPackaging()
     {
         $packagings = Packaging::all()->map(function ($item) {
             $item->type = 'packaging';
+
             return $item;
         });
 
@@ -325,6 +330,7 @@ class AdminController extends Controller
             // Menggunakan Carbon untuk menghitung selisih tanggal
             if ($order->deadline_date) {
                 $deadline = Carbon::parse($order->deadline_date);
+
                 return $deadline->diffInDays($today) <= 21;
             }
         });
@@ -349,7 +355,7 @@ class AdminController extends Controller
         $monthlyCreatedAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyCreatedAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  Carbon::parse($order->created_at)->year == $currentYear &&
+                return Carbon::parse($order->created_at)->year == $currentYear &&
                         Carbon::parse($order->created_at)->month == $month;
             })->count();
         }
@@ -357,44 +363,47 @@ class AdminController extends Controller
         $monthlyDoneAtCounts = [];
         foreach (range(1, 12) as $month) {
             $monthlyDoneAtCounts[$month] = $orders->filter(function ($order) use ($currentYear, $month) {
-                return  !is_null($order->done_at) &&
+                return ! is_null($order->done_at) &&
                         Carbon::parse($order->done_at)->year == $currentYear &&
                         Carbon::parse($order->done_at)->month == $month;
             })->count();
         }
 
         return view('admin.dashboard_packaging',
-        compact(
-            'orderDeadline',
-            'pendingCount',
-            'fixCount',
-            'orderCount',
-            'productionCount',
-            'readyCount',
-            'doneCount',
-            'paymentCounts',
-            'designCounts',
-            'notProcessedCounts',
-            'processedCounts',
-            'monthlyCreatedAtCounts',
-            'monthlyDoneAtCounts',
-            'pendingNames',
-            'fixNames',
-            'orderNames',
-            'prodNames',
-            'readyNames',
-            'doneNames'));
+            compact(
+                'orderDeadline',
+                'pendingCount',
+                'fixCount',
+                'orderCount',
+                'productionCount',
+                'readyCount',
+                'doneCount',
+                'paymentCounts',
+                'designCounts',
+                'notProcessedCounts',
+                'processedCounts',
+                'monthlyCreatedAtCounts',
+                'monthlyDoneAtCounts',
+                'pendingNames',
+                'fixNames',
+                'orderNames',
+                'prodNames',
+                'readyNames',
+                'doneNames'));
     }
 
-    public function createNewAdminShow(){
+    public function createNewAdminShow()
+    {
         return view('admin.master-data.create_admin');
     }
 
-    public function changeCredentialsShow(){
+    public function changeCredentialsShow()
+    {
         return view('admin.master-data.change_password');
     }
 
-    public function createNewAdmin(Request $request) {
+    public function createNewAdmin(Request $request)
+    {
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -405,13 +414,14 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'admin'
+            'role' => 'admin',
         ]);
 
         return redirect()->back()->with('success', 'Admin berhasil dibuat!');
     }
 
-    public function changeCredentials(Request $request) {
+    public function changeCredentials(Request $request)
+    {
         $admin = Auth::user();
 
         $request->validate([

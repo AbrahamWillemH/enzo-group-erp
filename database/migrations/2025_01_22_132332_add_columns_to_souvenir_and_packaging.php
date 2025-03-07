@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::table('souvenir', function (Blueprint $table) {
             $table->string('printout')->nullable();
-            $table->enum('acc_client',['Pending', 'DECL', 'ACC'])->default('Pending');
+            $table->enum('acc_client', ['Pending', 'DECL', 'ACC'])->default('Pending');
             $table->string('expedition')->nullable();
         });
         Schema::table('packaging', function (Blueprint $table) {
             $table->string('printout')->nullable();
-            $table->enum('acc_client',['Pending', 'DECL', 'ACC'])->default('Pending');
+            $table->enum('acc_client', ['Pending', 'DECL', 'ACC'])->default('Pending');
             $table->string('expedition')->nullable();
         });
     }

@@ -1,28 +1,28 @@
 <?php
 
-use App\Models\User;
-use App\Http\Controllers\PdfController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\InvitationController;
+use App\Http\Controllers\InvitationSPKController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PackagingController;
+use App\Http\Controllers\PackagingSPKController;
+use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SeminarKitController;
+use App\Http\Controllers\SouvenirController;
+use App\Http\Controllers\SouvenirSPKController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\SouvenirController;
-use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\PackagingController;
-use App\Http\Controllers\InvitationController;
-use App\Http\Controllers\SeminarKitController;
-use App\Http\Controllers\SouvenirSPKController;
-use App\Http\Controllers\PackagingSPKController;
-use App\Http\Controllers\InvitationSPKController;
 
-Route::get('/', function(){
+Route::get('/', function () {
     return view('welcome');
 });
 
 // PUNYA HABIBI & HANA
-Route::get('/pkg', function(){
+Route::get('/pkg', function () {
     return view('admin.packaging_detail');
 });
 
@@ -31,37 +31,37 @@ Route::get('/pkg', function(){
 //     return view('frontend.inventorytest');
 // });
 
-Route::get('/cetak_packaging', function(){
+Route::get('/cetak_packaging', function () {
     return view('admin.spk_packaging');
 });
-Route::get('/cetak_souvenir', function(){
+Route::get('/cetak_souvenir', function () {
     return view('admin.spk_souvenir');
 });
-Route::get('/cetak_invitation', function(){
+Route::get('/cetak_invitation', function () {
     return view('admin.spk_invitation');
 });
 
-Route::get('/tesdetail', function(){
+Route::get('/tesdetail', function () {
     return view('frontend.detailundangan');
 });
 
-Route::get('/tesspk', function(){
+Route::get('/tesspk', function () {
     return view('frontend.spk');
 });
 
-Route::get('/tesspkcreate', function(){
+Route::get('/tesspkcreate', function () {
     return view('frontend.spkcreate');
 });
 
-Route::get('/tesdetailpackaging', function(){
+Route::get('/tesdetailpackaging', function () {
     return view('frontend.detailpackaging');
 });
 
-Route::get('/pesanansaya', function(){
+Route::get('/pesanansaya', function () {
     return view('frontend.pesanansaya');
 });
 
-Route::get('/pesanannew', function(){
+Route::get('/pesanannew', function () {
     return view('frontend.newpesanan');
 });
 
@@ -69,15 +69,15 @@ Route::get('/pesanannew', function(){
 //     return view('user.progress_order');
 // });
 
-Route::get('/testedit', function(){
+Route::get('/testedit', function () {
     return view('frontend.edit_test');
 });
 
-Route::get('/dataorder', function(){
+Route::get('/dataorder', function () {
     return view('frontend.data_order');
 });
 
-Route::get('/calendar', function(){
+Route::get('/calendar', function () {
     return view('frontend.calendar');
 });
 
@@ -102,7 +102,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-//Google OAuth
+// Google OAuth
 Route::get('/auth/google', function () {
     return Socialite::driver('google')->redirect();
 })->name('auth.google');
@@ -139,7 +139,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard/souvenir', [AdminController::class, 'indexSouvenir'])->name('admin.dashboard.souvenir');
     Route::get('/admin/dashboard/packaging', [AdminController::class, 'indexPackaging'])->name('admin.dashboard.packaging');
 
-    //invitation
+    // invitation
     Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
     Route::post('/admin/orders/invitation', [InvitationController::class, 'updatePaymentSubprocess'])->name('admin.invitation.update_payment_subprocess');
     Route::get('/admin/orders/invitation/{id}', [InvitationController::class, 'invitationDetails'])->name('admin.invitation.detail');
@@ -149,7 +149,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/invitation/{id}/design-update', [InvitationController::class, 'updateDesignStatus'])->name('admin.invitation.design');
     Route::post('/admin/orders/invitation/{id}/upload-design', [InvitationController::class, 'uploadDesign'])->name('invitation.upload.image');
 
-    //packaging
+    // packaging
     Route::get('/admin/orders/packaging', [PackagingController::class, 'index'])->name('admin.packaging.view');
     Route::post('/admin/orders/packaging', [PackagingController::class, 'updatePaymentSubprocess'])->name('admin.packaging.update_payment_subprocess');
     Route::get('/admin/orders/packaging/{id}', [PackagingController::class, 'packagingDetails'])->name('admin.packaging.detail');
@@ -159,7 +159,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/packaging/{id}/design-update', [PackagingController::class, 'updateDesignStatus'])->name('admin.packaging.design');
     Route::post('/admin/orders/packaging/{id}/upload-design', [PackagingController::class, 'uploadDesign'])->name('packaging.upload.image');
 
-    //souvenir
+    // souvenir
     Route::get('/admin/orders/souvenir', [SouvenirController::class, 'index'])->name('admin.souvenir.view');
     Route::post('/admin/orders/souvenir', [SouvenirController::class, 'updatePaymentSubprocess'])->name('admin.souvenir.update_payment_subprocess');
     Route::get('/admin/orders/souvenir/{id}', [SouvenirController::class, 'souvenirDetails'])->name('admin.souvenir.detail');
@@ -179,7 +179,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/{id}/{order}/deadline-change', [OrderController::class, 'deadlineChange'])->name('orders.deadline.change');
     Route::post('/admin/orders/{id}/{order}/design-deadline-change', [OrderController::class, 'designDeadlineChange'])->name('orders.design_deadline.change');
 
-    //reminder
+    // reminder
     Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');
     Route::get('/admin/reminder/souvenir', [SouvenirController::class, 'reminder'])->name('admin.reminder.souvenir');
     Route::get('/admin/reminder/packaging', [PackagingController::class, 'reminder'])->name('admin.reminder.packaging');

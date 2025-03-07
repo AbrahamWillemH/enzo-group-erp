@@ -11,6 +11,7 @@ class AuthController extends Controller
     {
         return view('auth.login');
     }
+
     public function showRegisterForm()
     {
         return view('auth.register');
@@ -21,7 +22,7 @@ class AuthController extends Controller
 
         Auth::logout();
 
-        if ($request){
+        if ($request) {
             $credentials = $request->validate([
                 'name' => ['required', 'string'],
                 'password' => ['required'],
@@ -30,9 +31,9 @@ class AuthController extends Controller
 
             if (Auth::attempt($credentials)) {
                 $request->session()->regenerate();
-        }
+            }
 
-            if (auth()->user() != NULL){
+            if (auth()->user() != null) {
                 // Redirect based on role
                 if (auth()->user()->isAdmin()) {
                     return redirect()->route('admin.dashboard.invitation');

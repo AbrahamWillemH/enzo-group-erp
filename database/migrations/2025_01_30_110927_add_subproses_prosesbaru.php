@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('invitation', function(Blueprint $table) {
+        Schema::table('invitation', function (Blueprint $table) {
             $table->enum('subprocess', ['Cetak', 'Laminasi', 'Foil', 'Proses Lem', 'Finishing', 'Packing']);
         });
 
-        Schema::table('souvenir', function(Blueprint $table) {
+        Schema::table('souvenir', function (Blueprint $table) {
             $table->enum('subprocess', ['Potong Kain', 'Proses Sablon/Decal', 'Proses Jahit', 'Proses Kemas', 'Packing']);
         });
 
-        Schema::table('packaging', function(Blueprint $table) {
+        Schema::table('packaging', function (Blueprint $table) {
             $table->enum('subprocess', ['Cetak', 'Laminasi', 'Foil', 'Proses Lem', 'Packing']);
         });
 

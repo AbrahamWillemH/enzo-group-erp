@@ -15,10 +15,10 @@ return new class extends Migration
             $table->dropColumn('acc_client');
         });
 
-        Schema::table('souvenir', function (Blueprint $table){
+        Schema::table('souvenir', function (Blueprint $table) {
             $table->dropColumn('acc_client');
         });
-        Schema::table('packaging', function (Blueprint $table){
+        Schema::table('packaging', function (Blueprint $table) {
             $table->dropColumn('acc_client');
         });
     }
@@ -32,10 +32,10 @@ return new class extends Migration
             $table->string('acc_client');
         });
 
-        Schema::table('souvenir', function (Blueprint $table){
+        Schema::table('souvenir', function (Blueprint $table) {
             $table->string('acc_client');
         });
-        Schema::table('packaging', function (Blueprint $table){
+        Schema::table('packaging', function (Blueprint $table) {
             $table->string('acc_client');
         });
     }

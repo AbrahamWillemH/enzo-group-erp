@@ -16,6 +16,7 @@ class InvitationChange extends Model
         'column_name',
         'old_value',
         'new_value',
+        'changer_name',
     ];
 
     public function invitation()

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('size');
         });
 
-        DB::statement("ALTER TABLE `packaging` CHANGE `finishing` `finishing` TEXT");
+        DB::statement('ALTER TABLE `packaging` CHANGE `finishing` `finishing` TEXT');
     }
 
     /**
@@ -27,6 +27,6 @@ return new class extends Migration
             $table->dropColumn('size');
         });
 
-        DB::statement("ALTER TABLE `packaging` CHANGE `finishing` `finishing` VARCHAR(50)");
+        DB::statement('ALTER TABLE `packaging` CHANGE `finishing` `finishing` VARCHAR(50)');
     }
 };

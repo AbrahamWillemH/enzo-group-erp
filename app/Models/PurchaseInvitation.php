@@ -10,11 +10,12 @@ class PurchaseInvitation extends Model
     use HasFactory;
 
     protected $table = 'purchase_invitation';
+
     protected $primaryKey = 'order_code';
+
     public $timestamps = false;
+
     protected $keyType = 'string';
-
-
 
     protected $fillable = [
         'order_code',

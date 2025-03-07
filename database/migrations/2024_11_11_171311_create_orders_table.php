@@ -45,7 +45,8 @@ return new class extends Migration
         });
 
         Schema::create('souvenir', function (Blueprint $table) {
-            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');
@@ -56,7 +57,8 @@ return new class extends Migration
         });
 
         Schema::create('seminarkit', function (Blueprint $table) {
-            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');
@@ -67,7 +69,8 @@ return new class extends Migration
         });
 
         Schema::create('packaging', function (Blueprint $table) {
-            $table->string('id')->primary();            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('user_name');
             $table->string('product_name');
             $table->integer('quantity');

@@ -28,7 +28,7 @@ class SouvenirSPK extends Model
         'kebutuhan',
         'stok',
         'jumlah_beli',
-        'supplier'
+        'supplier',
     ];
 
     public function souvenir()

@@ -16,6 +16,6 @@ class InventoryBarangMasuk extends Model
         'jumlah_barang',
         'harga',
         'total_harga',
-        'catatan'
+        'catatan',
     ];
 }

@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invitation', function (Blueprint $table) {
-            $table->enum('source',['Shopee', 'Deonkraft', 'Enzo Wedding', 'Grizelle'])->nullable();
+            $table->enum('source', ['Shopee', 'Deonkraft', 'Enzo Wedding', 'Grizelle'])->nullable();
         });
         Schema::table('souvenir', function (Blueprint $table) {
-            $table->enum('source',['Shopee', 'Deonkraft', 'Enzo Wedding', 'Grizelle'])->nullable();
+            $table->enum('source', ['Shopee', 'Deonkraft', 'Enzo Wedding', 'Grizelle'])->nullable();
         });
     }
 

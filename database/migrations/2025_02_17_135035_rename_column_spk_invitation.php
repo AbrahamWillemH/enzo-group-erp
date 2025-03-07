@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('spk_invitation', function(Blueprint $table){
+        Schema::table('spk_invitation', function (Blueprint $table) {
             $table->renameColumn('gulungan', 'gunungan');
             $table->string('lain_lain')->nullable();
             $table->timestamps();
@@ -23,7 +23,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('spk_invitation', function(Blueprint $table){
+        Schema::table('spk_invitation', function (Blueprint $table) {
             $table->renameColumn('gunungan', 'gulungan');
             $table->dropColumn('lain_lain');
             $table->dropTimestamps();

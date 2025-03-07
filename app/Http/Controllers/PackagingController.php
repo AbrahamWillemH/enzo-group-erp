@@ -8,6 +8,7 @@ use App\Models\PackagingSPK;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB as IlluminateDB;
 use Schema;
 use Storage;
 use Validator;
@@ -59,17 +60,16 @@ class PackagingController extends Controller
             'package_type' => 'required|string|max:255',
             'note_design' => 'required|string|max:255',
             'size' => 'required|string|max:255',
-            'kemas'=>'required|string|max:255',
-            'source'=>'required|string|max:255',
-            'percetakan'=>'nullable|string|max:255',
-            'request'=>'nullable|string|max:255'
+            'kemas' => 'required|string|max:255',
+            'source' => 'required|string|max:255',
+            'percetakan' => 'nullable|string|max:255',
+            'request' => 'nullable|string|max:255',
         ]);
-
 
         if ($validator->fails()) {
             return redirect()->back()
-                            ->withErrors($validator)
-                            ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         // Proses simpan data jika validasi berhasil
@@ -89,8 +89,10 @@ class PackagingController extends Controller
         return redirect()->back()->with('success', 'Data saved successfully');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $packaging = Packaging::findOrFail($id);
+
         // dd($packaging);
         return view('admin.packaging_edit', compact('packaging'));
     }
@@ -128,7 +130,7 @@ class PackagingController extends Controller
             'source' => 'required|string|max:255',
             'percetakan' => 'nullable|string|max:255',
             'request' => 'nullable|string|max:255',
-            'size_fix' => 'nullable|string'
+            'size_fix' => 'nullable|string',
         ]);
 
         $order = Packaging::findOrFail($id);
@@ -143,7 +145,7 @@ class PackagingController extends Controller
                     'column_name' => $column,
                     'old_value' => is_array($oldValue) ? implode(', ', $oldValue) : $oldValue,
                     'new_value' => is_array($newValue) ? implode(', ', $newValue) : $newValue,
-                    'changer_name' => auth()->user()->name
+                    'changer_name' => auth()->user()->name,
                 ]);
             }
         }
@@ -154,7 +156,7 @@ class PackagingController extends Controller
                 Storage::delete($order->desain_path);
             }
             $file = $request->file('desain_path');
-            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $order->user_name.'-'.time().'.'.$file->getClientOriginalExtension();
             $filePath = $file->storeAs('packaging', $fileName, 'public');
 
             // Simpan perubahan desain_path
@@ -177,11 +179,11 @@ class PackagingController extends Controller
         return redirect()->back()->with('success', 'Data updated successfully');
     }
 
-
-    public function packagingDetails($id){
-        $packaging_spk = DB::table('spk_packaging')
-        ->where('packaging_id', $id)
-        ->first();
+    public function packagingDetails($id)
+    {
+        $packaging_spk = IlluminateDB::table('spk_packaging')
+            ->where('packaging_id', $id)
+            ->first();
 
         if ($packaging_spk) {
             $packaging_spk->nama_bahan = json_decode($packaging_spk->nama_bahan, true);
@@ -195,8 +197,8 @@ class PackagingController extends Controller
         $packaging = DB::table('packaging')->find($id);
 
         $packaging_changes = DB::table('packaging_changes')
-        ->where('packaging_id', $id)
-        ->get();
+            ->where('packaging_id', $id)
+            ->get();
 
         $changes = [];
 
@@ -211,7 +213,7 @@ class PackagingController extends Controller
                         'old' => $change->old_value ?? '(kosong)',
                         'new' => $current_value ?? '(kosong)',
                         'changed_at' => $change->created_at,
-                        'changed_by' => $change->changer_name
+                        'changed_by' => $change->changer_name,
                     ];
                 }
             }
@@ -222,18 +224,51 @@ class PackagingController extends Controller
 
     public function updatePaymentSubprocess(Request $request)
     {
-        // Perbarui status pembayaran di database
+        // Ambil data lama sebelum perubahan
         $order = Packaging::findOrFail($request->order_id);
+        $oldPaymentStatus = $order->payment_status;
+        $oldSubprocess = $order->subprocess;
 
-        if ($request->has('payment_status')) {
+        // Array untuk menyimpan perubahan
+        $changes = [];
+
+        // Periksa dan update payment_status jika dikirimkan
+        if ($request->has('payment_status') && $request->payment_status != $oldPaymentStatus) {
+            $changes[] = [
+                'column_name' => 'payment_status',
+                'old_value' => $oldPaymentStatus ?? '(kosong)',
+                'new_value' => $request->payment_status,
+            ];
             $order->payment_status = $request->payment_status;
         }
 
-        if ($request->has('subprocess')) {
+        // Periksa dan update subprocess jika dikirimkan
+        if ($request->has('subprocess') && $request->subprocess != $oldSubprocess) {
+            $changes[] = [
+                'column_name' => 'subprocess',
+                'old_value' => $oldSubprocess ?? '(kosong)',
+                'new_value' => $request->subprocess,
+            ];
             $order->subprocess = $request->subprocess;
         }
 
-        $order->save();
+        // Simpan perubahan hanya jika ada perubahan
+        if (!empty($changes)) {
+            $order->save();
+
+            // Simpan perubahan ke dalam tabel PackagingChange
+            foreach ($changes as $change) {
+                PackagingChange::create([
+                    'packaging_id' => $request->order_id,
+                    'column_name' => $change['column_name'],
+                    'old_value' => $change['old_value'],
+                    'new_value' => $change['new_value'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                    'changer_name' => auth()->user()->name,
+                ]);
+            }
+        }
 
         return $this->index($request);
     }
@@ -247,7 +282,7 @@ class PackagingController extends Controller
         $events = $packagings->map(function ($order) {
             return [
                 'id' => $order->id,
-                'title' => $order->user_name. ' - ' . ucwords(strtolower($order->type)),
+                'title' => $order->user_name.' - '.ucwords(strtolower($order->type)),
                 'start' => $order->deadline_date,
             ];
         });
@@ -255,7 +290,8 @@ class PackagingController extends Controller
         return response()->json($events);
     }
 
-    public function calendar(){
+    public function calendar()
+    {
         return view('admin.calendar_packaging');
     }
 
@@ -269,6 +305,7 @@ class PackagingController extends Controller
             ->get()
             ->map(function ($item) {
                 $item->type = 'packaging';
+
                 return $item;
             });
 
@@ -289,7 +326,7 @@ class PackagingController extends Controller
 
         $order = DB::table('packaging')->where('id', $id)->first();
 
-        if (!$order) {
+        if (! $order) {
             return redirect()->back()->with('error', 'Data tidak ditemukan!');
         }
 
@@ -302,7 +339,7 @@ class PackagingController extends Controller
         $changes = [];
 
         foreach ($request->all() as $column => $newValue) {
-            if (!Schema::hasColumn('packaging', $column)) {
+            if (! Schema::hasColumn('packaging', $column)) {
                 continue;
             }
 
@@ -316,12 +353,12 @@ class PackagingController extends Controller
                     'new_value' => $newValue,
                     'created_at' => now(),
                     'updated_at' => now(),
-                    'changer_name' => auth()->user()->name
+                    'changer_name' => auth()->user()->name,
                 ];
             }
         }
 
-        if (!empty($changes)) {
+        if (! empty($changes)) {
             DB::table('packaging_changes')->insert($changes);
         }
 
@@ -331,32 +368,48 @@ class PackagingController extends Controller
     public function uploadDesign(Request $request, $id)
     {
         $request->validate([
-            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+            'desain_path' => 'required|file|mimes:jpg,jpeg,png,pdf', // Hanya format file tertentu yang diperbolehkan
         ]);
 
         $order = Packaging::find($id);
 
-        if (!$order) {
+        if (! $order) {
             return back()->with('error', 'Order tidak ditemukan.');
         }
 
         if ($request->hasFile('desain_path') && $request->file('desain_path')->isValid()) {
+            // Simpan nilai lama sebelum perubahan
+            $oldValue = $order->desain_path;
 
-            if ($order->desain_path && Storage::exists($order->desain_path)) {
+            // Hapus file lama jika ada
+            if ($oldValue && Storage::exists($oldValue)) {
                 try {
-                    Storage::delete($order->desain_path);
+                    Storage::delete($oldValue);
                 } catch (\Exception $e) {
-                    return back()->with('error', 'Gagal menghapus file lama: ' . $e->getMessage());
+                    return back()->with('error', 'Gagal menghapus file lama: '.$e->getMessage());
                 }
             }
 
+            // Simpan file baru
             $file = $request->file('desain_path');
-            $fileName = $order->user_name . '-' . time() . '.' . $file->getClientOriginalExtension();
+            $fileName = $order->user_name.'-'.time().'.'.$file->getClientOriginalExtension();
             $filePath = $file->storeAs('packaging', $fileName, 'public');
 
+            // Update data di database
             $order->update([
                 'desain_path' => $filePath,
-                'design_status' => 'Pending'
+                'design_status' => 'Pending',
+            ]);
+
+            // Simpan perubahan ke InvitationChange
+            PackagingChange::create([
+                'packaging_id' => $order->id,
+                'column_name' => 'desain_path',
+                'old_value' => $oldValue ?? '(kosong)', // Jika null, tampilkan "(kosong)"
+                'new_value' => $filePath,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'changer_name' => auth()->user()->name,
             ]);
 
             return back()->with('success', 'File berhasil diunggah.');

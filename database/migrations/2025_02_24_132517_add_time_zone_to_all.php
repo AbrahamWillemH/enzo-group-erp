@@ -12,13 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('invitation', function (Blueprint $table) {
-            $table->enum('time_zone',['WIB', 'WIT', 'WITA'])->nullable();
+            $table->enum('time_zone', ['WIB', 'WIT', 'WITA'])->nullable();
         });
         Schema::table('souvenir', function (Blueprint $table) {
-            $table->enum('time_zone',['WIB', 'WIT', 'WITA'])->nullable();
+            $table->enum('time_zone', ['WIB', 'WIT', 'WITA'])->nullable();
         });
         Schema::table('packaging', function (Blueprint $table) {
-            $table->enum('time_zone',['WIB', 'WIT', 'WITA'])->nullable();
+            $table->enum('time_zone', ['WIB', 'WIT', 'WITA'])->nullable();
         });
     }
 

@@ -17,6 +17,6 @@ class InventoryBarangKeluar extends Model
         'harga',
         'total_harga',
         'nama_cust',
-        'jumlah_order'
+        'jumlah_order',
     ];
 }
