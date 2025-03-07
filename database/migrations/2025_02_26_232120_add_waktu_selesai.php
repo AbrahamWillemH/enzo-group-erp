@@ -31,16 +31,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('invitation', function(Blueprint $table) {
-            $table->text('reception_time_done')->nullable();
-            $table->text('akad_pemberkatan_time_done')->nullable();
+            $table->dropColumn('reception_time_done')
+            $table->dropColumn('akad_pemberkatan_time_done')
         });
         Schema::table('souvenir', function(Blueprint $table) {
-            $table->text('reception_time_done')->nullable();
-            $table->text('akad_pemberkatan_time_done')->nullable();
+            $table->dropColumn('reception_time_done')
+            $table->dropColumn('akad_pemberkatan_time_done')
         });
         Schema::table('packaging', function(Blueprint $table) {
-            $table->text('reception_time_done')->nullable();
-            $table->text('akad_pemberkatan_time_done')->nullable();
+            $table->dropColumn('reception_time_done')
+            $table->dropColumn('akad_pemberkatan_time_done')
         });
     }
 };

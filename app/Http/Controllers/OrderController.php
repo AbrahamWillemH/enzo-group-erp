@@ -86,6 +86,28 @@ class OrderController extends Controller
         return redirect()->back()->with('Success');
     }
 
+    public function designDeadlineChange(Request $request, $id, $order)
+    {
+        $modelClass = match ($order) {
+            'invitation' => Invitation::class,
+            'souvenir' => Souvenir::class,
+            'packaging' => Packaging::class,
+            default => null,
+        };
+
+        if (!$modelClass) {
+            return; // Hindari error jika tipe tidak valid
+        }
+
+        $deadlineDate = $request->design_deadline_date_input;
+
+        $updateData = ['design_deadline_date' => $deadlineDate];
+
+        $modelClass::where('id', $id)->update($updateData);
+
+        return redirect()->back()->with('Success');
+    }
+
     public function updateProgress(Request $request, $id)
     {
         if (auth()->user()->role !== 'admin') {

@@ -41,14 +41,6 @@ Route::get('/cetak_invitation', function(){
     return view('admin.spk_invitation');
 });
 
-Route::get('/addadmin', function(){
-    return view('frontend.create_admin');
-});
-
-Route::get('/editadmin', function(){
-    return view('frontend.change_password');
-});
-
 Route::get('/tesdetail', function(){
     return view('frontend.detailundangan');
 });
@@ -63,10 +55,6 @@ Route::get('/tesspkcreate', function(){
 
 Route::get('/tesdetailpackaging', function(){
     return view('frontend.detailpackaging');
-});
-
-Route::get('/tesdetailsouvenir', function(){
-    return view('admin.invitation_detail_test');
 });
 
 Route::get('/pesanansaya', function(){
@@ -150,7 +138,6 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/dashboard/invitation', [AdminController::class, 'indexInvitation'])->name('admin.dashboard.invitation');
     Route::get('/admin/dashboard/souvenir', [AdminController::class, 'indexSouvenir'])->name('admin.dashboard.souvenir');
     Route::get('/admin/dashboard/packaging', [AdminController::class, 'indexPackaging'])->name('admin.dashboard.packaging');
-    Route::get('/admin/orders/invitation/detail/test', function(){return view('admin.invitation_detail_test');});
 
     //invitation
     Route::get('/admin/orders/invitation', [InvitationController::class, 'index'])->name('admin.invitation.view');
@@ -190,6 +177,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/{id}/update-progress', [OrderController::class, 'updateProgress'])->name('orders.updateProgress');
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
     Route::post('/admin/orders/{id}/{order}/deadline-change', [OrderController::class, 'deadlineChange'])->name('orders.deadline.change');
+    Route::post('/admin/orders/{id}/{order}/design-deadline-change', [OrderController::class, 'designDeadlineChange'])->name('orders.design_deadline.change');
 
     //reminder
     Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');

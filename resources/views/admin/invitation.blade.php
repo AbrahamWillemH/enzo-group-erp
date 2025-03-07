@@ -92,10 +92,10 @@
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->created_at)->format('d/m/Y') }}</td>
                                     <td class="px-3 py-3 text-center">{{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
                                     <td>
-                                        <form action="{{route('orders.deadline.change', ['id' => $o->id, 'order' => $o->type])}}" method="POST">
+                                        <form action="{{route('orders.design_deadline.change', ['id' => $o->id, 'order' => $o->type])}}" method="POST">
                                             @csrf
-                                            <input type="date" name="deadline_date_input" id="deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19" value="{{$o->deadline_date}}" onchange="this.form.submit()">
-                                            <input type="hidden" name="deadline_date" id="hidden_deadline_{{$o->id}}">
+                                            <input type="date" name="design_deadline_date_input" id="design_deadline_{{$o->id}}" class="w-full rounded-sm bg-green-light" placeholder="2025-01-19" value="{{$o->design_deadline_date}}" onchange="this.form.submit()">
+                                            <input type="hidden" name="design_deadline_date" id="hidden_design_deadline_{{$o->id}}">
                                         </form>
                                     </td>
                                     <td class="px-3 py-3 text-center">{{$o->design_status}}</td>
@@ -505,6 +505,49 @@
             const hiddenInput = document.getElementById(`hidden_deadline_${id}`);
             if (deadlineInput && hiddenInput) {
                 hiddenInput.value = deadlineInput.value;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('input[name="design_deadline_date_input"]').forEach((textInput) => {
+            const id = textInput.id.split('_')[1]; // Ambil ID unik dari input
+            const submitButton = document.getElementById(`submitButton_${id}`);
+
+            if (!submitButton) return; // Jika tidak ada tombol, hentikan eksekusi
+
+            // Fungsi untuk mengecek apakah input memiliki value atau tidak
+            const checkDeadlineInput = () => {
+                if (textInput.value.trim() !== "") {
+                    // Aktifkan tombol jika ada nilai
+                    submitButton.disabled = false;
+                    submitButton.classList.remove("bg-slate-600", "cursor-not-allowed");
+                    submitButton.classList.add("bg-accept", "hover:bg-accept", "hover:scale-110", "cursor-pointer");
+                } else {
+                    // Nonaktifkan tombol jika kosong
+                    submitButton.disabled = true;
+                    submitButton.classList.remove("bg-accept", "hover:bg-accept", "hover:scale-110", "cursor-pointer");
+                    submitButton.classList.add("bg-slate-600", "cursor-not-allowed");
+                }
+            };
+
+            // Cek saat halaman dimuat
+            checkDeadlineInput();
+
+            // Event listener saat input diubah
+            textInput.addEventListener("change", checkDeadlineInput);
+        });
+    });
+
+    // Fungsi untuk menyalin design_deadline
+    function copyDeadline(id) {
+        if (confirmNextProgress()){
+            const design_deadlineInput = document.getElementById(`design_deadline_${id}`);
+            const design_hiddenInput = document.getElementById(`hidden_design_deadline_${id}`);
+            if (design_deadlineInput && design_hiddenInput) {
+                design_hiddenInput.value = design_deadlineInput.value;
             }
         } else {
             return false;
