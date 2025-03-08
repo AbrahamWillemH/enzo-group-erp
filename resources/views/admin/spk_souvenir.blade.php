@@ -101,8 +101,8 @@
                                 class="text-value">{{ $parent->created_at ? \Carbon\Carbon::parse($parent->created_at)->format('d-m-Y') : '-' }}</span>
                         </td>
                         <td rowspan="7">
-                            <img src="{{ public_path('storage/app/public' . $parent->desain_emboss_path) }}"
-                                alt="" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%;">
+                            <img src="{{ 'file:///home/username/public_html/erp.enzocreatives.com/storage/app/public/' . $parent->desain_path }}"
+                                alt="Desain" style="width: 80%; height: auto; border-radius: 5px; margin-left: 10%;">
                         </td>
                     </tr>
                     <tr>

@@ -101,8 +101,8 @@
                                 class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span>
                         </td>
                         <td rowspan="6">
-                            <img src="{{ public_path('storage/app/public/' . $parent->desain_path) }}" alt=""
-                                style="width: 100%; height: auto; border-radius: 5px;">
+                            <img src="{{ 'file:///home/username/public_html/erp.enzocreatives.com/storage/app/public/' . $parent->desain_path }}"
+                                alt="Desain" style="width: 100%; height: auto; border-radius: 5px;">
                         </td>
                     </tr>
                     <tr>
