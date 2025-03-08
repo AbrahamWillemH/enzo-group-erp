@@ -51,6 +51,7 @@ class Souvenir extends Model
         'time_zone',
         'design_from_cust',
         'design_deadline_date',
+        'finish_date',
     ];
 
     /**

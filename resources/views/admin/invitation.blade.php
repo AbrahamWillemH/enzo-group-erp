@@ -584,20 +584,20 @@
                                                     {{ \Carbon\Carbon::parse($o->deadline_date)->format('d/m/Y') }}</td>
                                                 <td>
                                                     <form
-                                                        action=""
+                                                        action="{{ route('orders.finish_date.change', ['id' => $o->id, 'order' => $o->type]) }}"
                                                         method="POST">
                                                         @csrf
                                                         <input type="date" name="finish_date_input"
                                                             id="finish_date_input"
                                                             class="w-full rounded-sm bg-green-light"
-                                                            placeholder="2025-01-19" value=""
+                                                            placeholder="2025-01-19" value="{{ $o->finish_date }}"
                                                             onchange="this.form.submit()">
-                                                        <input type="hidden" name="finish_date"
-                                                            id="hidden_finish">
+                                                        <input type="hidden" name="finish_date" id="hidden_finish">
                                                     </form>
                                                 </td>
                                                 <td class="px-3 py-3 text-center">
-                                                    <form action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}"
+                                                    <form
+                                                        action="{{ route('admin.packaging.detail', ['id' => $o->id]) }}"
                                                         method="GET" class="inline-block">
                                                         <button type="submit"
                                                             class="bg-brown-enzo rounded-lg px-2 py-2 hover:scale-110 transition duration-300 inline-block text-white">

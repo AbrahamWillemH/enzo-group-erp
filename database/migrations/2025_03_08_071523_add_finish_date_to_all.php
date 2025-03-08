@@ -10,14 +10,14 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        Schema::table('souvenir', function (Blueprint $table) {
-            $table->string('design_deadline_date')->nullable();
-        });
         Schema::table('invitation', function (Blueprint $table) {
-            $table->string('design_deadline_date')->nullable();
+            $table->date('finish_date')->nullable();
+        });
+        Schema::table('souvenir', function (Blueprint $table) {
+            $table->date('finish_date')->nullable();
         });
         Schema::table('packaging', function (Blueprint $table) {
-            $table->string('design_deadline_date')->nullable();
+            $table->date('finish_date')->nullable();
         });
     }
 
@@ -26,14 +26,14 @@ return new class () extends Migration {
      */
     public function down(): void
     {
+        Schema::table('packaging', function (Blueprint $table) {
+            $table->date('finish_date')->nullable();
+        });
         Schema::table('souvenir', function (Blueprint $table) {
-            $table->dropColumn('design_deadline_date');
+            $table->date('finish_date')->nullable();
         });
         Schema::table('invitation', function (Blueprint $table) {
-            $table->dropColumn('design_deadline_date');
-        });
-        Schema::table('packaging', function (Blueprint $table) {
-            $table->dropColumn('design_deadline_date');
+            $table->date('finish_date')->nullable();
         });
     }
 };

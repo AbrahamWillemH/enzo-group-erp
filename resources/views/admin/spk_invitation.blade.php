@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,8 @@
             margin: 0 auto 30px auto;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000000;
             padding: 2px;
             text-align: left;
@@ -67,7 +69,9 @@
         }
 
         @media print {
-            input, textarea {
+
+            input,
+            textarea {
                 display: none;
             }
 
@@ -77,6 +81,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <section class="info_tambahan">
@@ -84,47 +89,56 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="5"><b>SPK PRODUKSI UNDANGAN - {{$parent->id}}</b></th>
+                        <th colspan="5"><b>SPK PRODUKSI UNDANGAN - {{ $parent->id }}</b></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td style="width: 80px"><b>Nama</b></td>
-                        <td style="width: 140px"><span class="text-value">{{$parent->user_name}}</span></td>
+                        <td style="width: 140px"><span class="text-value">{{ $parent->user_name }}</span></td>
                         <td style="width: 80px"><b>Tgl Order</b></td>
-                        <td style="width: 80px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span></td>
+                        <td style="width: 80px"><span
+                                class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span>
+                        </td>
                         <td rowspan="6">
-                            <img src="{{ public_path('storage/app/public/' . $parent->desain_path)}}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
+                            <img src="{{ public_path('storage/app/public/' . $parent->desain_path) }}" alt=""
+                                style="width: 100%; height: auto; border-radius: 5px;">
                         </td>
                     </tr>
                     <tr>
                         <td><b>Jenis</b></td>
-                        <td><span class="text-value">{{$parent->product_name}}</span></td>
+                        <td><span class="text-value">{{ $parent->product_name }}</span></td>
                         <td><b>Tgl DP2</b></td>
-                        <td><span class="text-value">{{ $parent->dp2_date ? \Carbon\Carbon::parse($parent->dp2_date)->format('d/m/Y') : '-' }}</span></td>
+                        <td><span
+                                class="text-value">{{ $parent->dp2_date ? \Carbon\Carbon::parse($parent->dp2_date)->format('d/m/Y') : '-' }}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Uk Jadi</b></td>
-                        <td><span class="text-value">{{$parent->size_fix}}</span></td>
+                        <td><span class="text-value">{{ $parent->size_fix }}</span></td>
                         <td><b>Tgl Fix Desain</b></td>
-                        <td><span class="text-value">{{ $parent->fix_design_date ? \Carbon\Carbon::parse($parent->fix_design_date)->format('d/m/Y') : '-' }}</span></td>
+                        <td><span
+                                class="text-value">{{ $parent->fix_design_date ? \Carbon\Carbon::parse($parent->fix_design_date)->format('d/m/Y') : '-' }}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Jumlah</b></td>
-                        <td><span class="text-value">{{$parent->quantity}}</span></td>
+                        <td><span class="text-value">{{ $parent->quantity }}</span></td>
                         <td><b>Deadline</b></td>
-                        <td><span class="text-value">{{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->format('d/m/Y') : '-' }}</span></td>
+                        <td><span class="text-value">
+                                {{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->subDays(5)->format('d/m/Y') : '-' }}
+                            </span></td>
                     </tr>
                     <tr>
                         <td><b>Alamat</b></td>
-                        <td><span class="text-value">{{$parent->address}}</span></td>
+                        <td><span class="text-value">{{ $parent->address }}</span></td>
                         <td><b>Percetakan</b></td>
-                        <td><span class="text-value">{{$parent->printout}}</span></td>
+                        <td><span class="text-value">{{ $parent->printout }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Request</b></td>
                         <td colspan="3">
-                            <span class="text-value">{{$parent->note_design}}</span>
+                            <span class="text-value">{{ $parent->note_design }}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -139,43 +153,43 @@
                 <tbody>
                     <tr style="height: auto;">
                         <td style="width: 40px"><b>Foil</b></td>
-                        <td style="width: 70px"><span class="text-value">{{$details->foil}}</span></td>
+                        <td style="width: 70px"><span class="text-value">{{ $details->foil }}</span></td>
                         <td style="width: 40px"><b>Tussel</b></td>
-                        <td style="width: 70px"><span class="text-value">{{$details->tussel}}</span></td>
+                        <td style="width: 70px"><span class="text-value">{{ $details->tussel }}</span></td>
                         <td style="width: 40px"><b>Ker. Foil</b></td>
-                        <td style="width: 70px"><span class="text-value">{{$details->kertas_foil}}</span></td>
+                        <td style="width: 70px"><span class="text-value">{{ $details->kertas_foil }}</span></td>
                         <td style="width: 40px"><b>Pita</b></td>
-                        <td style="width: 70px"><span class="text-value">{{$details->pita}}</span></td>
+                        <td style="width: 70px"><span class="text-value">{{ $details->pita }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Laminasi</b></td>
-                        <td><span class="text-value">{{$details->laminasi}}</span></td>
+                        <td><span class="text-value">{{ $details->laminasi }}</span></td>
                         <td><b>Tali Rami</b></td>
-                        <td><span class="text-value">{{$details->tali_rami}}</span></td>
+                        <td><span class="text-value">{{ $details->tali_rami }}</span></td>
                         <td><b>Kartu</b></td>
-                        <td><span class="text-value">{{$details->kartu}}</span></td>
+                        <td><span class="text-value">{{ $details->kartu }}</span></td>
                         <td><b>Waxseal</b></td>
-                        <td><span class="text-value">{{$details->waxseal}}</span></td>
+                        <td><span class="text-value">{{ $details->waxseal }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Label Nama</b></td>
-                        <td><span class="text-value">{{$details->label_nama}}</span></td>
+                        <td><span class="text-value">{{ $details->label_nama }}</span></td>
                         <td><b>Kalkir</b></td>
-                        <td><span class="text-value">{{$details->kalkir}}</span></td>
+                        <td><span class="text-value">{{ $details->kalkir }}</span></td>
                         <td><b>Plastik</b></td>
-                        <td><span class="text-value">{{$details->plastik}}</span></td>
+                        <td><span class="text-value">{{ $details->plastik }}</span></td>
                         <td><b>Kain Goni</b></td>
-                        <td><span class="text-value">{{$details->kain_goni}}</span></td>
+                        <td><span class="text-value">{{ $details->kain_goni }}</span></td>
                     </tr>
                     <tr>
                         <td><b>Gunungan</b></td>
-                        <td><span class="text-value">{{$details->gunungan}}</span></td>
+                        <td><span class="text-value">{{ $details->gunungan }}</span></td>
                         <td><b>Ornamen</b></td>
-                        <td><span class="text-value">{{$details->ornamen}}</span></td>
+                        <td><span class="text-value">{{ $details->ornamen }}</span></td>
                         <td><b>Lain-lain</b></td>
-                        <td><span class="text-value">{{$details->lain_lain}}</span></td>
+                        <td><span class="text-value">{{ $details->lain_lain }}</span></td>
                         <td><b>Note</b></td>
-                        <td><span class="text-value">{{$details->note_tambahan}}</span></td>
+                        <td><span class="text-value">{{ $details->note_tambahan }}</span></td>
                     </tr>
                 </tbody>
             </table>
@@ -196,16 +210,19 @@
                 </thead>
                 <tbody>
                     @if (isset($details->peruntukan) && is_array($details->peruntukan))
-                    @foreach ($details->peruntukan as $index => $peruntukan)
-                    <tr>
-                        <td><span class="text-value">{{ $peruntukan }}</span></td>
-                        <td><span class="text-value">{{ $details->nama_ukuran[$index] ?? '' }}</span></td>
-                        <td class="qty"><span class="text-value">{{ $details->kebutuhan[$index] ?? 0 }}</span></td>
-                        <td class="qty"><span class="text-value ">{{ $details->stok[$index] ?? 0 }}</span></td>
-                        <td class="qty"><span class="text-value">{{ $details->jumlah_beli[$index] ?? 0 }}</span></td>
-                        <td><span class="text-value">{{ $details->supplier[$index] ?? '' }}</span></td>
-                    </tr>
-                    @endforeach
+                        @foreach ($details->peruntukan as $index => $peruntukan)
+                            <tr>
+                                <td><span class="text-value">{{ $peruntukan }}</span></td>
+                                <td><span class="text-value">{{ $details->nama_ukuran[$index] ?? '' }}</span></td>
+                                <td class="qty"><span
+                                        class="text-value">{{ $details->kebutuhan[$index] ?? 0 }}</span></td>
+                                <td class="qty"><span class="text-value ">{{ $details->stok[$index] ?? 0 }}</span>
+                                </td>
+                                <td class="qty"><span
+                                        class="text-value">{{ $details->jumlah_beli[$index] ?? 0 }}</span></td>
+                                <td><span class="text-value">{{ $details->supplier[$index] ?? '' }}</span></td>
+                            </tr>
+                        @endforeach
                     @endif
                 </tbody>
             </table>
@@ -240,8 +257,10 @@
     </section>
 
 </body>
+
 </html>
 
 
 </body>
+
 </html>

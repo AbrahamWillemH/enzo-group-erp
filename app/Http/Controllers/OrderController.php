@@ -290,23 +290,22 @@ class OrderController extends Controller
         return redirect()->back()->with('success', 'Order progress reverted to '.$previousProgress);
     }
 
-    public function orderDetails($id)
+    public function orderDetails($id, $order)
     {
-        $invitation = DB::table('invitation')->where('id', $id)->first();
-        $packaging = DB::table('packaging')->where('id', $id)->first();
-        $seminarkit = DB::table('seminarkit')->where('id', $id)->first();
-        $souvenir = DB::table('souvenir')->where('id', $id)->first();
+        $modelClass = match ($order) {
+            'invitation' => Invitation::class,
+            'souvenir' => Souvenir::class,
+            'packaging' => Packaging::class,
+            default => null,
+        };
 
-        if ($invitation) {
+        if ($modelClass == Invitation::class) {
             return app(InvitationController::class)->invitationDetails($id);
         }
-        if ($packaging) {
+        if ($modelClass == Packaging::class) {
             return app(PackagingController::class)->packagingDetails($id);
         }
-        if ($seminarkit) {
-            return app(SeminarKitController::class)->seminarkitDetails($id);
-        }
-        if ($souvenir) {
+        if ($modelClass == Souvenir::class) {
             return app(SouvenirController::class)->souvenirDetails($id);
         }
     }
@@ -520,5 +519,54 @@ class OrderController extends Controller
         } else {
             return redirect()->back()->with('Success delete data');
         }
+    }
+
+    public function finishDateChange(Request $request, $id, $order)
+    {
+        $modelClass = match ($order) {
+            'invitation' => Invitation::class,
+            'souvenir' => Souvenir::class,
+            'packaging' => Packaging::class,
+            default => null,
+        };
+
+        $changeModelClass = match ($order) {
+            'invitation' => InvitationChange::class,
+            'souvenir' => SouvenirChange::class,
+            'packaging' => PackagingChange::class,
+            default => null,
+        };
+
+        if (! $modelClass || ! $changeModelClass) {
+            return redirect()->back()->with('error', 'Invalid order type');
+        }
+
+        // Ambil data lama
+        $orderInstance = $modelClass::findOrFail($id);
+        $oldValue = $orderInstance->finish_date;
+
+        // Ambil nilai baru dari request
+        $newValue = $request->finish_date_input;
+
+        // Jika tidak ada perubahan, langsung kembali tanpa menyimpan
+        if ($oldValue == $newValue) {
+            return redirect()->back()->with('info', 'No changes detected');
+        }
+
+        // Update data di tabel utama
+        $orderInstance->update(['finish_date' => $newValue]);
+
+        // Simpan perubahan ke tabel perubahan
+        $changeModelClass::create([
+            "{$order}_id" => $id, // Misalnya 'souvenir_id', 'invitation_id'
+            'column_name' => 'finish_date',
+            'old_value' => $oldValue ?? '(kosong)', // Jika null, tampilkan "(kosong)"
+            'new_value' => $newValue,
+            'created_at' => now(),
+            'updated_at' => now(),
+            'changer_name' => auth()->user()->name,
+        ]);
+
+        return redirect()->back()->with('success', 'Finish date updated successfully');
     }
 }

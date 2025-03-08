@@ -171,6 +171,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
     // pesanan selesai
     Route::get('/admin/orders/done', [OrderController::class, 'finishedOrders'])->name('admin.done.view');
+    Route::get('/admin/orders/done/{id}/{order}', [OrderController::class, 'orderDetails'])->name('admin.done.detail');
     Route::post('/admin/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('admin.order.delete');
 
     // update progress
@@ -178,6 +179,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::post('/admin/orders/{id}/previous-progress', [OrderController::class, 'previousProgress'])->name('orders.previousProgress');
     Route::post('/admin/orders/{id}/{order}/deadline-change', [OrderController::class, 'deadlineChange'])->name('orders.deadline.change');
     Route::post('/admin/orders/{id}/{order}/design-deadline-change', [OrderController::class, 'designDeadlineChange'])->name('orders.design_deadline.change');
+    Route::post('/admin/orders/{id}/{order}/finish_date_change', [OrderController::class, 'finishDateChange'])->name('orders.finish_date.change');
 
     // reminder
     Route::get('/admin/reminder/invitation', [InvitationController::class, 'reminder'])->name('admin.reminder.invitation');

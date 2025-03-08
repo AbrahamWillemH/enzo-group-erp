@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +32,8 @@
             margin: 0 auto 30px auto;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000000;
             padding: 2px;
             text-align: left;
@@ -41,7 +43,7 @@
             font-weight: 700;
             text-align: center;
             height: 10px;
-            font-size:11px;
+            font-size: 11px;
         }
 
         td {
@@ -67,7 +69,9 @@
         }
 
         @media print {
-            input, textarea {
+
+            input,
+            textarea {
                 display: none;
             }
 
@@ -77,6 +81,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <section class="info_tambahan">
@@ -84,36 +89,45 @@
             <table>
                 <thead>
                     <tr>
-                        <th colspan="5"><b>SPK PRODUKSI PACKAGING - {{$parent->id}}</b></th>
+                        <th colspan="5"><b>SPK PRODUKSI PACKAGING - {{ $parent->id }}</b></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td style="width: 80px"><b>Nama</b></td>
-                        <td style="width: 140px"><span class="text-value">{{$parent->user_name}}</span></td>
+                        <td style="width: 140px"><span class="text-value">{{ $parent->user_name }}</span></td>
                         <td style="width: 80px"><b>Tgl Order</b></td>
-                        <td style="width: 80px"><span class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span></td>
+                        <td style="width: 80px"><span
+                                class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span>
+                        </td>
                         <td rowspan="7">
-                            <img src="{{ asset('storage/app/public/' . $parent->desain_path)}}" alt="" style="width: 100%; height: auto; border-radius: 5px;">
+                            <img src="{{ asset('storage/app/public/' . $parent->desain_path) }}" alt=""
+                                style="width: 100%; height: auto; border-radius: 5px;">
                         </td>
                     </tr>
                     <tr>
                         <td><b>Jenis</b></td>
                         <td><span class="text-value">{{ ucfirst($parent->package_type) }}</span></td>
                         <td><b>Tgl DP2</b></td>
-                        <td><span class="text-value">{{ \Carbon\Carbon::parse($parent->dp2_date)->format('d/m/Y') }}</span></td>
+                        <td><span
+                                class="text-value">{{ \Carbon\Carbon::parse($parent->dp2_date)->format('d/m/Y') }}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Uk Jadi</b></td>
                         <td><span class="text-value">{{ $parent->size ?? '-' }}</span></td>
                         <td><b>Tgl Fix Desain</b></td>
-                        <td><span class="text-value">{{ $parent->fix_design_date ? \Carbon\Carbon::parse($parent->fix_design_date)->format('d/m/Y') : '-' }}</span></td>
+                        <td><span
+                                class="text-value">{{ $parent->fix_design_date ? \Carbon\Carbon::parse($parent->fix_design_date)->format('d/m/Y') : '-' }}</span>
+                        </td>
                     </tr>
                     <tr>
                         <td><b>Jumlah</b></td>
                         <td><span class="text-value">{{ $parent->quantity }}</span></td>
                         <td><b>Deadline</b></td>
-                        <td><span class="text-value">{{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->format('d-m-Y') : '-' }}</span></td>
+                        <td><span class="text-value">
+                                {{ $parent->deadline_date ? \Carbon\Carbon::parse($parent->deadline_date)->subDays(5)->format('d/m/Y') : '-' }}
+                            </span></td>
                     </tr>
                     <tr>
                         <td><b>Packing</b></td>
@@ -198,16 +212,19 @@
                 </thead>
                 <tbody>
                     @if (isset($details->nama_bahan) && is_array($details->nama_bahan))
-                    @foreach ($details->nama_bahan as $index => $nama_bahan)
-                    <tr>
-                        <td><span class="text-value">{{$nama_bahan}}</span></td>
-                        <td><span class="text-value">{{ $details->ukuran[$index] ?? '' }}</span></td>
-                        <td class="qty"><span class="text-value">{{ $details->kebutuhan[$index] ?? 0 }}</span></td>
-                        <td class="qty"><span class="text-value ">{{ $details->stok[$index] ?? 0 }}</span></td>
-                        <td class="qty"><span class="text-value">{{ $details->jumlah_beli[$index] ?? 0 }}</span></td>
-                        <td><span class="text-value">{{ $details->supplier[$index] ?? '' }}</span></td>
-                    </tr>
-                    @endforeach
+                        @foreach ($details->nama_bahan as $index => $nama_bahan)
+                            <tr>
+                                <td><span class="text-value">{{ $nama_bahan }}</span></td>
+                                <td><span class="text-value">{{ $details->ukuran[$index] ?? '' }}</span></td>
+                                <td class="qty"><span
+                                        class="text-value">{{ $details->kebutuhan[$index] ?? 0 }}</span></td>
+                                <td class="qty"><span class="text-value ">{{ $details->stok[$index] ?? 0 }}</span>
+                                </td>
+                                <td class="qty"><span
+                                        class="text-value">{{ $details->jumlah_beli[$index] ?? 0 }}</span></td>
+                                <td><span class="text-value">{{ $details->supplier[$index] ?? '' }}</span></td>
+                            </tr>
+                        @endforeach
                     @endif
                 </tbody>
             </table>
@@ -242,8 +259,10 @@
     </section>
 
 </body>
+
 </html>
 
 
 </body>
+
 </html>

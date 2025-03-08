@@ -48,6 +48,7 @@ class Packaging extends Model
         'fix_design_date',
         'time_zone',
         'design_deadline_date',
+        'finish_date',
     ];
 
     public static function generatePackagingId()

@@ -65,6 +65,7 @@ class Invitation extends Model
         'akad_pemberkatan_time_done',
         'reception_time_done',
         'design_deadline_date',
+        'finish_date',
     ];
 
     // Fungsi membuat ID otomatis YYYYMMDD-XX
