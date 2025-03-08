@@ -556,7 +556,7 @@
                         <div class="px-3 w-[1010px] 2xl:w-[1200px] mx-auto">
                             <div class="data mt-11 mb-5 gap-0 relative overflow-x-auto rounded-lg max-h-[480px]"
                                 id="page-ready">
-                                <table class="w-[1300px] 2xl:w-[1400px] border capitalize shadow-inner z-10">
+                                <table class="w-[1500px] 2xl:w-[1600px] border capitalize shadow-inner z-10">
                                     <thead class="sticky top-0 bg-green-main text-brown-enzo z-20">
                                         <tr class="h-20">
                                             <th class="text-center sticky left-0 w-[150px] bg-green-main">ID</th>
