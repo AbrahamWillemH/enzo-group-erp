@@ -101,8 +101,12 @@
                                 class="text-value">{{ \Carbon\Carbon::parse($parent->created_at)->format('d/m/Y') }}</span>
                         </td>
                         <td rowspan="7">
-                            <img src="{{ 'file:///home/username/public_html/erp.enzocreatives.com/storage/app/public/' . $parent->desain_path }}"
-                                alt="Desain" style="width: 100%; height: auto; border-radius: 5px;">
+                            @if ($parent->desain_path)
+                                <img src="{{ 'file:///home/n1576869/public_html/erp.enzocreatives.com/storage/app/public/' . $parent->desain_path }}"
+                                    alt="Desain" style="width: 100%; height: auto; border-radius: 5px;">
+                            @else
+                                <p style="text-align: center; font-weight: bold;">Belum ada gambar</p>
+                            @endif
                         </td>
                     </tr>
                     <tr>
