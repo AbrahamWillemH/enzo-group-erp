@@ -243,17 +243,15 @@
                                                 <td class="px-3 py-3 text-center">
                                                     {{ \Carbon\Carbon::parse($o->reception_date)->format('d/m/Y') }}</td>
                                                 <td>
-                                                    <form
-                                                        action="{{ route('orders.deadline.change', ['id' => $o->id, 'order' => $o->type]) }}"
+                                                    <form action="{{ route('orders.deadline.change', ['id' => $o->id, 'order' => $o->type]) }}" 
                                                         method="POST">
                                                         @csrf
                                                         <input type="date" name="deadline_date_input"
                                                             id="deadline_{{ $o->id }}"
                                                             class="w-full rounded-sm bg-green-light"
                                                             placeholder="2025-01-19" value="{{ $o->deadline_date }}"
-                                                            onchange="this.form.submit()">
-                                                        <input type="hidden" name="deadline_date"
-                                                            id="hidden_deadline_{{ $o->id }}">
+                                                            onchange="validateDeadline(event, this, '{{ $o->id }}')">
+                                                        <input type="hidden" name="deadline_date" id="hidden_deadline_{{ $o->id }}">
                                                     </form>
                                                 </td>
                                                 <td class="px-3 py-3 text-center">
@@ -648,9 +646,22 @@
                 <div class="bg-white p-6 rounded-lg max-w-sm w-full">
                     <h2 class="text-xl font-semibold mb-4" id="modalTitle"></h2>
                     <p id="modalContent" class="text-gray-700"></p>
-                    <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+                    <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Tutup</button>
                 </div>
             </div>
+
+            <!-- Modal Capasity -->
+            <div id="modal-full-capacity" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+                <div class="bg-white p-6 rounded-lg max-w-sm w-full text-center translate-x-[10vw]">
+                    <h2 class="text-xl font-bold mb-4 text-red-600">Peringatan!</h2>
+                    <p class="text-gray-700">Tanggal yang dipilih sudah penuh. Silakan pilih tanggal lain.</p>
+                    <div class="mt-4">
+                        <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModalValidate()">Tutup</button>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
@@ -837,6 +848,28 @@
         function closeModal() {
             // Hide the modal
             document.getElementById('infoModal').classList.add('hidden');
+        }
+
+        const fullCapacityDates = ["2025-03-20", "2025-03-25", "2025-03-30"];
+
+        function validateDeadline(event, inputField, id) {
+            const selectedDate = inputField.value;
+
+            if (fullCapacityDates.includes(selectedDate)) {
+                event.preventDefault(); 
+                openModalValidate();
+                return false;
+            } else {
+                inputField.form.submit();
+            }
+        }
+
+        function openModalValidate() {
+            document.getElementById("modal-full-capacity").classList.remove("hidden");
+        }
+
+        function closeModalValidate() {
+            document.getElementById("modal-full-capacity").classList.add("hidden");
         }
     </script>
     @if (session('error'))
