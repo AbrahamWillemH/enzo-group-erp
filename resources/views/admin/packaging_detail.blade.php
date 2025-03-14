@@ -1,3 +1,10 @@
+<head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css">
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+
+</head>
 @extends('admin/sidebar_admin')
 @section('title', 'Detail Packaging')
 @section('konten')
@@ -126,10 +133,11 @@
                             <h2 class="text-xl font-bold mb-4">Ubah Desain </h2>
                             <form action="{{route('packaging.upload.image', ['id' => $packaging->id])}}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="file" id="file-upload" name="desain_path" class="block w-full text-sm text-gray-600">
+                                <input type="file" id="file-upload" name="desain_path" class="block w-full text-sm text-gray-600" onchange="previewImage()">
+                                <div class="preview" id="preview"></div>
                                 <div class="flex justify-end mt-4">
                                     <button type="button" class="px-4 py-2 bg-gray-300 rounded-md" onclick="closeModal()">Batal</button>
-                                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2" onclick="validateUpload(event)">Upload</button>
+                                    <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md ml-2" onclick="validateUpload(event)" id="btn-crop">Upload</button>
                                 </div>
                             </form>
                         </div>
@@ -610,6 +618,59 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closeHistoryModal() {
         document.getElementById('modal-history').classList.add('hidden');
+    }
+
+    const image = document.getElementById('image');
+    const cropper = new Cropper (image, {
+        viewMode: 1,
+        autoCropArea: 0.8,
+        responsive: true,
+        movable: true,
+        zoomable: true,
+        rotatable: true,
+        scalable: true,
+        aspectRatio: NaN, // Rasio bebas
+    });
+
+    // document.querySelector('#btn-crop').addEventListener('click', function(){
+    //     var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
+    //     document.getElementById('output').src = croppedImage;
+    //     document.querySelector(".cropped-container").style.display = 'flex';
+    // })
+
+    function previewImage() {
+        const file = document.getElementById('file-upload').files[0];
+        const preview = document.getElementById('preview');
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            // Tampilkan gambar dengan ID 'image'
+            preview.innerHTML = `<img src="${e.target.result}" alt="Preview" id="image" style="max-width: 100%; height: auto;">`;
+
+            // Inisialisasi Cropper setelah gambar muncul
+            const image = document.getElementById('image');
+            const cropper = new Cropper(image, {
+                viewMode: 1,
+                autoCropArea: 0.8,
+                responsive: true,
+                movable: true,
+                zoomable: true,
+                rotatable: true,
+                scalable: true,
+                aspectRatio: NaN, // Rasio bebas
+            });
+
+            // Event listener untuk tombol crop
+            document.querySelector('#btn-crop').addEventListener('click', function () {
+                var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
+                document.getElementById('output').src = croppedImage;
+                document.querySelector(".cropped-container").style.display = 'flex';
+            });
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
     }
 
 

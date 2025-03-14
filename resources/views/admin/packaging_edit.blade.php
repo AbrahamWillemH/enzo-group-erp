@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Packaging Form Edit</title>
   @vite('resources/css/app.css')
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 </head>
 
 <body class="bg-[#fcfffa] font-mont">
@@ -352,6 +354,12 @@
         </div>
       </div>
 
+      <!-- Container untuk Preview -->
+      <div class="bg-red-200 w-[36rem] h-[21rem] flex flex-col justify-center items-center rounded-lg p-2 fixed inset-y-24 left-1/5 bg-black/50 hidden z-[50]" id="preview-image">
+        <div class="preview h-[17rem]" id="preview"></div>
+        <button type="submit" id="btn-crop" class="px-4 py-2 bg-green-600 text-white rounded-md mt-2">Upload</button>
+      </div>
+
       <div>
         <!-- Submit Button -->
         <button type="submit"
@@ -421,24 +429,77 @@
       hiddenInput.value = JSON.stringify(selected);
   });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const priceInput = document.getElementById("price_per_pcs");
-        const hiddenInput = document.getElementById("price_per_pcs_hidden");
+  document.addEventListener("DOMContentLoaded", function() {
+      const priceInput = document.getElementById("price_per_pcs");
+      const hiddenInput = document.getElementById("price_per_pcs_hidden");
 
-        function formatRupiah(value) {
-            return value.replace(/\D/g, "") // Hapus karakter non-digit
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambahkan titik setiap ribuan
+      function formatRupiah(value) {
+          return value.replace(/\D/g, "") // Hapus karakter non-digit
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // Tambahkan titik setiap ribuan
+      }
+
+      priceInput.addEventListener("input", function() {
+          let rawValue = this.value.replace(/\D/g, ""); // Simpan angka asli tanpa titik
+          hiddenInput.value = rawValue; // Simpan angka asli di input hidden
+          this.value = formatRupiah(rawValue); // Format tampilan pengguna
+      });
+
+      // Pastikan nilai input diformat saat halaman dimuat
+      priceInput.value = formatRupiah(priceInput.value);
+  });
+
+  let cropper;
+
+    // Fungsi untuk preview gambar dan inisialisasi Cropper
+    function previewImage() {
+        const file = document.getElementById('desain_path').files[0];
+        const preview = document.getElementById('preview');
+        const reader = new FileReader();
+        document.getElementById('preview-image').classList.remove('hidden');
+        reader.onload = function (e) {
+          
+          // Tampilkan gambar preview
+          preview.innerHTML = `<img src="${e.target.result}" alt="Preview" id="image" class="max-w-full h-auto rounded-md">`;
+
+          // Inisialisasi Cropper pada gambar setelah muncul
+          const image = document.getElementById('image');
+          
+          // Hapus cropper sebelumnya jika ada
+          if (cropper) {
+              cropper.destroy();
+          }
+
+          cropper = new Cropper(image, {
+              viewMode: 1,
+              autoCropArea: 0.8,
+              responsive: true,
+              movable: true,
+              zoomable: true,
+              rotatable: true,
+              scalable: true,
+              aspectRatio: NaN, // Rasio bebas
+          });
+        };
+
+        if (file) {
+            reader.readAsDataURL(file);
         }
+    }
 
-        priceInput.addEventListener("input", function() {
-            let rawValue = this.value.replace(/\D/g, ""); // Simpan angka asli tanpa titik
-            hiddenInput.value = rawValue; // Simpan angka asli di input hidden
-            this.value = formatRupiah(rawValue); // Format tampilan pengguna
-        });
-
-        // Pastikan nilai input diformat saat halaman dimuat
-        priceInput.value = formatRupiah(priceInput.value);
+    // Event listener untuk tombol crop
+    document.getElementById('btn-crop').addEventListener('click', function () {
+        if (cropper) {
+            var croppedImage = cropper.getCroppedCanvas().toDataURL("image/png");
+            document.getElementById('output').src = croppedImage;
+            document.querySelector(".cropped-container").style.display = 'block';
+        } else {
+            alert("Silakan pilih file terlebih dahulu sebelum mengupload!");
+        }
+        document.getElementById('preview-image').classList.add('hidden');
     });
+
+    // Event listener saat file berubah
+    document.getElementById('desain_path').addEventListener('change', previewImage);
   </script>
 
 </body>
